@@ -129,4 +129,10 @@ flowchart TD
 
 [Computer-vision](https://github.com/JAEMOON-LEEE/Computer-vision)은 TwinSight 팀의 코드와 개발 문서를 공유하는 저장소입니다.
 
-현재는 프로젝트 소개 문서를 등록하는 단계입니다. 모듈별 코드가 추가되면 실제 폴더 구조, 필요한 환경과 의존성, 설치·실행 방법, 시연 및 실험 결과를 함께 갱신합니다.
+모듈별 코드가 추가되면 실제 폴더 구조, 필요한 환경과 의존성, 설치·실행 방법, 시연 및 실험 결과를 함께 갱신합니다.
+
+| 폴더 | 내용 |
+| --- | --- |
+| [docs/data_format.md](docs/data_format.md) | 가상환경 정답·YOLO 검출 결과의 공통 데이터 형식(초안) |
+| [simulation/TwinSightSim](simulation/TwinSightSim/README.md) | Unity 가상 CCTV 환경: 이미지·정답 박스·노면 좌표·기준점 저장 |
+| [mapping](mapping/README.md) | 공간 매핑(Homography)과 가상환경 정답 기반 오차 평가 |

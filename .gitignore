@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+out/
+mapping_eval/
+*.pt
+
+# Unity (simulation/TwinSightSim)
+simulation/**/[Ll]ibrary/
+simulation/**/[Tt]emp/
+simulation/**/[Oo]bj/
+simulation/**/[Ll]ogs/
+simulation/**/[Bb]uild/
+simulation/**/[Bb]uilds/
+simulation/**/[Uu]ser[Ss]ettings/
+simulation/**/MemoryCaptures/
+simulation/**/*.csproj
+simulation/**/*.sln
+simulation/**/*.slnx
+simulation/**/.vscode/
+simulation/**/.vs/
+simulation/**/TwinSightExport/
+
+# Hub에서 실수로 만든 중첩 프로젝트 (커밋하지 않음)
+simulation/TwinSightSim/My project*/
