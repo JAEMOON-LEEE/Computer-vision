@@ -15,10 +15,12 @@
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -38,8 +40,8 @@ def load_key() -> str:
         for line in env_file.read_text(encoding="utf-8").splitlines():
             if line.strip().startswith("ITS_API_KEY="):
                 key = line.split("=", 1)[1].strip().strip('"').strip("'")
-    if not key:
-        sys.exit(f"인증키가 없습니다. {env_file} 에 ITS_API_KEY=발급키 를 적어주세요.")
+    if not key or not key.isascii() or "여기에" in key:
+        sys.exit(f"인증키가 비어 있거나 예시 문구 그대로입니다. {env_file} 의 ITS_API_KEY= 뒤에 발급받은 키를 넣어주세요.")
     return key
 
 
@@ -90,8 +92,13 @@ def main() -> None:
         params = {"apiKey": load_key(), "type": args.type, "cctvType": 1,
                   "minX": min_x, "maxX": max_x, "minY": min_y, "maxY": max_y, "getType": "json"}
         url = f"{ENDPOINT}?{urllib.parse.urlencode(params)}"
-        with urllib.request.urlopen(url, timeout=30) as res:
-            text = res.read().decode("utf-8")
+        try:
+            with urllib.request.urlopen(url, timeout=30) as res:
+                text = res.read().decode("utf-8")
+        except urllib.error.HTTPError as e:
+            body = e.read().decode("utf-8", "replace")[:500]
+            hint = {401: "인증 실패: 키 오타, 승인 전 키, CCTV 서비스 미신청 여부를 확인하세요."}.get(e.code, "")
+            sys.exit(f"HTTP {e.code} {hint}\n서버 응답: {body}")
         (OUT_DIR / f"cctv_{args.type}_raw.txt").write_text(text, encoding="utf-8")
         try:
             items = parse(text)
@@ -104,7 +111,8 @@ def main() -> None:
     print(f"전체 {len(items)}개 -> {list_path}")
     hits = [c for c in items if re.search(CANDIDATE_PATTERN, c.get("cctvname", ""))]
     candidates = [{
-        "camera_id": f"its-{c.get('cctvname', '')}",
+        # URL 경로에 그대로 쓸 수 있도록 이름 해시로 고정 ID 생성 (이름이 같으면 항상 같은 ID)
+        "camera_id": "its-" + hashlib.sha1(c.get("cctvname", "").encode("utf-8")).hexdigest()[:10],
         "name": c.get("cctvname"),
         "source": "ITS",
         "road_type": args.type,

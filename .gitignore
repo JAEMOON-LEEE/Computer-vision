@@ -39,3 +39,4 @@ simulation/TwinSightSim/Assets/TwinSight/CityLab.meta
 # API keys / fetched CCTV lists (stream URLs are signed)
 .env
 backend/data/
+.pytest_cache/
