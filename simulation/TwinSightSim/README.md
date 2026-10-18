@@ -28,6 +28,8 @@ python mapping/scripts/evaluate_mapping.py simulation/TwinSightSim/TwinSightExpo
 
 ## 3D 에셋으로 바꾸기
 
+저장소에 있는 도시와 SUV·Mini 에셋을 조합한 실험 씬은 **TwinSight → City Lab → Build City Traffic Lab**으로 생성합니다. 바퀴 분리·회전, 양방향 주행, CCTV 및 정답 저장 방법은 [도시·차량 실험 환경 안내](../../docs/city_lab.md)를 참고하세요.
+
 | 대상 | 할 일 |
 | --- | --- |
 | 차량 모델 | 프리팹 피벗을 **바닥 중심**에, 앞을 **+z**로 맞춥니다. 모델 Import Settings에서 **Read/Write**를 켜면 정답 박스가 메시에 꼭 맞습니다(끄면 회전된 상자 박스를 씀). 각 차로의 `TrafficSpawner → Prefabs`에 넣고 `Class Name`을 YOLO 이름(`car`, `truck`, `bus`, `motorcycle`)과 같게 적습니다. |
@@ -53,4 +55,4 @@ python mapping/scripts/evaluate_mapping.py simulation/TwinSightSim/TwinSightExpo
 - 에디터에서는 Game 뷰가 닫혀 있으면 프레임이 저장되지 않습니다.
 - 정답 박스는 가려진 부분까지 포함합니다(가림 여부는 아직 계산하지 않음).
 - `TwinSightExport/`, `Library/` 등 Unity 생성 폴더는 `.gitignore`에 들어 있어 커밋되지 않습니다.
-- 이 스크립트들은 아직 Unity 에디터에서 컴파일·실행해 보지 않았습니다. Python 평가 쪽은 같은 형식의 합성 데이터로 검증했습니다.
+- 2026-10-18 Unity 6000.6.6f1에서 프로젝트 컴파일 및 도시·차량 실험 씬 생성, 차량 메시 보존·바퀴 회전, 짧은 이미지·정답 저장을 검증했습니다. 기본 `DemoRoad`의 전체 평가 실험 결과는 별도로 기록합니다.

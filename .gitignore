@@ -24,3 +24,9 @@ simulation/**/TwinSightExport/
 
 # Hub에서 실수로 만든 중첩 프로젝트 (커밋하지 않음)
 simulation/TwinSightSim/My project*/
+
+# Rebuilt from the repository's original LFS assets by the City Lab importer
+simulation/TwinSightSim/Assets/TwinSight/Imported/
+simulation/TwinSightSim/Assets/TwinSight/Imported.meta
+simulation/TwinSightSim/Assets/TwinSight/CityLab/
+simulation/TwinSightSim/Assets/TwinSight/CityLab.meta

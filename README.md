@@ -135,4 +135,5 @@ flowchart TD
 | --- | --- |
 | [docs/data_format.md](docs/data_format.md) | 가상환경 정답·YOLO 검출 결과의 공통 데이터 형식(초안) |
 | [simulation/TwinSightSim](simulation/TwinSightSim/README.md) | Unity 가상 CCTV 환경: 이미지·정답 박스·노면 좌표·기준점 저장 |
+| [docs/city_lab.md](docs/city_lab.md) | 실제 도시·SUV·Mini 에셋을 조합한 합성데이터 실험 씬, 바퀴 리그 및 실행 안내 |
 | [mapping](mapping/README.md) | 공간 매핑(Homography)과 가상환경 정답 기반 오차 평가 |

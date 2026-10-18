@@ -250,6 +250,7 @@ namespace TwinSight.Simulation
         {
             done = true;
             CloseWriter();
+            Time.captureDeltaTime = 0f;
             Debug.Log($"TwinSight: {frame}프레임 저장 완료 → {runDir}");
 #if UNITY_EDITOR
             if (stopPlayModeWhenDone) UnityEditor.EditorApplication.isPlaying = false;
