@@ -92,6 +92,10 @@ Unity 가상환경이 내보내는 정답 데이터와, 실제 CCTV 영상에서
 - `mapped_xz`(선택): 캘리브레이션으로 바꾼 노면 좌표(박스 아래 가운데 그대로). 단위는 같은 폴더 `session.json`의 `mapped_units`(`m`이면 미터)를 따릅니다.
 - `mapped_xz_corrected`(선택): 박스 아래 가운데의 카메라 쪽 편향을 보정한 노면 좌표(`mapping/twinsight_mapping/correction.py`). 미터 단위 캘리브레이션일 때만 있고, 위치를 쓸 때는 이 값을 우선합니다. 보정 설정은 `session.json`의 `ground_correction`에 있습니다.
 - `image`(선택): 원본 프레임을 함께 저장한 경우 그 경로.
+- `detection` 모듈의 추가 필드(초안): `category_id`는 프로젝트 분류 ID, `model_id`는 결과를 낸 모델 식별자입니다. `class_id`는 각 모델의 원래 ID라 두 모델을 함께 쓰면 `model_id`와 같이 해석합니다. 분류표는 [검출 모듈 안내](../detection/README.md)를 따릅니다.
+- `detection` 모듈은 프레임에 `timestamp_kind`와 `inference_ms`를 추가합니다. 기본 `track_id`는 `null`이며 `--track`/`--alerts`에서는 기존 ByteTrack ID를 저장합니다. Unity 입력은 `simulation_seconds`, 녹화 영상은 `video_seconds`, 웹캠·스트림 수신 시각은 `unix_seconds`입니다.
+- 신호·사고 실험의 Unity 정답에는 `signals`(차량·보행자 상태, 남은 시간), `scenario`(시드·선택 장면·샘플링 비율·물리 접촉 이벤트)가 추가됩니다. 이는 정답 전용이며 경고 엔진의 입력 근거로 사용하지 않습니다. 자세한 내용은 [실험 안내](traffic_incidents.md)를 참고합니다.
+- `alerts.jsonl`은 검출·추적에서 판단한 경고를 한 줄씩 기록합니다. `alert_id`, `type`, `status=unconfirmed`, `camera_id`, `frame`, `timestamp`, `evidence`(근거 박스·클래스·추적 ID)를 포함합니다.
 - 실제 CCTV 파이프라인(`CCTV` 스크립트)은 `logs/<카메라ID>_<시각>/detections.jsonl`에 이 형식으로 저장합니다. `session.json`에는 모델, 신뢰도 기준, 추적기, 캘리브레이션 파일, `timestamp_kind`(`unix_seconds` 또는 녹화 영상의 `video_seconds`)가 들어 있습니다.
 
 ## calibration/<카메라ID>.json (실제 CCTV 캘리브레이션)

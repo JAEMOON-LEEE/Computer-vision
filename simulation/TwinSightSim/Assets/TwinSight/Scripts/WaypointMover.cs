@@ -15,9 +15,11 @@ namespace TwinSight.Simulation
         public bool snapToRoad = true;
 
         int next;
+        TrafficVehicleAgent trafficAgent;
 
         void Start()
         {
+            trafficAgent = GetComponent<TrafficVehicleAgent>();
             // 첫 경로점에서 출발한다고 보고 두 번째 점부터 향한다
             if (waypoints != null && waypoints.Length > 0) next = Mathf.Min(1, waypoints.Length - 1);
         }
@@ -27,6 +29,7 @@ namespace TwinSight.Simulation
             if (waypoints == null || waypoints.Length == 0) return;
 
             float step = speed * Time.deltaTime;
+            if (trafficAgent != null) step = trafficAgent.LimitStep(step);
             Vector3 pos = transform.position;
             for (int guard = 0; step > 0f && guard <= waypoints.Length; guard++)
             {

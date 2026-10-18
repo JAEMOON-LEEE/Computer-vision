@@ -1,0 +1,10 @@
+# Copy and edit. Paths resolve relative to this YAML file.
+path: ../../datasets/road
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: pothole
+  1: crack
+  2: debris
+  3: barrier

@@ -120,6 +120,7 @@ namespace TwinSight.Simulation.EditorTools
             var settings = new GameObject("ExperimentSettings").AddComponent<CityLabExperiment>();
             settings.cctv = cctv; settings.overview = overview; settings.sun = sun; settings.exporter = exporter;
             EditorSceneManager.SaveScene(scene, ScenePath);
+            TrafficExperimentBuilder.Install();
             AssetDatabase.SaveAssets();
             Selection.activeGameObject = settings.gameObject;
             if (SceneView.lastActiveSceneView != null) SceneView.lastActiveSceneView.LookAt((start + end) / 2f, Quaternion.Euler(55, 0, 0), 70f);

@@ -33,14 +33,16 @@ namespace TwinSight.Simulation.EditorTools
                 if (channel != "DiffuseColor" && channel != "BaseColor") continue;
                 var filename = texture.children.FirstOrDefault(n => n.name == "RelativeFilename")
                     ?? texture.children.FirstOrDefault(n => n.name == "FileName");
-                if (filename != null) links[material] = Path.GetFileName(Convert.ToString(filename.values[0]).Replace('\\', '/'));
+                if (filename != null) links[material] = Convert.ToString(filename.values[0]).Replace('\\', '/');
             }
 
-            var lookup = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var lookup = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (string guid in AssetDatabase.FindAssets("t:Texture2D", new[] { CityAssetTools.Imported + "/City" }))
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
-                lookup.TryAdd(Path.GetFileName(path), path);
+                string filename = Path.GetFileName(path);
+                if (!lookup.TryGetValue(filename, out var paths)) lookup[filename] = paths = new List<string>();
+                paths.Add(path);
             }
             string folder = CityAssetTools.Generated + "/Materials";
             Directory.CreateDirectory(folder); AssetDatabase.Refresh();
@@ -60,8 +62,14 @@ namespace TwinSight.Simulation.EditorTools
                         material.color = source.HasProperty("_Color") ? source.color : Color.white;
                         material.SetFloat("_Glossiness", 0.15f);
                         material.mainTexture = null;
-                        if (links.TryGetValue(source.name, out string filename) && lookup.TryGetValue(filename, out string texturePath))
+                        if (links.TryGetValue(source.name, out string filename) && lookup.TryGetValue(Path.GetFileName(filename), out var texturePaths))
                         {
+                            string texturePath = texturePaths.OrderByDescending(p => MatchingSuffix(p, filename)).First();
+                            // Blender exports duplicate texture basenames for several UV layouts.
+                            // This city plane uses the 'wide road' atlas; a basename-only lookup chose a blank street atlas.
+                            if (source.name.StartsWith("ROAD", StringComparison.OrdinalIgnoreCase)
+                                || source.name.StartsWith("SIDEWALK", StringComparison.OrdinalIgnoreCase))
+                                texturePath = texturePaths.FirstOrDefault(p => p.Contains("/wide road/")) ?? texturePath;
                             material.mainTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
                             material.color = Color.white; textured++;
                             // Preserve texture alpha for vegetation and cutout props.
@@ -78,6 +86,13 @@ namespace TwinSight.Simulation.EditorTools
             { sourceLinks = links.Count, restoredTextures = textured, materialCount = mapped.Count }, Newtonsoft.Json.Formatting.Indented));
             if (textured == 0) throw new InvalidOperationException("No city diffuse textures restored. Verify source FBX and LFS textures.");
             return textured;
+        }
+
+        static int MatchingSuffix(string path, string reference)
+        {
+            var a = path.Split('/'); var b = reference.Split('/'); int count = 0;
+            while (count < a.Length && count < b.Length && string.Equals(a[a.Length - 1 - count], b[b.Length - 1 - count], StringComparison.OrdinalIgnoreCase)) count++;
+            return count;
         }
 
         static string Clean(string value) => value.Split('\0')[0].Replace("Material::", "");

@@ -30,6 +30,7 @@ namespace TwinSight.Simulation
         public float minGap = 14f;
         public int maxAlive = 15;
         public int seed = 1;
+        public TrafficSignalController signals;
 
         System.Random random;
         Transform[] waypoints;
@@ -80,6 +81,13 @@ namespace TwinSight.Simulation
             mover.speed = laneSpeed;
             mover.loop = false;
             mover.destroyAtEnd = true;
+
+            if (signals != null)
+            {
+                var agent = vehicle.AddComponent<TrafficVehicleAgent>();
+                agent.signals = signals;
+                if (tracked.TryGetWorldBounds(out var bounds)) agent.halfLength = bounds.size.x * 0.5f;
+            }
 
             alive.Add(vehicle);
             lastSpawned = vehicle;

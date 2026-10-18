@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "frames": 40,
+  "detections_by_class": {
+    "pothole": 40
+  },
+  "elapsed_seconds": 12.69,
+  "pipeline_fps": 3.152,
+  "mean_inference_ms": 296.934,
+  "warm_mean_inference_ms": 132.895,
+  "warm_p95_inference_ms": 178.273,
+  "capabilities": {
+    "available": [
+      "person",
+      "car",
+      "truck",
+      "bus",
+      "motorcycle",
+      "bicycle",
+      "pothole",
+      "debris",
+      "barrier"
+    ],
+    "unavailable": [
+      "crack"
+    ]
+  },
+  "alerts_by_type": {
+    "road_damage": 1
+  }
+}

@@ -65,5 +65,7 @@ namespace TwinSight.Simulation
         public int width;
         public int height;
         public List<ObjectRecord> objects = new List<ObjectRecord>();
+        public SignalSnapshot signals;
+        public ScenarioSnapshot scenario;
     }
 }

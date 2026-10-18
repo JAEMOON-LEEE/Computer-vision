@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "red_stops_nose_before_line",
+      "passed": true
+    },
+    {
+      "name": "red_holds_stopped_vehicle",
+      "passed": true
+    },
+    {
+      "name": "green_releases_vehicle",
+      "passed": true
+    },
+    {
+      "name": "green_waits_at_line_when_crossing_exit_blocked",
+      "passed": true
+    },
+    {
+      "name": "queue_preserves_gap",
+      "passed": true
+    },
+    {
+      "name": "inbound_red_stops_nose_before_line",
+      "passed": true
+    },
+    {
+      "name": "inbound_red_holds_stopped_vehicle",
+      "passed": true
+    },
+    {
+      "name": "inbound_green_releases_vehicle",
+      "passed": true
+    },
+    {
+      "name": "reduced_spawn_frequency",
+      "passed": true
+    },
+    {
+      "name": "pedestrian_waits_on_red_Pedestrian_B",
+      "passed": true
+    },
+    {
+      "name": "pedestrian_waits_on_red_Pedestrian_A",
+      "passed": true
+    },
+    {
+      "name": "pedestrians_enter_on_green",
+      "passed": true
+    },
+    {
+      "name": "all_red_waits_for_crossing_clearance",
+      "passed": true
+    },
+    {
+      "name": "vehicle_green_after_pedestrians_clear",
+      "passed": true
+    },
+    {
+      "name": "training_hazard_probability_80_percent",
+      "passed": true
+    },
+    {
+      "name": "evaluation_hazard_probability_10_percent",
+      "passed": true
+    },
+    {
+      "name": "vehicle_collision_requires_physics_contact",
+      "passed": true
+    },
+    {
+      "name": "structure_collision_requires_physics_contact",
+      "passed": true
+    },
+    {
+      "name": "debris_lands_on_road_with_physics",
+      "passed": true
+    },
+    {
+      "name": "pothole_has_ground_truth_label",
+      "passed": true
+    }
+  ]
+}

@@ -31,6 +31,7 @@ namespace TwinSight.Simulation
         public bool saveImages = true;
         [Range(50, 100)] public int jpgQuality = 95;
         public bool stopPlayModeWhenDone = true;
+        public bool manualCapture;
 
         [Header("정답")]
         public CalibrationGrid calibrationGrid;
@@ -44,11 +45,15 @@ namespace TwinSight.Simulation
         string runDir;
         int frame;
         bool done;
+        TrafficSignalController signals;
+        RoadScenarioDirector scenarios;
         readonly List<Vector3> pointBuffer = new List<Vector3>();
 
         void Start()
         {
             cam = GetComponent<Camera>();
+            signals = FindFirstObjectByType<TrafficSignalController>();
+            scenarios = FindFirstObjectByType<RoadScenarioDirector>();
             target = new RenderTexture(imageWidth, imageHeight, 24, RenderTextureFormat.ARGB32);
             target.Create();
             readback = new Texture2D(imageWidth, imageHeight, TextureFormat.RGB24, false);
@@ -66,12 +71,20 @@ namespace TwinSight.Simulation
             cam.aspect = (float)imageWidth / imageHeight;
             WriteJson("camera.json", BuildCameraInfo());
             WriteJson("control_points.json", BuildControlPoints());
+            if (scenarios != null) WriteJson("scenario_config.json", scenarios.Snapshot());
             cam.ResetAspect();
             gtWriter = new StreamWriter(Path.Combine(runDir, "ground_truth.jsonl"));
             Debug.Log($"TwinSight: 저장 위치 {runDir}");
 
-            StartCoroutine(CaptureLoop());
+            if (!manualCapture) StartCoroutine(CaptureLoop());
         }
+
+        public void CaptureOneForDataset()
+        {
+            if (!manualCapture || gtWriter == null || done) throw new InvalidOperationException("Manual exporter is not ready.");
+            CaptureFrame(); frame++;
+        }
+        public void CompleteManualDataset() { if (manualCapture && !done) Finish(); }
 
         IEnumerator CaptureLoop()
         {
@@ -95,6 +108,8 @@ namespace TwinSight.Simulation
                 timestamp = Time.time,
                 width = imageWidth,
                 height = imageHeight,
+                signals = signals != null ? signals.Snapshot() : null,
+                scenario = scenarios != null ? scenarios.Snapshot() : null,
             };
 
             // 저장 해상도의 화면비로 잠시 바꿔 텍스처에 한 번 더 렌더링한다. Game 뷰는 평소대로 그려진다.

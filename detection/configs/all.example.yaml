@@ -1,0 +1,16 @@
+# Unified detector after all nine categories have reviewed labels.
+path: ../../datasets/twinsight
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: person
+  1: car
+  2: truck
+  3: bus
+  4: motorcycle
+  5: bicycle
+  6: pothole
+  7: crack
+  8: debris
+  9: barrier
