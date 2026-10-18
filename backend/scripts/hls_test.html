@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ITS 스트림 재생 테스트</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 24px; background: #111; color: #eee; }
+  input, button { font-size: 15px; padding: 6px 10px; }
+  video { width: 100%; max-width: 960px; margin-top: 16px; background: #000; }
+  #log { white-space: pre-wrap; font-family: monospace; font-size: 13px; margin-top: 12px; color: #9cf; }
+  .err { color: #f88; }
+</style>
+</head>
+<body>
+<h2>ITS 스트림 재생 테스트</h2>
+<p>백엔드(localhost:8000)에서 주소를 받아 브라우저에서 바로 재생되는지 확인합니다.</p>
+<input id="cam" value="its-cc4277cc18" size="20">
+<button id="play">재생</button>
+<video id="video" controls muted autoplay playsinline></video>
+<div id="log"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
+<script>
+const logBox = document.getElementById('log');
+function log(msg, isErr) {
+  const line = document.createElement('div');
+  line.textContent = msg;
+  if (isErr) line.className = 'err';
+  logBox.appendChild(line);
+}
+
+document.getElementById('play').onclick = async () => {
+  logBox.textContent = '';
+  const cam = document.getElementById('cam').value.trim();
+  let data;
+  try {
+    const res = await fetch(`http://localhost:8000/cameras/${encodeURIComponent(cam)}/stream`);
+    data = await res.json();
+    if (!res.ok) { log('백엔드 오류: ' + JSON.stringify(data), true); return; }
+  } catch (e) {
+    log('백엔드에 연결하지 못했습니다. 서버가 켜져 있는지, 이 페이지를 localhost:5173으로 열었는지 확인하세요.', true);
+    return;
+  }
+  log('주소 받음 (refreshed=' + data.refreshed + '): ' + data.stream_url);
+  if (data.warning) log('경고: ' + data.warning, true);
+
+  const video = document.getElementById('video');
+  if (window.Hls && Hls.isSupported()) {
+    const hls = new Hls();
+    hls.on(Hls.Events.MANIFEST_PARSED, () => { log('재생 성공: 브라우저에서 바로 재생됩니다.'); video.play(); });
+    hls.on(Hls.Events.ERROR, (_e, d) => {
+      log(`재생 오류: type=${d.type} details=${d.details} fatal=${d.fatal}` +
+          (d.response ? ` status=${d.response.code}` : ''), true);
+      if (d.details === 'manifestLoadError' || d.details === 'fragLoadError') {
+        log('→ CORS로 막혔을 가능성이 큽니다. 개발자 도구(F12) Console에 "CORS" 문구가 있는지 확인하세요. 있으면 백엔드 중계가 필요합니다.', true);
+      }
+    });
+    hls.loadSource(data.stream_url);
+    hls.attachMedia(video);
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = data.stream_url;
+    log('브라우저 기본 HLS로 재생 시도');
+  } else {
+    log('이 브라우저는 HLS를 지원하지 않습니다.', true);
+  }
+};
+</script>
+</body>
+</html>

@@ -215,6 +215,14 @@ class CameraIn(BaseModel):
         return value
 
 
+class StreamOut(BaseModel):
+    camera_id: str
+    stream_url: str
+    stream_fetched_at: datetime | None = None
+    refreshed: bool
+    warning: str | None = None
+
+
 class CameraOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

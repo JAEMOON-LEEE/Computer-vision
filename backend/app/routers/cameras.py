@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
@@ -17,8 +17,10 @@ from backend.app.schemas import (
     CameraOut,
     ImportItsResult,
     LatestFrameOut,
+    StreamOut,
     to_detection_out,
 )
+from backend.app.services.its import ItsError, refresh_stream_url
 
 router = APIRouter(prefix="/cameras", tags=["cameras"])
 
@@ -143,6 +145,64 @@ def upsert_camera_route(payload: CameraIn, db: Session = Depends(get_db)):
     camera = upsert_camera(db, payload.camera_id, values)
     db.commit()
     return camera
+
+
+def _as_aware(value: datetime) -> datetime:
+    if value.tzinfo is None:
+        return value.replace(tzinfo=datetime.now().astimezone().tzinfo)
+    return value
+
+
+def _stream_is_fresh(fetched_at: datetime | None) -> bool:
+    if fetched_at is None:
+        return False
+    fetched = _as_aware(fetched_at)
+    return datetime.now(fetched.tzinfo) - fetched < timedelta(minutes=config.stream_ttl_minutes())
+
+
+@router.get("/{camera_id}/stream", response_model=StreamOut)
+def camera_stream(camera_id: str, db: Session = Depends(get_db)):
+    """재생 주소를 돌려준다. ITS는 오래되면 다시 받아 저장한다."""
+    camera = db.get(Camera, camera_id)
+    if camera is None:
+        raise HTTPException(status_code=404, detail="카메라를 찾을 수 없습니다")
+    if camera.source != "ITS":
+        if not camera.stream_url:
+            raise HTTPException(status_code=404, detail="저장된 스트림 주소가 없습니다")
+        return StreamOut(
+            camera_id=camera.camera_id,
+            stream_url=camera.stream_url,
+            stream_fetched_at=camera.stream_fetched_at,
+            refreshed=False,
+        )
+    if camera.stream_url and _stream_is_fresh(camera.stream_fetched_at):
+        return StreamOut(
+            camera_id=camera.camera_id,
+            stream_url=camera.stream_url,
+            stream_fetched_at=camera.stream_fetched_at,
+            refreshed=False,
+        )
+    try:
+        url, fetched_at = refresh_stream_url(camera)
+    except ItsError as exc:
+        if camera.stream_url:
+            return StreamOut(
+                camera_id=camera.camera_id,
+                stream_url=camera.stream_url,
+                stream_fetched_at=camera.stream_fetched_at,
+                refreshed=False,
+                warning=str(exc),
+            )
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
+    camera.stream_url = url
+    camera.stream_fetched_at = fetched_at
+    db.commit()
+    return StreamOut(
+        camera_id=camera.camera_id,
+        stream_url=url,
+        stream_fetched_at=fetched_at,
+        refreshed=True,
+    )
 
 
 @router.get("/{camera_id}/detections/latest", response_model=LatestFrameOut)

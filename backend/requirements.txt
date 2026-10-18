@@ -1,7 +1,10 @@
-fastapi
-uvicorn[standard]
-sqlalchemy
-pydantic
-python-dotenv
-httpx
-pytest
+# Python 3.14.6 가상환경에 설치된 버전으로 고정
+fastapi==0.143.5
+uvicorn[standard]==0.54.0
+sqlalchemy==2.1.5
+pydantic==2.14.1
+python-dotenv==1.2.4
+httpx==0.28.1
+pytest==9.1.1
+# ws_watch.py가 직접 사용. uvicorn[standard]가 같은 17.2를 함께 설치한다.
+websockets==17.2

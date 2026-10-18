@@ -48,6 +48,36 @@ ITS 교차로 후보는 `backend/data/its/candidates_its.json`에 있어야 합�
 .\.venv\Scripts\python.exe backend\scripts\replay_jsonl.py --detections out\demo\detections.jsonl --alerts out\demo\alerts.jsonl --speed 2
 ```
 
+## 검출 결과 실시간 연결
+
+검출이 `runs/detection/<실행시각>/`에 쓰는 jsonl을 끝나는 줄부터 API로 넘깁니다. `alerts.jsonl`이 아직 없어도 생길 때까지 기다리고, `summary.json`이 생긴 뒤 더 읽을 줄이 없으면 `실행 종료`를 찍고 멈춥니다. `--run-id`를 생략하면 폴더 이름을 실행 ID로 씁니다.
+
+```powershell
+.\.venv\Scripts\python.exe backend\scripts\follow_detections.py --run-dir runs\detection\20261018_120000
+```
+
+이미 쌓인 줄을 건너뛰려면 `--no-from-start`를 붙입니다. 서버 연결이 3회 실패하면 그 줄은 `backend/data/failed_<run_id>.jsonl`에 남고 다음 줄로 진행합니다.
+
+WebSocket으로 들어오는 이벤트를 보려면 서버와 다른 터미널에서:
+
+```powershell
+.\.venv\Scripts\python.exe backend\scripts\ws_watch.py
+```
+
+`--raw`면 JSON 원문입니다. 연결이 끊기면 3초 후 다시 붙습니다.
+
+## 스트림 주소
+
+`GET /cameras/{camera_id}/stream`이 재생 주소를 줍니다. ITS가 아닌 카메라는 저장된 주소를 그대로 돌려주고, 없으면 404입니다. ITS는 `stream_fetched_at`이 없거나 `STREAM_TTL_MINUTES`(기본 30분)가 지났으면 다시 받아 저장합니다. 갱신에 실패하면 기존 주소와 `warning`을 돌려줍니다. 같은 카메라는 5분에 한 번만 ITS를 호출합니다. 이 호출은 월 한도를 사용합니다.
+
+## API 명세
+
+팀원용 설명과 예시는 [docs/api/README.md](../docs/api/README.md), 스키마 파일은 [docs/api/openapi.json](../docs/api/openapi.json)입니다. 스키마를 다시 쓰려면:
+
+```powershell
+.\.venv\Scripts\python.exe backend\scripts\export_openapi.py
+```
+
 ## 경고 확인
 
 `/docs`에서 `GET /alerts`를 호출합니다. 응답의 `id`는 서버가 붙인 정수이고, `alert_id`는 검출 모듈이 준 문자열입니다. `alert_id`는 실행마다 1부터 다시 시작하므로 `run_id`와 함께 봐야 합니다.
@@ -71,4 +101,4 @@ ITS 교차로 후보는 `backend/data/its/candidates_its.json`에 있어야 합�
 - `Run`이 필요한지. `track_id`와 `alert_id` 번호는 실행 안에서만 유효하고, 경고 고유 키는 `(run_id, alert_id)`입니다.
 - 프레임에 카메라 ID를 중복 저장할지. 지금은 실행을 통해 카메라에 연결합니다.
 - `mapped_xz`와 `mapped_xz_corrected`를 한 쌍만 저장하는 현재 방식(보정값 우선)을 유지할지.
-- 위경도 변환, ITS `road_type`, 스트림 갱신 주기, 경고 상태 되돌리기, 검출 이력 보관 기간.
+- 위경도 변환, ITS `road_type`, 경고 상태 되돌리기, 검출 이력 보관 기간. 스트림 주소는 일단 `STREAM_TTL_MINUTES`(기본 30분)로 다시 받습니다.

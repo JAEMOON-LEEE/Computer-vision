@@ -17,6 +17,7 @@ load_dotenv(REPO_ROOT / ".env")
 
 # ITS 교차로 후보. fetch_its_cctv.py가 이 경로에 쓴다.
 CANDIDATES_ITS_PATH = REPO_ROOT / "backend" / "data" / "its" / "candidates_its.json"
+ITS_CALL_LOG = REPO_ROOT / "backend" / "data" / "its" / "call_log.txt"
 DEFAULT_SQLITE_PATH = REPO_ROOT / "backend" / "data" / "twinsight.db"
 
 
@@ -26,3 +27,15 @@ def database_url() -> str:
     if url:
         return url
     return "sqlite:///" + DEFAULT_SQLITE_PATH.resolve().as_posix()
+
+
+def stream_ttl_minutes() -> float:
+    """ITS 스트림 주소를 다시 받는 간격. .env의 STREAM_TTL_MINUTES, 기본 30분."""
+    raw = os.getenv("STREAM_TTL_MINUTES", "30").strip()
+    try:
+        value = float(raw)
+    except ValueError:
+        return 30
+    if value < 0:
+        return 30
+    return value

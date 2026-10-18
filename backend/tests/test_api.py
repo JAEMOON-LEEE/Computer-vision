@@ -85,6 +85,7 @@ def test_openapi_has_main_paths(client):
         "/cameras/import-its",
         "/cameras/{camera_id}",
         "/cameras/{camera_id}/detections/latest",
+        "/cameras/{camera_id}/stream",
         "/ingest/detections",
         "/ingest/alerts",
         "/alerts",
