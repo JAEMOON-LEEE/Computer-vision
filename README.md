@@ -123,7 +123,7 @@ flowchart TD
 | 공간 매핑·위험 분석 → 백엔드 | 좌표계와 단위, 시각, 객체 상태, 위험 이벤트 및 판단 기준 |
 | 백엔드 → 지도·디지털 트윈·대시보드 | API 형식, 갱신 주기, 이력 조회 및 알림 전달 방식 |
 
-위 항목은 연동 규격을 정하기 위한 목록이며, 확정된 API 명세는 개발 과정에서 별도로 작성합니다.
+위 항목은 연동 규격을 정하기 위한 목록입니다. 백엔드로 들어오고 나가는 형식은 [API 명세](docs/api/README.md)에 정리했습니다.
 
 ## 저장소 안내
 
@@ -139,3 +139,7 @@ flowchart TD
 | [mapping](mapping/README.md) | 공간 매핑(Homography)과 가상환경 정답 기반 오차 평가 |
 | [detection](detection/README.md) | YOLO11/v8 객체 검출, Unity·CCTV 입력, 추가 학습·검증 및 팀 연동 |
 | [docs/traffic_incidents.md](docs/traffic_incidents.md) | 원본 신호등·보행자, 확률적 사고 생성, 영상 기반 경고와 도로 인식 연동 |
+| [backend](backend/README.md) | FastAPI 백엔드: 카메라·검출·경고 API, WebSocket 실시간 전달, ITS CCTV 목록·스트림 갱신, 검출 결과 실시간 연동, 목업 재생 |
+| [docs/api](docs/api/README.md) | 백엔드 API 명세(엔드포인트, 요청·응답 예시, WebSocket 이벤트, 검출 모듈 연동 방법)와 openapi.json |
+| [frontend](frontend/README.md) | 실시간 관제 화면 시제품: ITS 영상 재생, 검출 박스 오버레이, 실시간 경고 확인·기각 (React 대시보드로 전환 예정) |
+| [dev.bat](dev.bat) | 백엔드·관제 화면·목업 재생을 한 번에 띄우는 Windows 개발용 실행 파일 |

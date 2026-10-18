@@ -48,6 +48,15 @@ ITS 교차로 후보는 `backend/data/its/candidates_its.json`에 있어야 합�
 .\.venv\Scripts\python.exe backend\scripts\replay_jsonl.py --detections out\demo\detections.jsonl --alerts out\demo\alerts.jsonl --speed 2
 ```
 
+오버레이 동작 확인용 목업은 화면을 가로지르는 차량·보행자와 제자리 포트홀을 만듭니다. 박스 위치는 실제 영상 속 물체와 맞지 않습니다.
+
+```powershell
+.\.venv\Scripts\python.exe backend\scripts\make_mock_detections.py
+.\.venv\Scripts\python.exe backend\scripts\replay_jsonl.py --detections backend\data\mock\its-cc4277cc18\detections.jsonl --alerts backend\data\mock\its-cc4277cc18\alerts.jsonl --speed 1 --loop
+```
+
+관제 화면에서 이 재생을 보는 방법은 [frontend/README.md](../frontend/README.md)에 있습니다.
+
 ## 검출 결과 실시간 연결
 
 검출이 `runs/detection/<실행시각>/`에 쓰는 jsonl을 끝나는 줄부터 API로 넘깁니다. `alerts.jsonl`이 아직 없어도 생길 때까지 기다리고, `summary.json`이 생긴 뒤 더 읽을 줄이 없으면 `실행 종료`를 찍고 멈춥니다. `--run-id`를 생략하면 폴더 이름을 실행 ID로 씁니다.
@@ -102,3 +111,7 @@ WebSocket으로 들어오는 이벤트를 보려면 서버와 다른 터미널�
 - 프레임에 카메라 ID를 중복 저장할지. 지금은 실행을 통해 카메라에 연결합니다.
 - `mapped_xz`와 `mapped_xz_corrected`를 한 쌍만 저장하는 현재 방식(보정값 우선)을 유지할지.
 - 위경도 변환, ITS `road_type`, 경고 상태 되돌리기, 검출 이력 보관 기간. 스트림 주소는 일단 `STREAM_TTL_MINUTES`(기본 30분)로 다시 받습니다.
+
+## 한 번에 실행
+
+저장소 루트의 [dev.bat](../dev.bat)을 더블클릭하면 백엔드, 관제 화면, 목업 재생 창이 각각 뜹니다. 목업 없이 띄우려면 `dev.bat nomock`를 실행합니다. ITS 키는 저장소 루트 `.env`의 `ITS_API_KEY`에 넣습니다.
