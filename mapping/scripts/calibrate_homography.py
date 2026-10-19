@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import re
 import sys
 from pathlib import Path
@@ -40,6 +41,7 @@ from twinsight_mapping.calibration import (  # noqa: E402
     suspicious_points,
     write_image,
 )
+from twinsight_mapping.pose import pose_report  # noqa: E402
 
 WINDOW = "Calibration (click points, Enter: done, right-click/u: undo, Esc: cancel)"
 MAGNIFY_RADIUS = 20  # 돋보기가 보여 주는 반경(px)
@@ -178,6 +180,9 @@ def main() -> None:
     parser.add_argument("--road-heading-deg", type=float,
                         help="도로(차로) 방향. +z(위도·경도 모드면 북쪽)에서 +x(동쪽) 쪽으로 잰 각도. "
                              "편향 보정에서 차량 진행 방향을 아직 모를 때 쓴다")
+    parser.add_argument("--fov", type=float, help="CCTV 세로 화각을 알면 고정(도). 카메라 자세 계산에 쓴다")
+    parser.add_argument("--meters-per-unit", type=float, default=1.0,
+                        help="가상환경 1단위가 몇 m인지. 카메라 자세의 Unity 값에만 적용")
     parser.add_argument("--out", type=Path, help="기본: calibration/<카메라ID>.json")
     parser.add_argument("--no-show", action="store_true", help="결과 창을 띄우지 않는다")
     args = parser.parse_args()
@@ -249,6 +254,27 @@ def main() -> None:
     preview_path = out.with_name(f"{out.stem}_birdseye.png")
     write_image(preview_path, preview)
     print(f"\n저장: {out}\n위에서 본 그림: {preview_path}")
+
+    # 같은 기준점으로 카메라 위치·높이·방향·각도·화각을 구해 가상 CCTV 배치값으로 저장한다
+    if len(rows) >= 6:
+        focal = (height / 2.0) / np.tan(np.radians(args.fov) / 2.0) if args.fov else None
+        try:
+            pose = pose_report(pixels, ground, (width, height), camera_id=camera_id, origin_latlon=origin,
+                               meters_per_unit=args.meters_per_unit, focal=focal)
+        except ValueError as e:
+            print(f"⚠️ 카메라 자세를 구하지 못했습니다: {e}")
+        else:
+            pose["calibration"] = str(out.resolve())
+            pose_path = out.with_suffix(".pose.json")
+            pose_path.write_text(json.dumps(pose, indent=2, ensure_ascii=False), encoding="utf-8")
+            p = pose["position_m"]
+            print(f"\n카메라 자세 (가상 CCTV 배치값): 높이 {p['height']:.2f} m, 방향 {pose['heading_deg']:.1f}°, "
+                  f"내려다보는 각도 {pose['pitch_deg']:.1f}°, 세로 화각 {pose['vertical_fov_deg']:.1f}°"
+                  + (f", 위도·경도 {pose['position_latlon'][0]:.7f}, {pose['position_latlon'][1]:.7f}"
+                     if pose.get("position_latlon") else ""))
+            print(f"자세 저장: {pose_path} (자세한 값은 estimate_camera_pose.py --calibration {out})")
+    else:
+        print("ℹ️ 카메라 자세(가상 CCTV 배치값)는 기준점이 6개 이상일 때 계산합니다.")
 
     if not args.no_show:
         cv2.namedWindow("Birds-eye check", cv2.WINDOW_NORMAL)

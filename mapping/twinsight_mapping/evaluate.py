@@ -18,7 +18,7 @@ from collections import defaultdict
 
 import numpy as np
 
-from .correction import TrackHeadings, correct_bottom_center, touches_border
+from .correction import TrackClassVoter, TrackHeadings, correct_bottom_center, touches_border
 from .dataset import ControlPoints, Export
 from .homography import fit_homography, pixels_to_ground, select_spread_points
 
@@ -130,12 +130,13 @@ def greedy_match(gt_boxes, det_boxes, threshold: float) -> list[tuple[int, int, 
 def object_errors(export: Export, H: np.ndarray, detections: dict[int, list[dict]] | None = None,
                   classes: set[str] | None = None, iou_threshold: float = 0.5,
                   max_distance: float | None = None, dimensions: dict | None = None,
-                  road_heading: np.ndarray | None = None) -> tuple[list[dict], dict | None]:
+                  road_heading: np.ndarray | None = None, vote_classes: bool = True) -> tuple[list[dict], dict | None]:
     """객체마다 매핑 오차 행을 만든다. 화면 경계에서 잘린 객체는 매핑 오차에서 뺀다.
 
     max_distance(m)를 주면 카메라에서 그보다 먼 객체는 검출 통계와 오차 모두에서 뺀다.
     짝이 없는 검출은 Homography로 구한 위치가 max_distance 안일 때만 오검출로 센다.
     dimensions는 클래스별 (길이, 폭), road_heading은 도로 방향 단위벡터(x, z)이다.
+    vote_classes면 검출 보정에 추적 ID별 다수결 클래스를 쓴다(실제 파이프라인과 같음).
 
     반환: (오차 행 목록, 검출 통계 또는 None)
     """
@@ -143,6 +144,7 @@ def object_errors(export: Export, H: np.ndarray, detections: dict[int, list[dict
     rows: list[dict] = []
     det_stats = {"gt": 0, "detections": 0, "matched": 0, "iou_sum": 0.0} if detections is not None else None
     gt_headings, det_headings = TrackHeadings(), TrackHeadings()
+    det_voter = TrackClassVoter()
 
     def in_range(xz) -> bool:
         return max_distance is None or bool(np.hypot(*(np.asarray(xz) - cam_xz)) <= max_distance)
@@ -201,11 +203,13 @@ def object_errors(export: Export, H: np.ndarray, detections: dict[int, list[dict
         det_stats["iou_sum"] += sum(iou for _, _, iou in near_pairs)
         gt_of_det = {d: g for g, d, _ in pairs}
         for i, det in enumerate(dets):
-            # 보정에는 실제 파이프라인처럼 검출된 클래스와 검출기의 추적 ID를 쓴다
+            # 보정에는 실제 파이프라인처럼 검출된 클래스(또는 추적 ID별 다수결)와 검출기의 추적 ID를 쓴다
             g = gt_of_det.get(i)
+            label = det.get("class_name")
+            if vote_classes:
+                label = det_voter.update(det.get("track_id"), label, det.get("confidence", 1.0))
             box_rows("detection", frame, objects[g] if g is not None else {}, det["bbox_xyxy"],
-                     det.get("class_name"), det.get("track_id"), det_headings, g is not None and near[g],
-                     image_size)
+                     label, det.get("track_id"), det_headings, g is not None and near[g], image_size)
 
     if det_stats is not None:
         matched = det_stats["matched"]

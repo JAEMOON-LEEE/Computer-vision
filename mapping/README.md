@@ -56,6 +56,36 @@ python C:\Users\82103\Desktop\Computer-vision\mapping\scripts\calibrate_homograp
 
 점은 **6개 이상**, 화면의 가까운 곳·먼 곳·좌우에 고르게, **같은 노면 위**에서만 찍습니다(가드레일·터널 입구처럼 높이가 다른 점은 쓰지 않음). 합성 데이터 결과로는 기준점 수보다 찍는 정확도가 오차를 더 크게 좌우합니다.
 
+## CCTV 카메라 자세 추출 (가상 CCTV 배치값)
+
+캘리브레이션에 쓴 노면 기준점으로 CCTV의 **위치(위도·경도), 높이, 방향, 내려다보는 각도, 화각**을 구합니다. 이진규·정재헌 님이 가상환경의 CCTV를 실제와 같은 자리·시점에 놓는 데 쓰는 값입니다.
+
+```bash
+python mapping/scripts/calibrate_homography.py --image captures\<카메라ID>_<시각>.png --latlon --origin <사거리 중심 위도>,<경도>
+python mapping/scripts/estimate_camera_pose.py --calibration calibration\<카메라ID>.json --meters-per-unit 1
+```
+
+- 캘리브레이션 도구는 기준점이 6개 이상이면 자세를 함께 계산해 `calibration/<카메라ID>.pose.json`에 저장합니다. 결과에는 위치(동·북·높이 m), 카메라 위도·경도, 방향(북→동 방위각), 내려다보는 각도, 좌우 기울기, 세로·가로 화각, 그리고 Unity 카메라에 그대로 넣을 `position`·`eulerAngles`·`fieldOfView`가 들어갑니다.
+- `--origin`을 사거리 중심 위도·경도로 주면, 위치가 "사거리 중심에서 동쪽 x m, 북쪽 z m"로 나와 가상 사거리에 옮기기 쉽습니다.
+- 가상환경의 1단위가 1 m가 아니면 `--meters-per-unit`으로 Unity 값만 바꿉니다. City Lab은 차선 폭이 약 1.2단위라 1단위가 약 2.7 m로 추정되며, 정확한 값은 이진규 님과 맞춥니다.
+- 계산 방법: 노면 → 화면 Homography에서 초점거리를 구하고(렌즈 중심은 화면 가운데, 정사각 픽셀, 렌즈 왜곡 없음 가정), 회전·위치로 분해한 뒤 재투영 오차가 최소가 되도록 함께 다듬습니다. 잘못 찍은 점 하나에 끌려가지 않도록 이상치에 강한 손실을 씁니다. CCTV 기종의 세로 화각을 알면 `--fov`로 고정할 수 있습니다.
+
+**Unity 가상 카메라로 검증** (`--export` 모드, 예제 씬 카메라: 높이 8 m, 15° 내려다봄, 방향 352°, 세로 화각 45°, 1920×1080, 카메라 60 m 이내 기준점, 조합마다 200회)
+
+| 조건 (기준점 12개, 클릭 오차 2 px) | 위치 | 높이 | 방향 | 각도 | 세로 화각 | 크게 실패 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 지도 좌표 오차 없음 | 0.07 m | 0.03 m | 0.05° | 0.05° | 0.17° | 0% |
+| 지도 좌표 오차 0.25 m | 0.55 m | 0.29 m | 0.29° | 0.25° | 0.92° | 0% |
+| 지도 좌표 오차 0.5 m | 1.09 m | 0.59 m | 0.57° | 0.52° | 1.80° | 1% |
+| 지도 좌표 오차 1 m | 2.37 m | 1.23 m | 1.26° | 1.23° | 3.63° | 30% |
+
+(절대오차 중앙값. "크게 실패"는 방향 10° 또는 높이 2 m 넘게 틀린 비율)
+
+- 정확한 기준점이면 모든 값이 정답과 같습니다(오차 0.0000). 위도·경도로 넣는 전체 흐름(캘리브레이션 → 자세)도 카메라 위도·경도를 소수점 7자리까지 맞혔습니다.
+- **정확도는 클릭보다 지도 좌표에 달렸습니다.** 위도·경도를 0.5 m 이내로 읽고(항공사진을 크게 확대해 차선·정지선 모서리 사용), 기준점을 12개 이상, 화면 전체에 고르게 찍으세요. 20개면 0.5 m 오차에서 높이 오차가 0.31 m까지 줄어듭니다.
+- 세로 화각을 알고 고정하면(`--fov`) 0.5 m 오차·12개 기준 위치 오차가 1.09 m에서 0.76 m로 줄어듭니다.
+- 실제 CCTV는 렌즈 왜곡이 있을 수 있습니다. 화면 가장자리 점에서 재투영 오차가 커지면 왜곡 영향입니다.
+
 ## 결과 읽는 법
 
 객체 위치 오차를 세 가지로 나눠 봅니다. 위에서 아래로 갈수록 실제 파이프라인에 가깝습니다.
@@ -103,6 +133,38 @@ python C:\Users\82103\Desktop\Computer-vision\mapping\scripts\calibrate_homograp
 
 실제 CCTV 파이프라인(`CCTV` 스크립트)은 미터 단위 캘리브레이션이 있으면 같은 보정을 적용해 `detections.jsonl`에 `mapped_xz_corrected`로 기록합니다. 화면 표시와 디지털 트윈용 좌표에도 보정한 값을 씁니다.
 
+### 실제 차량 모델: 유효 길이 학습과 클래스 다수결
+
+위 결과는 바닥까지 차체가 닿는 상자 차량 기준입니다. 팀 차량 3D 에셋(Papabear)으로 바꾸자 **차체 길이로 보정하면 과보정**됐습니다. 실제 차는 범퍼가 아니라 바퀴가 바닥에 닿아서, 박스 아래 가장자리가 차체 끝보다 안쪽에 잡히기 때문입니다. 또 YOLO가 승용차의 27%, 버스의 35%를 `truck`으로 분류해, 잘못된 크기로 보정되는 문제도 있었습니다.
+
+그래서 두 가지를 넣었습니다.
+
+- **유효 길이 학습** (`scripts/calibrate_correction.py`): 가상환경에서 검출 박스와 정답을 짝지어, 정답 위치에 닿으려면 얼마나 밀어야 했는지로 클래스별 유효 길이를 구합니다(관측별로 역산한 뒤 중앙값). 실제 파이프라인과 같은 검출기(YOLO) 박스로 학습하는 것이 기본입니다. 같은 차라도 박스 아래 가장자리가 검출기마다 다르게 잡히기 때문입니다.
+- **추적 ID별 클래스 다수결** (`TrackClassVoter`): 보정에 쓰는 클래스를 지난 프레임까지의 신뢰도 가중 다수결로 정합니다.
+
+```bash
+python mapping/scripts/run_yolo_on_frames.py <저장 폴더> --weights yolov8n.pt --imgsz 1280 --track --classes car,bus,motorcycle,truck --out <저장 폴더>/detections_1280.jsonl
+python mapping/scripts/calibrate_correction.py <저장 폴더> --detections <저장 폴더>/detections_1280.jsonl --road-heading-deg 0
+python mapping/scripts/evaluate_mapping.py <저장 폴더> --detections <저장 폴더>/detections_1280.jsonl --dims-file <저장 폴더>/correction.json --max-distance 80 --road-heading-deg 0
+```
+
+**학습에 안 쓴 차량으로 검증** (Unity 실제 차량 모델 173프레임, 80 m 이내, YOLOv8n 1280 입력). 정답 차량을 추적 ID 홀짝으로 나눠 한쪽으로 학습하고 다른 쪽으로 평가하는 것을 서로 바꿔 두 번 한 합산 결과입니다.
+
+| 방식 | 평균 | 중앙값 | 종방향 편향 | 승용차 | 버스 |
+| --- | --- | --- | --- | --- | --- |
+| 보정 없음 | 1.70 m | 1.37 m | -1.69 m | 1.30 m | 3.60 m |
+| 차체 길이 · 검출 클래스 (이전 방식) | 1.55 m | 1.40 m | +1.53 m | 1.52 m | 1.70 m |
+| 학습 길이 · 검출 클래스 | 0.54 m | 0.24 m | +0.17 m | 0.24 m | 1.96 m |
+| 학습 길이 · 다수결 클래스 | 0.56 m | 0.23 m | +0.35 m | 0.23 m | 2.14 m |
+
+- **승용차는 1.30 m에서 0.23 m로** 줄고 편향이 거의 0이 됩니다. 학습한 유효 길이는 YOLO 박스 기준 승용차 2.1 m, 버스 6.4 m입니다. 차체 길이는 승용차 4.9 m, 버스 11 m입니다.
+- **버스와 다수결 효과는 아직 판단할 수 없습니다.** 173프레임에서 80 m 안에 검출된 차량이 16대뿐이고, 버스가 한쪽 겹에만 있어서 버스는 학습 없이 평가됐습니다. 다수결은 승용차에서 0.24 m에서 0.23 m로 거의 같았습니다.
+- 정답 박스로 학습·검증하면(`--source gt`, 23대) 평균 2.06 m에서 0.41 m로 줄었습니다(승용차 0.16 m, 오토바이 0.26 m, 상자 트럭 0.28 m).
+- 신뢰할 만한 수치를 얻으려면 더 길게 녹화해야 합니다(1,000프레임 이상, 버스·오토바이가 충분히 나오도록).
+- 유효 길이는 카메라 높이·각도에 따라 달라집니다. 실제 CCTV에 쓸 때는 가상 카메라를 그 CCTV의 높이·각도에 맞춰 녹화한 데이터로 학습합니다.
+
+CCTV 파이프라인은 `--correction <correction.json>` 또는 `calibration/correction.json`이 있으면 학습한 유효 길이와 다수결 클래스로 보정합니다. 파일이 없으면 차체 길이로 보정하고 과보정 가능성을 경고합니다.
+
 ## 합성 데이터로 확인한 점
 
 Unity 예제 씬과 같은 배치(높이 8 m, 15° 내려다봄, 세로 화각 45°, 1920×1080)의 합성 데이터에서 80 m 이내를 평가한 결과입니다. Unity 렌더링 결과가 아니므로 경향 확인용입니다.
@@ -137,13 +199,17 @@ mapping/
     synthetic.py    Unity 없이 같은 형식의 합성 데이터 생성
     calibration.py  실제 CCTV 캘리브레이션: 위도·경도 → 미터, leave-one-out 오차, 위에서 본 그림
     correction.py   박스 아래 가운데의 카메라 쪽 편향 보정, 추적 ID별 진행 방향
+    pose.py         노면 기준점으로 카메라 위치·높이·방향·각도·화각 추정
   scripts/
     evaluate_mapping.py       평가 실행
     make_synthetic_export.py  합성 데이터 만들기
-    run_yolo_on_frames.py     가상환경 프레임에 YOLO 실행 → detections.jsonl
+    run_yolo_on_frames.py     가상환경 프레임에 YOLO 실행 → detections.jsonl (--imgsz, --track)
+    calibrate_correction.py   가상환경 정답으로 편향 보정 유효 길이 학습 + 학습에 안 쓴 차량으로 검증
+    estimate_camera_pose.py   카메라 자세 → 가상 CCTV 배치값 (--export로 Unity 카메라 검증)
     calibrate_homography.py   실제 CCTV 화면에서 점 찍기 → calibration/<카메라ID>.json
   tests/
     test_mapping.py
     test_calibration.py
     test_correction.py
+    test_pose.py
 ```

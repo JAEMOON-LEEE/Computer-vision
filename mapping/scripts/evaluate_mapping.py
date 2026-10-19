@@ -23,7 +23,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from twinsight_mapping import load_detections, load_export  # noqa: E402
-from twinsight_mapping.correction import bearing_to_vector, parse_dimensions  # noqa: E402
+from twinsight_mapping.correction import bearing_to_vector, load_dimensions_file, parse_dimensions  # noqa: E402
 from twinsight_mapping.evaluate import (  # noqa: E402
     DISTANCE_BINS,
     MODES,
@@ -62,6 +62,9 @@ def main() -> None:
     parser.add_argument("--road-heading-deg", type=float,
                         help="도로 방향(도, +z에서 +x 쪽으로. 예제 씬은 0). 주면 도로 방향 보정도 계산")
     parser.add_argument("--dims", help="클래스별 차량 크기 덮어쓰기 (예: car=4.5x1.8,truck=8x2.5)")
+    parser.add_argument("--dims-file", type=Path,
+                        help="calibrate_correction.py가 학습한 유효 길이 파일(correction.json)")
+    parser.add_argument("--no-vote", action="store_true", help="검출 보정에 추적 ID별 클래스 다수결을 쓰지 않는다")
     parser.add_argument("--sweep", action="store_true", help="기준점 수 x 클릭 오차 조합별 정확도표도 만든다")
     parser.add_argument("--out", type=Path, help="결과 폴더 (기본: <내보내기 폴더>/mapping_eval)")
     args = parser.parse_args()
@@ -94,10 +97,13 @@ def main() -> None:
     det_path = args.detections or (args.export_dir / "detections.jsonl")
     if det_path.exists():
         detections = load_detections(det_path)
-    dimensions = parse_dimensions(args.dims)
+    dimensions = load_dimensions_file(args.dims_file) if args.dims_file else parse_dimensions(args.dims)
+    if args.dims_file and args.dims:
+        dimensions.update({k: v for k, v in parse_dimensions(args.dims).items() if f"{k}=" in args.dims})
     road_heading = bearing_to_vector(args.road_heading_deg) if args.road_heading_deg is not None else None
     rows, det_stats = object_errors(export, H, detections, classes, args.iou, args.max_distance,
-                                    dimensions=dimensions, road_heading=road_heading)
+                                    dimensions=dimensions, road_heading=road_heading,
+                                    vote_classes=not args.no_vote)
     summary = summarize_rows(rows)
     modes = [m for m in MODES if m in summary]
 
@@ -164,6 +170,8 @@ def main() -> None:
         "correction": {
             "dimensions": {k: list(v) for k, v in dimensions.items()},
             "road_heading_deg": args.road_heading_deg,
+            "dims_file": str(args.dims_file) if args.dims_file else None,
+            "class_vote": not args.no_vote,
         },
         "objects": summary,
         "detection": det_stats,
