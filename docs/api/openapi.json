@@ -220,6 +220,231 @@
         }
       }
     },
+    "/detections/stats": {
+      "get": {
+        "tags": [
+          "detections"
+        ],
+        "summary": "Detection Stats",
+        "description": "같은 필터로 클래스별 개수와 KST 1시간 단위 개수를 돌려준다.",
+        "operationId": "detection_stats_detections_stats_get",
+        "parameters": [
+          {
+            "name": "camera_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Id"
+            }
+          },
+          {
+            "name": "class_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Class Name"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "From"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "To"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetectionStatsOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/detections": {
+      "get": {
+        "tags": [
+          "detections"
+        ],
+        "summary": "List Detections",
+        "description": "검출 상자를 최신 timestamp 순으로 돌려준다. total은 필터에 맞는 전체 개수다.",
+        "operationId": "list_detections_detections_get",
+        "parameters": [
+          {
+            "name": "camera_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Id"
+            }
+          },
+          {
+            "name": "class_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Class Name"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "From"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "To"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 5000,
+              "minimum": 1,
+              "default": 500,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetectionListOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ingest/detections": {
       "post": {
         "tags": [
@@ -730,12 +955,10 @@
           },
           "created_at": {
             "type": "string",
-            "format": "date-time",
             "title": "Created At"
           },
           "updated_at": {
             "type": "string",
-            "format": "date-time",
             "title": "Updated At"
           },
           "handled_by": {
@@ -982,8 +1205,7 @@
           "stream_fetched_at": {
             "anyOf": [
               {
-                "type": "string",
-                "format": "date-time"
+                "type": "string"
               },
               {
                 "type": "null"
@@ -1022,8 +1244,14 @@
             "title": "Status"
           },
           "created_at": {
-            "type": "string",
-            "format": "date-time",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Created At"
           }
         },
@@ -1036,6 +1264,156 @@
           "created_at"
         ],
         "title": "CameraOut"
+      },
+      "ClassCount": {
+        "properties": {
+          "class_name": {
+            "type": "string",
+            "title": "Class Name"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "class_name",
+          "count"
+        ],
+        "title": "ClassCount"
+      },
+      "DetectionHistoryItem": {
+        "properties": {
+          "camera_id": {
+            "type": "string",
+            "title": "Camera Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "frame": {
+            "type": "integer",
+            "title": "Frame"
+          },
+          "timestamp": {
+            "type": "number",
+            "title": "Timestamp"
+          },
+          "timestamp_kind": {
+            "type": "string",
+            "title": "Timestamp Kind"
+          },
+          "width": {
+            "type": "integer",
+            "title": "Width"
+          },
+          "height": {
+            "type": "integer",
+            "title": "Height"
+          },
+          "inference_ms": {
+            "type": "number",
+            "title": "Inference Ms"
+          },
+          "image": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image"
+          },
+          "class_name": {
+            "type": "string",
+            "title": "Class Name"
+          },
+          "class_id": {
+            "type": "integer",
+            "title": "Class Id"
+          },
+          "category_id": {
+            "type": "integer",
+            "title": "Category Id"
+          },
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "bbox_xyxy": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Bbox Xyxy"
+          },
+          "confidence": {
+            "type": "number",
+            "title": "Confidence"
+          },
+          "track_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Track Id"
+          },
+          "ground_point_px": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ground Point Px"
+          },
+          "mapped_xz": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mapped Xz"
+          }
+        },
+        "type": "object",
+        "required": [
+          "camera_id",
+          "run_id",
+          "frame",
+          "timestamp",
+          "timestamp_kind",
+          "width",
+          "height",
+          "inference_ms",
+          "class_name",
+          "class_id",
+          "category_id",
+          "model_id",
+          "bbox_xyxy",
+          "confidence"
+        ],
+        "title": "DetectionHistoryItem",
+        "description": "검출 상자 하나. 프레임 필드는 detections.jsonl 한 줄과 같다."
       },
       "DetectionIn": {
         "properties": {
@@ -1126,6 +1504,27 @@
         "title": "DetectionIn",
         "description": "검출 항목. mapped_xz 계열은 매핑을 거친 뒤에만 붙는다."
       },
+      "DetectionListOut": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DetectionHistoryItem"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total",
+          "items"
+        ],
+        "title": "DetectionListOut"
+      },
       "DetectionOut": {
         "properties": {
           "class_name": {
@@ -1205,6 +1604,30 @@
           "confidence"
         ],
         "title": "DetectionOut"
+      },
+      "DetectionStatsOut": {
+        "properties": {
+          "by_class": {
+            "items": {
+              "$ref": "#/components/schemas/ClassCount"
+            },
+            "type": "array",
+            "title": "By Class"
+          },
+          "by_hour": {
+            "items": {
+              "$ref": "#/components/schemas/HourCount"
+            },
+            "type": "array",
+            "title": "By Hour"
+          }
+        },
+        "type": "object",
+        "required": [
+          "by_class",
+          "by_hour"
+        ],
+        "title": "DetectionStatsOut"
       },
       "EvidenceIn": {
         "properties": {
@@ -1406,6 +1829,24 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "HourCount": {
+        "properties": {
+          "hour": {
+            "type": "string",
+            "title": "Hour"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "hour",
+          "count"
+        ],
+        "title": "HourCount"
+      },
       "ImportItsResult": {
         "properties": {
           "imported": {
@@ -1570,8 +2011,7 @@
           "stream_fetched_at": {
             "anyOf": [
               {
-                "type": "string",
-                "format": "date-time"
+                "type": "string"
               },
               {
                 "type": "null"

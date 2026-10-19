@@ -40,3 +40,8 @@ simulation/TwinSightSim/Assets/TwinSight/CityLab.meta
 .env
 backend/data/
 .pytest_cache/
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/.env

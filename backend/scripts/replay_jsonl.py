@@ -45,7 +45,7 @@ def default_run_id(detections: str | None, alerts: str | None) -> str:
     return source.parent.name or "replay"
 
 
-def play_once(client: httpx.Client, events: list[tuple], run_id: str, speed: float) -> tuple[int, int]:
+def play_once(client: httpx.Client, events: list[tuple], run_id: str, speed: float, stamp_now: bool) -> tuple[int, int]:
     previous: float | None = None
     detections = alerts = 0
     for timestamp, _seq, kind, body in events:
@@ -54,13 +54,20 @@ def play_once(client: httpx.Client, events: list[tuple], run_id: str, speed: flo
             if gap > 0:
                 time.sleep(gap)
         previous = timestamp
+        payload = body
+        sent = timestamp
+        if stamp_now and kind == "detections":
+            payload = dict(body)
+            sent = time.time()
+            payload["timestamp"] = sent
+            payload["timestamp_kind"] = "unix_seconds"
         path = "/ingest/detections" if kind == "detections" else "/ingest/alerts"
-        response = client.post(path, params={"run_id": run_id}, json=body)
+        response = client.post(path, params={"run_id": run_id}, json=payload)
         if response.status_code >= 400:
             raise SystemExit(f"{path} 실패 ({response.status_code}): {response.text}")
         if kind == "detections":
             detections += 1
-            print(f"[검출] run={run_id} frame={body.get('frame')} t={timestamp}", flush=True)
+            print(f"[검출] run={run_id} frame={body.get('frame')} t={sent}", flush=True)
         else:
             alerts += 1
             print(f"[경고] run={run_id} {body.get('alert_id')} {body.get('type')}", flush=True)
@@ -75,6 +82,11 @@ def main() -> int:
     parser.add_argument("--run-id", default=None, help="실행 ID. 기본값은 입력 폴더 이름")
     parser.add_argument("--speed", type=float, default=1.0, help="1이면 기록된 시간 간격 그대로")
     parser.add_argument("--loop", action="store_true", help="반복할 때마다 run_id 뒤에 -1, -2를 붙인다")
+    parser.add_argument(
+        "--stamp-now",
+        action="store_true",
+        help="검출 프레임을 보내기 직전에 timestamp를 현재 시각으로 바꿉니다. 파일 값은 간격 계산에만 씁니다",
+    )
     args = parser.parse_args()
 
     if not args.detections and not args.alerts:
@@ -97,7 +109,7 @@ def main() -> int:
             while True:
                 iteration += 1
                 run_id = f"{base_run_id}-{iteration}" if args.loop else base_run_id
-                detections, alerts = play_once(client, events, run_id, args.speed)
+                detections, alerts = play_once(client, events, run_id, args.speed, args.stamp_now)
                 print(f"재생 완료 run={run_id} 검출 {detections}건, 경고 {alerts}건", flush=True)
                 if not args.loop:
                     break

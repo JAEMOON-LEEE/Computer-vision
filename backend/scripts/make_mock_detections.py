@@ -1,6 +1,7 @@
 """오버레이 동작 확인용 검출 목업을 만든다.
 
 박스 위치는 실제 CCTV 영상 속 물체와 맞지 않는다.
+timestamp는 이 파일을 만드는 시각의 Unix 초이고, 프레임마다 1/fps씩 늘어난다.
 화면 위를 가로지르는 차량·보행자와 제자리 포트홀이 있는지만 보여 준다.
 
 저장소 루트에서:
@@ -12,6 +13,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -79,6 +81,8 @@ def build(camera_id, frames, fps, width, height, taxonomy):
     alert_frame = min(20, frames - 1)
     records = []
     pothole_at_alert = None
+    # 재생 간격은 그대로 두고, 첫 프레임만 이 파일을 만드는 시각으로 둔다.
+    origin = time.time()
     for frame in range(frames):
         items = []
         for name, track_id, box, confidence in object_boxes(frame, frames, width, height):
@@ -89,8 +93,8 @@ def build(camera_id, frames, fps, width, height, taxonomy):
         record = {
             "camera_id": camera_id,
             "frame": frame,
-            "timestamp": round(frame / fps, 3),
-            "timestamp_kind": "video_seconds",
+            "timestamp": round(origin + frame / fps, 3),
+            "timestamp_kind": "unix_seconds",
             "width": width,
             "height": height,
             "detections": items,

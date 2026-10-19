@@ -138,7 +138,7 @@ def test_stream_its_expired_refreshes(client, monkeypatch):
     body = first.json()
     assert body["refreshed"] is True
     assert body["stream_url"] == "http://example.test/renewed"
-    assert body["stream_fetched_at"]
+    assert body["stream_fetched_at"].endswith("+00:00")
     query = urllib.parse.parse_qs(urllib.parse.urlparse(seen[0]).query)
     assert query["type"] == ["its"]
     assert query["cctvType"] == ["1"]

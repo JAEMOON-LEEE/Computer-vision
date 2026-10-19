@@ -4,13 +4,22 @@ from __future__ import annotations
 
 import math
 from datetime import datetime
+
+from backend.app.models import as_utc
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_serializer, field_validator
 
 TimestampKind = Literal["simulation_seconds", "video_seconds", "unix_seconds", "unspecified"]
 AlertStatus = Literal["unconfirmed", "confirmed", "dismissed"]
 PatchStatus = Literal["confirmed", "dismissed"]
+
+
+def utc_iso(value: datetime | None) -> str | None:
+    """UTC aware datetime을 오프셋이 붙은 ISO8601 문자열로 만든다."""
+    if value is None:
+        return None
+    return as_utc(value).isoformat()
 
 
 def _finite_number(value: float, label: str) -> float:
@@ -222,6 +231,10 @@ class StreamOut(BaseModel):
     refreshed: bool
     warning: str | None = None
 
+    @field_serializer("stream_fetched_at", when_used="json")
+    def _utc_fetched(self, value: datetime | None) -> str | None:
+        return utc_iso(value)
+
 
 class CameraOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -238,6 +251,10 @@ class CameraOut(BaseModel):
     is_ptz: bool
     status: str
     created_at: datetime
+
+    @field_serializer("stream_fetched_at", "created_at", when_used="json")
+    def _utc_times(self, value: datetime | None) -> str | None:
+        return utc_iso(value)
 
 
 class DetectionOut(BaseModel):
@@ -282,11 +299,58 @@ class AlertOut(BaseModel):
     updated_at: datetime
     handled_by: str | None = None
 
+    @field_serializer("created_at", "updated_at", when_used="json")
+    def _utc_times(self, value: datetime) -> str:
+        return utc_iso(value) or as_utc(value).isoformat()
+
 
 class SavedFrame(BaseModel):
     run_id: str
     camera_id: str
     frame: int
+
+
+class DetectionHistoryItem(BaseModel):
+    """검출 상자 하나. 프레임 필드는 detections.jsonl 한 줄과 같다."""
+
+    camera_id: str
+    run_id: str
+    frame: int
+    timestamp: float
+    timestamp_kind: str
+    width: int
+    height: int
+    inference_ms: float
+    image: str | None = None
+    class_name: str
+    class_id: int
+    category_id: int
+    model_id: str
+    bbox_xyxy: list[float]
+    confidence: float
+    track_id: int | None = None
+    ground_point_px: list[float] | None = None
+    mapped_xz: list[float] | None = None
+
+
+class DetectionListOut(BaseModel):
+    total: int
+    items: list[DetectionHistoryItem]
+
+
+class ClassCount(BaseModel):
+    class_name: str
+    count: int
+
+
+class HourCount(BaseModel):
+    hour: str
+    count: int
+
+
+class DetectionStatsOut(BaseModel):
+    by_class: list[ClassCount]
+    by_hour: list[HourCount]
 
 
 class IngestDetectionsResult(BaseModel):

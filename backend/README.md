@@ -22,15 +22,18 @@ CCTV 검출 결과(`detections.jsonl`)와 경고(`alerts.jsonl`)를 받아 저�
 
 ## 카메라 가져오기
 
-ITS 교차로 후보는 `backend/data/its/candidates_its.json`에 있어야 합니다. 파일이 없으면 먼저 목록을 받습니다.
+카메라가 DB에 들어가는 경로는 네 가지입니다.
+
+- `backend/scripts/seed_cameras.py`가 `backend/seeds/cameras_its.json`을 읽어 등록합니다. ITS API는 호출하지 않고, 시드에는 이름·출처·위경도만 있습니다. `reset_db.bat`이 DB 파일을 지운 뒤 이 스크립트를 실행합니다.
+- `fetch_its_cctv.py`는 DB에 넣지 않습니다. 목록을 `backend/data/its/`에만 저장합니다. 시드 파일이 없고 이 후보 JSON이 있으면 시드 스크립트가 주소와 키를 뺀 뒤 시드를 만듭니다.
+- 서버를 켜도 카메라를 심지 않습니다. `POST /cameras/import-its`는 후보 JSON을 그대로 upsert하며, 서명된 `stream_url`도 저장합니다.
+- 목업 재생이나 검출 수신은 그 기록에 나온 카메라가 없을 때만 `source=unknown`으로 만듭니다. 위경도는 없습니다.
 
 ```powershell
-.\.venv\Scripts\python.exe backend\scripts\fetch_its_cctv.py
+.\.venv\Scripts\python.exe backend\scripts\seed_cameras.py
 ```
 
-서버를 띄운 뒤 `/docs`에서 `POST /cameras/import-its`를 실행합니다. 파일이 없으면 404와 함께 `fetch_its_cctv.py를 먼저 실행하세요`가 돌아옵니다.
-
-`stream_url`은 서명 주소라 만료됩니다. 받은 시각을 `stream_fetched_at`에 같이 저장합니다. 후보의 `road_type`은 임시 스키마에 없어 저장하지 않습니다.
+`stream_url`은 서명 주소라 만료됩니다. 시드로 등록한 카메라에는 주소를 넣지 않습니다. 재생 요청이 오면 `GET /cameras/{camera_id}/stream`이 필요할 때만 다시 받습니다. 후보의 `road_type`은 임시 스키마에 없어 저장하지 않습니다.
 
 카메라는 `POST /cameras`로 직접 넣거나 고칠 수 있습니다. 같은 `camera_id`면 덮어씁니다.
 
@@ -48,11 +51,11 @@ ITS 교차로 후보는 `backend/data/its/candidates_its.json`에 있어야 합�
 .\.venv\Scripts\python.exe backend\scripts\replay_jsonl.py --detections out\demo\detections.jsonl --alerts out\demo\alerts.jsonl --speed 2
 ```
 
-오버레이 동작 확인용 목업은 화면을 가로지르는 차량·보행자와 제자리 포트홀을 만듭니다. 박스 위치는 실제 영상 속 물체와 맞지 않습니다.
+오버레이 동작 확인용 목업은 화면을 가로지르는 차량·보행자와 제자리 포트홀을 만듭니다. 박스 위치는 실제 영상 속 물체와 맞지 않습니다. `--stamp-now`는 파일의 timestamp로 간격만 계산하고, 검출 프레임을 보내기 직전에 그 값을 현재 시각으로 바꿉니다. `timestamp_kind`는 `unix_seconds`입니다.
 
 ```powershell
 .\.venv\Scripts\python.exe backend\scripts\make_mock_detections.py
-.\.venv\Scripts\python.exe backend\scripts\replay_jsonl.py --detections backend\data\mock\its-cc4277cc18\detections.jsonl --alerts backend\data\mock\its-cc4277cc18\alerts.jsonl --speed 1 --loop
+.\.venv\Scripts\python.exe backend\scripts\replay_jsonl.py --detections backend\data\mock\its-cc4277cc18\detections.jsonl --alerts backend\data\mock\its-cc4277cc18\alerts.jsonl --speed 1 --loop --stamp-now
 ```
 
 관제 화면에서 이 재생을 보는 방법은 [frontend/README.md](../frontend/README.md)에 있습니다.

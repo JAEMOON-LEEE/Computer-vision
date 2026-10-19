@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 
 from backend.app import config
 from backend.app.db import get_db
-from backend.app.models import Camera, Detection, Frame, Run, utcnow
+from backend.app.models import Camera, Detection, Frame, Run, as_utc, utcnow
 from backend.app.schemas import (
     CameraIn,
     CameraOut,
@@ -52,7 +52,7 @@ def _as_datetime(value) -> datetime | None:
     text = str(value).strip()
     if text.endswith("Z"):
         text = text[:-1] + "+00:00"
-    return datetime.fromisoformat(text)
+    return as_utc(datetime.fromisoformat(text))
 
 
 def upsert_camera(db: Session, camera_id: str, values: dict) -> Camera:
@@ -147,17 +147,10 @@ def upsert_camera_route(payload: CameraIn, db: Session = Depends(get_db)):
     return camera
 
 
-def _as_aware(value: datetime) -> datetime:
-    if value.tzinfo is None:
-        return value.replace(tzinfo=datetime.now().astimezone().tzinfo)
-    return value
-
-
 def _stream_is_fresh(fetched_at: datetime | None) -> bool:
     if fetched_at is None:
         return False
-    fetched = _as_aware(fetched_at)
-    return datetime.now(fetched.tzinfo) - fetched < timedelta(minutes=config.stream_ttl_minutes())
+    return datetime.now(timezone.utc) - as_utc(fetched_at) < timedelta(minutes=config.stream_ttl_minutes())
 
 
 @router.get("/{camera_id}/stream", response_model=StreamOut)

@@ -1,47 +1,13 @@
 <!doctype html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TwinSight 관제</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header class="top">
-  <div>
-    <strong>TwinSight</strong>
-    <span class="sub">실시간 관제</span>
-  </div>
-  <div id="ws-status" class="status">연결 중</div>
-</header>
-<div class="layout">
-  <aside class="panel">
-    <h2>카메라</h2>
-    <input id="camera-filter" type="search" placeholder="이름 또는 ID">
-    <ul id="camera-list"></ul>
-  </aside>
-  <main>
-    <div class="stage-wrap">
-      <div class="stage">
-        <video id="video" muted autoplay playsinline controls></video>
-        <canvas id="overlay"></canvas>
-      </div>
-      <p id="overlay-note">목업 박스는 실제 영상 속 물체와 위치가 맞지 않습니다. 오버레이 동작 확인용입니다.</p>
-      <div class="meta">
-        <span id="camera-label">카메라 없음</span>
-        <span id="frame-label">프레임 -</span>
-        <span id="box-label">박스 0</span>
-        <button id="play" type="button">재생</button>
-      </div>
-      <div id="log"></div>
-    </div>
-  </main>
-  <aside class="panel">
-    <h2>경고</h2>
-    <ul id="alert-list"></ul>
-  </aside>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
-<script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TwinSight 관제</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

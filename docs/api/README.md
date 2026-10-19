@@ -28,6 +28,8 @@
 | POST | `/cameras/import-its` | `candidates_its.json`을 카메라로 넣기 | 대시보드 |
 | GET | `/cameras/{camera_id}/stream` | 재생 주소. ITS이고 받은 지 오래되면 갱신 | 대시보드, 트윈 |
 | GET | `/cameras/{camera_id}/detections/latest` | 가장 최근 프레임과 상자 (`width`, `height` 포함) | 대시보드 |
+| GET | `/detections` | 검출 상자 이력. 카메라·클래스·기간·페이지 | 대시보드 |
+| GET | `/detections/stats` | 같은 필터의 클래스별·KST 1시간별 개수 | 대시보드 |
 | POST | `/ingest/detections?run_id=` | 검출 프레임 하나 또는 배열 | 검출 모듈 |
 | POST | `/ingest/alerts?run_id=` | 경고 하나 또는 배열 | 검출 모듈 |
 | GET | `/alerts` | 경고 목록. 이벤트 시각이 최근인 것부터 | 대시보드 |
@@ -35,6 +37,8 @@
 | WS | `/ws` | 검출·경고·상태 변경을 즉시 수신 | 대시보드, 지도, 트윈 |
 
 `run_id`를 생략하면 `{camera_id}-default`가 됩니다. 프론트 개발 서버 `http://localhost:5173` 에서의 브라우저 호출은 CORS로 허용합니다.
+
+`GET /cameras`의 각 항목에는 `lat`(위도), `lon`(경도)이 있습니다. ITS 목록을 가져오면 `candidates_its.json`의 좌표가 이 필드로 저장됩니다. 좌표가 없는 카메라는 `null`입니다.
 
 ## 검출 한 줄
 
@@ -67,6 +71,51 @@
 ```
 
 `timestamp_kind`는 `simulation_seconds`, `video_seconds`, `unix_seconds`, `unspecified` 중 하나입니다. `category_id`는 검출 모듈 규약 그대로입니다 (person 0, car 1, truck 2, bus 3, motorcycle 4, bicycle 5, pothole 6, crack 7, debris 8, barrier 9).
+
+## 검출 이력
+
+`GET /detections?camera_id=&class_name=&from=&to=&limit=500&offset=0`
+
+한 항목은 검출 상자 하나입니다. 프레임 필드는 검출 메시지와 같고, `run_id`를 함께 줍니다. `total`은 이번 페이지가 아니라 필터에 맞는 전체 개수입니다. 정렬은 `timestamp`가 큰 것부터입니다.
+
+`class_name`은 반복할 수 있습니다. `from`과 `to`는 오프셋이 있는 ISO8601이고, Unix 초로 바꿔 `timestamp`와 비교합니다. `limit` 기본값은 500이고 최대 5000입니다.
+
+```json
+{
+  "total": 1,
+  "items": [
+    {
+      "camera_id": "utic-1294",
+      "run_id": "utic-1294-default",
+      "frame": 12,
+      "timestamp": 1760688000.4,
+      "timestamp_kind": "unix_seconds",
+      "width": 720,
+      "height": 480,
+      "inference_ms": 12.5,
+      "image": "frames/000012.jpg",
+      "class_name": "car",
+      "class_id": 2,
+      "category_id": 1,
+      "model_id": "primary",
+      "bbox_xyxy": [310.0, 340.5, 335.1, 385.0],
+      "confidence": 0.87,
+      "track_id": 15,
+      "ground_point_px": [322.55, 385.0],
+      "mapped_xz": null
+    }
+  ]
+}
+```
+
+`GET /detections/stats`는 같은 `camera_id`, `class_name`, `from`, `to`를 받습니다. `by_hour`는 `unix_seconds`만 KST 정시로 묶고, 시각은 `+09:00` 오프셋입니다.
+
+```json
+{
+  "by_class": [{"class_name": "car", "count": 4}],
+  "by_hour": [{"hour": "2026-10-19T15:00:00+09:00", "count": 4}]
+}
+```
 
 ## 경고 한 줄
 

@@ -86,6 +86,8 @@ def test_openapi_has_main_paths(client):
         "/cameras/{camera_id}",
         "/cameras/{camera_id}/detections/latest",
         "/cameras/{camera_id}/stream",
+        "/detections",
+        "/detections/stats",
         "/ingest/detections",
         "/ingest/alerts",
         "/alerts",
@@ -119,6 +121,7 @@ def test_camera_upsert_and_get(client):
     assert body["source"] == "TAPO"
     assert body["status"] == "online"
     assert body["is_ptz"] is False
+    assert body["created_at"].endswith("+00:00")
 
     listed = client.get("/cameras").json()
     assert len(listed) == 1
