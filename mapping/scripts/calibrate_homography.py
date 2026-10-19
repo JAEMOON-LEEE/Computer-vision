@@ -183,6 +183,8 @@ def main() -> None:
     parser.add_argument("--fov", type=float, help="CCTV 세로 화각을 알면 고정(도). 카메라 자세 계산에 쓴다")
     parser.add_argument("--meters-per-unit", type=float, default=1.0,
                         help="가상환경 1단위가 몇 m인지. 카메라 자세의 Unity 값에만 적용")
+    parser.add_argument("--ground-y", type=float, default=0.0,
+                        help="가상 CCTV를 놓을 장면의 노면 높이(Unity y). 카메라 자세의 Unity position y에 더한다")
     parser.add_argument("--out", type=Path, help="기본: calibration/<카메라ID>.json")
     parser.add_argument("--no-show", action="store_true", help="결과 창을 띄우지 않는다")
     args = parser.parse_args()
@@ -260,7 +262,7 @@ def main() -> None:
         focal = (height / 2.0) / np.tan(np.radians(args.fov) / 2.0) if args.fov else None
         try:
             pose = pose_report(pixels, ground, (width, height), camera_id=camera_id, origin_latlon=origin,
-                               meters_per_unit=args.meters_per_unit, focal=focal)
+                               meters_per_unit=args.meters_per_unit, ground_y=args.ground_y, focal=focal)
         except ValueError as e:
             print(f"⚠️ 카메라 자세를 구하지 못했습니다: {e}")
         else:

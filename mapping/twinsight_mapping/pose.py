@@ -8,6 +8,8 @@
    이상치에 강한 손실(soft L1)을 쓴다.
 
 좌표는 동(x)·북(z)·위(높이)의 오른손 좌표계이고, Unity로 옮길 때는 x→x, 위→y, z→z로 그대로 쓴다.
+구한 높이는 노면에서 잰 높이다. 가상환경의 노면이 y=0이 아니면(City Lab 도로는 y≈0.507)
+Unity position의 y에는 노면 높이(ground_y)를 더한다.
 """
 
 from __future__ import annotations
@@ -110,11 +112,14 @@ def estimate_camera_pose(pixels, ground, image_size: tuple[int, int], focal: flo
     }
 
 
-def describe_pose(pose: dict, image_size: tuple[int, int]) -> dict:
+def describe_pose(pose: dict, image_size: tuple[int, int], *, meters_per_unit: float = 1.0,
+                  ground_y: float = 0.0) -> dict:
     """카메라 자세를 사람이 읽고 가상 CCTV에 넣을 수 있는 값으로 바꾼다.
 
     heading: 북(+z)에서 동(+x) 쪽으로 잰 방위각, pitch: 아래로 숙인 각도(양수), roll: 좌우 기울기.
+    position_m.height는 노면에서 잰 높이다.
     unity: Unity 카메라의 position, eulerAngles(x=pitch, y=heading, z=roll), fieldOfView(세로 화각).
+    position은 meters_per_unit으로 나눈 뒤 y에 가상환경 노면 높이 ground_y(Unity 단위)를 더한다.
     """
     R, focal = pose["R"], pose["focal"]
     east, north, up = pose["center"]
@@ -136,9 +141,12 @@ def describe_pose(pose: dict, image_size: tuple[int, int]) -> dict:
         "focal_px": float(focal),
         "image_size": [int(w), int(h)],
         "unity": {
-            "position": [float(east), float(up), float(north)],
+            "position": [float(east) / meters_per_unit, float(up) / meters_per_unit + ground_y,
+                         float(north) / meters_per_unit],
             "euler_deg": [pitch, heading, roll % 360.0],
             "field_of_view": vfov,
+            "meters_per_unit": meters_per_unit,
+            "ground_y": ground_y,
         },
     }
 
@@ -171,18 +179,17 @@ def leave_one_out_spread(pixels, ground, image_size, focal: float | None = None)
 
 
 def pose_report(pixels, ground, image_size, *, camera_id: str | None = None, origin_latlon=None,
-                meters_per_unit: float = 1.0, focal: float | None = None) -> dict:
+                meters_per_unit: float = 1.0, ground_y: float = 0.0, focal: float | None = None) -> dict:
     """가상 CCTV 배치에 쓸 카메라 자세 보고서(JSON으로 저장할 dict).
 
     origin_latlon을 주면(위도·경도로 캘리브레이션한 경우) 카메라의 위도·경도도 넣는다.
     meters_per_unit은 가상환경의 1단위가 몇 m인지다(Unity 값만 이 비율로 나눈다).
+    ground_y는 가상 CCTV를 놓을 장면의 노면 높이(Unity y)다. Unity position의 y에만 더한다.
     """
     from .calibration import local_xz_to_latlon
 
     pose = estimate_camera_pose(pixels, ground, image_size, focal)
-    report = describe_pose(pose, image_size)
-    report["unity"]["position"] = [v / meters_per_unit for v in report["unity"]["position"]]
-    report["unity"]["meters_per_unit"] = meters_per_unit
+    report = describe_pose(pose, image_size, meters_per_unit=meters_per_unit, ground_y=ground_y)
     position = report["position_m"]
     report.update({
         "camera_id": camera_id,

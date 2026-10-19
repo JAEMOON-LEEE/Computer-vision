@@ -23,7 +23,7 @@ from twinsight_mapping.pose import (  # noqa: E402
     focal_from_homography,
     pose_report,
 )
-from twinsight_mapping.synthetic import PinholeCamera, SceneConfig  # noqa: E402
+from twinsight_mapping.synthetic import PinholeCamera, SceneConfig, generate  # noqa: E402
 
 CAMERAS = [
     SceneConfig(),
@@ -77,6 +77,31 @@ class PoseTest(unittest.TestCase):
         lat, lon = report["position_latlon"]
         np.testing.assert_allclose(latlon_to_local_xz(lat, lon, origin),
                                    [cfg.camera_position[0], cfg.camera_position[2]], atol=1e-3)
+
+    def test_report_adds_ground_y_to_unity_height(self):
+        cfg = CAMERAS[0]
+        pixels, ground, _ = _points(cfg)
+        x, h, z = cfg.camera_position
+        report = pose_report(pixels, ground, cfg.image_size, meters_per_unit=2.0, ground_y=0.507)
+        self.assertAlmostEqual(report["position_m"]["height"], h, delta=1e-3)  # 노면에서 잰 높이는 그대로
+        np.testing.assert_allclose(report["unity"]["position"], [x / 2.0, h / 2.0 + 0.507, z / 2.0], atol=1e-3)
+        self.assertEqual(report["unity"]["ground_y"], 0.507)
+
+
+class ExportValidationGroundYTest(unittest.TestCase):
+    def test_raised_road_has_no_height_error(self):
+        # City Lab처럼 노면이 y=0.507인 장면. 카메라는 노면에서 8 m 위
+        cfg = SceneConfig(frames=1, road_y=0.507, camera_position=(8.5, 8.507, -10.0))
+        with tempfile.TemporaryDirectory() as tmp:
+            export = generate(cfg, Path(tmp) / "export")
+            out = Path(tmp) / "pose.json"
+            subprocess.run([sys.executable, str(MAPPING_DIR / "scripts" / "estimate_camera_pose.py"),
+                            "--export", str(export), "--n-points", "6", "--pixel-noise", "0", "--trials", "1",
+                            "--out", str(out)], check=True, capture_output=True)
+            result = json.loads(out.read_text(encoding="utf-8"))
+        self.assertAlmostEqual(result["truth"]["ground_y"], 0.507, delta=1e-6)
+        self.assertAlmostEqual(result["exact_all_points"]["height_m"], 0.0, delta=1e-3)
+        self.assertAlmostEqual(result["exact_all_points"]["unity_position"], 0.0, delta=1e-3)
 
 
 class LatLonRoundTripTest(unittest.TestCase):

@@ -148,15 +148,15 @@ CCTV 파이프라인을 `--serve 8765`로 실행하면 Unity 디지털 트윈(`C
   "origin_latlon": [36.7799, 127.0029],
   "heading_deg": 352.0, "pitch_deg": 15.0, "roll_deg": 0.0,
   "vertical_fov_deg": 45.0, "horizontal_fov_deg": 72.7, "focal_px": 1303.7, "image_size": [1920, 1080],
-  "unity": {"position": [8.5, 8.0, -10.0], "euler_deg": [15.0, 352.0, 0.0], "field_of_view": 45.0, "meters_per_unit": 1.0},
+  "unity": {"position": [8.5, 8.0, -10.0], "euler_deg": [15.0, 352.0, 0.0], "field_of_view": 45.0, "meters_per_unit": 1.0, "ground_y": 0.0},
   "points": 12, "rmse_px": 0.0,
   "leave_one_out_std": {"height": 0.0, "heading_deg": 0.0, "pitch_deg": 0.0, "vertical_fov_deg": 0.0}
 }
 ```
 
-- `position_m`: 원점(`origin_latlon`, 위도·경도 모드가 아니면 입력 좌표계 원점) 기준 동(x)·북(z)·높이(m).
+- `position_m`: 원점(`origin_latlon`, 위도·경도 모드가 아니면 입력 좌표계 원점) 기준 동(x)·북(z)·노면에서 잰 높이(m).
 - `heading_deg`: 북(+z)에서 동(+x) 쪽으로 잰 카메라 방향. `pitch_deg`: 아래로 숙인 각도(양수). `roll_deg`: 좌우 기울기.
-- `unity`: Unity 카메라의 `transform.position`, `transform.eulerAngles`, `fieldOfView`(세로 화각)에 그대로 넣는 값. Unity x=동, y=위, z=북이고, `meters_per_unit`이 1이 아니면 position을 그 값으로 나눈 값입니다.
+- `unity`: Unity 카메라의 `transform.position`, `transform.eulerAngles`, `fieldOfView`(세로 화각)에 그대로 넣는 값. Unity x=동, y=위, z=북이고, `meters_per_unit`이 1이 아니면 position을 그 값으로 나눈 값입니다. `ground_y`는 가상 CCTV를 놓을 장면의 노면 높이(Unity y, `--ground-y`)이며 position의 y에 더해져 있습니다.
 - `leave_one_out_std`: 기준점을 하나씩 빼고 다시 구했을 때의 표준편차. 크면 기준점을 더 찍어야 합니다.
 - 가정: 렌즈 중심은 화면 가운데, 정사각 픽셀, 렌즈 왜곡 없음, 기준점은 같은 노면 위.
 

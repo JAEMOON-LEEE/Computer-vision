@@ -3,15 +3,16 @@
     # 실제 CCTV: calibrate_homography.py가 만든 캘리브레이션 파일로 (위도·경도로 찍었으면 카메라 위도·경도도 나옴)
     python mapping/scripts/estimate_camera_pose.py --calibration calibration/utic-아산향산사거리.json
     python mapping/scripts/estimate_camera_pose.py --calibration <파일> --meters-per-unit 2.7   # 가상환경 1단위 = 2.7 m
+    python mapping/scripts/estimate_camera_pose.py --calibration <파일> --ground-y 0.507        # 장면 노면이 y=0.507
 
     # 검증: 정답을 아는 Unity 가상 카메라 내보내기 폴더(camera.json, control_points.json)로
     python mapping/scripts/estimate_camera_pose.py --export simulation/TwinSightSim/TwinSightExport/<폴더>
 
 결과(가상 CCTV 배치값): <캘리브레이션 파일 이름>.pose.json
-- position_m: 동(x)·북(z)·높이(m), position_latlon: 카메라 위도·경도
+- position_m: 동(x)·북(z)·노면에서 잰 높이(m), position_latlon: 카메라 위도·경도
 - heading_deg: 북쪽에서 동쪽으로 잰 방향, pitch_deg: 아래로 숙인 각도, roll_deg: 좌우 기울기
 - vertical_fov_deg / horizontal_fov_deg: 화각
-- unity: Unity 카메라에 그대로 넣는 position, eulerAngles, fieldOfView
+- unity: Unity 카메라에 그대로 넣는 position(y에 노면 높이 포함), eulerAngles, fieldOfView
 """
 
 from __future__ import annotations
@@ -38,7 +39,7 @@ def angle_diff(a: float, b: float) -> float:
 
 def print_report(r: dict) -> None:
     p = r["position_m"]
-    print(f"  위치: 동 {p['x_east']:.2f} m, 북 {p['z_north']:.2f} m, 높이 {p['height']:.2f} m")
+    print(f"  위치: 동 {p['x_east']:.2f} m, 북 {p['z_north']:.2f} m, 노면에서 높이 {p['height']:.2f} m")
     if r.get("position_latlon"):
         lat, lon = r["position_latlon"]
         print(f"  위도·경도: {lat:.7f}, {lon:.7f}")
@@ -52,7 +53,8 @@ def print_report(r: dict) -> None:
     u = r["unity"]
     print(f"  Unity: position {[round(v, 3) for v in u['position']]}, eulerAngles "
           f"{[round(v, 2) for v in u['euler_deg']]}, fieldOfView {u['field_of_view']:.2f}"
-          + (f" (1단위 = {u['meters_per_unit']:g} m)" if u["meters_per_unit"] != 1 else ""))
+          + (f" (1단위 = {u['meters_per_unit']:g} m)" if u["meters_per_unit"] != 1 else "")
+          + (f" (노면 y = {u['ground_y']:g})" if u["ground_y"] else ""))
 
 
 def run_calibration(args) -> None:
@@ -63,7 +65,7 @@ def run_calibration(args) -> None:
     focal = (size[1] / 2.0) / math.tan(math.radians(args.fov) / 2.0) if args.fov else None
 
     report = pose_report(pixels, ground, size, camera_id=data.get("camera_id"), origin_latlon=data.get("origin_latlon"),
-                         meters_per_unit=args.meters_per_unit, focal=focal)
+                         meters_per_unit=args.meters_per_unit, ground_y=args.ground_y, focal=focal)
     report["calibration"] = str(Path(args.calibration).resolve())
     out = args.out or Path(args.calibration).with_suffix(".pose.json")
     out.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -91,24 +93,32 @@ def run_validation(args) -> None:
     cp = export.control_points
     usable = cp.in_frame & (np.linalg.norm(cp.ground - export.camera.ground_xz, axis=1) <= args.max_distance)
     pixels_all, ground_all = cp.pixel[usable], cp.ground[usable]
-    print(f"정답 카메라: 위치 ({tx:.2f}, {tz:.2f}) m, 높이 {ty:.2f} m, 방향 {t_heading:.1f}°, 각도 {t_pitch:.1f}°, "
-          f"세로 화각 {t_vfov:.1f}°")
+    # 기준점은 노면 위에 있다. 노면이 y=0이 아닌 장면(City Lab)에서는 높이를 노면에서 잰다
+    point_y = cp.world[usable, 1]
+    ground_y = float(np.median(point_y)) if len(point_y) else 0.0
+    t_height = ty - ground_y
+    print(f"정답 카메라: 위치 ({tx:.2f}, {tz:.2f}) m, 노면에서 높이 {t_height:.2f} m (Unity y {ty:.2f}, 노면 y "
+          f"{ground_y:.3f}), 방향 {t_heading:.1f}°, 각도 {t_pitch:.1f}°, 세로 화각 {t_vfov:.1f}°")
     print(f"사용할 수 있는 기준점 {int(usable.sum())}개 (화면 안, 카메라에서 {args.max_distance:g} m 이내)")
+    if len(point_y) and float(np.ptp(point_y)) > 0.05:
+        print(f"⚠️ 기준점 높이가 {float(np.ptp(point_y)):.2f}만큼 서로 다릅니다. 평평한 노면 가정이 맞지 않을 수 있습니다.")
 
     focal = (size[1] / 2.0) / math.tan(math.radians(args.fov) / 2.0) if args.fov else None
     if focal:
         print(f"세로 화각을 {args.fov:g}°로 고정합니다")
 
     def errors(pixels, ground) -> dict:
-        d = describe_pose(estimate_camera_pose(pixels, ground, size, focal), size)
+        d = describe_pose(estimate_camera_pose(pixels, ground, size, focal), size, ground_y=ground_y)
         p = d["position_m"]
         return {
             "position_m": math.hypot(p["x_east"] - tx, p["z_north"] - tz),
-            "height_m": p["height"] - ty,
+            "height_m": p["height"] - t_height,
             "heading_deg": angle_diff(d["heading_deg"], t_heading),
             "pitch_deg": d["pitch_deg"] - t_pitch,
             "roll_deg": angle_diff(d["roll_deg"], t_roll),
             "vfov_deg": d["vertical_fov_deg"] - t_vfov,
+            # 가상 CCTV에 그대로 넣는 Unity position이 정답 카메라 자리와 얼마나 떨어졌는지
+            "unity_position": float(np.linalg.norm(np.array(d["unity"]["position"]) - [tx, ty, tz])),
         }
 
     exact = errors(pixels_all, ground_all)
@@ -154,7 +164,8 @@ def run_validation(args) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({
         "truth": {"position": truth["position"], "rotation_euler_deg": truth["rotation_euler_deg"],
-                  "vertical_fov_deg": t_vfov, "image_size": list(size)},
+                  "vertical_fov_deg": t_vfov, "image_size": list(size), "ground_y": ground_y,
+                  "height_above_ground": t_height},
         "max_distance_m": args.max_distance,
         "world_noise_m": args.world_noise,
         "exact_all_points": exact,
@@ -170,6 +181,8 @@ def main() -> None:
     source.add_argument("--export", type=Path, help="검증용 Unity 내보내기 폴더")
     parser.add_argument("--out", type=Path, help="결과 JSON 경로")
     parser.add_argument("--meters-per-unit", type=float, default=1.0, help="가상환경 1단위가 몇 m인지(Unity 값에만 적용)")
+    parser.add_argument("--ground-y", type=float, default=0.0,
+                        help="가상 CCTV를 놓을 장면의 노면 높이(Unity y). Unity position의 y에 더한다. City Lab 도로는 약 0.507")
     parser.add_argument("--fov", type=float, help="CCTV 세로 화각을 알면 고정(도)")
     parser.add_argument("--n-points", default="4,6,8,12", help="검증: 기준점 수 목록")
     parser.add_argument("--pixel-noise", default="0,1,2,4", help="검증: 클릭 오차(px) 목록")
