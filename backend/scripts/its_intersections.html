@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>교차로 CCTV 확인</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js"></script>
+<style>
+  :root { --bg:#0f1115; --panel:#181b22; --line:#2a2f3a; --text:#e6e8ee; --muted:#8a92a3; --accent:#4f8cff; --bad:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.45 system-ui, "Malgun Gothic", sans-serif; }
+  header { padding:12px 16px; border-bottom:1px solid var(--line); background:var(--panel); position:sticky; top:0; z-index:5; }
+  h1 { font-size:16px; margin:0 0 10px; }
+  .row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:8px; }
+  label { color:var(--muted); font-size:12px; display:flex; gap:4px; align-items:center; }
+  input, select, button { background:#0f1115; color:var(--text); border:1px solid var(--line); border-radius:6px; padding:6px 8px; font:inherit; }
+  input[type=password], input.key { width:240px; }
+  input.kw { width:200px; }
+  button { cursor:pointer; }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  button:disabled { opacity:.5; cursor:default; }
+  #status { color:var(--muted); font-size:12px; }
+  #status.err { color:var(--bad); }
+  main { padding:16px; }
+  .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr)); }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .card video { width:100%; aspect-ratio:16/9; background:#000; display:block; }
+  .meta { padding:8px 10px; }
+  .name { font-weight:600; }
+  .sub { color:var(--muted); font-size:12px; word-break:break-all; }
+  .err-msg { color:var(--bad); font-size:12px; white-space:pre-wrap; word-break:break-all; }
+  .pager { display:flex; gap:8px; align-items:center; justify-content:center; margin:16px 0; }
+  .tag { display:inline-block; font-size:11px; padding:1px 6px; border-radius:10px; background:#24324d; color:#a9c4ff; margin-left:6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>사거리(십자 교차로) CCTV 확인</h1>
+  <div class="row">
+    <label>ITS 인증키 <input id="key" class="key" type="password" placeholder="apiKey"></label>
+    <label><input id="saveKey" type="checkbox" checked> 이 브라우저에 저장</label>
+    <label>도로 <select id="type">
+      <option value="its" selected>국도 (its)</option>
+      <option value="ex">고속도로 (ex)</option>
+    </select></label>
+    <label>영상 형식 <select id="cctvType">
+      <option value="4" selected>실시간 HLS (https)</option>
+      <option value="1">실시간 HLS (http)</option>
+    </select></label>
+    <label>범위 <select id="area">
+      <option value="126.3,127.9,36.9,38.3" selected>경기도</option>
+      <option value="126.7,127.3,37.4,37.75">서울 인근</option>
+      <option value="124.5,132.0,33.0,38.7">전국</option>
+    </select></label>
+    <button id="load" class="primary">목록 불러오기</button>
+    <label>또는 JSON 파일 <input id="file" type="file" accept=".json,application/json"></label>
+  </div>
+  <div class="row">
+    <label>이름 키워드(쉼표) <input id="kw" class="kw" value="사거리,네거리"></label>
+    <label>검색 <input id="q" placeholder="예: 파주, 국도1"></label>
+    <label>페이지당 <select id="per">
+      <option>4</option><option selected>6</option><option>9</option><option>12</option>
+    </select></label>
+    <span id="status">인증키 입력 후 목록 불러오기 (호출 1회 = 1건)</span>
+  </div>
+</header>
+
+<main>
+  <div class="pager" id="pagerTop"></div>
+  <div class="grid" id="grid"></div>
+  <div class="pager" id="pagerBottom"></div>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch { return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch {} },
+  del(k){ try { localStorage.removeItem(k); } catch {} },
+};
+
+let all = [];        // 필터 전 전체 목록
+let shown = [];      // 필터 후 목록
+let page = 0;
+let players = [];    // 현재 페이지의 hls 인스턴스
+
+$('key').value = store.get('its_key') || '';
+
+// 저장소 루트 .env의 ITS_API_KEY 자동 읽기 (dev.bat의 5173 정적 서버로 열었을 때)
+(async () => {
+  if ($('key').value) return;
+  for (const path of ['/.env', '../../.env']) {
+    try {
+      const res = await fetch(path, { cache: 'no-store' });
+      if (!res.ok) continue;
+      const m = (await res.text()).match(/^\s*ITS_API_KEY\s*=\s*["']?([^"'\r\n#]+)/m);
+      if (m && m[1].trim()) { $('key').value = m[1].trim(); setStatus('.env에서 인증키를 읽었어 — 목록 불러오기'); return; }
+    } catch {}
+  }
+})();
+
+function setStatus(msg, isErr=false){
+  const s = $('status'); s.textContent = msg; s.classList.toggle('err', isErr);
+}
+
+function normalize(json){
+  // ITS 응답: { response: { data: [...] | {...} } } 또는 배열 자체
+  let data = json?.response?.data ?? json?.data ?? json;
+  if (!data) return [];
+  if (!Array.isArray(data)) data = [data];
+  const seen = new Set();
+  const out = [];
+  for (const d of data){
+    const name = (d.cctvname || d.cctvName || '').trim();
+    const url = d.cctvurl || d.cctvUrl || '';
+    if (!name || !url) continue;
+    const key = name + '|' + d.coordx + '|' + d.coordy;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ name, url, x: d.coordx, y: d.coordy, fmt: d.cctvformat || '' });
+  }
+  out.sort((a,b) => a.name.localeCompare(b.name, 'ko'));
+  return out;
+}
+
+async function fetchList(){
+  const key = $('key').value.trim();
+  const [minX,maxX,minY,maxY] = $('area').value.split(',');
+  const params = new URLSearchParams({
+    apiKey: key, type: $('type').value, cctvType: $('cctvType').value,
+    minX, maxX, minY, maxY, getType: 'json',
+  });
+  const res = await fetch('https://openapi.its.go.kr:9443/cctvInfo?' + params);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const text = await res.text();
+  let json;
+  try { json = JSON.parse(text); }
+  catch { throw new Error('JSON이 아닌 응답: ' + text.slice(0, 120)); }
+  return normalize(json);
+}
+
+// 만료된 주소 갱신: 여러 카드가 동시에 요청해도 1번만, 최소 60초 간격 (API 1건)
+let refreshing = null, lastRefresh = 0;
+const camKey = (c) => c.name + '|' + c.x + '|' + c.y;
+function refreshUrls(){
+  if (refreshing) return refreshing;
+  if (Date.now() - lastRefresh < 60000 || !$('key').value.trim()) return Promise.resolve(false);
+  lastRefresh = Date.now();
+  refreshing = fetchList().then(list => {
+    const fresh = new Map(list.map(c => [camKey(c), c.url]));
+    for (const c of all){ const u = fresh.get(camKey(c)); if (u) c.url = u; }
+    setStatus(`주소 갱신됨 (${new Date().toLocaleTimeString()}) · 전체 ${all.length}개 중 ${shown.length}개 표시 대상`);
+    return true;
+  }).catch(() => false).finally(() => { refreshing = null; });
+  return refreshing;
+}
+
+async function loadFromApi(){
+  const key = $('key').value.trim();
+  if (!key){ setStatus('인증키를 입력해줘', true); return; }
+  if ($('saveKey').checked) store.set('its_key', key); else store.del('its_key');
+
+  $('load').disabled = true;
+  setStatus('불러오는 중…');
+  try {
+    all = await fetchList();
+    lastRefresh = Date.now();
+    applyFilter(true);
+  } catch (e) {
+    setStatus('불러오기 실패: ' + e.message + ' (CORS로 막히면 JSON 파일로 불러오기)', true);
+  } finally {
+    $('load').disabled = false;
+  }
+}
+
+function loadFromFile(file){
+  const r = new FileReader();
+  r.onload = () => {
+    try { all = normalize(JSON.parse(r.result)); applyFilter(true); }
+    catch (e) { setStatus('파일 읽기 실패: ' + e.message, true); }
+  };
+  r.readAsText(file);
+}
+
+function applyFilter(resetPage){
+  const kws = $('kw').value.split(',').map(s => s.trim()).filter(Boolean);
+  const q = $('q').value.trim();
+  shown = all.filter(c =>
+    (kws.length === 0 || kws.some(k => c.name.includes(k))) &&
+    (!q || c.name.includes(q))
+  );
+  if (resetPage) page = 0;
+  setStatus(`전체 ${all.length}개 중 ${shown.length}개 표시 대상`);
+  render();
+}
+
+function destroyPlayers(){
+  for (const p of players){ try { p.destroy(); } catch {} }
+  players = [];
+}
+
+const HLS_CFG = {
+  // 지연 최소화: 라이브 끝에서 조각 1개 뒤에 붙고, 3개 이상 밀리면 점프
+  liveSyncDurationCount: 1,
+  liveMaxLatencyDurationCount: 3,
+  maxLiveSyncPlaybackRate: 1.5,
+  maxBufferLength: 4,
+  backBufferLength: 0,
+  startFragPrefetch: true,
+  lowLatencyMode: true,
+  levelLoadingMaxRetry: 4, levelLoadingRetryDelay: 1000,
+  manifestLoadingMaxRetry: 2,
+};
+const STALL_MS = 10000;   // 이 시간 동안 화면이 안 움직이면 재연결
+
+// 카메라 1대 재생기: 끊기면 무한 재연결 (2→4→8→15초 간격, 이후 15초 고정)
+function attach(video, cam, errEl){
+  const latEl = errEl.previousElementSibling;
+  const base = latEl.textContent;
+  const useHlsJs = !!(window.Hls && Hls.isSupported());
+  const native = !useHlsJs && video.canPlayType('application/vnd.apple.mpegurl');
+  if (!useHlsJs && !native){ errEl.textContent = '이 브라우저는 HLS 재생 불가'; return { destroy(){} }; }
+
+  let hls = null, active = false, dead = false;
+  let attempt = 0, retryTimer = null, urlExpired = false, mediaRecoveries = 0;
+  let lastT = -1, lastMove = Date.now();
+
+  const stop = () => {
+    active = false;
+    if (hls){ try { hls.destroy(); } catch {} hls = null; }
+    if (native){ video.removeAttribute('src'); video.load(); }
+  };
+
+  const retry = (reason) => {
+    if (dead || retryTimer) return;
+    stop();
+    attempt++;
+    const delay = Math.min(2000 * 2 ** (attempt - 1), 15000);
+    errEl.textContent = `${reason} — ${Math.round(delay / 1000)}초 후 재연결 (${attempt}회째)`;
+    retryTimer = setTimeout(async () => {
+      retryTimer = null;
+      if (dead) return;
+      // 403/404였거나 3번 연속 실패하면 주소가 만료됐다고 보고 목록 갱신 후 재시도
+      if (urlExpired || attempt % 3 === 0){ await refreshUrls(); urlExpired = false; }
+      start();
+    }, delay);
+  };
+
+  const onPlaying = () => { attempt = 0; mediaRecoveries = 0; errEl.textContent = ''; };
+
+  function start(){
+    if (dead) return;
+    active = true;
+    lastMove = Date.now(); lastT = -1;
+    if (native){
+      video.src = cam.url;
+      video.play().catch(() => {});
+      return;
+    }
+    hls = new Hls(HLS_CFG);
+    hls.on(Hls.Events.FRAG_BUFFERED, onPlaying);
+    hls.on(Hls.Events.ERROR, (_, data) => {
+      if (!data.fatal) return;
+      if (data.type === Hls.ErrorTypes.MEDIA_ERROR && mediaRecoveries < 2){
+        mediaRecoveries++; hls.recoverMediaError(); return;
+      }
+      const code = data.response?.code ?? data.networkDetails?.status ?? '';
+      if (code === 403 || code === 404 || code === 410) urlExpired = true;
+      console.warn('[HLS]', cam.name, data.details, code, data.url || data.context?.url || '');
+      retry(`끊김(${data.details}${code !== '' ? ', HTTP ' + code : ''})`);
+    });
+    hls.loadSource(cam.url);
+    hls.attachMedia(video);
+  }
+
+  if (native){
+    video.addEventListener('playing', onPlaying);
+    video.addEventListener('error', () => active && retry('끊김(재생 오류)'));
+  }
+
+  // 지연 표시 + 멈춤 감지 (오류 없이 화면만 멈추는 경우)
+  const watch = setInterval(() => {
+    if (dead || !active) return;
+    if (hls && Number.isFinite(hls.latency) && hls.latency > 0)
+      latEl.textContent = `${base} · 지연 약 ${hls.latency.toFixed(1)}초`;
+    if (video.paused && lastT >= 0) { lastMove = Date.now(); return; }   // 사용자가 일시정지한 경우 제외
+    const t = video.currentTime;
+    if (t !== lastT){ lastT = t; lastMove = Date.now(); return; }
+    if (Date.now() - lastMove > STALL_MS) retry('영상 멈춤');
+  }, 1000);
+
+  start();
+  return {
+    destroy(){ dead = true; clearInterval(watch); clearTimeout(retryTimer); stop(); },
+  };
+}
+
+function pagerHtml(total){
+  const pages = Math.max(1, Math.ceil(total / perPage()));
+  return `<button data-p="prev" ${page===0?'disabled':''}>이전</button>
+          <span>${page+1} / ${pages}</span>
+          <button data-p="next" ${page>=pages-1?'disabled':''}>다음</button>`;
+}
+function perPage(){ return parseInt($('per').value, 10); }
+
+function render(){
+  destroyPlayers();
+  const grid = $('grid');
+  grid.innerHTML = '';
+  const start = page * perPage();
+  const items = shown.slice(start, start + perPage());
+
+  for (const c of items){
+    const card = document.createElement('div');
+    card.className = 'card';
+    const kwHit = $('kw').value.split(',').map(s=>s.trim()).find(k => k && c.name.includes(k));
+    card.innerHTML = `
+      <video muted autoplay playsinline controls></video>
+      <div class="meta">
+        <div class="name"></div>
+        <div class="sub">${c.x ?? ''}, ${c.y ?? ''}</div>
+        <div class="err-msg"></div>
+      </div>`;
+    const nameEl = card.querySelector('.name');
+    nameEl.textContent = c.name;
+    if (kwHit){ const t = document.createElement('span'); t.className='tag'; t.textContent = kwHit; nameEl.appendChild(t); }
+    grid.appendChild(card);
+    players.push(attach(card.querySelector('video'), c, card.querySelector('.err-msg')));
+  }
+
+  const html = shown.length ? pagerHtml(shown.length) : '';
+  $('pagerTop').innerHTML = html;
+  $('pagerBottom').innerHTML = html;
+}
+
+document.addEventListener('click', (e) => {
+  const p = e.target.dataset?.p;
+  if (!p) return;
+  page += (p === 'next' ? 1 : -1);
+  render();
+  window.scrollTo({ top: 0 });
+});
+
+$('load').onclick = loadFromApi;
+$('file').onchange = (e) => e.target.files[0] && loadFromFile(e.target.files[0]);
+$('kw').oninput = () => applyFilter(true);
+$('q').oninput = () => applyFilter(true);
+$('per').onchange = () => { page = 0; render(); };
+$('key').onkeydown = (e) => { if (e.key === 'Enter') loadFromApi(); };
+</script>
+</body>
+</html>
