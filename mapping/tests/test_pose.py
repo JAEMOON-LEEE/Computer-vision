@@ -104,6 +104,30 @@ class ExportValidationGroundYTest(unittest.TestCase):
         self.assertAlmostEqual(result["exact_all_points"]["unity_position"], 0.0, delta=1e-3)
 
 
+class RoadRelativePoseTest(unittest.TestCase):
+    def test_camera_left_of_road_looking_right(self):
+        # 북서쪽(315°)으로 뻗은 도로. 카메라는 중앙선 왼쪽 6 m, 첫 점에서 20 m 앞, 도로보다 9° 오른쪽을 본다
+        from twinsight_mapping.pose import road_relative_pose
+        origin = (37.77, 126.79)
+        b = np.radians(315.0)
+        fwd, right = np.array([np.sin(b), np.cos(b)]), np.array([np.cos(b), -np.sin(b)])
+        cam = 20.0 * fwd - 6.0 * right
+        end = 100.0 * fwd
+        ref = 80.0 * fwd + 2.0 * right
+        ll = lambda p: local_xz_to_latlon(p[0], p[1], origin)  # noqa: E731
+        pose = {"camera_id": "cam", "position_latlon": list(ll(cam)), "position_m": {"height": 13.0},
+                "heading_deg": 324.0, "pitch_deg": 14.0, "roll_deg": 1.0, "vertical_fov_deg": 38.0,
+                "horizontal_fov_deg": 54.7, "image_size": [720, 480]}
+        r = road_relative_pose(pose, origin, ll(end), ll(ref))
+        self.assertAlmostEqual(r["road_bearing_deg"], 315.0, delta=1e-3)
+        self.assertAlmostEqual(r["along_m"], 20.0, delta=1e-3)
+        self.assertAlmostEqual(r["lateral_m"], -6.0, delta=1e-3)
+        self.assertAlmostEqual(r["yaw_to_road_deg"], 9.0, delta=1e-3)
+        self.assertAlmostEqual(r["ref_ahead_m"], 60.0, delta=1e-3)
+        self.assertAlmostEqual(r["ref_lateral_m"], 2.0, delta=1e-3)
+        self.assertEqual(r["height_m"], 13.0)
+
+
 class LatLonRoundTripTest(unittest.TestCase):
     def test_round_trip(self):
         origin = (36.78, 127.0)

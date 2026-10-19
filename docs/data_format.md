@@ -160,6 +160,26 @@ CCTV 파이프라인을 `--serve 8765`로 실행하면 Unity 디지털 트윈(`C
 - `leave_one_out_std`: 기준점을 하나씩 빼고 다시 구했을 때의 표준편차. 크면 기준점을 더 찍어야 합니다.
 - 가정: 렌즈 중심은 화면 가운데, 정사각 픽셀, 렌즈 왜곡 없음, 기준점은 같은 노면 위.
 
+## <카메라ID>.road_pose.json (도로 중앙선 기준 카메라 자세)
+
+`mapping/scripts/road_relative_pose.py`가 `pose.json`에서 만들고, Unity의 **TwinSight > City Lab > Place VirtualCCTV From Real CCTV**가 읽습니다(`simulation/TwinSightSim/RealCctv/`).
+
+```json
+{
+  "camera_id": "utic-국도1호선파주금촌신사거리", "virtual_camera_id": "city-lab-geumchon",
+  "road_line": [[37.7688546, 126.79218891], [37.76989365, 126.79129256]], "road_bearing_deg": 325.6,
+  "along_m": 30.5, "lateral_m": -6.55, "height_m": 13.17,
+  "yaw_to_road_deg": 9.0, "pitch_deg": 14.2, "roll_deg": 1.9,
+  "vertical_fov_deg": 38.0, "horizontal_fov_deg": 54.7, "image_size": [720, 480],
+  "has_ref": true, "ref_point": [37.771067, 126.790516], "ref_ahead_m": 255.3, "ref_lateral_m": 17.1
+}
+```
+
+- `road_line`: 실제 도로 중앙선 위 두 점. 첫 점 → 둘째 점이 도로 앞쪽(카메라가 보는 쪽)이고 그 방위각이 `road_bearing_deg`입니다.
+- `along_m`·`lateral_m`: 첫 점 기준 카메라 위치. 앞쪽 +, 앞쪽을 볼 때 오른쪽 +(m). `height_m`은 노면에서 잰 높이.
+- `yaw_to_road_deg`: 카메라 방향 - 도로 방향(오른쪽 +). 나머지 각도·화각은 `pose.json`과 같습니다.
+- `ref_ahead_m`: 카메라에서 기준 지점(`--ref-point`, 정지선·사거리 중심)까지 도로 앞쪽 거리.
+
 ## calibration/<카메라ID>.json (실제 CCTV 캘리브레이션)
 
 `mapping/scripts/calibrate_homography.py`가 만들고, CCTV 파이프라인이 읽습니다.

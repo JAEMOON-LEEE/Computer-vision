@@ -204,3 +204,47 @@ def pose_report(pixels, ground, image_size, *, camera_id: str | None = None, ori
         "assumptions": "렌즈 중심은 화면 가운데, 정사각 픽셀, 렌즈 왜곡 없음, 기준점은 같은 평면(노면) 위",
     })
     return report
+
+
+def road_relative_pose(pose: dict, line_start, line_end, ref_point=None) -> dict:
+    """카메라 자세를 실제 도로 중앙선 기준 값으로 바꾼다. 실제와 지도가 다른 가상 도로(City Lab)에 옮길 때 쓴다.
+
+    line_start → line_end: 실제 도로 중앙선 위의 두 위도·경도. 이 방향을 '도로 앞쪽'으로 본다(보통 카메라가 보는 쪽).
+    ref_point: 앞쪽 거리를 재고 싶은 지점(정지선·사거리 등)의 위도·경도.
+    반환: along_m(line_start에서 앞쪽으로 잰 카메라 위치), lateral_m(앞쪽을 볼 때 오른쪽이 +),
+          height_m, yaw_to_road_deg(카메라 방향 - 도로 방향, 오른쪽이 +), pitch_deg, roll_deg, 화각,
+          ref_ahead_m(카메라에서 ref_point까지 도로 앞쪽 거리)
+    """
+    from .calibration import latlon_to_local_xz
+
+    if not pose.get("position_latlon"):
+        raise ValueError("카메라 위도·경도가 없습니다. 위도·경도로 캘리브레이션한 자세 파일이 필요합니다")
+    start = (float(line_start[0]), float(line_start[1]))
+    end = np.asarray(latlon_to_local_xz(line_end[0], line_end[1], start), float)
+    if np.linalg.norm(end) < 1.0:
+        raise ValueError("도로 중앙선의 두 점이 너무 가깝습니다")
+    forward = end / np.linalg.norm(end)            # (동, 북)
+    right = np.array([forward[1], -forward[0]])     # 앞쪽을 볼 때 오른쪽
+    bearing = math.degrees(math.atan2(forward[0], forward[1])) % 360.0
+    cam = np.asarray(latlon_to_local_xz(*pose["position_latlon"], start), float)
+    along = float(cam @ forward)
+    out = {
+        "camera_id": pose.get("camera_id"),
+        "road_line": [list(start), [float(line_end[0]), float(line_end[1])]],
+        "road_bearing_deg": bearing,
+        "along_m": along,
+        "lateral_m": float(cam @ right),
+        "height_m": float(pose["position_m"]["height"]),
+        "yaw_to_road_deg": (float(pose["heading_deg"]) - bearing + 180.0) % 360.0 - 180.0,
+        "pitch_deg": float(pose["pitch_deg"]),
+        "roll_deg": float(pose["roll_deg"]),
+        "vertical_fov_deg": float(pose["vertical_fov_deg"]),
+        "horizontal_fov_deg": float(pose["horizontal_fov_deg"]),
+        "image_size": list(pose["image_size"]),
+        "has_ref": ref_point is not None,
+    }
+    if ref_point is not None:
+        ref = np.asarray(latlon_to_local_xz(ref_point[0], ref_point[1], start), float)
+        out.update(ref_point=[float(ref_point[0]), float(ref_point[1])], ref_ahead_m=float(ref @ forward) - along,
+                   ref_lateral_m=float(ref @ right))
+    return out

@@ -88,6 +88,18 @@ python mapping/scripts/estimate_camera_pose.py --calibration calibration\<카메
 - **City Lab 카메라** (노면 y 0.507, 노면에서 높이 10.49단위, 65.6° 내려다봄, 세로 화각 52°, 1280×720, 화면 안 기준점 8개)에서도 정확한 기준점이면 Unity `position`까지 정답과 같습니다(오차 0.0000). 기준점 8개·클릭 오차 2 px에서는 위치 0.54, 높이 0.65단위, 방향 1.18°, 세로 화각 3.28°입니다(50회 중앙값). 검증 모드는 기준점의 y로 노면 높이를 읽어 높이를 노면에서 잽니다.
 - 실제 CCTV는 렌즈 왜곡이 있을 수 있습니다. 화면 가장자리 점에서 재투영 오차가 커지면 왜곡 영향입니다.
 
+### 지도가 다른 가상 도로(City Lab)로 옮기기
+
+City Lab은 실제 사거리를 복제한 장면이 아니라서 위도·경도를 그대로 쓸 수 없습니다. 카메라 자세를 **실제 도로 중앙선 기준 값**으로 바꾼 뒤 City Lab 도로에 옮깁니다.
+
+```bash
+python mapping/scripts/road_relative_pose.py --pose calibration\<카메라ID>.pose.json --road-line <중앙선 점1 lat,lon> <중앙선 점2 lat,lon> --ref-point <사거리 중심 lat,lon> --virtual-id city-lab-<이름>
+```
+
+- `--road-line`은 중앙분리대(중앙선) 위 두 점이고, 점1 → 점2가 카메라가 보는 도로 앞쪽입니다. 결과 `<카메라ID>.road_pose.json`에는 중앙선 기준 좌우 위치, 노면에서 높이, 도로 대비 방향, 숙임·기울기·화각, 기준 지점까지 앞쪽 거리가 들어갑니다.
+- 이 파일을 Unity 프로젝트의 `simulation/TwinSightSim/RealCctv/`에 두고 **TwinSight > City Lab > Place VirtualCCTV From Real CCTV...**로 배치합니다. 1단위 = 2.92 m(실제 차로 폭 3.5 m ÷ City Lab 차로 폭 1.2단위, SUV 길이 비율과 같음), 노면 y 0.507을 씁니다.
+- 금촌신사거리 CCTV(높이 13.2 m, 도로보다 9° 오른쪽, 14.2° 내려다봄, 세로 화각 38°)를 배치한 미리보기에서 노란 중앙선·왼쪽 가장자리선·차선 점선 위치가 실제 화면과 겹쳤습니다. 실제 사거리까지 거리(255 m)는 City Lab 직선 도로보다 길어 도로 시작 쪽(X = -17)에 놓입니다.
+
 ## 결과 읽는 법
 
 객체 위치 오차를 세 가지로 나눠 봅니다. 위에서 아래로 갈수록 실제 파이프라인에 가깝습니다.

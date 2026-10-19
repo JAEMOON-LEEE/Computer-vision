@@ -61,6 +61,17 @@ python simulation/tools/copy_vehicle_assets.py
 - 현재 YOLOv8n은 이 CCTV 화면에서 차량을 거의 찾지 못합니다. 더 큰 모델이나 이 시점에 맞춘 미세조정이 필요합니다.
 - 회전형 CCTV는 화면이 바뀌면 캘리브레이션을 다시 해야 합니다.
 
+## 실제 CCTV 시점으로 City Lab 카메라 놓기
+
+실제 CCTV에서 뽑은 카메라 자세로 City Lab의 `VirtualCCTV`를 같은 높이·각도·화각에 놓습니다.
+
+1. `mapping/scripts/road_relative_pose.py`로 `<카메라ID>.road_pose.json`을 만들어 이 프로젝트의 `RealCctv/` 폴더에 넣습니다(방법은 [mapping/README.md](../../mapping/README.md)의 "지도가 다른 가상 도로로 옮기기"). 금촌신사거리 CCTV는 `RealCctv/geumchon.road_pose.json`으로 들어 있습니다.
+2. `CityTrafficLab` 씬을 열고(Play 중이 아닐 때) **TwinSight > City Lab > Place VirtualCCTV From Real CCTV...**를 엽니다. `RealCctv` 폴더의 파일이 목록에 나옵니다.
+3. **VirtualCCTV 배치**를 누르면 위치·회전·세로 화각과 저장 해상도(실제 CCTV와 같은 크기), 카메라 ID가 바뀌고 씬이 저장됩니다. **미리보기 이미지 저장**은 `Logs/virtual_cctv_preview.png`에 그 시점 화면을 저장합니다.
+
+- 실제 도로 중앙선 ↔ City Lab 주황 중앙선(z = -0.41), 실제 도로 앞쪽 ↔ +X, 1단위 = 2.92 m, 노면 y = 0.507입니다. 실제 카메라에서 사거리까지 거리가 City Lab 직선 도로보다 길면 도로 시작 쪽 끝에 맞춥니다.
+- **Build City Traffic Lab**이나 **Install Signals and Incident Scenarios**를 다시 실행하면 카메라가 원래 자리로 돌아가므로 배치를 다시 합니다.
+
 ## 3D 에셋으로 바꾸기
 
 저장소에 있는 도시와 SUV·Mini 에셋을 조합한 실험 씬은 **TwinSight → City Lab → Build City Traffic Lab**으로 생성합니다. 바퀴 분리·회전, 양방향 주행, CCTV 및 정답 저장 방법은 [도시·차량 실험 환경 안내](../../docs/city_lab.md)를 참고하세요.
