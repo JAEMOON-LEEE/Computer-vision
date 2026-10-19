@@ -26,6 +26,41 @@ python mapping/scripts/evaluate_mapping.py simulation/TwinSightSim/TwinSightExpo
 
 예제 차량은 상자 모양이라 사전학습 YOLO가 차로 인식하지 못합니다. 공간 매핑 검증(정답 박스 기준)에는 충분하고, YOLO까지 평가하려면 아래처럼 실제 3D 에셋으로 바꿉니다.
 
+## 팀 차량 에셋(Papabear Car Package) 쓰기
+
+레포 루트의 `Papabear_Papabear Car Package`는 Git LFS로 올라가 있고 전체가 1.5 GB가 넘습니다. Unity에는 FBX와 텍스처(약 90 MB)만 필요하므로 그것만 내려받습니다.
+
+```bash
+git lfs pull --include="Papabear_Papabear Car Package/**/*.fbx,Papabear_Papabear Car Package/**/*.jpg,Papabear_Papabear Car Package/**/*.png,Papabear_Papabear Car Package/**/*.PNG,Papabear_Papabear Car Package/**/*.jpeg,Papabear_Papabear Car Package/**/*.tif"
+python simulation/tools/copy_vehicle_assets.py
+```
+
+1. 복사 스크립트가 FBX와 텍스처를 `Assets/ThirdParty/Papabear`로 옮깁니다(OBJ·DAE·클립 스튜디오 파일 제외, 같은 모델 중복 제거).
+2. Unity에서 **TwinSight → Build Vehicle Prefabs**를 누르면 `Assets/TwinSight/Vehicles`에 차량 프리팹이 생깁니다. 길이 방향을 +z, 피벗을 바닥 가운데로 맞추고, 폴더 이름으로 클래스(`car`, `bus`, `motorcycle`)를 붙입니다. 앞뒤가 반대로 달리는 모델은 프리팹의 `Model` 자식을 y축으로 180° 돌립니다.
+3. **TwinSight → Create Demo Road Scene**을 다시 누르면 예제 씬이 이 프리팹들을 씁니다. 트럭은 쓸 수 있는 모델이 없어(클립 스튜디오 형식만 있음) 상자 모델을 씁니다.
+
+## 실시간 CCTV 디지털 트윈
+
+실제 UTIC CCTV를 받아 YOLO로 검출한 차량을 Unity 노면 위에 실시간으로 움직이고, CCTV 영상을 화면 오른쪽 위에 띄웁니다.
+
+1. CCTV 파이프라인을 서버 모드로 실행합니다. UTIC API는 키를 등록한 IP(학교 네트워크)에서만 열립니다.
+
+   ```bash
+   python CCTV --mode live --cctv 1273 --serve 8765
+   ```
+
+   - 실행하면 `http://127.0.0.1:8765/state`(검출 결과)와 `/frame.jpg`(최신 영상)가 열립니다. 이 PC 안에서만 접속할 수 있고, 다른 PC의 Unity에서 받으려면 `--serve-host 0.0.0.0`을 줍니다(같은 네트워크에 영상이 공개됨).
+   - UTIC 목록의 번호와 ID는 목록이 갱신될 때 바뀝니다. 실행 중 "실제로 열린 영상은 …" 경고가 나오면 `--refresh-list`로 목록을 새로 받으세요. 카메라 ID는 바뀌지 않는 CCTV 이름으로 만듭니다(예: `utic-당진청주선아산`).
+2. Unity에서 **TwinSight → Create CCTV Live Scene**을 누르고 ▶를 누릅니다. `Assets/TwinSight/Live/CctvLive.unity`가 만들어지고, `CctvLive` 오브젝트의 `CctvLiveClient`가 서버를 0.1초마다 읽습니다.
+   - 차량은 `Assets/TwinSight/Vehicles` 프리팹 중 클래스가 같은 것을 추적 ID에 따라 골라 놓고, 1.5초 동안 다시 안 보이면 지웁니다.
+   - 카메라는 차량들의 가운데를 비스듬히 내려다보도록 따라갑니다. 화면 왼쪽 위와 Inspector의 `Status`에 연결 상태가 나옵니다.
+3. 노면 좌표는 그 카메라의 캘리브레이션 파일(`calibration/<카메라ID>.json`, 미터 단위)을 씁니다. 없으면 예전 `homography_matrix.npy`(임의 픽셀 단위)를 쓰고, Unity는 `Pixel Unit Scale`(기본 1픽셀 = 0.05 m)로 줄여 놓습니다. 실제 위치와 맞추려면 CCTV 화면에서 `c`로 원본 프레임을 저장하고 `mapping/scripts/calibrate_homography.py`로 캘리브레이션합니다.
+
+알아 둘 점
+- UTIC 스트림(HLS)은 몇 초 단위 조각으로 와서, 화면과 차량 움직임이 2~5초 늦고 가끔 몇 초씩 멈춥니다.
+- 현재 YOLOv8n은 이 CCTV 화면에서 차량을 거의 찾지 못합니다. 더 큰 모델이나 이 시점에 맞춘 미세조정이 필요합니다.
+- 회전형 CCTV는 화면이 바뀌면 캘리브레이션을 다시 해야 합니다.
+
 ## 3D 에셋으로 바꾸기
 
 저장소에 있는 도시와 SUV·Mini 에셋을 조합한 실험 씬은 **TwinSight → City Lab → Build City Traffic Lab**으로 생성합니다. 바퀴 분리·회전, 양방향 주행, CCTV 및 정답 저장 방법은 [도시·차량 실험 환경 안내](../../docs/city_lab.md)를 참고하세요.
@@ -48,6 +83,7 @@ python mapping/scripts/evaluate_mapping.py simulation/TwinSightSim/TwinSightExpo
 | `RoadSurface` | 도로·인도 | 노면으로 인식할 Collider 표시 |
 | `TrafficSpawner` | 차로 오브젝트 | 경로 시작점에서 차량 프리팹을 주기적으로 생성. 같은 차로는 같은 속도 |
 | `WaypointMover` | (스포너가 자동으로 붙임) | 경로점을 따라 이동, 노면 높이에 맞춤 |
+| `CctvLiveClient` | 실시간 씬의 `CctvLive` | CCTV 파이프라인 서버에서 검출 결과·영상을 받아 차량을 움직이고 영상을 띄움 |
 
 ## 알아 둘 점
 

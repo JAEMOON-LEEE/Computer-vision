@@ -47,6 +47,7 @@ namespace TwinSight.Simulation
         bool done;
         TrafficSignalController signals;
         RoadScenarioDirector scenarios;
+        [SerializeField, HideInInspector] bool recording;
         readonly List<Vector3> pointBuffer = new List<Vector3>();
 
         void Start()
@@ -76,6 +77,7 @@ namespace TwinSight.Simulation
             gtWriter = new StreamWriter(Path.Combine(runDir, "ground_truth.jsonl"));
             Debug.Log($"TwinSight: 저장 위치 {runDir}");
 
+            recording = true;
             if (!manualCapture) StartCoroutine(CaptureLoop());
         }
 
@@ -85,6 +87,19 @@ namespace TwinSight.Simulation
             CaptureFrame(); frame++;
         }
         public void CompleteManualDataset() { if (manualCapture && !done) Finish(); }
+
+        void Update()
+        {
+            // Play 중에 스크립트가 다시 컴파일되면 저장 코루틴과 파일이 사라져 이어서 저장할 수 없다
+            if (!recording || done || gtWriter != null) return;
+            done = true;
+            Debug.LogError("TwinSight: Play 중에 스크립트가 다시 컴파일되어 저장이 중단됐습니다. " +
+                           "Play를 다시 눌러 처음부터 저장하세요. (Preferences > General > Script Changes While Playing을 " +
+                           "'Recompile After Finished Playing'으로 바꾸면 이런 일이 없습니다)");
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
 
         IEnumerator CaptureLoop()
         {
@@ -264,6 +279,7 @@ namespace TwinSight.Simulation
         void Finish()
         {
             done = true;
+            recording = false;
             CloseWriter();
             Time.captureDeltaTime = 0f;
             Debug.Log($"TwinSight: {frame}프레임 저장 완료 → {runDir}");
