@@ -72,6 +72,22 @@ python simulation/tools/copy_vehicle_assets.py
 - 실제 도로 중앙선 ↔ City Lab 주황 중앙선(z = -0.41), 실제 도로 앞쪽 ↔ +X, 1단위 = 2.92 m, 노면 y = 0.507입니다. 실제 카메라에서 사거리까지 거리가 City Lab 직선 도로보다 길면 도로 시작 쪽 끝에 맞춥니다.
 - **Build City Traffic Lab**이나 **Install Signals and Incident Scenarios**를 다시 실행하면 카메라가 원래 자리로 돌아가므로 배치를 다시 합니다.
 
+### 실제 CCTV 인식 결과 재생
+
+실제 CCTV에서 검출한 차량과 인식한 차선을 좌표로 바꾼 `RealCctv/<이름>.twin.json`(`mapping/scripts/detections_to_twin.py`)을 City Lab에 놓고 VirtualCCTV 시점으로 봅니다. 금촌신사거리 16프레임은 `RealCctv/geumchon.twin.json`으로 들어 있습니다.
+
+1. 위처럼 VirtualCCTV를 같은 CCTV 자세로 배치합니다(Play 중이 아닐 때).
+2. **TwinSight > City Lab > Replay Real CCTV Detections...**를 열면 `RealCctv`의 파일이 골라집니다.
+3. **이 프레임 배치**는 그 프레임의 차량(City Lab SUV·Mini)과 차선(하늘색·노란 선)을 씬에 놓아 Scene·Game 뷰에서 볼 수 있게 합니다. 이 물체들은 저장되지 않습니다(**지우기**로 치움).
+4. **모든 프레임 렌더링**은 `Logs/twin_replay/<이름>/frame_XXXX.png`와 `manifest.json`(차량 Unity 위치·크기, 카메라)을 저장합니다. `mapping/scripts/compare_twin_render.py`로 실제 화면과 비교합니다.
+5. **▶ Play 재생용으로 씬에 넣기**를 누른 뒤 ▶ Play하면 Game 뷰(VirtualCCTV 시점)에서 프레임을 2초마다 넘기며 재생합니다. ←/→ 프레임 넘기기, P 자동 재생 켜기·끄기. 놓인 차량 박스(주황)와 같은 차량의 실제 YOLO 박스(초록)가 겹쳐 보이고, 오른쪽 위에 같은 프레임의 실제 CCTV 화면과 YOLO 박스가 나옵니다. Game 뷰 비율을 720×480으로 맞추면 실제와 같은 범위가 보입니다. 재생 중에는 City Lab 자체 교통·사고 시나리오가 꺼지므로, 평소처럼(학습 데이터 녹화 등) 쓰려면 `RealCctvTwinPlayer` 물체를 끄거나 지웁니다.
+
+`RealCctv/`에 들어 있는 금촌신사거리 CCTV 파일: `geumchon.calibration.json`(화면 → 노면 Homography), `geumchon.points.csv`(기준점), `geumchon.pose.json`(카메라 자세), `geumchon.road_pose.json`(도로 기준 자세), `geumchon.road_context.json`(도로·차선 인식), `geumchon.twin.json`(검출 → 좌표 재생 파일), `geumchon_frames/`(원본 프레임 16장). 경로는 이 프로젝트 폴더 기준이라 다른 PC에서도 그대로 재생됩니다.
+
+- 차량 위치: VirtualCCTV 기준 `X = 카메라 X + along / 2.92`, `Z = 중앙선 - lateral / 2.92`, 방향은 중앙선 오른쪽 +X(멀어짐), 왼쪽 -X(다가옴).
+- 기본값으로 도로 영역 밖(길가 주차) 차량과 화면 가장자리에 잘린 박스는 뺍니다.
+- 금촌 16프레임에서 Unity에 놓인 차량 55대의 화면 위치가 실제 검출과 박스 아래 가운데 중앙값 2.3 px(모두 10 px 이내)로 맞았습니다(자세한 값은 mapping/README.md).
+
 ## 3D 에셋으로 바꾸기
 
 저장소에 있는 도시와 SUV·Mini 에셋을 조합한 실험 씬은 **TwinSight → City Lab → Build City Traffic Lab**으로 생성합니다. 바퀴 분리·회전, 양방향 주행, CCTV 및 정답 저장 방법은 [도시·차량 실험 환경 안내](../../docs/city_lab.md)를 참고하세요.

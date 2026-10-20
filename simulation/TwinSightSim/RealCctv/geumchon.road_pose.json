@@ -31,5 +31,5 @@
   "ref_ahead_m": 255.3491378226178,
   "ref_lateral_m": 17.130457568940653,
   "virtual_camera_id": "city-lab-geumchon",
-  "source_pose": "C:\\Code\\Computer_vison.ipynb\\calibration\\utic-국도1호선파주금촌신사거리.pose.json"
+  "source_pose": "RealCctv/geumchon.pose.json"
 }

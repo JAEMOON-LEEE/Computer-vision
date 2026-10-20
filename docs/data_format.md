@@ -203,6 +203,27 @@ CCTV 파이프라인을 `--serve 8765`로 실행하면 Unity 디지털 트윈(`C
 - `crosswalks`·`stop_lines`: 도로 좌표의 `along_m`(가까운 쪽, 먼 쪽)과 `lateral_m` 범위. 정지선 `side`는 `away`(중앙선 오른쪽, 멀어지는 차로)·`toward`(다가오는 차로). `stop_zone_basis`는 각 정지 대기 영역의 근거(`stop_line`/`crosswalk`)와 범위입니다.
 - `road_frame`: 도로 좌표계. 노면 좌표(캘리브레이션 좌표, City Lab은 월드 x·z)의 원점과 앞쪽 방향, 1단위의 m.
 
+## <이름>.twin.json (실제 인식 결과의 도로 기준 좌표, 디지털 트윈 재생)
+
+`mapping/scripts/detections_to_twin.py`가 만들고, Unity **Replay Real CCTV Detections**가 읽습니다(`simulation/TwinSightSim/RealCctv/`).
+
+```json
+{
+  "camera_id": "utic-국도1호선파주금촌신사거리", "image_size": [720, 480], "units": "m",
+  "camera": {"along_m": 30.54, "lateral_m": -6.55, "height_m": 13.17},
+  "lanes": [{"color": "white", "kind": "dashed", "along_m": [26.0, 97.1], "lateral_m": [-4.2, -4.2]}],
+  "frames": [{"frame": 0, "timestamp": 0.0, "image": "RealCctv/geumchon_frames/geumchon_20261019_162323.jpg", "objects": [
+    {"id": 1, "class_name": "truck", "confidence": 0.71, "bbox_xyxy": [476.8, 292.4, 547.7, 364.0], "pixel": [512.2, 364.0],
+     "ground_xz": [117.5, -190.5], "along_m": 31.8, "lateral_m": 6.5, "raw_along_m": 28.3, "raw_lateral_m": 5.2,
+     "direction": "away", "truncated": false, "in_road": true}]}]
+}
+```
+
+- `along_m`: 카메라에서 도로 앞쪽으로 잰 거리(m), `lateral_m`: 도로 중앙선(`road_pose.json`의 `road_line`)에서 오른쪽(+) 거리. 박스 아래 가운데를 노면에 옮긴 뒤 차량 크기로 편향을 보정한 차량 중심이다. `raw_*`는 보정 전.
+- `ground_xz`: 캘리브레이션 노면 좌표(m, 위도·경도 모드면 동·북). `direction`: 중앙선 오른쪽 `away`(멀어짐), 왼쪽 `toward`(다가옴).
+- `truncated`: 박스가 화면 가장자리에 닿음. `in_road`: road-context 도로 영역 안. `lanes`: 인식한 차선의 양 끝(같은 좌표).
+- `image`: 원본 프레임 경로. Unity 프로젝트 폴더(`simulation/TwinSightSim`) 기준 상대 경로라 다른 PC에서도 재생 화면 오른쪽 위에 실제 화면이 나온다.
+
 ## calibration/<카메라ID>.json (실제 CCTV 캘리브레이션)
 
 `mapping/scripts/calibrate_homography.py`가 만들고, CCTV 파이프라인이 읽습니다.

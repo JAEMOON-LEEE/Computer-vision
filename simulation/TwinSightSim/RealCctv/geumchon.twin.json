@@ -1,0 +1,2293 @@
+{
+ "camera_id": "utic-국도1호선파주금촌신사거리",
+ "virtual_camera_id": "city-lab-geumchon",
+ "image_size": [
+  720,
+  480
+ ],
+ "units": "m",
+ "coordinates": "along_m: 카메라에서 도로 앞쪽(+), lateral_m: 도로 중앙선에서 오른쪽(+). 우측 통행 기준 direction",
+ "camera": {
+  "along_m": 30.537659340368783,
+  "lateral_m": -6.5499379127739825,
+  "height_m": 13.169732826844898
+ },
+ "lanes": [
+  {
+   "color": "white",
+   "kind": "barrier",
+   "along_m": [
+    21.98834086280622,
+    78.73833912769356
+   ],
+   "lateral_m": [
+    -9.923801517555846,
+    -9.937834880751499
+   ]
+  },
+  {
+   "color": "white",
+   "kind": "solid",
+   "along_m": [
+    24.888971348168738,
+    92.3389692859071
+   ],
+   "lateral_m": [
+    -7.374518718926836,
+    -7.391198020205195
+   ]
+  },
+  {
+   "color": "white",
+   "kind": "dashed",
+   "along_m": [
+    25.98975025892544,
+    97.13974808353748
+   ],
+   "lateral_m": [
+    -4.224790827563318,
+    -4.242385079393638
+   ]
+  },
+  {
+   "color": "yellow",
+   "kind": "solid",
+   "along_m": [
+    24.340603438942352,
+    110.04060081869298
+   ],
+   "lateral_m": [
+    -0.7743829145565531,
+    -0.7955751476114853
+   ]
+  },
+  {
+   "color": "white",
+   "kind": "solid",
+   "along_m": [
+    24.290838360207424,
+    110.04083573842928
+   ],
+   "lateral_m": [
+    0.1756294205941613,
+    0.15442482334259242
+   ]
+  },
+  {
+   "color": "white",
+   "kind": "solid",
+   "along_m": [
+    24.241036188882518,
+    105.59103370163294
+   ],
+   "lateral_m": [
+    0.9756417603310598,
+    0.9555252123845394
+   ]
+  },
+  {
+   "color": "white",
+   "kind": "dashed",
+   "along_m": [
+    24.791802752258626,
+    108.09180020538844
+   ],
+   "lateral_m": [
+    4.075505659386444,
+    4.054906907770642
+   ]
+  },
+  {
+   "color": "white",
+   "kind": "solid",
+   "along_m": [
+    19.042643693435068,
+    110.0426409111399
+   ],
+   "lateral_m": [
+    7.476927438047112,
+    7.454424600147474
+   ]
+  },
+  {
+   "color": "white",
+   "kind": "barrier",
+   "along_m": [
+    18.94291570881878,
+    108.39291297391438
+   ],
+   "lateral_m": [
+    8.576952132808257,
+    8.554832585004725
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "frame": 0,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_162323.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.724769,
+     "bbox_xyxy": [
+      333.29,
+      190.211,
+      359.823,
+      213.191
+     ],
+     "pixel": [
+      346.5565,
+      213.191
+     ],
+     "ground_xz": [
+      95.80008696012999,
+      -166.38646969450093
+     ],
+     "along_m": 63.9359917744868,
+     "lateral_m": 2.165156122182289,
+     "raw_along_m": 61.62262348544606,
+     "raw_lateral_m": 1.8659393162405804,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "truck",
+     "confidence": 0.705186,
+     "bbox_xyxy": [
+      476.754,
+      292.397,
+      547.698,
+      364.038
+     ],
+     "pixel": [
+      512.226,
+      364.038
+     ],
+     "ground_xz": [
+      117.52007621210738,
+      -190.47202142338082
+     ],
+     "along_m": 31.791419610762254,
+     "lateral_m": 6.47772097406194,
+     "raw_along_m": 28.2963890841216,
+     "raw_lateral_m": 5.162525370524021,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.608133,
+     "bbox_xyxy": [
+      354.696,
+      134.766,
+      366.682,
+      145.814
+     ],
+     "pixel": [
+      360.689,
+      145.814
+     ],
+     "ground_xz": [
+      72.08652220163114,
+      -114.42803199508182
+     ],
+     "along_m": 120.20457070887076,
+     "lateral_m": 11.955938850081766,
+     "raw_along_m": 117.8138488601355,
+     "raw_lateral_m": 11.5977598889008,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.511325,
+     "bbox_xyxy": [
+      311.203,
+      95.495,
+      319.521,
+      103.305
+     ],
+     "pixel": [
+      315.36199999999997,
+      103.305
+     ],
+     "ground_xz": [
+      -5.7661178247005935,
+      6.59658786577209
+     ],
+     "along_m": 264.0476170924828,
+     "lateral_m": 16.09963027389773,
+     "raw_along_m": 261.39956612544944,
+     "raw_lateral_m": 15.87582548381442,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 4,
+     "class_name": "car",
+     "confidence": 0.505549,
+     "bbox_xyxy": [
+      342.95,
+      155.43,
+      361.419,
+      173.337
+     ],
+     "pixel": [
+      352.18449999999996,
+      173.337
+     ],
+     "ground_xz": [
+      85.20828898418277,
+      -144.01329787527357
+     ],
+     "along_m": 88.38025042740315,
+     "lateral_m": 6.066850693169714,
+     "raw_along_m": 86.05655123457024,
+     "raw_lateral_m": 5.7473777101446215,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 1,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_162353.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.615859,
+     "bbox_xyxy": [
+      354.873,
+      134.977,
+      366.778,
+      145.97
+     ],
+     "pixel": [
+      360.82550000000003,
+      145.97
+     ],
+     "ground_xz": [
+      72.21364856234159,
+      -114.63502801390524
+     ],
+     "along_m": 119.96195380676892,
+     "lateral_m": 11.943876420362693,
+     "raw_along_m": 117.57170900812068,
+     "raw_lateral_m": 11.585294924210688,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.514068,
+     "bbox_xyxy": [
+      249.639,
+      109.717,
+      258.822,
+      117.419
+     ],
+     "pixel": [
+      254.2305,
+      117.419
+     ],
+     "ground_xz": [
+      19.713285004777024,
+      -71.10361989404888
+     ],
+     "along_m": 185.54206536862495,
+     "lateral_m": -6.778319874636163,
+     "raw_along_m": 183.0738994123137,
+     "raw_lateral_m": -6.773730402989565,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 2,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_162424.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.653242,
+     "bbox_xyxy": [
+      431.008,
+      321.626,
+      472.49,
+      362.215
+     ],
+     "pixel": [
+      451.749,
+      362.215
+     ],
+     "ground_xz": [
+      115.17271253261478,
+      -193.0120405528293
+     ],
+     "along_m": 31.021940122180652,
+     "lateral_m": 3.1058202135979864,
+     "raw_along_m": 28.701811075726873,
+     "raw_lateral_m": 2.4460412862614023,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.55342,
+     "bbox_xyxy": [
+      275.638,
+      147.432,
+      291.275,
+      165.593
+     ],
+     "pixel": [
+      283.4565,
+      165.593
+     ],
+     "ground_xz": [
+      74.2131657515322,
+      -143.29551463560708
+     ],
+     "along_m": 95.18474872816563,
+     "lateral_m": -2.5995643993145396,
+     "raw_along_m": 92.8535742988995,
+     "raw_lateral_m": -2.6909368503107887,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.494258,
+     "bbox_xyxy": [
+      399.554,
+      285.752,
+      455.426,
+      334.443
+     ],
+     "pixel": [
+      427.49,
+      334.443
+     ],
+     "ground_xz": [
+      112.95050592596198,
+      -190.43606305004758
+     ],
+     "along_m": 34.40290321427006,
+     "lateral_m": 2.727731774978077,
+     "raw_along_m": 32.078402896514,
+     "raw_lateral_m": 2.1510725015340553,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.466078,
+     "bbox_xyxy": [
+      355.172,
+      135.093,
+      366.824,
+      145.911
+     ],
+     "pixel": [
+      360.99800000000005,
+      145.911
+     ],
+     "ground_xz": [
+      72.19730302828245,
+      -114.53170331722711
+     ],
+     "along_m": 120.0564412115425,
+     "lateral_m": 11.988768510606526,
+     "raw_along_m": 117.66596075880136,
+     "raw_lateral_m": 11.62955254909479,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 4,
+     "class_name": "car",
+     "confidence": 0.445948,
+     "bbox_xyxy": [
+      247.038,
+      113.715,
+      256.858,
+      122.963
+     ],
+     "pixel": [
+      251.948,
+      122.963
+     ],
+     "ground_xz": [
+      29.677112456198124,
+      -86.55103487931345
+     ],
+     "along_m": 167.16698227141063,
+     "lateral_m": -7.285082520396724,
+     "raw_along_m": 164.72828724494335,
+     "raw_lateral_m": -7.272773114024333,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 3,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_162444.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "bus",
+     "confidence": 0.698057,
+     "bbox_xyxy": [
+      236.146,
+      255.098,
+      287.761,
+      355.563
+     ],
+     "pixel": [
+      261.9535,
+      355.563
+     ],
+     "ground_xz": [
+      104.95753486961989,
+      -194.3649527401109
+     ],
+     "along_m": 35.677258262124546,
+     "lateral_m": -6.087016078262882,
+     "raw_along_m": 30.087666191202814,
+     "raw_lateral_m": -6.137027078183835,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.693488,
+     "bbox_xyxy": [
+      280.61,
+      167.484,
+      300.406,
+      187.863
+     ],
+     "pixel": [
+      290.50800000000004,
+      187.863
+     ],
+     "ground_xz": [
+      84.26818686890219,
+      -157.79023448656753
+     ],
+     "along_m": 77.54420007804686,
+     "lateral_m": -2.4928097676769765,
+     "raw_along_m": 75.24291409679523,
+     "raw_lateral_m": -2.605957079136353,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.655762,
+     "bbox_xyxy": [
+      339.313,
+      185.939,
+      360.178,
+      213.537
+     ],
+     "pixel": [
+      349.7455,
+      213.537
+     ],
+     "ground_xz": [
+      96.12543141157478,
+      -166.3571197776304
+     ],
+     "along_m": 63.77638794147679,
+     "lateral_m": 2.4501772550737475,
+     "raw_along_m": 61.46309062669636,
+     "raw_lateral_m": 2.140301780250602,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.63909,
+     "bbox_xyxy": [
+      308.805,
+      147.656,
+      326.327,
+      163.138
+     ],
+     "pixel": [
+      317.56600000000003,
+      163.138
+     ],
+     "ground_xz": [
+      76.83152415910315,
+      -138.3324889826796
+     ],
+     "along_m": 97.8003136680733,
+     "lateral_m": 2.3649340070946616,
+     "raw_along_m": 95.46104519925524,
+     "raw_lateral_m": 2.1598571796588857,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 4,
+     "class_name": "car",
+     "confidence": 0.587146,
+     "bbox_xyxy": [
+      382.229,
+      263.243,
+      424.966,
+      302.009
+     ],
+     "pixel": [
+      403.59749999999997,
+      302.009
+     ],
+     "ground_xz": [
+      109.9502556243582,
+      -186.51229622612695
+     ],
+     "along_m": 39.33550946551974,
+     "lateral_m": 2.46919061596015,
+     "raw_along_m": 37.00875991889412,
+     "raw_lateral_m": 1.974396871668501,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 5,
+     "class_name": "car",
+     "confidence": 0.585106,
+     "bbox_xyxy": [
+      299.898,
+      231.898,
+      332.552,
+      271.598
+     ],
+     "pixel": [
+      316.225,
+      271.598
+     ],
+     "ground_xz": [
+      102.47016474976937,
+      -184.03533066078447
+     ],
+     "along_m": 45.60549206745117,
+     "lateral_m": -2.3030663003716625,
+     "raw_along_m": 43.26768150443868,
+     "raw_lateral_m": -2.503533605232796,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 6,
+     "class_name": "car",
+     "confidence": 0.432488,
+     "bbox_xyxy": [
+      354.891,
+      134.422,
+      366.924,
+      145.939
+     ],
+     "pixel": [
+      360.9075,
+      145.939
+     ],
+     "ground_xz": [
+      72.20384357134209,
+      -114.58172776778686
+     ],
+     "along_m": 120.01147113109695,
+     "lateral_m": 11.965901149104978,
+     "raw_along_m": 117.62110470866256,
+     "raw_lateral_m": 11.607016629784434,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    }
+   ]
+  },
+  {
+   "frame": 4,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174650.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.561846,
+     "bbox_xyxy": [
+      354.13,
+      135.545,
+      366.79,
+      146.325
+     ],
+     "pixel": [
+      360.46000000000004,
+      146.325
+     ],
+     "ground_xz": [
+      72.40596968715309,
+      -115.17832734603287
+     ],
+     "along_m": 119.40502132930177,
+     "lateral_m": 11.795593599775046,
+     "raw_along_m": 117.01602052062233,
+     "raw_lateral_m": 11.438467238288274,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.514944,
+     "bbox_xyxy": [
+      249.264,
+      111.258,
+      259.251,
+      120.87
+     ],
+     "pixel": [
+      254.2575,
+      120.87
+     ],
+     "ground_xz": [
+      26.418172062270898,
+      -80.84429367976732
+     ],
+     "along_m": 173.71686278387682,
+     "lateral_m": -6.7496827798446795,
+     "raw_along_m": 171.26697101198957,
+     "raw_lateral_m": -6.745219717695042,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.448364,
+     "bbox_xyxy": [
+      415.153,
+      142.604,
+      428.799,
+      153.543
+     ],
+     "pixel": [
+      421.976,
+      153.543
+     ],
+     "ground_xz": [
+      85.0524289382684,
+      -118.25437386830035
+     ],
+     "along_m": 109.72173653431909,
+     "lateral_m": 20.49208653523649,
+     "raw_along_m": 107.34263028775098,
+     "raw_lateral_m": 19.921397461517472,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    }
+   ]
+  },
+  {
+   "frame": 5,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174706.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.667118,
+     "bbox_xyxy": [
+      272.778,
+      148.952,
+      289.29,
+      166.94
+     ],
+     "pixel": [
+      281.034,
+      166.94
+     ],
+     "ground_xz": [
+      74.63391638629379,
+      -144.5835612318753
+     ],
+     "along_m": 93.8842698465468,
+     "lateral_m": -2.980155793428905,
+     "raw_along_m": 91.5555122110456,
+     "raw_lateral_m": -3.063470074619958,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.523016,
+     "bbox_xyxy": [
+      300.873,
+      139.113,
+      316.197,
+      154.204
+     ],
+     "pixel": [
+      308.53499999999997,
+      154.204
+     ],
+     "ground_xz": [
+      70.67978838354621,
+      -130.30069403130904
+     ],
+     "along_m": 107.90300640962383,
+     "lateral_m": 1.8271770332195862,
+     "raw_along_m": 105.54627992829057,
+     "raw_lateral_m": 1.650953360793428,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.464763,
+     "bbox_xyxy": [
+      299.885,
+      233.258,
+      330.149,
+      269.985
+     ],
+     "pixel": [
+      315.017,
+      269.985
+     ],
+     "ground_xz": [
+      102.21853990845005,
+      -183.75992378603442
+     ],
+     "along_m": 45.97489591360675,
+     "lateral_m": -2.3550740485831008,
+     "raw_along_m": 43.637320694135845,
+     "raw_lateral_m": -2.551486245235138,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.437332,
+     "bbox_xyxy": [
+      354.238,
+      135.158,
+      366.663,
+      145.979
+     ],
+     "pixel": [
+      360.45050000000003,
+      145.979
+     ],
+     "ground_xz": [
+      72.16690592849348,
+      -114.68982859354533
+     ],
+     "along_m": 119.94314807350486,
+     "lateral_m": 11.874347133408557,
+     "raw_along_m": 117.55302518032434,
+     "raw_lateral_m": 11.517086018157276,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 4,
+     "class_name": "car",
+     "confidence": 0.424585,
+     "bbox_xyxy": [
+      416.136,
+      143.042,
+      428.588,
+      153.526
+     ],
+     "pixel": [
+      422.362,
+      153.526
+     ],
+     "ground_xz": [
+      85.09603789240369,
+      -118.19305112349343
+     ],
+     "along_m": 109.7476941735863,
+     "lateral_m": 20.562715289119737,
+     "raw_along_m": 107.3684606748682,
+     "raw_lateral_m": 19.99063068083458,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 5,
+     "class_name": "car",
+     "confidence": 0.4143,
+     "bbox_xyxy": [
+      352.138,
+      166.24,
+      374.508,
+      191.053
+     ],
+     "pixel": [
+      363.323,
+      191.053
+     ],
+     "ground_xz": [
+      92.0556998476112,
+      -154.90958732475832
+     ],
+     "along_m": 75.52103498518684,
+     "lateral_m": 5.560157975424524,
+     "raw_along_m": 73.21982674330658,
+     "raw_lateral_m": 5.206579867414798,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 6,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174720.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "bus",
+     "confidence": 0.815234,
+     "bbox_xyxy": [
+      336.138,
+      134.266,
+      366.457,
+      171.723
+     ],
+     "pixel": [
+      351.2975,
+      171.723
+     ],
+     "ground_xz": [
+      83.02744599164429,
+      -139.92495472249743
+     ],
+     "along_m": 92.98568045001502,
+     "lateral_m": 6.577380026098726,
+     "raw_along_m": 87.44292383869089,
+     "raw_lateral_m": 5.822454972222483,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.732159,
+     "bbox_xyxy": [
+      278.246,
+      161.74,
+      296.538,
+      180.441
+     ],
+     "pixel": [
+      287.392,
+      180.441
+     ],
+     "ground_xz": [
+      81.27763772218798,
+      -153.64283088038047
+     ],
+     "along_m": 82.65584558418252,
+     "lateral_m": -2.616991453643909,
+     "raw_along_m": 80.34580022191412,
+     "raw_lateral_m": -2.7203837372116784,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.70963,
+     "bbox_xyxy": [
+      476.907,
+      315.155,
+      532.291,
+      362.331
+     ],
+     "pixel": [
+      504.59900000000005,
+      362.331
+     ],
+     "ground_xz": [
+      117.44772579828518,
+      -191.70994648383737
+     ],
+     "along_m": 30.810898398434567,
+     "lateral_m": 5.718595694636971,
+     "raw_along_m": 28.504513430126565,
+     "raw_lateral_m": 4.877700964705873,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.587437,
+     "bbox_xyxy": [
+      243.581,
+      273.214,
+      282.576,
+      330.322
+     ],
+     "pixel": [
+      263.0785,
+      330.322
+     ],
+     "ground_xz": [
+      105.0678616046459,
+      -194.42154077108788
+     ],
+     "along_m": 35.568233269631115,
+     "lateral_m": -6.027958947252657,
+     "raw_along_m": 33.20575530438626,
+     "raw_lateral_m": -6.0528213786322205,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 4,
+     "class_name": "car",
+     "confidence": 0.573789,
+     "bbox_xyxy": [
+      329.093,
+      178.244,
+      357.478,
+      200.661
+     ],
+     "pixel": [
+      343.2855,
+      200.661
+     ],
+     "ground_xz": [
+      92.72839670833898,
+      -161.11409305455012
+     ],
+     "along_m": 70.02168589045775,
+     "lateral_m": 2.609637351576168,
+     "raw_along_m": 67.71451460811181,
+     "raw_lateral_m": 2.322122289771507,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 5,
+     "class_name": "car",
+     "confidence": 0.520664,
+     "bbox_xyxy": [
+      298.358,
+      249.876,
+      334.239,
+      297.545
+     ],
+     "pixel": [
+      316.2985,
+      297.545
+     ],
+     "ground_xz": [
+      105.0283082238022,
+      -188.5474708878046
+     ],
+     "along_m": 40.437216018605845,
+     "lateral_m": -2.741734905313583,
+     "raw_along_m": 38.09315661270657,
+     "raw_lateral_m": -2.942984289964017,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 6,
+     "class_name": "car",
+     "confidence": 0.450423,
+     "bbox_xyxy": [
+      246.24,
+      121.828,
+      257.923,
+      134.035
+     ],
+     "pixel": [
+      252.0815,
+      134.035
+     ],
+     "ground_xz": [
+      45.34528703161968,
+      -109.13927459908871
+     ],
+     "along_m": 139.67711217523913,
+     "lateral_m": -7.119824360130696,
+     "raw_along_m": 137.28056640932377,
+     "raw_lateral_m": -7.108174403187644,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 7,
+     "class_name": "car",
+     "confidence": 0.432807,
+     "bbox_xyxy": [
+      265.924,
+      127.453,
+      278.146,
+      141.206
+     ],
+     "pixel": [
+      272.03499999999997,
+      141.206
+     ],
+     "ground_xz": [
+      55.80701568448947,
+      -117.91831543505931
+     ],
+     "along_m": 126.52272143680781,
+     "lateral_m": -3.448131466302402,
+     "raw_along_m": 124.1413048080629,
+     "raw_lateral_m": -3.5031412549668084,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 8,
+     "class_name": "car",
+     "confidence": 0.430781,
+     "bbox_xyxy": [
+      248.146,
+      154.645,
+      264.63,
+      170.059
+     ],
+     "pixel": [
+      256.388,
+      170.059
+     ],
+     "ground_xz": [
+      73.53587977414011,
+      -148.89229230164517
+     ],
+     "along_m": 90.94957236834219,
+     "lateral_m": -6.320574710967463,
+     "raw_along_m": 88.6275367635165,
+     "raw_lateral_m": -6.323259994640635,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 7,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174736.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.707657,
+     "bbox_xyxy": [
+      318.803,
+      162.002,
+      337.967,
+      179.198
+     ],
+     "pixel": [
+      328.385,
+      179.198
+     ],
+     "ground_xz": [
+      84.91193392186135,
+      -149.96712838553654
+     ],
+     "along_m": 83.63524682243138,
+     "lateral_m": 2.4584071427304512,
+     "raw_along_m": 81.32209013095343,
+     "raw_lateral_m": 2.2197631203351107,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.648457,
+     "bbox_xyxy": [
+      250.152,
+      160.337,
+      264.912,
+      178.137
+     ],
+     "pixel": [
+      257.532,
+      178.137
+     ],
+     "ground_xz": [
+      77.38092077697138,
+      -154.27492165803156
+     ],
+     "along_m": 84.33596541832972,
+     "lateral_m": -6.189265105708498,
+     "raw_along_m": 82.02418656129072,
+     "raw_lateral_m": -6.195637647073706,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.585506,
+     "bbox_xyxy": [
+      353.792,
+      135.028,
+      366.664,
+      146.186
+     ],
+     "pixel": [
+      360.22799999999995,
+      146.186
+     ],
+     "ground_xz": [
+      72.27804864600904,
+      -115.0080728781755
+     ],
+     "along_m": 119.61777214897467,
+     "lateral_m": 11.78624131014672,
+     "raw_along_m": 117.22837759890425,
+     "raw_lateral_m": 11.429861317681928,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 3,
+     "class_name": "truck",
+     "confidence": 0.529732,
+     "bbox_xyxy": [
+      247.258,
+      293.537,
+      290.474,
+      355.416
+     ],
+     "pixel": [
+      268.866,
+      355.416
+     ],
+     "ground_xz": [
+      106.36685245387392,
+      -195.83388051347626
+     ],
+     "along_m": 33.66899421982382,
+     "lateral_m": -5.754149148313856,
+     "raw_along_m": 30.0806965172709,
+     "raw_lateral_m": -5.8210542984618145,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 4,
+     "class_name": "bus",
+     "confidence": 0.452691,
+     "bbox_xyxy": [
+      297.818,
+      122.766,
+      319.666,
+      152.057
+     ],
+     "pixel": [
+      308.74199999999996,
+      152.057
+     ],
+     "ground_xz": [
+      67.69168941476505,
+      -125.08312438212052
+     ],
+     "along_m": 113.89625062548117,
+     "lateral_m": 2.3096625360657517,
+     "raw_along_m": 108.30262933120991,
+     "raw_lateral_m": 1.889750531681998,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 8,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174750.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.601271,
+     "bbox_xyxy": [
+      357.879,
+      219.962,
+      396.604,
+      260.332
+     ],
+     "pixel": [
+      377.2415,
+      260.332
+     ],
+     "ground_xz": [
+      104.93156720658537,
+      -179.36077130019032
+     ],
+     "along_m": 48.07172678784682,
+     "lateral_m": 2.3689454262888274,
+     "raw_along_m": 45.74689970715641,
+     "raw_lateral_m": 1.9645622381657761,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.592073,
+     "bbox_xyxy": [
+      317.753,
+      165.805,
+      341.446,
+      186.351
+     ],
+     "pixel": [
+      329.59950000000003,
+      186.351
+     ],
+     "ground_xz": [
+      87.47003639359173,
+      -154.38162770529206
+     ],
+     "along_m": 78.54755645458388,
+     "lateral_m": 2.0748719801874853,
+     "raw_along_m": 76.24418424076316,
+     "raw_lateral_m": 1.833220481483852,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.49926,
+     "bbox_xyxy": [
+      354.122,
+      135.267,
+      366.73,
+      146.243
+     ],
+     "pixel": [
+      360.42600000000004,
+      146.243
+     ],
+     "ground_xz": [
+      72.34503745032518,
+      -115.06649150544895
+     ],
+     "along_m": 119.53172275222053,
+     "lateral_m": 11.808506467556178,
+     "raw_along_m": 117.14246467347465,
+     "raw_lateral_m": 11.45145965254809,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    }
+   ]
+  },
+  {
+   "frame": 9,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174807.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.815201,
+     "bbox_xyxy": [
+      323.408,
+      171.911,
+      349.671,
+      197.005
+     ],
+     "pixel": [
+      336.5395,
+      197.005
+     ],
+     "ground_xz": [
+      91.204536905469,
+      -159.72989549011467
+     ],
+     "along_m": 72.02475644502252,
+     "lateral_m": 2.134390100529376,
+     "raw_along_m": 69.71952010678879,
+     "raw_lateral_m": 1.8695361907643655,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.746407,
+     "bbox_xyxy": [
+      385.249,
+      203.055,
+      417.55,
+      231.173
+     ],
+     "pixel": [
+      401.3995,
+      231.173
+     ],
+     "ground_xz": [
+      103.03149420654906,
+      -170.2164866835551
+     ],
+     "along_m": 56.690126930306754,
+     "lateral_m": 5.96775044183847,
+     "raw_along_m": 54.375516123099594,
+     "raw_lateral_m": 5.483044480678009,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.494415,
+     "bbox_xyxy": [
+      353.868,
+      135.71,
+      366.66,
+      146.308
+     ],
+     "pixel": [
+      360.264,
+      146.308
+     ],
+     "ground_xz": [
+      72.36677162628145,
+      -115.17620696018061
+     ],
+     "along_m": 119.42891780677203,
+     "lateral_m": 11.764449701869136,
+     "raw_along_m": 117.03990972663453,
+     "raw_lateral_m": 11.408002427158344,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.448151,
+     "bbox_xyxy": [
+      415.733,
+      143.139,
+      428.682,
+      153.592
+     ],
+     "pixel": [
+      422.2075,
+      153.592
+     ],
+     "ground_xz": [
+      85.10730734261448,
+      -118.2928510337979
+     ],
+     "along_m": 109.65898302973577,
+     "lateral_m": 20.515626484064132,
+     "raw_along_m": 107.27998877409755,
+     "raw_lateral_m": 19.944145727831625,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    }
+   ]
+  },
+  {
+   "frame": 10,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174821.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.817109,
+     "bbox_xyxy": [
+      418.035,
+      322.517,
+      480.884,
+      379.851
+     ],
+     "pixel": [
+      449.45950000000005,
+      379.851
+     ],
+     "ground_xz": [
+      115.66830314921064,
+      -194.82138119961382
+     ],
+     "along_m": 29.24906213478858,
+     "lateral_m": 2.492446528814245,
+     "raw_along_m": 26.927533591133653,
+     "raw_lateral_m": 1.8402541562589276,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.736099,
+     "bbox_xyxy": [
+      365.833,
+      233.206,
+      403.509,
+      266.828
+     ],
+     "pixel": [
+      384.67100000000005,
+      266.828
+     ],
+     "ground_xz": [
+      106.05057346709683,
+      -180.5488885966366
+     ],
+     "along_m": 46.45918297473464,
+     "lateral_m": 2.6209378308812354,
+     "raw_along_m": 44.134247142769816,
+     "raw_lateral_m": 2.1912529530020755,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.629706,
+     "bbox_xyxy": [
+      302.13,
+      140.651,
+      318.271,
+      156.316
+     ],
+     "pixel": [
+      310.20050000000003,
+      156.316
+     ],
+     "ground_xz": [
+      72.18542928697904,
+      -132.38660199263757
+     ],
+     "along_m": 105.33125548663179,
+     "lateral_m": 1.890924529746425,
+     "raw_along_m": 102.97897699850833,
+     "raw_lateral_m": 1.7094482012905954,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.610692,
+     "bbox_xyxy": [
+      292.803,
+      130.585,
+      305.998,
+      138.599
+     ],
+     "pixel": [
+      299.40049999999997,
+      138.599
+     ],
+     "ground_xz": [
+      57.30698091931276,
+      -110.7189905729578
+     ],
+     "along_m": 131.6153279773159,
+     "lateral_m": 1.8571048902915532,
+     "raw_along_m": 129.21790942986692,
+     "raw_lateral_m": 1.7089973182036249,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 4,
+     "class_name": "car",
+     "confidence": 0.590934,
+     "bbox_xyxy": [
+      343.573,
+      200.214,
+      371.882,
+      225.298
+     ],
+     "pixel": [
+      357.72749999999996,
+      225.298
+     ],
+     "ground_xz": [
+      98.90339523401524,
+      -170.298876745014
+     ],
+     "along_m": 58.954530432559615,
+     "lateral_m": 2.515147651442952,
+     "raw_along_m": 56.63712266321746,
+     "raw_lateral_m": 2.1779175948854554,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 5,
+     "class_name": "car",
+     "confidence": 0.575469,
+     "bbox_xyxy": [
+      314.168,
+      154.412,
+      333.902,
+      177.151
+     ],
+     "pixel": [
+      324.03499999999997,
+      177.151
+     ],
+     "ground_xz": [
+      83.70622008992127,
+      -148.88814139540753
+     ],
+     "along_m": 85.20673825545916,
+     "lateral_m": 2.0732144048450905,
+     "raw_along_m": 82.89074268378025,
+     "raw_lateral_m": 1.8487290863973735,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 6,
+     "class_name": "car",
+     "confidence": 0.476126,
+     "bbox_xyxy": [
+      319.368,
+      339.781,
+      380.868,
+      423.6
+     ],
+     "pixel": [
+      350.118,
+      423.6
+     ],
+     "ground_xz": [
+      113.3313766738692,
+      -200.42554084626732
+     ],
+     "along_m": 25.94549458550805,
+     "lateral_m": -2.602087026249642,
+     "raw_along_m": 23.593684219526573,
+     "raw_lateral_m": -2.9183891435189704,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 7,
+     "class_name": "car",
+     "confidence": 0.456848,
+     "bbox_xyxy": [
+      354.359,
+      135.329,
+      366.141,
+      145.903
+     ],
+     "pixel": [
+      360.25,
+      145.903
+     ],
+     "ground_xz": [
+      72.08607179132451,
+      -114.60418718363835
+     ],
+     "along_m": 120.05948134577795,
+     "lateral_m": 11.856039250272026,
+     "raw_along_m": 117.66915970577008,
+     "raw_lateral_m": 11.499444597101492,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 10,
+     "class_name": "car",
+     "confidence": 0.407805,
+     "bbox_xyxy": [
+      220.482,
+      102.901,
+      234.17,
+      112.567
+     ],
+     "pixel": [
+      227.326,
+      112.567
+     ],
+     "ground_xz": [
+      3.1726100817280276,
+      -60.649636725379594
+     ],
+     "along_m": 203.51304853406856,
+     "lateral_m": -14.51934403608559,
+     "raw_along_m": 201.03451446231819,
+     "raw_lateral_m": -14.42200820941487,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": false
+    }
+   ]
+  },
+  {
+   "frame": 11,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174837.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.689655,
+     "bbox_xyxy": [
+      291.073,
+      124.799,
+      303.435,
+      135.821
+     ],
+     "pixel": [
+      297.254,
+      135.821
+     ],
+     "ground_xz": [
+      54.21474539479703,
+      -106.37240573065955
+     ],
+     "along_m": 136.94876885608105,
+     "lateral_m": 1.7615605388602773,
+     "raw_along_m": 134.5425308263674,
+     "raw_lateral_m": 1.6202418889502967,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.651772,
+     "bbox_xyxy": [
+      320.685,
+      165.601,
+      341.574,
+      183.651
+     ],
+     "pixel": [
+      331.1295,
+      183.651
+     ],
+     "ground_xz": [
+      86.73623854415135,
+      -152.644377754872
+     ],
+     "along_m": 80.39554062303245,
+     "lateral_m": 2.450971949931259,
+     "raw_along_m": 78.08857095614397,
+     "raw_lateral_m": 2.203872148785017,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.5298,
+     "bbox_xyxy": [
+      354.104,
+      135.56,
+      366.546,
+      146.367
+     ],
+     "pixel": [
+      360.325,
+      146.367
+     ],
+     "ground_xz": [
+      72.4157057996839,
+      -115.25247839307721
+     ],
+     "along_m": 119.33833913868662,
+     "lateral_m": 11.761731303341637,
+     "raw_along_m": 116.94950694638095,
+     "raw_lateral_m": 11.405098605755182,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.528938,
+     "bbox_xyxy": [
+      415.641,
+      143.038,
+      428.715,
+      153.426
+     ],
+     "pixel": [
+      422.178,
+      153.426
+     ],
+     "ground_xz": [
+      85.0226758100242,
+      -118.08459674747212
+     ],
+     "along_m": 109.87862846780789,
+     "lateral_m": 20.563461885345543,
+     "raw_along_m": 107.4991111274878,
+     "raw_lateral_m": 19.991959808059956,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    }
+   ]
+  },
+  {
+   "frame": 12,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174851.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.558545,
+     "bbox_xyxy": [
+      415.23,
+      142.622,
+      428.613,
+      153.404
+     ],
+     "pixel": [
+      421.92150000000004,
+      153.404
+     ],
+     "ground_xz": [
+      84.9774488443291,
+      -118.08296224826569
+     ],
+     "along_m": 109.90553038630043,
+     "lateral_m": 20.527069072936218,
+     "raw_along_m": 107.52599169107174,
+     "raw_lateral_m": 19.956469002373446,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.533492,
+     "bbox_xyxy": [
+      354.243,
+      135.614,
+      366.881,
+      146.539
+     ],
+     "pixel": [
+      360.562,
+      146.539
+     ],
+     "ground_xz": [
+      72.5662490815336,
+      -115.46761493643821
+     ],
+     "along_m": 119.0757749740844,
+     "lateral_m": 11.764390526183655,
+     "raw_along_m": 116.68743996801905,
+     "raw_lateral_m": 11.40700980631362,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.515607,
+     "bbox_xyxy": [
+      346.566,
+      168.06,
+      356.534,
+      174.796
+     ],
+     "pixel": [
+      351.54999999999995,
+      174.796
+     ],
+     "ground_xz": [
+      85.69256828937326,
+      -145.16390743906257
+     ],
+     "along_m": 87.15727563344777,
+     "lateral_m": 5.816328304812369,
+     "raw_along_m": 84.83611318145859,
+     "raw_lateral_m": 5.499336749648197,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.51159,
+     "bbox_xyxy": [
+      318.818,
+      160.509,
+      340.402,
+      183.837
+     ],
+     "pixel": [
+      329.61,
+      183.837
+     ],
+     "ground_xz": [
+      86.6496293489328,
+      -152.86254892656632
+     ],
+     "along_m": 80.26446415667468,
+     "lateral_m": 2.256244517806183,
+     "raw_along_m": 77.95777555556478,
+     "raw_lateral_m": 2.0142103038597816,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 13,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174907.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.60781,
+     "bbox_xyxy": [
+      354.396,
+      135.006,
+      366.661,
+      146.379
+     ],
+     "pixel": [
+      360.5285,
+      146.379
+     ],
+     "ground_xz": [
+      72.4525067962112,
+      -115.24671679378147
+     ],
+     "along_m": 119.32230035189465,
+     "lateral_m": 11.795350742511385,
+     "raw_along_m": 116.9334574836264,
+     "raw_lateral_m": 11.438010282224695,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.442357,
+     "bbox_xyxy": [
+      415.315,
+      142.883,
+      428.645,
+      153.494
+     ],
+     "pixel": [
+      421.98,
+      153.494
+     ],
+     "ground_xz": [
+      85.02914539310557,
+      -118.19162456009708
+     ],
+     "along_m": 109.78666558843852,
+     "lateral_m": 20.508328982296355,
+     "raw_along_m": 107.40740264568694,
+     "raw_lateral_m": 19.937588176670268,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.412788,
+     "bbox_xyxy": [
+      297.994,
+      111.761,
+      307.792,
+      121.674
+     ],
+     "pixel": [
+      302.89300000000003,
+      121.674
+     ],
+     "ground_xz": [
+      36.71061144848217,
+      -74.56461832699283
+     ],
+     "along_m": 173.0829135764951,
+     "lateral_m": 5.290530650885562,
+     "raw_along_m": 170.6100784899609,
+     "raw_lateral_m": 5.125488576907292,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  },
+  {
+   "frame": 14,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174922.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.586146,
+     "bbox_xyxy": [
+      354.103,
+      135.342,
+      366.778,
+      146.532
+     ],
+     "pixel": [
+      360.44050000000004,
+      146.532
+     ],
+     "ground_xz": [
+      72.54444081454852,
+      -115.47129145549827
+     ],
+     "along_m": 119.085063222451,
+     "lateral_m": 11.7443195086815,
+     "raw_along_m": 116.69673503298506,
+     "raw_lateral_m": 11.387361348824182,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    }
+   ]
+  },
+  {
+   "frame": 15,
+   "timestamp": 0.0,
+   "image": "RealCctv/geumchon_frames/geumchon_20261019_174938.jpg",
+   "objects": [
+    {
+     "id": 0,
+     "class_name": "car",
+     "confidence": 0.736947,
+     "bbox_xyxy": [
+      405.341,
+      231.471,
+      445.394,
+      265.843
+     ],
+     "pixel": [
+      425.3675,
+      265.843
+     ],
+     "ground_xz": [
+      108.44690104265695,
+      -178.80141556862486
+     ],
+     "along_m": 46.547076093662945,
+     "lateral_m": 5.585448352478927,
+     "raw_along_m": 44.22922756665678,
+     "raw_lateral_m": 5.017763026441277,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 1,
+     "class_name": "car",
+     "confidence": 0.714495,
+     "bbox_xyxy": [
+      337.736,
+      161.21,
+      358.69,
+      179.856
+     ],
+     "pixel": [
+      348.21299999999997,
+      179.856
+     ],
+     "ground_xz": [
+      87.15674973828821,
+      -148.9990805561823
+     ],
+     "along_m": 83.16564856895488,
+     "lateral_m": 4.857530342970376,
+     "raw_along_m": 80.85275170689812,
+     "raw_lateral_m": 4.5528357084238955,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 2,
+     "class_name": "car",
+     "confidence": 0.693507,
+     "bbox_xyxy": [
+      308.843,
+      147.962,
+      327.877,
+      164.234
+     ],
+     "pixel": [
+      318.36,
+      164.234
+     ],
+     "ground_xz": [
+      77.47355072815375,
+      -139.24364038936167
+     ],
+     "along_m": 96.6857858889459,
+     "lateral_m": 2.379861525942601,
+     "raw_along_m": 94.3485210101475,
+     "raw_lateral_m": 2.1723063280030313,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 3,
+     "class_name": "car",
+     "confidence": 0.612866,
+     "bbox_xyxy": [
+      249.2,
+      133.133,
+      262.361,
+      144.97
+     ],
+     "pixel": [
+      255.7805,
+      144.97
+     ],
+     "ground_xz": [
+      56.955444203572995,
+      -124.80397325203735
+     ],
+     "along_m": 120.1925715484046,
+     "lateral_m": -6.390982809184656,
+     "raw_along_m": 117.82512423231526,
+     "raw_lateral_m": -6.391709595752731,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 4,
+     "class_name": "car",
+     "confidence": 0.585735,
+     "bbox_xyxy": [
+      249.182,
+      160.22,
+      264.403,
+      177.629
+     ],
+     "pixel": [
+      256.7925,
+      177.629
+     ],
+     "ground_xz": [
+      77.08895926373921,
+      -154.0063755753304
+     ],
+     "along_m": 84.7224987809713,
+     "lateral_m": -6.278430588424326,
+     "raw_along_m": 82.41014556498678,
+     "raw_lateral_m": -6.282412773756746,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 5,
+     "class_name": "car",
+     "confidence": 0.544793,
+     "bbox_xyxy": [
+      296.44,
+      131.707,
+      310.952,
+      143.337
+     ],
+     "pixel": [
+      303.696,
+      143.337
+     ],
+     "ground_xz": [
+      62.15601521929302,
+      -117.33576270652256
+     ],
+     "along_m": 123.41618457365846,
+     "lateral_m": 2.119506407370367,
+     "raw_along_m": 121.0323153476854,
+     "raw_lateral_m": 1.9576791229268444,
+     "direction": "away",
+     "truncated": false,
+     "in_road": true
+    },
+    {
+     "id": 6,
+     "class_name": "car",
+     "confidence": 0.512324,
+     "bbox_xyxy": [
+      354.403,
+      135.06,
+      366.702,
+      145.957
+     ],
+     "pixel": [
+      360.5525,
+      145.957
+     ],
+     "ground_xz": [
+      72.16612272410548,
+      -114.64712423978972
+     ],
+     "along_m": 119.97882551108762,
+     "lateral_m": 11.897828949486687,
+     "raw_along_m": 117.58860560599067,
+     "raw_lateral_m": 11.54019916771133,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 7,
+     "class_name": "car",
+     "confidence": 0.411343,
+     "bbox_xyxy": [
+      415.282,
+      142.689,
+      428.555,
+      153.643
+     ],
+     "pixel": [
+      421.9185,
+      153.643
+     ],
+     "ground_xz": [
+      85.09324053876797,
+      -118.38726936061272
+     ],
+     "along_m": 109.5890272005764,
+     "lateral_m": 20.450673598249963,
+     "raw_along_m": 107.21024946934992,
+     "raw_lateral_m": 19.880266608465845,
+     "direction": "away",
+     "truncated": false,
+     "in_road": false
+    },
+    {
+     "id": 8,
+     "class_name": "car",
+     "confidence": 0.401801,
+     "bbox_xyxy": [
+      266.774,
+      121.2,
+      278.098,
+      133.829
+     ],
+     "pixel": [
+      272.43600000000004,
+      133.829
+     ],
+     "ground_xz": [
+      48.22093558968396,
+      -106.12424481138247
+     ],
+     "along_m": 140.54003627892664,
+     "lateral_m": -3.0436593436564676,
+     "raw_along_m": 138.1355361661439,
+     "raw_lateral_m": -3.100558482118053,
+     "direction": "toward",
+     "truncated": false,
+     "in_road": true
+    }
+   ]
+  }
+ ]
+}

@@ -135,6 +135,35 @@ python -m detection predict --source <영상> --alerts --context calibration\<�
 - 정지 대기 영역은 교차로를 빠져나가는 쪽 횡단보도에도 만들어질 수 있습니다. 경고 엔진은 이 영역을 "멈춰 기다리는 차를 사고 의심에서 빼는" 데만 씁니다.
 - 회전형 CCTV는 화면이 바뀌면 다시 만들어야 합니다.
 
+## 인식 결과를 좌표로 바꿔 가상환경에 옮기기 (디지털 트윈 재생)
+
+실제 CCTV 검출(`detections.jsonl`)을 실제 노면 좌표(m)와 도로 기준 좌표로 바꾸고, Unity City Lab에 같은 자리로 놓아 VirtualCCTV 시점에서 실제 화면과 비교합니다.
+
+```bash
+python -m detection predict --source simulation\TwinSightSim\RealCctv\geumchon_frames --weights yolov8n.pt --imgsz 1280 --out runs\detection\geumchon
+python mapping/scripts/detections_to_twin.py --detections runs\detection\geumchon\detections.jsonl --calibration simulation\TwinSightSim\RealCctv\geumchon.calibration.json --road-pose simulation\TwinSightSim\RealCctv\geumchon.road_pose.json --road-context simulation\TwinSightSim\RealCctv\geumchon.road_context.json --frames "simulation\TwinSightSim\RealCctv\geumchon_frames\*.jpg"
+python mapping/scripts/compare_twin_render.py simulation\TwinSightSim\Logs\twin_replay\geumchon --virtual-detections <가상 화면 검출>\detections.jsonl
+```
+
+금촌신사거리 CCTV의 캘리브레이션·자세·프레임은 `simulation/TwinSightSim/RealCctv/`에 들어 있어 위 명령을 그대로 다시 실행할 수 있습니다. Unity에서 Play로 재생하는 방법은 [simulation/TwinSightSim/README.md](../simulation/TwinSightSim/README.md)의 "실제 CCTV 인식 결과 재생"에 있습니다.
+
+- 변환: 박스 아래 가운데 → 캘리브레이션 → 실제 노면 좌표(m) → 도로 방향으로 진행한다고 보고 편향 보정(차량 중심) → 도로 중앙선 기준 `along_m`(카메라에서 앞쪽 거리)·`lateral_m`(오른쪽 +). 우측 통행으로 방향(`away`/`toward`)을 정하고, 도로 영역 안인지(`in_road`)와 인식한 차선도 같은 좌표로 넣습니다. 같은 차량을 car·truck·bus로 겹쳐 검출한 박스는 하나로 합칩니다.
+- Unity: **TwinSight > City Lab > Replay Real CCTV Detections...**가 `RealCctv/*.twin.json`을 읽어 VirtualCCTV 위치 기준 `X = 카메라 X + along / 2.92`, `Z = 중앙선 - lateral / 2.92`에 City Lab SUV·Mini를 놓고(트럭·버스는 SUV를 늘림) 인식한 차선을 선으로 그립니다. **모든 프레임 렌더링**은 `Logs/twin_replay/<이름>/`에 화면과 배치값(`manifest.json`)을 저장합니다.
+- 비교: 1) Unity에 놓인 차량 상자를 VirtualCCTV로 투영한 박스 vs 실제 검출 박스, 2) 가상 화면에 YOLO를 다시 돌린 결과 vs 실제 검출, 3) `compare/` 그림(실제 | 가상 | 겹침).
+
+**금촌신사거리 CCTV, Unity에서 확인** (16프레임, 도로 영역 안·화면에 잘리지 않은 차량 55대, 겹친 검출 3개 합친 뒤)
+
+| 항목 | 결과 |
+| --- | --- |
+| 도로 안 차량의 중앙선 기준 위치 | 서울 방향 -2~-3 m·-6~-7 m, 판문점 방향 +2~+3 m·+5~+7 m (실제 차로 가운데 약 ±2.3·±6 m에 모임) |
+| 배치 검사(Unity 차량 상자 투영 vs 실제 박스) | 박스 아래 가운데 거리 중앙값 2.3 px, 90 % 4.0 px, 55대 모두 10 px 이내(최대 5.2 px), IoU 중앙값 0.71 |
+| 화면 검사(가상 화면 YOLO vs 실제 검출) | 55대 중 30대를 25 px 안에서 다시 찾음(가까운 차 94 %, 중간 46 %, 먼 차 17 %), 찾은 차는 거리 중앙값 4.4 px·IoU 0.68 |
+
+- 화면 검사의 놓친 차는 대부분 작은(먼) 차입니다. 위치가 틀린 것이 아니라 YOLOv8n이 City Lab 차량 모델을 작게 보일 때 못 찾는 것으로, 배치 검사에서는 모두 10 px 이내였습니다.
+- 버스·트럭은 SUV를 늘려 놓아 크기가 실제와 달라 차이가 가장 큰 편입니다(트럭 5.2 px).
+- City Lab 도로는 중앙분리대가 없고 차로가 약간 좁아, 실제 안쪽 차로 차량이 City Lab에서는 차로 가운데보다 0.2단위쯤 바깥에 놓입니다. 화면 위치는 같습니다.
+- 길가에 세워 둔 차(도로 영역 밖)는 City Lab에 그 공간이 없어 기본값으로 뺍니다.
+
 ## 결과 읽는 법
 
 객체 위치 오차를 세 가지로 나눠 봅니다. 위에서 아래로 갈수록 실제 파이프라인에 가깝습니다.
@@ -250,6 +279,7 @@ mapping/
     correction.py   박스 아래 가운데의 카메라 쪽 편향 보정, 추적 ID별 진행 방향
     pose.py         노면 기준점으로 카메라 위치·높이·방향·각도·화각 추정, 도로 중앙선 기준 자세
     road.py         OpenCV 도로·차선·횡단보도·정지선 인식 → road-context.json
+    twin.py         검출·차선 → 도로 중앙선 기준 좌표(디지털 트윈 재생용)
   scripts/
     evaluate_mapping.py       평가 실행
     make_synthetic_export.py  합성 데이터 만들기
@@ -259,10 +289,13 @@ mapping/
     calibrate_homography.py   실제 CCTV 화면에서 점 찍기 → calibration/<카메라ID>.json
     road_relative_pose.py     카메라 자세 → 도로 중앙선 기준 자세(City Lab 배치용)
     detect_road_context.py    도로·차선·정지선 인식 → road-context.json (경고 엔진 --context)
+    detections_to_twin.py     실제 검출 → 도로 기준 좌표 재생 파일(*.twin.json, Unity 재생용)
+    compare_twin_render.py    Unity 재생 렌더링과 실제 CCTV 화면 비교
   tests/
     test_mapping.py
     test_calibration.py
     test_correction.py
     test_pose.py
     test_road.py
+    test_twin.py
 ```
