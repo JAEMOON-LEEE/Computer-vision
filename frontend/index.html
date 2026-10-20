@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TwinSight 관제</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
 <header class="top">
@@ -35,6 +36,21 @@
       </div>
       <div id="log"></div>
     </div>
+    <section class="map-panel" aria-label="지도와 이동 경로">
+      <h2>지도 · 이동 경로 · 위험 이력</h2>
+      <div class="map-controls">
+        <label>실행 <select id="map-run" aria-label="조회할 실행"></select></label>
+        <button id="map-refresh" type="button">새로고침</button>
+        <button id="map-more" type="button" hidden>이전 실행 더 보기</button>
+        <label><input id="map-dismissed" type="checkbox"> 기각 경고 포함</label>
+      </div>
+      <p id="map-status" role="status">카메라를 선택하세요.</p>
+      <div id="road-map" aria-label="CCTV 및 위험 위치 지도"></div>
+      <h3>지역 좌표 경로 <small>x → · z ↑</small></h3>
+      <svg id="local-map" viewBox="0 0 800 360" role="img" aria-label="실행별 노면 좌표 이동 경로"></svg>
+      <p class="map-note">파랑: CCTV · 초록: 추적 경로 · 회색: 추적 ID 없는 관측 · 주황/빨강: 경고 근거 객체. CCTV 위치는 위험 위치가 아닙니다.</p>
+      <ul id="map-risk-list"></ul>
+    </section>
   </main>
   <aside class="panel">
     <h2>경고</h2>
@@ -42,6 +58,9 @@
   </aside>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="config.js"></script>
+<script src="map.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

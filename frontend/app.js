@@ -1,5 +1,5 @@
-const API = "http://localhost:8000";
-const WS_URL = "ws://localhost:8000/ws";
+const API = window.TWINSIGHT_API;
+const WS_URL = API.replace(/^http/, "ws") + "/ws";
 const DEFAULT_CAMERA = "its-cc4277cc18";
 
 const COLORS = {
@@ -31,6 +31,13 @@ let hls = null;
 let latestFrame = null;
 let alerts = [];
 let socket = null;
+let selectionVersion = 0;
+
+function labelled(tag, value) {
+  const node = document.createElement(tag);
+  node.textContent = value;
+  return node;
+}
 
 function log(message, isError) {
   const line = document.createElement("div");
@@ -48,6 +55,7 @@ async function loadCameras() {
   const response = await fetch(API + "/cameras");
   if (!response.ok) throw new Error("카메라 목록 실패");
   cameras = await response.json();
+  window.TwinSightMap.cameras(cameras);
   renderCameras();
 }
 
@@ -64,7 +72,7 @@ function renderCameras() {
   for (const camera of rows) {
     const item = document.createElement("li");
     item.className = "camera" + (camera.camera_id === selectedId ? " active" : "");
-    item.innerHTML = `<strong>${camera.name || camera.camera_id}</strong><small>${camera.camera_id} · ${camera.source || ""}</small>`;
+    item.append(labelled("strong", camera.name || camera.camera_id), labelled("small", `${camera.camera_id} · ${camera.source || ""}`));
     item.onclick = () => selectCamera(camera.camera_id);
     cameraList.appendChild(item);
   }
@@ -78,8 +86,12 @@ function renderCameras() {
 }
 
 async function selectCamera(cameraId) {
+  selectionVersion++;
   selectedId = cameraId;
+  window.TwinSightMap.select(cameraId);
   latestFrame = null;
+  alerts = [];
+  renderAlerts();
   activeRun = null;
   activeFrameNo = -1;
   droppedFrames = 0;
@@ -89,10 +101,15 @@ async function selectCamera(cameraId) {
   logBox.textContent = "";
   renderCameras();
   draw();
-  await Promise.all([playStream(cameraId), loadAlerts(cameraId), loadLatest(cameraId)]);
+  try {
+    await Promise.all([playStream(cameraId), loadAlerts(cameraId), loadLatest(cameraId)]);
+  } catch (_error) {
+    if (cameraId === selectedId) log("경고·검출 조회에 실패했습니다.", true);
+  }
 }
 
 async function playStream(cameraId) {
+  const version = selectionVersion;
   if (hls) {
     hls.destroy();
     hls = null;
@@ -103,12 +120,14 @@ async function playStream(cameraId) {
   try {
     const response = await fetch(`${API}/cameras/${encodeURIComponent(cameraId)}/stream`);
     data = await response.json();
+    if (version !== selectionVersion || cameraId !== selectedId) return;
     if (!response.ok) {
       log("스트림 없음: " + (data.detail || response.status), true);
       return;
     }
   } catch (error) {
-    log("백엔드에 연결하지 못했습니다. 서버와 이 페이지 주소(localhost:5173)를 확인하세요.", true);
+    if (version !== selectionVersion) return;
+    log("백엔드에 연결하지 못했습니다. 서버 실행 상태와 팀 네트워크 연결을 확인하세요.", true);
     return;
   }
   log("스트림 받음 refreshed=" + data.refreshed);
@@ -134,15 +153,23 @@ async function playStream(cameraId) {
 }
 
 async function loadAlerts(cameraId) {
+  const version = selectionVersion;
   const response = await fetch(`${API}/alerts?camera_id=${encodeURIComponent(cameraId)}&limit=50`);
-  alerts = response.ok ? await response.json() : [];
+  const rows = response.ok ? await response.json() : [];
+  if (version !== selectionVersion || cameraId !== selectedId) return;
+  // Events received while the snapshot was loading are more recent than that snapshot.
+  const merged = new Map(rows.map(row => [row.id, row]));
+  alerts.forEach(row => merged.set(row.id, row));
+  alerts = [...merged.values()].sort((a, b) => b.timestamp - a.timestamp || b.id - a.id).slice(0, 50);
   renderAlerts();
 }
 
 async function loadLatest(cameraId) {
+  const version = selectionVersion, seenAt = activeRunSeenAt;
   const response = await fetch(`${API}/cameras/${encodeURIComponent(cameraId)}/detections/latest`);
   if (!response.ok) return;
   const body = await response.json();
+  if (version !== selectionVersion || cameraId !== selectedId || seenAt !== activeRunSeenAt) return;
   latestFrame = {
     camera_id: body.camera_id,
     frame: body.frame,
@@ -171,7 +198,8 @@ function renderAlerts() {
   for (const alert of alerts.slice(0, 40)) {
     const item = document.createElement("li");
     item.className = "alert";
-    item.innerHTML = `<strong>${alert.type}</strong> · ${alert.status}<small>${alert.message}</small><small>#${alert.id} ${alert.alert_id} / frame ${alert.frame}</small>`;
+    item.append(labelled("strong", `${alert.type} · ${alert.status}`), labelled("small", alert.message),
+      labelled("small", `#${alert.id} ${alert.alert_id} / frame ${alert.frame}`));
     const actions = document.createElement("div");
     actions.className = "alert-actions";
     const confirm = document.createElement("button");
@@ -317,6 +345,7 @@ function connectSocket() {
     } catch (_error) {
       return;
     }
+    window.TwinSightMap.event(message);
     if (message.type === "detections" && message.camera_id === selectedId) {
       if (!acceptRun(message.run_id, Number(message.frame && message.frame.frame))) return;
       latestFrame = message.frame;
@@ -332,6 +361,8 @@ video.addEventListener("loadedmetadata", draw);
 new ResizeObserver(draw).observe(document.querySelector(".stage"));
 
 document.getElementById("play").onclick = () => selectCamera(selectedId);
+window.addEventListener("map-camera", event => selectCamera(event.detail));
+window.TwinSightMap.select(selectedId);
 
 loadCameras()
   .catch(() => {

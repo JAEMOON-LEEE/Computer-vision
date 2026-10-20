@@ -1,0 +1,12 @@
+**
+!backend/
+!backend/requirements.txt
+!backend/__init__.py
+!backend/app/
+!backend/app/**
+!frontend/
+!frontend/**
+!Dockerfile.server
+**/__pycache__/
+**/*.pyc
+frontend/node_modules/
