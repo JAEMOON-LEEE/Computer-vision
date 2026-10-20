@@ -1,16 +1,15 @@
-# DB 담당 이상민과 확정 전 임시 스키마
-"""임시 ORM 모델.
+"""CCTV, 실행, 검출 및 위험 이력 ORM 모델.
 
 track_id와 alert_id의 번호는 한 번의 실행(Run) 안에서만 유효하다.
 alert_id는 "카메라ID:번호" 형태이며 실행마다 1부터 다시 시작하므로 전역 고유값이 아니다.
-위경도 변환은 매핑 담당과 맞춘 뒤에 한다.
+지도 기준은 실행별 MapReference에 보존한다.
 """
 
 from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.types import JSON
 
@@ -122,3 +121,40 @@ class Alert(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
     handled_by: Mapped[str | None] = mapped_column(String, nullable=True)
+
+
+class DetectionCoordinates(Base):
+    """입력 좌표 두 쌍을 보존. 기존 검출은 원본을 복원하지 않고 행을 비워 둔다."""
+
+    __tablename__ = "detection_coordinates"
+    detection_id: Mapped[int] = mapped_column(ForeignKey("detections.id", ondelete="CASCADE"), primary_key=True)
+    raw_xz: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    corrected_xz: Mapped[list | None] = mapped_column(JSON, nullable=True)
+
+
+class MapReference(Base):
+    """한 실행의 지역 ENU 기준. 등록 후 수정하지 않아 과거 경로가 이동하지 않는다."""
+
+    __tablename__ = "map_references"
+    run_id: Mapped[str] = mapped_column(ForeignKey("runs.run_id"), primary_key=True)
+    origin_lat: Mapped[float] = mapped_column(Float, nullable=False)
+    origin_lon: Mapped[float] = mapped_column(Float, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
+
+
+class AlertHistory(Base):
+    """경고 처리 상태와 처리자 변경 감사 이력. 경고 변경과 같은 트랜잭션에 저장."""
+
+    __tablename__ = "alert_history"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    alert_id: Mapped[int] = mapped_column(ForeignKey("alerts.id"), index=True, nullable=False)
+    old_status: Mapped[str] = mapped_column(String, nullable=False)
+    new_status: Mapped[str] = mapped_column(String, nullable=False)
+    old_handled_by: Mapped[str | None] = mapped_column(String, nullable=True)
+    handled_by: Mapped[str | None] = mapped_column(String, nullable=True)
+    changed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
+
+
+# These are also installed on existing tables by init_db (create_all alone skips old tables).
+Index("ix_map_runs_camera_started", Run.camera_id, Run.started_at)
+Index("ix_map_alerts_run_timestamp", Alert.run_id, Alert.timestamp)

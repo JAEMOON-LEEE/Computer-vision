@@ -99,11 +99,11 @@ class FrameIn(BaseModel):
     )
 
     camera_id: str
-    frame: int
+    frame: int = Field(ge=0)
     timestamp: float
     timestamp_kind: TimestampKind
-    width: int
-    height: int
+    width: int = Field(gt=0)
+    height: int = Field(gt=0)
     inference_ms: float
     detections: list[DetectionIn] = Field(default_factory=list)
     image: str | None = None
@@ -198,8 +198,8 @@ class CameraIn(BaseModel):
     camera_id: str
     name: str | None = None
     source: str | None = None
-    lat: float | None = None
-    lon: float | None = None
+    lat: float | None = Field(default=None, ge=-90, le=90, allow_inf_nan=False)
+    lon: float | None = Field(default=None, ge=-180, le=180, allow_inf_nan=False)
     stream_url: str | None = None
     stream_fetched_at: datetime | None = None
     image_width: int | None = None

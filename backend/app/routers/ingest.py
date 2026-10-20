@@ -8,7 +8,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from backend.app.db import ensure_run, get_db, resolve_run_id
-from backend.app.models import Alert, Detection, Frame, utcnow
+from backend.app.models import Alert, Detection, DetectionCoordinates, Frame, utcnow
 from backend.app.schemas import (
     AlertIn,
     AlertOut,
@@ -60,8 +60,7 @@ def upsert_frame(db: Session, run_id: str, record: FrameIn) -> None:
     for detection in record.detections:
         mapped_x, mapped_z = preferred_mapped(detection)
         x1, y1, x2, y2 = detection.bbox_xyxy
-        db.add(
-            Detection(
+        row = Detection(
                 frame_id=frame.id,
                 class_name=detection.class_name,
                 class_id=detection.class_id,
@@ -78,7 +77,14 @@ def upsert_frame(db: Session, run_id: str, record: FrameIn) -> None:
                 mapped_x=mapped_x,
                 mapped_z=mapped_z,
             )
-        )
+        db.add(row)
+        db.flush()
+        db.add(DetectionCoordinates(
+            detection_id=row.id,
+            raw_xz=detection.mapped_xz,
+            corrected_xz=detection.mapped_xz_corrected,
+        ))
+    db.flush()
 
 
 @router.post("/detections", response_model=IngestDetectionsResult)

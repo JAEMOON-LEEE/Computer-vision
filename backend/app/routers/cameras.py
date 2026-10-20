@@ -21,6 +21,7 @@ from backend.app.schemas import (
     to_detection_out,
 )
 from backend.app.services.its import ItsError, refresh_stream_url
+from backend.app.services.catalog import snapshot_camera
 
 router = APIRouter(prefix="/cameras", tags=["cameras"])
 
@@ -110,10 +111,11 @@ def import_its(db: Session = Depends(get_db)):
             fetched_at = _as_datetime(item.get("fetched_at"))
             lat = _as_float(item.get("lat"))
             lon = _as_float(item.get("lon"))
+            CameraIn(camera_id=str(item["camera_id"]), lat=lat, lon=lon)
         except (TypeError, ValueError) as exc:
             raise HTTPException(status_code=400, detail=f"후보 값 해석 실패: {exc}") from exc
         camera_id = str(item["camera_id"])
-        upsert_camera(
+        camera = upsert_camera(
             db,
             camera_id,
             {
@@ -125,6 +127,7 @@ def import_its(db: Session = Depends(get_db)):
                 "stream_fetched_at": fetched_at,
             },
         )
+        snapshot_camera(db, camera, road_type=item.get("road_type"))
         camera_ids.append(camera_id)
     db.commit()
     return ImportItsResult(imported=len(camera_ids), camera_ids=camera_ids)
@@ -143,6 +146,7 @@ def upsert_camera_route(payload: CameraIn, db: Session = Depends(get_db)):
     values = payload.model_dump(exclude_unset=True)
     values.pop("camera_id", None)
     camera = upsert_camera(db, payload.camera_id, values)
+    snapshot_camera(db, camera)
     db.commit()
     return camera
 
