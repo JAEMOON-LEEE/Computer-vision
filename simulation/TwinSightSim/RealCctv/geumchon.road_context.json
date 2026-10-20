@@ -1,0 +1,341 @@
+{
+ "camera_id": "utic-국도1호선파주금촌신사거리",
+ "image_size": [
+  720,
+  480
+ ],
+ "coordinates": "image_normalized_xy (0~1, 왼쪽 위 원점)",
+ "road_polygon": [
+  [
+   0.28745,
+   1.0
+  ],
+  [
+   0.31994,
+   0.58397
+  ],
+  [
+   0.33245,
+   0.42381
+  ],
+  [
+   0.33834,
+   0.34842
+  ],
+  [
+   0.34176,
+   0.30457
+  ],
+  [
+   0.344,
+   0.2759
+  ],
+  [
+   0.34558,
+   0.25569
+  ],
+  [
+   0.34675,
+   0.24067
+  ],
+  [
+   0.34675,
+   0.24067
+  ],
+  [
+   0.35859,
+   0.2409
+  ],
+  [
+   0.37039,
+   0.24114
+  ],
+  [
+   0.38215,
+   0.24137
+  ],
+  [
+   0.39388,
+   0.24161
+  ],
+  [
+   0.40557,
+   0.24184
+  ],
+  [
+   0.41723,
+   0.24207
+  ],
+  [
+   0.42885,
+   0.2423
+  ],
+  [
+   0.42885,
+   0.2423
+  ],
+  [
+   0.43966,
+   0.25737
+  ],
+  [
+   0.45415,
+   0.27759
+  ],
+  [
+   0.47459,
+   0.30611
+  ],
+  [
+   0.50563,
+   0.34939
+  ],
+  [
+   0.55833,
+   0.42292
+  ],
+  [
+   0.66762,
+   0.57535
+  ],
+  [
+   0.97205,
+   1.0
+  ]
+ ],
+ "stop_zones": [],
+ "lanes": [
+  {
+   "lateral_m": -6.85,
+   "color": "white",
+   "kind": "barrier",
+   "coverage": 0.293,
+   "width_m": 0.85,
+   "along_m": [
+    1.95,
+    58.7
+   ],
+   "dash_period_m": null,
+   "dash_length_m": null,
+   "image_xy": [
+    [
+     0.21052,
+     0.9506
+    ],
+    [
+     0.31179,
+     0.38043
+    ]
+   ]
+  },
+  {
+   "lateral_m": -4.3,
+   "color": "white",
+   "kind": "solid",
+   "coverage": 0.792,
+   "width_m": 0.3,
+   "along_m": [
+    4.85,
+    72.3
+   ],
+   "dash_period_m": null,
+   "dash_length_m": null,
+   "image_xy": [
+    [
+     0.32049,
+     0.85752
+    ],
+    [
+     0.34485,
+     0.34579
+    ]
+   ]
+  },
+  {
+   "lateral_m": -1.15,
+   "color": "white",
+   "kind": "dashed",
+   "coverage": 0.396,
+   "width_m": 0.3,
+   "along_m": [
+    5.95,
+    77.1
+   ],
+   "dash_period_m": 8.35,
+   "dash_length_m": 3.65,
+   "image_xy": [
+    [
+     0.43102,
+     0.82347
+    ],
+    [
+     0.37668,
+     0.33605
+    ]
+   ]
+  },
+  {
+   "lateral_m": 2.3,
+   "color": "yellow",
+   "kind": "solid",
+   "coverage": 1.0,
+   "width_m": 0.35,
+   "along_m": [
+    4.3,
+    90.0
+   ],
+   "dash_period_m": null,
+   "dash_length_m": null,
+   "image_xy": [
+    [
+     0.55863,
+     0.85744
+    ],
+    [
+     0.40435,
+     0.31382
+    ]
+   ]
+  },
+  {
+   "lateral_m": 3.25,
+   "color": "white",
+   "kind": "solid",
+   "coverage": 1.0,
+   "width_m": 0.45,
+   "along_m": [
+    4.25,
+    90.0
+   ],
+   "dash_period_m": null,
+   "dash_length_m": null,
+   "image_xy": [
+    [
+     0.59222,
+     0.85667
+    ],
+    [
+     0.41262,
+     0.31391
+    ]
+   ]
+  },
+  {
+   "lateral_m": 4.05,
+   "color": "white",
+   "kind": "solid",
+   "coverage": 0.783,
+   "width_m": 0.25,
+   "along_m": [
+    4.2,
+    85.55
+   ],
+   "dash_period_m": null,
+   "dash_length_m": null,
+   "image_xy": [
+    [
+     0.62045,
+     0.85623
+    ],
+    [
+     0.42222,
+     0.32112
+    ]
+   ]
+  },
+  {
+   "lateral_m": 7.15,
+   "color": "white",
+   "kind": "dashed",
+   "coverage": 0.443,
+   "width_m": 0.45,
+   "along_m": [
+    4.75,
+    88.05
+   ],
+   "dash_period_m": 15.15,
+   "dash_length_m": 6.47,
+   "image_xy": [
+    [
+     0.71909,
+     0.83597
+    ],
+    [
+     0.44798,
+     0.31731
+    ]
+   ]
+  },
+  {
+   "lateral_m": 10.55,
+   "color": "white",
+   "kind": "solid",
+   "coverage": 0.879,
+   "width_m": 0.6,
+   "along_m": [
+    -1.0,
+    90.0
+   ],
+   "dash_period_m": null,
+   "dash_length_m": null,
+   "image_xy": [
+    [
+     0.9466,
+     0.99926
+    ],
+    [
+     0.47557,
+     0.31456
+    ]
+   ]
+  },
+  {
+   "lateral_m": 11.65,
+   "color": "white",
+   "kind": "barrier",
+   "coverage": 0.718,
+   "width_m": 0.7,
+   "along_m": [
+    -1.1,
+    88.35
+   ],
+   "dash_period_m": null,
+   "dash_length_m": null,
+   "image_xy": [
+    [
+     0.99223,
+     0.99924
+    ],
+    [
+     0.48687,
+     0.31723
+    ]
+   ]
+  }
+ ],
+ "stop_lines": [],
+ "crosswalks": [],
+ "method": "opencv_topview_paint",
+ "road_frame": {
+  "origin_ground": [
+   116.27916202555434,
+   -205.56432247811486
+  ],
+  "forward_ground": [
+   -0.565205656670391,
+   0.82495003828583
+  ],
+  "meters_per_unit": 1.0
+ },
+ "road_lateral_m": [
+  -4.9,
+  11.149999999999997
+ ],
+ "road_along_m": [
+  -3.080257773539412,
+  170.0
+ ],
+ "centre_lateral_m": 2.3000000000000007,
+ "frames_used": 16,
+ "source": "C:\\Code\\Computer_vison.ipynb\\calibration\\utic-국도1호선파주금촌신사거리.json"
+}

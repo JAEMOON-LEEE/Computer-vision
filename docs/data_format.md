@@ -180,6 +180,29 @@ CCTV 파이프라인을 `--serve 8765`로 실행하면 Unity 디지털 트윈(`C
 - `yaw_to_road_deg`: 카메라 방향 - 도로 방향(오른쪽 +). 나머지 각도·화각은 `pose.json`과 같습니다.
 - `ref_ahead_m`: 카메라에서 기준 지점(`--ref-point`, 정지선·사거리 중심)까지 도로 앞쪽 거리.
 
+## road-context.json (도로 영역·정지 대기 영역, 경고 엔진 --context)
+
+`mapping/scripts/detect_road_context.py`가 만들고, `python -m detection predict/warn --context`가 읽습니다. 경고 엔진이 쓰는 것은 앞의 두 항목이고 나머지는 참고용입니다.
+
+```json
+{
+  "camera_id": "utic-국도1호선파주금촌신사거리", "image_size": [720, 480],
+  "road_polygon": [[0.29, 1.0], [0.36, 0.22], [0.42, 0.22], [0.97, 1.0]],
+  "stop_zones": [],
+  "lanes": [{"lateral_m": -1.15, "color": "white", "kind": "dashed", "width_m": 0.3, "along_m": [5.95, 77.1],
+             "dash_period_m": 8.35, "dash_length_m": 3.65, "image_xy": [[0.431, 0.823], [0.377, 0.336]]}],
+  "crosswalks": [], "stop_lines": [],
+  "road_lateral_m": [-4.9, 11.1], "road_along_m": [-3.0, 170.0], "centre_lateral_m": 2.3,
+  "road_frame": {"origin_ground": [116.3, -205.6], "forward_ground": [-0.565, 0.825], "meters_per_unit": 1.0}
+}
+```
+
+- `road_polygon`: 도로 영역 다각형(0~1 이미지 좌표, 왼쪽 위 원점, 위 예시는 점을 줄인 것). 경고 엔진은 검출 박스 아래 가운데가 이 안에 있을 때만 씁니다. 바깥 차선 밖 0.6 m(갓길)까지 넣습니다.
+- `stop_zones`: 정지 대기 영역 다각형 목록(같은 좌표). 이 안의 차는 사고 의심 판단에서 뺍니다.
+- `lanes`: 세로 선. `lateral_m`은 도로 좌표(앞쪽을 볼 때 오른쪽 +, m), `kind`는 `solid`·`dashed`·`barrier`(중앙분리대·연석처럼 넓은 밝은 띠), `color`는 `white`·`yellow`. `image_xy`는 선의 양 끝(0~1).
+- `crosswalks`·`stop_lines`: 도로 좌표의 `along_m`(가까운 쪽, 먼 쪽)과 `lateral_m` 범위. 정지선 `side`는 `away`(중앙선 오른쪽, 멀어지는 차로)·`toward`(다가오는 차로). `stop_zone_basis`는 각 정지 대기 영역의 근거(`stop_line`/`crosswalk`)와 범위입니다.
+- `road_frame`: 도로 좌표계. 노면 좌표(캘리브레이션 좌표, City Lab은 월드 x·z)의 원점과 앞쪽 방향, 1단위의 m.
+
 ## calibration/<카메라ID>.json (실제 CCTV 캘리브레이션)
 
 `mapping/scripts/calibrate_homography.py`가 만들고, CCTV 파이프라인이 읽습니다.
