@@ -5,4 +5,10 @@ south_korea_FBX filter=lfs diff=lfs merge=lfs -text
 *.blend filter=lfs diff=lfs merge=lfs -text
 *.fbx filter=lfs diff=lfs merge=lfs -text
 detection/models/scenario-hazards.pt filter=lfs diff=lfs merge=lfs -text
-*.bat text eol=crlf 
+*.bat text eol=crlf
+# Unity 프로젝트로 복사한 외부 에셋의 텍스처 (FBX는 위의 *.fbx 규칙으로 LFS)
+simulation/TwinSightSim/Assets/ThirdParty/**/*.png filter=lfs diff=lfs merge=lfs -text
+simulation/TwinSightSim/Assets/ThirdParty/**/*.PNG filter=lfs diff=lfs merge=lfs -text
+simulation/TwinSightSim/Assets/ThirdParty/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+simulation/TwinSightSim/Assets/ThirdParty/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+simulation/TwinSightSim/Assets/ThirdParty/**/*.tif filter=lfs diff=lfs merge=lfs -text

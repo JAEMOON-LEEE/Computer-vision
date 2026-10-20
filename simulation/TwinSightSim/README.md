@@ -26,6 +26,68 @@ python mapping/scripts/evaluate_mapping.py simulation/TwinSightSim/TwinSightExpo
 
 예제 차량은 상자 모양이라 사전학습 YOLO가 차로 인식하지 못합니다. 공간 매핑 검증(정답 박스 기준)에는 충분하고, YOLO까지 평가하려면 아래처럼 실제 3D 에셋으로 바꿉니다.
 
+## 팀 차량 에셋(Papabear Car Package) 쓰기
+
+레포 루트의 `Papabear_Papabear Car Package`는 Git LFS로 올라가 있고 전체가 1.5 GB가 넘습니다. Unity에는 FBX와 텍스처(약 90 MB)만 필요하므로 그것만 내려받습니다.
+
+```bash
+git lfs pull --include="Papabear_Papabear Car Package/**/*.fbx,Papabear_Papabear Car Package/**/*.jpg,Papabear_Papabear Car Package/**/*.png,Papabear_Papabear Car Package/**/*.PNG,Papabear_Papabear Car Package/**/*.jpeg,Papabear_Papabear Car Package/**/*.tif"
+python simulation/tools/copy_vehicle_assets.py
+```
+
+1. 복사 스크립트가 FBX와 텍스처를 `Assets/ThirdParty/Papabear`로 옮깁니다(OBJ·DAE·클립 스튜디오 파일 제외, 같은 모델 중복 제거).
+2. Unity에서 **TwinSight → Build Vehicle Prefabs**를 누르면 `Assets/TwinSight/Vehicles`에 차량 프리팹이 생깁니다. 길이 방향을 +z, 피벗을 바닥 가운데로 맞추고, 폴더 이름으로 클래스(`car`, `bus`, `motorcycle`)를 붙입니다. 앞뒤가 반대로 달리는 모델은 프리팹의 `Model` 자식을 y축으로 180° 돌립니다.
+3. **TwinSight → Create Demo Road Scene**을 다시 누르면 예제 씬이 이 프리팹들을 씁니다. 트럭은 쓸 수 있는 모델이 없어(클립 스튜디오 형식만 있음) 상자 모델을 씁니다.
+
+## 실시간 CCTV 디지털 트윈
+
+실제 UTIC CCTV를 받아 YOLO로 검출한 차량을 Unity 노면 위에 실시간으로 움직이고, CCTV 영상을 화면 오른쪽 위에 띄웁니다.
+
+1. CCTV 파이프라인을 서버 모드로 실행합니다. UTIC API는 키를 등록한 IP(학교 네트워크)에서만 열립니다.
+
+   ```bash
+   python CCTV --mode live --cctv 1273 --serve 8765
+   ```
+
+   - 실행하면 `http://127.0.0.1:8765/state`(검출 결과)와 `/frame.jpg`(최신 영상)가 열립니다. 이 PC 안에서만 접속할 수 있고, 다른 PC의 Unity에서 받으려면 `--serve-host 0.0.0.0`을 줍니다(같은 네트워크에 영상이 공개됨).
+   - UTIC 목록의 번호와 ID는 목록이 갱신될 때 바뀝니다. 실행 중 "실제로 열린 영상은 …" 경고가 나오면 `--refresh-list`로 목록을 새로 받으세요. 카메라 ID는 바뀌지 않는 CCTV 이름으로 만듭니다(예: `utic-당진청주선아산`).
+2. Unity에서 **TwinSight → Create CCTV Live Scene**을 누르고 ▶를 누릅니다. `Assets/TwinSight/Live/CctvLive.unity`가 만들어지고, `CctvLive` 오브젝트의 `CctvLiveClient`가 서버를 0.1초마다 읽습니다.
+   - 차량은 `Assets/TwinSight/Vehicles` 프리팹 중 클래스가 같은 것을 추적 ID에 따라 골라 놓고, 1.5초 동안 다시 안 보이면 지웁니다.
+   - 카메라는 차량들의 가운데를 비스듬히 내려다보도록 따라갑니다. 화면 왼쪽 위와 Inspector의 `Status`에 연결 상태가 나옵니다.
+3. 노면 좌표는 그 카메라의 캘리브레이션 파일(`calibration/<카메라ID>.json`, 미터 단위)을 씁니다. 없으면 예전 `homography_matrix.npy`(임의 픽셀 단위)를 쓰고, Unity는 `Pixel Unit Scale`(기본 1픽셀 = 0.05 m)로 줄여 놓습니다. 실제 위치와 맞추려면 CCTV 화면에서 `c`로 원본 프레임을 저장하고 `mapping/scripts/calibrate_homography.py`로 캘리브레이션합니다.
+
+알아 둘 점
+- UTIC 스트림(HLS)은 몇 초 단위 조각으로 와서, 화면과 차량 움직임이 2~5초 늦고 가끔 몇 초씩 멈춥니다.
+- 현재 YOLOv8n은 이 CCTV 화면에서 차량을 거의 찾지 못합니다. 더 큰 모델이나 이 시점에 맞춘 미세조정이 필요합니다.
+- 회전형 CCTV는 화면이 바뀌면 캘리브레이션을 다시 해야 합니다.
+
+## 실제 CCTV 시점으로 City Lab 카메라 놓기
+
+실제 CCTV에서 뽑은 카메라 자세로 City Lab의 `VirtualCCTV`를 같은 높이·각도·화각에 놓습니다.
+
+1. `mapping/scripts/road_relative_pose.py`로 `<카메라ID>.road_pose.json`을 만들어 이 프로젝트의 `RealCctv/` 폴더에 넣습니다(방법은 [mapping/README.md](../../mapping/README.md)의 "지도가 다른 가상 도로로 옮기기"). 금촌신사거리 CCTV는 `RealCctv/geumchon.road_pose.json`으로 들어 있습니다.
+2. `CityTrafficLab` 씬을 열고(Play 중이 아닐 때) **TwinSight > City Lab > Place VirtualCCTV From Real CCTV...**를 엽니다. `RealCctv` 폴더의 파일이 목록에 나옵니다.
+3. **VirtualCCTV 배치**를 누르면 위치·회전·세로 화각과 저장 해상도(실제 CCTV와 같은 크기), 카메라 ID가 바뀌고 씬이 저장됩니다. **미리보기 이미지 저장**은 `Logs/virtual_cctv_preview.png`에 그 시점 화면을 저장합니다.
+
+- 실제 도로 중앙선 ↔ City Lab 주황 중앙선(z = -0.41), 실제 도로 앞쪽 ↔ +X, 1단위 = 2.92 m, 노면 y = 0.507입니다. 실제 카메라에서 사거리까지 거리가 City Lab 직선 도로보다 길면 도로 시작 쪽 끝에 맞춥니다.
+- **Build City Traffic Lab**이나 **Install Signals and Incident Scenarios**를 다시 실행하면 카메라가 원래 자리로 돌아가므로 배치를 다시 합니다.
+
+### 실제 CCTV 인식 결과 재생
+
+실제 CCTV에서 검출한 차량과 인식한 차선을 좌표로 바꾼 `RealCctv/<이름>.twin.json`(`mapping/scripts/detections_to_twin.py`)을 City Lab에 놓고 VirtualCCTV 시점으로 봅니다. 금촌신사거리 16프레임은 `RealCctv/geumchon.twin.json`으로 들어 있습니다.
+
+1. 위처럼 VirtualCCTV를 같은 CCTV 자세로 배치합니다(Play 중이 아닐 때).
+2. **TwinSight > City Lab > Replay Real CCTV Detections...**를 열면 `RealCctv`의 파일이 골라집니다.
+3. **이 프레임 배치**는 그 프레임의 차량(City Lab SUV·Mini)과 차선(하늘색·노란 선)을 씬에 놓아 Scene·Game 뷰에서 볼 수 있게 합니다. 이 물체들은 저장되지 않습니다(**지우기**로 치움).
+4. **모든 프레임 렌더링**은 `Logs/twin_replay/<이름>/frame_XXXX.png`와 `manifest.json`(차량 Unity 위치·크기, 카메라)을 저장합니다. `mapping/scripts/compare_twin_render.py`로 실제 화면과 비교합니다.
+5. **▶ Play 재생용으로 씬에 넣기**를 누른 뒤 ▶ Play하면 Game 뷰(VirtualCCTV 시점)에서 프레임을 2초마다 넘기며 재생합니다. ←/→ 프레임 넘기기, P 자동 재생 켜기·끄기. 놓인 차량 박스(주황)와 같은 차량의 실제 YOLO 박스(초록)가 겹쳐 보이고, 오른쪽 위에 같은 프레임의 실제 CCTV 화면과 YOLO 박스가 나옵니다. Game 뷰 비율을 720×480으로 맞추면 실제와 같은 범위가 보입니다. 재생 중에는 City Lab 자체 교통·사고 시나리오가 꺼지므로, 평소처럼(학습 데이터 녹화 등) 쓰려면 `RealCctvTwinPlayer` 물체를 끄거나 지웁니다.
+
+`RealCctv/`에 들어 있는 금촌신사거리 CCTV 파일: `geumchon.calibration.json`(화면 → 노면 Homography), `geumchon.points.csv`(기준점), `geumchon.pose.json`(카메라 자세), `geumchon.road_pose.json`(도로 기준 자세), `geumchon.road_context.json`(도로·차선 인식), `geumchon.twin.json`(검출 → 좌표 재생 파일), `geumchon_frames/`(원본 프레임 16장). 경로는 이 프로젝트 폴더 기준이라 다른 PC에서도 그대로 재생됩니다.
+
+- 차량 위치: VirtualCCTV 기준 `X = 카메라 X + along / 2.92`, `Z = 중앙선 - lateral / 2.92`, 방향은 중앙선 오른쪽 +X(멀어짐), 왼쪽 -X(다가옴).
+- 기본값으로 도로 영역 밖(길가 주차) 차량과 화면 가장자리에 잘린 박스는 뺍니다.
+- 금촌 16프레임에서 Unity에 놓인 차량 55대의 화면 위치가 실제 검출과 박스 아래 가운데 중앙값 2.3 px(모두 10 px 이내)로 맞았습니다(자세한 값은 mapping/README.md).
+
 ## 3D 에셋으로 바꾸기
 
 저장소에 있는 도시와 SUV·Mini 에셋을 조합한 실험 씬은 **TwinSight → City Lab → Build City Traffic Lab**으로 생성합니다. 바퀴 분리·회전, 양방향 주행, CCTV 및 정답 저장 방법은 [도시·차량 실험 환경 안내](../../docs/city_lab.md)를 참고하세요.
@@ -48,6 +110,7 @@ python mapping/scripts/evaluate_mapping.py simulation/TwinSightSim/TwinSightExpo
 | `RoadSurface` | 도로·인도 | 노면으로 인식할 Collider 표시 |
 | `TrafficSpawner` | 차로 오브젝트 | 경로 시작점에서 차량 프리팹을 주기적으로 생성. 같은 차로는 같은 속도 |
 | `WaypointMover` | (스포너가 자동으로 붙임) | 경로점을 따라 이동, 노면 높이에 맞춤 |
+| `CctvLiveClient` | 실시간 씬의 `CctvLive` | CCTV 파이프라인 서버에서 검출 결과·영상을 받아 차량을 움직이고 영상을 띄움 |
 
 ## 알아 둘 점
 

@@ -91,12 +91,138 @@ Unity 가상환경이 내보내는 정답 데이터와, 실제 CCTV 영상에서
 - `ground_point_px`(선택): 노면 좌표로 바꾼 픽셀(박스 아래 가운데).
 - `mapped_xz`(선택): 캘리브레이션으로 바꾼 노면 좌표(박스 아래 가운데 그대로). 단위는 같은 폴더 `session.json`의 `mapped_units`(`m`이면 미터)를 따릅니다.
 - `mapped_xz_corrected`(선택): 박스 아래 가운데의 카메라 쪽 편향을 보정한 노면 좌표(`mapping/twinsight_mapping/correction.py`). 미터 단위 캘리브레이션일 때만 있고, 위치를 쓸 때는 이 값을 우선합니다. 보정 설정은 `session.json`의 `ground_correction`에 있습니다.
+- `class_voted`(선택): 같은 추적 ID에서 지난 프레임까지 받은 클래스의 신뢰도 가중 다수결입니다. 편향 보정에는 이 클래스를 씁니다.
+
+## 실시간 서버 (CCTV --serve)
+
+CCTV 파이프라인을 `--serve 8765`로 실행하면 Unity 디지털 트윈(`CctvLiveClient`)이 읽어 가는 HTTP 서버가 열립니다(기본 `127.0.0.1`).
+
+- `GET /frame.jpg`: 최신 원본 프레임(JPEG)
+- `GET /state`: 최신 검출 결과
+
+```json
+{
+  "camera_id": "utic-당진청주선아산", "camera_name": "[당진청주선]아산", "units": "m",
+  "timestamp": 1792378186.07, "frame": 531, "width": 720, "height": 480,
+  "objects": [{"id": 15, "class_name": "car", "x": 3.61, "z": 44.15, "confidence": 0.87, "bbox": [310.0, 340.5, 335.1, 385.0]}],
+  "unplaced": 0
+}
+```
+
+- `objects`에는 노면 좌표가 있는 검출만 들어갑니다. 좌표는 `mapped_xz_corrected`가 있으면 그 값, 없으면 `mapped_xz`이고, 클래스는 다수결 클래스(`class_voted`)입니다. `unplaced`는 좌표가 없는 검출 수입니다.
+- `id`는 추적 ID이고, 추적 ID가 없으면 음수 임시 번호입니다.
+- `units`가 `px`이면 예전 픽셀 단위 캘리브레이션이라 실제 거리가 아닙니다.
+
+## correction.json (편향 보정 유효 길이)
+
+`mapping/scripts/calibrate_correction.py`가 가상환경 정답으로 만들고, `evaluate_mapping.py --dims-file`과 CCTV 파이프라인(`--correction`, 기본 `calibration/correction.json`)이 읽습니다.
+
+```json
+{
+  "source": "detection",
+  "camera": {"position": [8.5, 8.0, -10.0], "image_size": [1920, 1080]},
+  "dimensions": {"car": [2.12, 1.85], "bus": [6.44, 2.5], "truck": [2.52, 2.5], "motorcycle": [2.1, 0.8]},
+  "fitted": {"car": {"length": 2.12, "width": 1.85, "n": 305, "iqr": 0.77}},
+  "heldout": {"보정 없음": {"mean": 1.70}, "학습 길이 · 다수결 클래스": {"mean": 0.56}}
+}
+```
+
+- `dimensions`의 길이는 차체 길이가 아니라 박스 아래 가장자리를 만드는 **유효 길이**입니다. 학습 표본이 부족한 클래스는 기본값(차체 길이)이 들어갑니다.
+- 학습한 가상 카메라와 높이·각도가 비슷한 CCTV에 씁니다.
 - `image`(선택): 원본 프레임을 함께 저장한 경우 그 경로.
 - `detection` 모듈의 추가 필드(초안): `category_id`는 프로젝트 분류 ID, `model_id`는 결과를 낸 모델 식별자입니다. `class_id`는 각 모델의 원래 ID라 두 모델을 함께 쓰면 `model_id`와 같이 해석합니다. 분류표는 [검출 모듈 안내](../detection/README.md)를 따릅니다.
 - `detection` 모듈은 프레임에 `timestamp_kind`와 `inference_ms`를 추가합니다. 기본 `track_id`는 `null`이며 `--track`/`--alerts`에서는 기존 ByteTrack ID를 저장합니다. Unity 입력은 `simulation_seconds`, 녹화 영상은 `video_seconds`, 웹캠·스트림 수신 시각은 `unix_seconds`입니다.
 - 신호·사고 실험의 Unity 정답에는 `signals`(차량·보행자 상태, 남은 시간), `scenario`(시드·선택 장면·샘플링 비율·물리 접촉 이벤트)가 추가됩니다. 이는 정답 전용이며 경고 엔진의 입력 근거로 사용하지 않습니다. 자세한 내용은 [실험 안내](traffic_incidents.md)를 참고합니다.
 - `alerts.jsonl`은 검출·추적에서 판단한 경고를 한 줄씩 기록합니다. `alert_id`, `type`, `status=unconfirmed`, `camera_id`, `frame`, `timestamp`, `evidence`(근거 박스·클래스·추적 ID)를 포함합니다.
 - 실제 CCTV 파이프라인(`CCTV` 스크립트)은 `logs/<카메라ID>_<시각>/detections.jsonl`에 이 형식으로 저장합니다. `session.json`에는 모델, 신뢰도 기준, 추적기, 캘리브레이션 파일, `timestamp_kind`(`unix_seconds` 또는 녹화 영상의 `video_seconds`)가 들어 있습니다.
+
+## calibration/<카메라ID>.pose.json (CCTV 카메라 자세, 가상 CCTV 배치값)
+
+`calibrate_homography.py`(기준점 6개 이상)나 `estimate_camera_pose.py --calibration`이 만듭니다.
+
+```json
+{
+  "camera_id": "utic-아산향산사거리",
+  "position_m": {"x_east": 8.5, "z_north": -10.0, "height": 8.0},
+  "position_latlon": [36.7798099, 127.0029952],
+  "origin_latlon": [36.7799, 127.0029],
+  "heading_deg": 352.0, "pitch_deg": 15.0, "roll_deg": 0.0,
+  "vertical_fov_deg": 45.0, "horizontal_fov_deg": 72.7, "focal_px": 1303.7, "image_size": [1920, 1080],
+  "unity": {"position": [8.5, 8.0, -10.0], "euler_deg": [15.0, 352.0, 0.0], "field_of_view": 45.0, "meters_per_unit": 1.0, "ground_y": 0.0},
+  "points": 12, "rmse_px": 0.0,
+  "leave_one_out_std": {"height": 0.0, "heading_deg": 0.0, "pitch_deg": 0.0, "vertical_fov_deg": 0.0}
+}
+```
+
+- `position_m`: 원점(`origin_latlon`, 위도·경도 모드가 아니면 입력 좌표계 원점) 기준 동(x)·북(z)·노면에서 잰 높이(m).
+- `heading_deg`: 북(+z)에서 동(+x) 쪽으로 잰 카메라 방향. `pitch_deg`: 아래로 숙인 각도(양수). `roll_deg`: 좌우 기울기.
+- `unity`: Unity 카메라의 `transform.position`, `transform.eulerAngles`, `fieldOfView`(세로 화각)에 그대로 넣는 값. Unity x=동, y=위, z=북이고, `meters_per_unit`이 1이 아니면 position을 그 값으로 나눈 값입니다. `ground_y`는 가상 CCTV를 놓을 장면의 노면 높이(Unity y, `--ground-y`)이며 position의 y에 더해져 있습니다.
+- `leave_one_out_std`: 기준점을 하나씩 빼고 다시 구했을 때의 표준편차. 크면 기준점을 더 찍어야 합니다.
+- 가정: 렌즈 중심은 화면 가운데, 정사각 픽셀, 렌즈 왜곡 없음, 기준점은 같은 노면 위.
+
+## <카메라ID>.road_pose.json (도로 중앙선 기준 카메라 자세)
+
+`mapping/scripts/road_relative_pose.py`가 `pose.json`에서 만들고, Unity의 **TwinSight > City Lab > Place VirtualCCTV From Real CCTV**가 읽습니다(`simulation/TwinSightSim/RealCctv/`).
+
+```json
+{
+  "camera_id": "utic-국도1호선파주금촌신사거리", "virtual_camera_id": "city-lab-geumchon",
+  "road_line": [[37.7688546, 126.79218891], [37.76989365, 126.79129256]], "road_bearing_deg": 325.6,
+  "along_m": 30.5, "lateral_m": -6.55, "height_m": 13.17,
+  "yaw_to_road_deg": 9.0, "pitch_deg": 14.2, "roll_deg": 1.9,
+  "vertical_fov_deg": 38.0, "horizontal_fov_deg": 54.7, "image_size": [720, 480],
+  "has_ref": true, "ref_point": [37.771067, 126.790516], "ref_ahead_m": 255.3, "ref_lateral_m": 17.1
+}
+```
+
+- `road_line`: 실제 도로 중앙선 위 두 점. 첫 점 → 둘째 점이 도로 앞쪽(카메라가 보는 쪽)이고 그 방위각이 `road_bearing_deg`입니다.
+- `along_m`·`lateral_m`: 첫 점 기준 카메라 위치. 앞쪽 +, 앞쪽을 볼 때 오른쪽 +(m). `height_m`은 노면에서 잰 높이.
+- `yaw_to_road_deg`: 카메라 방향 - 도로 방향(오른쪽 +). 나머지 각도·화각은 `pose.json`과 같습니다.
+- `ref_ahead_m`: 카메라에서 기준 지점(`--ref-point`, 정지선·사거리 중심)까지 도로 앞쪽 거리.
+
+## road-context.json (도로 영역·정지 대기 영역, 경고 엔진 --context)
+
+`mapping/scripts/detect_road_context.py`가 만들고, `python -m detection predict/warn --context`가 읽습니다. 경고 엔진이 쓰는 것은 앞의 두 항목이고 나머지는 참고용입니다.
+
+```json
+{
+  "camera_id": "utic-국도1호선파주금촌신사거리", "image_size": [720, 480],
+  "road_polygon": [[0.29, 1.0], [0.36, 0.22], [0.42, 0.22], [0.97, 1.0]],
+  "stop_zones": [],
+  "lanes": [{"lateral_m": -1.15, "color": "white", "kind": "dashed", "width_m": 0.3, "along_m": [5.95, 77.1],
+             "dash_period_m": 8.35, "dash_length_m": 3.65, "image_xy": [[0.431, 0.823], [0.377, 0.336]]}],
+  "crosswalks": [], "stop_lines": [],
+  "road_lateral_m": [-4.9, 11.1], "road_along_m": [-3.0, 170.0], "centre_lateral_m": 2.3,
+  "road_frame": {"origin_ground": [116.3, -205.6], "forward_ground": [-0.565, 0.825], "meters_per_unit": 1.0}
+}
+```
+
+- `road_polygon`: 도로 영역 다각형(0~1 이미지 좌표, 왼쪽 위 원점, 위 예시는 점을 줄인 것). 경고 엔진은 검출 박스 아래 가운데가 이 안에 있을 때만 씁니다. 바깥 차선 밖 0.6 m(갓길)까지 넣습니다.
+- `stop_zones`: 정지 대기 영역 다각형 목록(같은 좌표). 이 안의 차는 사고 의심 판단에서 뺍니다.
+- `lanes`: 세로 선. `lateral_m`은 도로 좌표(앞쪽을 볼 때 오른쪽 +, m), `kind`는 `solid`·`dashed`·`barrier`(중앙분리대·연석처럼 넓은 밝은 띠), `color`는 `white`·`yellow`. `image_xy`는 선의 양 끝(0~1).
+- `crosswalks`·`stop_lines`: 도로 좌표의 `along_m`(가까운 쪽, 먼 쪽)과 `lateral_m` 범위. 정지선 `side`는 `away`(중앙선 오른쪽, 멀어지는 차로)·`toward`(다가오는 차로). `stop_zone_basis`는 각 정지 대기 영역의 근거(`stop_line`/`crosswalk`)와 범위입니다.
+- `road_frame`: 도로 좌표계. 노면 좌표(캘리브레이션 좌표, City Lab은 월드 x·z)의 원점과 앞쪽 방향, 1단위의 m.
+
+## <이름>.twin.json (실제 인식 결과의 도로 기준 좌표, 디지털 트윈 재생)
+
+`mapping/scripts/detections_to_twin.py`가 만들고, Unity **Replay Real CCTV Detections**가 읽습니다(`simulation/TwinSightSim/RealCctv/`).
+
+```json
+{
+  "camera_id": "utic-국도1호선파주금촌신사거리", "image_size": [720, 480], "units": "m",
+  "camera": {"along_m": 30.54, "lateral_m": -6.55, "height_m": 13.17},
+  "lanes": [{"color": "white", "kind": "dashed", "along_m": [26.0, 97.1], "lateral_m": [-4.2, -4.2]}],
+  "frames": [{"frame": 0, "timestamp": 0.0, "image": "RealCctv/geumchon_frames/geumchon_20261019_162323.jpg", "objects": [
+    {"id": 1, "class_name": "truck", "confidence": 0.71, "bbox_xyxy": [476.8, 292.4, 547.7, 364.0], "pixel": [512.2, 364.0],
+     "ground_xz": [117.5, -190.5], "along_m": 31.8, "lateral_m": 6.5, "raw_along_m": 28.3, "raw_lateral_m": 5.2,
+     "direction": "away", "truncated": false, "in_road": true}]}]
+}
+```
+
+- `along_m`: 카메라에서 도로 앞쪽으로 잰 거리(m), `lateral_m`: 도로 중앙선(`road_pose.json`의 `road_line`)에서 오른쪽(+) 거리. 박스 아래 가운데를 노면에 옮긴 뒤 차량 크기로 편향을 보정한 차량 중심이다. `raw_*`는 보정 전.
+- `ground_xz`: 캘리브레이션 노면 좌표(m, 위도·경도 모드면 동·북). `direction`: 중앙선 오른쪽 `away`(멀어짐), 왼쪽 `toward`(다가옴).
+- `truncated`: 박스가 화면 가장자리에 닿음. `in_road`: road-context 도로 영역 안. `lanes`: 인식한 차선의 양 끝(같은 좌표).
+- `image`: 원본 프레임 경로. Unity 프로젝트 폴더(`simulation/TwinSightSim`) 기준 상대 경로라 다른 PC에서도 재생 화면 오른쪽 위에 실제 화면이 나온다.
 
 ## calibration/<카메라ID>.json (실제 CCTV 캘리브레이션)
 

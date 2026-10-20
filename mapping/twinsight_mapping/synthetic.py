@@ -35,7 +35,8 @@ class SceneConfig:
     frames: int = 200
     warmup_seconds: float = 15.0
     seed: int = 0
-    # 노면 높이 y = sag * max(0, z - sag_start)^2. 0이면 평평한 도로
+    # 노면 높이 y = road_y + sag * max(0, z - sag_start)^2. sag가 0이면 평평한 도로
+    road_y: float = 0.0  # 노면 기준 높이(Unity y). City Lab 도로는 약 0.507
     sag: float = 0.0
     sag_start: float = 40.0
     grid_x: tuple[float, float] = (-6.0, 6.0)
@@ -81,7 +82,7 @@ class PinholeCamera:
 
 
 def road_height(cfg: SceneConfig, z):
-    return cfg.sag * np.maximum(0.0, np.asarray(z, dtype=float) - cfg.sag_start) ** 2
+    return cfg.road_y + cfg.sag * np.maximum(0.0, np.asarray(z, dtype=float) - cfg.sag_start) ** 2
 
 
 def _box_corners(x: float, y: float, z: float, size: tuple[float, float, float]) -> np.ndarray:
