@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import logging
+
 from fastapi import APIRouter, Depends
 from sqlalchemy import delete, select
 from sqlalchemy.exc import IntegrityError
@@ -22,6 +24,7 @@ from backend.app.schemas import (
 from backend.app.ws_manager import manager
 
 router = APIRouter(prefix="/ingest", tags=["ingest"])
+logger = logging.getLogger(__name__)
 
 
 def as_records(payload: list | object) -> list:
@@ -148,6 +151,7 @@ async def ingest_alerts(
     """경고 레코드 하나 또는 배열을 저장한다. 같은 실행의 중복 alert_id는 버린다."""
     saved: list[AlertOut] = []
     ignored: list[str] = []
+    ignored_runs: list[str] = []
     events: list[dict] = []
     for record in as_records(payload):
         resolved = resolve_run_id(run_id, record.camera_id)
@@ -155,11 +159,15 @@ async def ingest_alerts(
         alert = insert_alert(db, resolved, record)
         if alert is None:
             ignored.append(record.alert_id)
+            ignored_runs.append(resolved)
             continue
         body = to_alert_out(alert)
         saved.append(body)
         events.append({"type": "alert", "alert": body.model_dump(mode="json")})
     db.commit()
+    if ignored:
+        labels = ", ".join(dict.fromkeys(ignored_runs))
+        logger.warning("run_id=%s 에서 이미 있는 alert_id %s건을 무시했습니다", labels, len(ignored))
     for event in events:
         await manager.broadcast(event)
     return IngestAlertsResult(saved=saved, ignored=ignored)

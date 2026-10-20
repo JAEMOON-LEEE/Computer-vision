@@ -13,7 +13,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 
 from backend.app import config
 
@@ -137,6 +137,6 @@ def refresh_stream_url(camera) -> tuple[str, datetime]:
         raise ItsError("ITS 응답을 해석하지 못했습니다.") from exc
     log_call("its", bbox, len(items))
     stream_url = choose_stream(camera, items)
-    fetched_at = datetime.now().astimezone()
+    fetched_at = datetime.now(timezone.utc)
     _cache[camera.camera_id] = (time.monotonic(), stream_url, fetched_at)
     return stream_url, fetched_at

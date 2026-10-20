@@ -133,6 +133,60 @@ def test_publish_waits_for_summary_and_partial_line(tmp_path):
     assert alert["type"] == "road_damage"
 
 
+def test_unknown_camera_is_warned_once(capsys):
+    follow = load_follow()
+
+    class Client(FakeClient):
+        def __init__(self):
+            super().__init__()
+            self.gets = []
+
+        def get(self, path):
+            self.gets.append(path)
+            return FakeResponse(404)
+
+    client = Client()
+    checked: set[str] = set()
+    follow.publish_line(client, "detections", detection_line(frame=1), "run-a", pause=0, checked=checked)
+    follow.publish_line(client, "detections", detection_line(frame=2), "run-a", pause=0, checked=checked)
+    out = capsys.readouterr().out
+    assert out.count("카메라 목록에 없는 camera_id: cam") == 1
+    assert client.gets == ["/cameras/cam"]
+    assert len(client.posts) == 2
+
+
+def test_camera_check_failure_still_publishes():
+    follow = load_follow()
+
+    class Client(FakeClient):
+        def get(self, path):
+            raise httpx.ConnectError("down")
+
+    client = Client()
+    follow.publish_line(client, "detections", detection_line(), "run-a", pause=0)
+    assert client.posts[0][0] == "/ingest/detections"
+
+
+def test_ignored_alert_ids_are_printed(capsys):
+    follow = load_follow()
+
+    class Response(FakeResponse):
+        def json(self):
+            return {"ignored": ["cam:1"]}
+
+    class Client(FakeClient):
+        def get(self, path):
+            return FakeResponse()
+
+        def post(self, path, params=None, json=None):
+            self.posts.append((path, params, json))
+            return Response()
+
+    line = json.dumps({"alert_id": "cam:1", "camera_id": "cam", "type": "road_damage"}, ensure_ascii=False)
+    follow.publish_line(Client(), "alerts", line, "run-a", pause=0)
+    assert "run_id=run-a 에서 이미 있는 alert_id라 무시됨: ['cam:1']" in capsys.readouterr().out
+
+
 def test_deliver_retries_then_records_failure(tmp_path, monkeypatch, capsys):
     follow = load_follow()
     monkeypatch.setattr(follow, "REPO_ROOT", tmp_path)

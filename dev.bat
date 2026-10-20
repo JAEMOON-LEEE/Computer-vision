@@ -25,11 +25,8 @@ if exist "frontend\package.json" (
   )
   echo [2/3] Frontend http://localhost:5173
   start "TwinSight Web" cmd /k "cd /d "%~dp0frontend" && npm run dev"
-) else if exist "frontend\index.html" (
-  echo [2/3] Frontend http://localhost:5173/frontend/
-  start "TwinSight Web" cmd /k "cd /d "%~dp0" && %PY% -m http.server 5173"
 ) else (
-  echo [2/3] frontend\ not found yet - skipped
+  echo [2/3] frontend\package.json 이 없습니다
 )
 
 if /i "%1"=="nomock" (
@@ -49,13 +46,13 @@ if not exist "%MOCK%\detections.jsonl" (
 
 if exist "%MOCK%\detections.jsonl" (
   echo [3/3] Mock replay for %CAM% (loop)
-  start "TwinSight Mock" cmd /k "cd /d "%~dp0" && %PY% backend\scripts\replay_jsonl.py --detections %MOCK%\detections.jsonl --alerts %MOCK%\alerts.jsonl --speed 1 --loop"
+  start "TwinSight Mock" cmd /k "cd /d "%~dp0" && %PY% backend\scripts\replay_jsonl.py --detections %MOCK%\detections.jsonl --alerts %MOCK%\alerts.jsonl --speed 1 --loop --stamp-now --alerts-first-loop-only"
 ) else (
   echo [3/3] mock data not found - skipped
 )
 
 :open
 timeout /t 3 /nobreak >nul
-if exist "frontend\package.json" (start "" http://localhost:5173) else if exist "frontend\index.html" (start "" http://localhost:5173/frontend/) else (start "" http://localhost:8000/docs)
+if exist "frontend\package.json" (start "" http://localhost:5173) else (start "" http://localhost:8000/docs)
 echo.
 echo Done. Close each window (or Ctrl+C in it) to stop.

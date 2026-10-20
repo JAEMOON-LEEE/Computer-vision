@@ -12,11 +12,41 @@ from datetime import datetime, timezone
 
 from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy.types import JSON
+from sqlalchemy.types import JSON, TypeDecorator
 
 
 def utcnow() -> datetime:
     return datetime.now(timezone.utc)
+
+
+def as_utc(value: datetime) -> datetime:
+    """naive는 UTC로 보고, 오프셋이 있으면 UTC로 바꾼다."""
+    if value.tzinfo is None:
+        return value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc)
+
+
+class UtcDateTime(TypeDecorator):
+    """DB에 넣기 전과 꺼낸 뒤 모두 UTC aware datetime으로 맞춘다."""
+
+    impl = DateTime(timezone=True)
+    cache_ok = True
+
+    def process_bind_param(self, value, dialect):
+        if value is None:
+            return None
+        if isinstance(value, str):
+            text = value.strip().replace("Z", "+00:00")
+            return as_utc(datetime.fromisoformat(text))
+        return as_utc(value)
+
+    def process_result_value(self, value, dialect):
+        if value is None:
+            return None
+        if isinstance(value, str):
+            text = value.strip().replace("Z", "+00:00")
+            return as_utc(datetime.fromisoformat(text))
+        return as_utc(value)
 
 
 class Base(DeclarativeBase):
@@ -34,12 +64,12 @@ class Camera(Base):
     lat: Mapped[float | None] = mapped_column(Float, nullable=True)
     lon: Mapped[float | None] = mapped_column(Float, nullable=True)
     stream_url: Mapped[str | None] = mapped_column(Text, nullable=True)
-    stream_fetched_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    stream_fetched_at: Mapped[datetime | None] = mapped_column(UtcDateTime(), nullable=True)
     image_width: Mapped[int | None] = mapped_column(Integer, nullable=True)
     image_height: Mapped[int | None] = mapped_column(Integer, nullable=True)
     is_ptz: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     status: Mapped[str] = mapped_column(String, default="unknown", nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UtcDateTime(), default=utcnow, nullable=False)
 
 
 class Run(Base):
@@ -50,7 +80,7 @@ class Run(Base):
     run_id: Mapped[str] = mapped_column(String, primary_key=True)
     camera_id: Mapped[str] = mapped_column(ForeignKey("cameras.camera_id"), nullable=False)
     timestamp_kind: Mapped[str | None] = mapped_column(String, nullable=True)
-    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
+    started_at: Mapped[datetime] = mapped_column(UtcDateTime(), default=utcnow, nullable=False)
 
 
 class Frame(Base):
@@ -64,7 +94,7 @@ class Frame(Base):
     frame_no: Mapped[int] = mapped_column(Integer, nullable=False)
     timestamp: Mapped[float] = mapped_column(Float, nullable=False)
     timestamp_kind: Mapped[str] = mapped_column(String, nullable=False)
-    received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
+    received_at: Mapped[datetime] = mapped_column(UtcDateTime(), default=utcnow, nullable=False)
     width: Mapped[int] = mapped_column(Integer, nullable=False)
     height: Mapped[int] = mapped_column(Integer, nullable=False)
     image_path: Mapped[str | None] = mapped_column(Text, nullable=True)
@@ -119,6 +149,6 @@ class Alert(Base):
     message: Mapped[str] = mapped_column(Text, nullable=False)
     evidence: Mapped[list] = mapped_column(JSON, default=list, nullable=False)
     basis: Mapped[str] = mapped_column(Text, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
-    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UtcDateTime(), default=utcnow, nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(UtcDateTime(), default=utcnow, nullable=False)
     handled_by: Mapped[str | None] = mapped_column(String, nullable=True)

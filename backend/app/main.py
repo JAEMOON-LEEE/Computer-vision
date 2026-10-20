@@ -12,7 +12,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.db import init_db
-from backend.app.routers import alerts, cameras, ingest, ws
+from backend.app.routers import alerts, cameras, detections, ingest, ws
 
 
 @asynccontextmanager
@@ -40,6 +40,7 @@ app.add_middleware(
 )
 
 app.include_router(cameras.router)
+app.include_router(detections.router)
 app.include_router(ingest.router)
 app.include_router(alerts.router)
 app.include_router(ws.router)

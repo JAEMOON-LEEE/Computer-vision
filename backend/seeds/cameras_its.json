@@ -1,0 +1,1836 @@
+[
+  {
+    "camera_id": "its-acd16ade47",
+    "name": "[국도 1호선] 파주 자유IC",
+    "source": "ITS",
+    "lat": 37.8943638,
+    "lon": 126.7516
+  },
+  {
+    "camera_id": "its-fd0454d4ce",
+    "name": "[국도1호선] 파주 여우고개사거리",
+    "source": "ITS",
+    "lat": 37.8732194,
+    "lon": 126.7875222
+  },
+  {
+    "camera_id": "its-1c0e07ddf8",
+    "name": "[국도 1호선] 파주 등원교차로",
+    "source": "ITS",
+    "lat": 37.7556472,
+    "lon": 126.8020416
+  },
+  {
+    "camera_id": "its-c81fa67ba5",
+    "name": "[국도1호선] 파주 주라위삼거리",
+    "source": "ITS",
+    "lat": 37.8174055,
+    "lon": 126.7922722
+  },
+  {
+    "camera_id": "its-556b0aa3e4",
+    "name": "[국도3호선] 여주 건장삼거리",
+    "source": "ITS",
+    "lat": 37.19798651,
+    "lon": 127.5493505
+  },
+  {
+    "camera_id": "its-fc9cded771",
+    "name": "[국도3호선] 이천 이천IC입구",
+    "source": "ITS",
+    "lat": 37.25612568,
+    "lon": 127.486591
+  },
+  {
+    "camera_id": "its-709aa3617a",
+    "name": "[국도 6호선] 양평 대흥교차로~용문터널",
+    "source": "ITS",
+    "lat": 37.48338056,
+    "lon": 127.5608306
+  },
+  {
+    "camera_id": "its-f048b7ade2",
+    "name": "[국도 6호선] 양평 용문교차로",
+    "source": "ITS",
+    "lat": 37.48826,
+    "lon": 127.58602
+  },
+  {
+    "camera_id": "its-68ea5ab3f8",
+    "name": "[국도 6호선] 양평 상평교차로",
+    "source": "ITS",
+    "lat": 37.50398889,
+    "lon": 127.4960556
+  },
+  {
+    "camera_id": "its-1988f619ef",
+    "name": "[국도 6호선] 양평 오빈교차로",
+    "source": "ITS",
+    "lat": 37.50258611,
+    "lon": 127.4742028
+  },
+  {
+    "camera_id": "its-9725dd587f",
+    "name": "[국도 17호선] 안성 죽산교차로",
+    "source": "ITS",
+    "lat": 37.0805242,
+    "lon": 127.4338839
+  },
+  {
+    "camera_id": "its-a8d172f1ee",
+    "name": "[국도 17호선] 안성 오방교차로",
+    "source": "ITS",
+    "lat": 37.11075987,
+    "lon": 127.4303581
+  },
+  {
+    "camera_id": "its-327a89b86e",
+    "name": "[국도 17호선] 용인 고안교차로",
+    "source": "ITS",
+    "lat": 37.12988357,
+    "lon": 127.4085056
+  },
+  {
+    "camera_id": "its-020f8a05d8",
+    "name": "[국도 17호선] 용인 원삼사거리",
+    "source": "ITS",
+    "lat": 37.19077584,
+    "lon": 127.3260707
+  },
+  {
+    "camera_id": "its-f813169675",
+    "name": "[국도38호선] 안성 두현교차로",
+    "source": "ITS",
+    "lat": 37.07041298,
+    "lon": 127.4132399
+  },
+  {
+    "camera_id": "its-4881ce049d",
+    "name": "[국도 38호선] 안성 일죽IC삼거리",
+    "source": "ITS",
+    "lat": 37.08669496,
+    "lon": 127.4515732
+  },
+  {
+    "camera_id": "its-64ac150aee",
+    "name": "[국도 38호선] 안성 내리사거리",
+    "source": "ITS",
+    "lat": 37.01033952,
+    "lon": 127.2198019
+  },
+  {
+    "camera_id": "its-136c195651",
+    "name": "[국도 39호선] 화성 숙곡교차로",
+    "source": "ITS",
+    "lat": 37.25223203,
+    "lon": 126.8964504
+  },
+  {
+    "camera_id": "its-03d178803b",
+    "name": "[국도 39호선] 화성 쌍학교차로",
+    "source": "ITS",
+    "lat": 37.24504833,
+    "lon": 126.8910689
+  },
+  {
+    "camera_id": "its-2dec2dd5c6",
+    "name": "[국도 39호선] 화성 자안교차로",
+    "source": "ITS",
+    "lat": 37.19392277,
+    "lon": 126.8795083
+  },
+  {
+    "camera_id": "its-cf23c7f2d8",
+    "name": "[국도 39호선] 화성 지월교차로",
+    "source": "ITS",
+    "lat": 37.14302588,
+    "lon": 126.8927875
+  },
+  {
+    "camera_id": "its-2ddb155d67",
+    "name": "[국도 39호선] 화성 양노교차로",
+    "source": "ITS",
+    "lat": 37.22220092,
+    "lon": 126.8752729
+  },
+  {
+    "camera_id": "its-75e317951b",
+    "name": "[국도 39호선] 화성 상신지하차도교차로",
+    "source": "ITS",
+    "lat": 37.09961835,
+    "lon": 126.9019836
+  },
+  {
+    "camera_id": "its-de14768b22",
+    "name": "[국도 39호선] 평택 청북교차로",
+    "source": "ITS",
+    "lat": 37.04909753,
+    "lon": 126.9310671
+  },
+  {
+    "camera_id": "its-1ba7577b17",
+    "name": "[국도 42호선] 용인 양지사거리",
+    "source": "ITS",
+    "lat": 37.23215692,
+    "lon": 127.2789854
+  },
+  {
+    "camera_id": "its-53f4953e53",
+    "name": "[국도 42호선] 이천 무촌교차로",
+    "source": "ITS",
+    "lat": 37.28668872,
+    "lon": 127.4811946
+  },
+  {
+    "camera_id": "its-fb29383523",
+    "name": "[국도 42호선] 이천 설서교차로",
+    "source": "ITS",
+    "lat": 37.25564307,
+    "lon": 127.4028334
+  },
+  {
+    "camera_id": "its-965b4cabf6",
+    "name": "[국도 42호선] 이천 오천교차로",
+    "source": "ITS",
+    "lat": 37.25461995,
+    "lon": 127.3615657
+  },
+  {
+    "camera_id": "its-c5a26ca6e2",
+    "name": "[국도 42호선] 이천 복하교차로",
+    "source": "ITS",
+    "lat": 37.26503732,
+    "lon": 127.4615741
+  },
+  {
+    "camera_id": "its-eb5cb14a57",
+    "name": "[국도 43호선] 광주 고산IC",
+    "source": "ITS",
+    "lat": 37.37747019,
+    "lon": 127.2421181
+  },
+  {
+    "camera_id": "its-4828590ae3",
+    "name": "[국도46호선] 가평 청평아랫삼거리",
+    "source": "ITS",
+    "lat": 37.7341666,
+    "lon": 127.4119444
+  },
+  {
+    "camera_id": "its-9e622817af",
+    "name": "[국도46호선] 가평 청평윗삼거리",
+    "source": "ITS",
+    "lat": 37.7402777,
+    "lon": 127.4219444
+  },
+  {
+    "camera_id": "its-432b6c05ac",
+    "name": "[국도46호선] 가평 청평검문소앞교차로",
+    "source": "ITS",
+    "lat": 37.7469472,
+    "lon": 127.4285055
+  },
+  {
+    "camera_id": "its-d53c66a612",
+    "name": "[국도 45호선] 용인 외국어대사거리",
+    "source": "ITS",
+    "lat": 37.33776944,
+    "lon": 127.2495861
+  },
+  {
+    "camera_id": "its-80663ed973",
+    "name": "[국도 45호선] 광주 도마삼거리",
+    "source": "ITS",
+    "lat": 37.46811389,
+    "lon": 127.2728528
+  },
+  {
+    "camera_id": "its-3a16b8eac1",
+    "name": "[국도 46호선] 가평 가평역입구교차로",
+    "source": "ITS",
+    "lat": 37.8169444,
+    "lon": 127.5102777
+  },
+  {
+    "camera_id": "its-75ab19d5b0",
+    "name": "[국도 46호선] 가평 가평오거리",
+    "source": "ITS",
+    "lat": 37.8207055,
+    "lon": 127.5138
+  },
+  {
+    "camera_id": "its-2c6327c00f",
+    "name": "[국도46호선] 남양주 월산간이IC",
+    "source": "ITS",
+    "lat": 37.65418135,
+    "lon": 127.3442071
+  },
+  {
+    "camera_id": "its-00c0290a92",
+    "name": "[국도 46호선] 남양주 금남IC",
+    "source": "ITS",
+    "lat": 37.65745275,
+    "lon": 127.3660367
+  },
+  {
+    "camera_id": "its-a45eb87911",
+    "name": "[국도 77호선] 화성 봉화교차로",
+    "source": "ITS",
+    "lat": 37.0657083,
+    "lon": 126.7994694
+  },
+  {
+    "camera_id": "its-ea80d98aa7",
+    "name": "[국도 77호선] 평택 원정삼거리",
+    "source": "ITS",
+    "lat": 37.0094055,
+    "lon": 126.817675
+  },
+  {
+    "camera_id": "its-abc90883e7",
+    "name": "[국도 77호선] 화성 이화사거리",
+    "source": "ITS",
+    "lat": 37.038,
+    "lon": 126.8044138
+  },
+  {
+    "camera_id": "its-7db236028c",
+    "name": "[국도 77호선] 화성 멱우교차로",
+    "source": "ITS",
+    "lat": 37.103675,
+    "lon": 126.8128277
+  },
+  {
+    "camera_id": "its-1b786f9a0c",
+    "name": "[국도 82호선] 화성 덕우교차로",
+    "source": "ITS",
+    "lat": 37.1442222,
+    "lon": 126.8639138
+  },
+  {
+    "camera_id": "its-fd70a5e92f",
+    "name": "[국도 82호선] 화성 율암교차로",
+    "source": "ITS",
+    "lat": 37.1557527,
+    "lon": 126.8916861
+  },
+  {
+    "camera_id": "its-135db0e4a6",
+    "name": "[국도 82호선] 화성 가재교차로",
+    "source": "ITS",
+    "lat": 37.1494722,
+    "lon": 126.921925
+  },
+  {
+    "camera_id": "its-005a2b202e",
+    "name": "[국도 3호선] 성남 대원IC",
+    "source": "ITS",
+    "lat": 37.4207916,
+    "lon": 127.15495
+  },
+  {
+    "camera_id": "its-11ae64ea34",
+    "name": "[국도 3호선] 의정부 자금IC",
+    "source": "ITS",
+    "lat": 37.758862,
+    "lon": 127.09084
+  },
+  {
+    "camera_id": "its-5b02536544",
+    "name": "[국도 3호선] 의정부 장암IC",
+    "source": "ITS",
+    "lat": 37.7269505,
+    "lon": 127.0750983
+  },
+  {
+    "camera_id": "its-393ffd76d7",
+    "name": "[국도 17호선] 안성 두교교차로",
+    "source": "ITS",
+    "lat": 37.01434706,
+    "lon": 127.4368133
+  },
+  {
+    "camera_id": "its-5291342589",
+    "name": "[국도 3호선] 이천 이황초교삼거리",
+    "source": "ITS",
+    "lat": 37.14457603,
+    "lon": 127.5901782
+  },
+  {
+    "camera_id": "its-3c4cb7089d",
+    "name": "[국도 3호선] 이천 상승대삼거리",
+    "source": "ITS",
+    "lat": 37.16065566,
+    "lon": 127.5755027
+  },
+  {
+    "camera_id": "its-09c5481a12",
+    "name": "[국도 38호선] 안성 능국삼거리",
+    "source": "ITS",
+    "lat": 37.10249079,
+    "lon": 127.4837365
+  },
+  {
+    "camera_id": "its-e0102e5aef",
+    "name": "[국도 38호선] 안성 터미널교차로",
+    "source": "ITS",
+    "lat": 37.01206593,
+    "lon": 127.2952528
+  },
+  {
+    "camera_id": "its-89df2a3164",
+    "name": "[국도 38호선] 안성 삼죽삼거리",
+    "source": "ITS",
+    "lat": 37.06397924,
+    "lon": 127.3712242
+  },
+  {
+    "camera_id": "its-1af912eda5",
+    "name": "[국도38호선] 안성 종합운동장삼거리",
+    "source": "ITS",
+    "lat": 37.02125525,
+    "lon": 127.3269985
+  },
+  {
+    "camera_id": "its-1a4f49a384",
+    "name": "[국도 42호선] 여주 고백리삼거리",
+    "source": "ITS",
+    "lat": 37.29520507,
+    "lon": 127.5426343
+  },
+  {
+    "camera_id": "its-b5d84da8b3",
+    "name": "[국도 42호선] 용인 양지IC사거리",
+    "source": "ITS",
+    "lat": 37.23494432,
+    "lon": 127.2972927
+  },
+  {
+    "camera_id": "its-b837dfef73",
+    "name": "[국도 43호선] 화성 덕리사거리",
+    "source": "ITS",
+    "lat": 37.17685286,
+    "lon": 126.9359732
+  },
+  {
+    "camera_id": "its-153c66e962",
+    "name": "[국도 45호선] 남양주 진중삼거리",
+    "source": "ITS",
+    "lat": 37.54934919,
+    "lon": 127.307452
+  },
+  {
+    "camera_id": "its-de5ccdd701",
+    "name": "[국도 45호선] 서안성교차로",
+    "source": "ITS",
+    "lat": 37.037362,
+    "lon": 127.150373
+  },
+  {
+    "camera_id": "its-d0dc118f13",
+    "name": "[국도 45호선] 용인 남리교차로",
+    "source": "ITS",
+    "lat": 37.21859153,
+    "lon": 127.2093792
+  },
+  {
+    "camera_id": "its-cd04adfe48",
+    "name": "[국도 39호선] 양주 울대고개교차로",
+    "source": "ITS",
+    "lat": 37.73089018,
+    "lon": 126.996970137
+  },
+  {
+    "camera_id": "its-3ba6f8e9b7",
+    "name": "[국도 6호선] 남양주 팔당대교IC",
+    "source": "ITS",
+    "lat": 37.54821881,
+    "lon": 127.2401461
+  },
+  {
+    "camera_id": "its-62c5cda6ce",
+    "name": "[국도 6호선] 양평 양수교차로",
+    "source": "ITS",
+    "lat": 37.53750666,
+    "lon": 127.3286057
+  },
+  {
+    "camera_id": "its-140a74adb8",
+    "name": "[국도 6호선] 남양주 도곡IC",
+    "source": "ITS",
+    "lat": 37.5732026,
+    "lon": 127.2248291
+  },
+  {
+    "camera_id": "its-84dfb9ce52",
+    "name": "[국도 6호선] 남양주 조안교차로",
+    "source": "ITS",
+    "lat": 37.53292401,
+    "lon": 127.3028179
+  },
+  {
+    "camera_id": "its-9dd04b385b",
+    "name": "[국도 37호선] 여주 보통교차로",
+    "source": "ITS",
+    "lat": 37.372154,
+    "lon": 127.581238
+  },
+  {
+    "camera_id": "its-a0f557bb54",
+    "name": "[국도 48호선] 김포 태리교차로",
+    "source": "ITS",
+    "lat": 37.6093916,
+    "lon": 126.7407871
+  },
+  {
+    "camera_id": "its-f616f6f018",
+    "name": "[국도 37호선] 가평 봉수교차로",
+    "source": "ITS",
+    "lat": 37.86478611,
+    "lon": 127.2918194
+  },
+  {
+    "camera_id": "its-86f6d14ce6",
+    "name": "[국도 37호선] 양평 중미산삼거리",
+    "source": "ITS",
+    "lat": 37.57775,
+    "lon": 127.45695
+  },
+  {
+    "camera_id": "its-35adf35c91",
+    "name": "[국도46호선] 남양주 사릉IC",
+    "source": "ITS",
+    "lat": 37.6484444,
+    "lon": 127.1925
+  },
+  {
+    "camera_id": "its-ed9dee6bae",
+    "name": "[국도 46호선] 남양주 호평IC",
+    "source": "ITS",
+    "lat": 37.6625917,
+    "lon": 127.2380861
+  },
+  {
+    "camera_id": "its-2f1a7aaa17",
+    "name": "[국도46호선] 남양주 호평IC 서쪽",
+    "source": "ITS",
+    "lat": 37.6497889,
+    "lon": 127.2220222
+  },
+  {
+    "camera_id": "its-36afb65376",
+    "name": "[국도 82호선] 화성 도이교차로",
+    "source": "ITS",
+    "lat": 37.1339,
+    "lon": 126.93104
+  },
+  {
+    "camera_id": "its-e6eeac0245",
+    "name": "[국도 82호선] 화성 하길교차로",
+    "source": "ITS",
+    "lat": 37.08927,
+    "lon": 126.924
+  },
+  {
+    "camera_id": "its-a2da89429b",
+    "name": "[국도 3호선] 양주 고암IC",
+    "source": "ITS",
+    "lat": 37.8146167,
+    "lon": 127.0732
+  },
+  {
+    "camera_id": "its-1e2a3e6bbc",
+    "name": "[국도 3호선] 양주 봉양교차로",
+    "source": "ITS",
+    "lat": 37.8603,
+    "lon": 127.0583333
+  },
+  {
+    "camera_id": "its-2eef140ef1",
+    "name": "[국도 3호선] 양주 광사IC",
+    "source": "ITS",
+    "lat": 37.7821833,
+    "lon": 127.0766
+  },
+  {
+    "camera_id": "its-e3434c09e7",
+    "name": "[국도 43호선] 화성 왕림교차로",
+    "source": "ITS",
+    "lat": 37.1920667,
+    "lon": 126.9468833
+  },
+  {
+    "camera_id": "its-2798768c2f",
+    "name": "[국도 43호선] 화성 안녕IC",
+    "source": "ITS",
+    "lat": 37.19555,
+    "lon": 127.01375
+  },
+  {
+    "camera_id": "its-46c1fa4d87",
+    "name": "[국도 43호선] 평택 오성IC",
+    "source": "ITS",
+    "lat": 37.0089333,
+    "lon": 126.9889
+  },
+  {
+    "camera_id": "its-d23eec71e4",
+    "name": "[국도 43호선] 화성 향남교차로",
+    "source": "ITS",
+    "lat": 37.111568,
+    "lon": 126.925385
+  },
+  {
+    "camera_id": "its-3edc43fe80",
+    "name": "[국도 43호선] 화성 장짐교차로",
+    "source": "ITS",
+    "lat": 37.135653,
+    "lon": 126.91163
+  },
+  {
+    "camera_id": "its-de3ce083a6",
+    "name": "[국도 17호선] 용인 백암사거리",
+    "source": "ITS",
+    "lat": 37.1660277777778,
+    "lon": 127.379794444444
+  },
+  {
+    "camera_id": "its-c48c6f3f8f",
+    "name": "[국도 37호선] 여주 천서사거리",
+    "source": "ITS",
+    "lat": 37.4037277777778,
+    "lon": 127.545527777778
+  },
+  {
+    "camera_id": "its-6e1bb73671",
+    "name": "[국도3호선] 광주 쌍동IC_상행",
+    "source": "ITS",
+    "lat": 37.38274167,
+    "lon": 127.2865361
+  },
+  {
+    "camera_id": "its-4f34ed322a",
+    "name": "[국도3호선] 광주 쌍동IC_하행",
+    "source": "ITS",
+    "lat": 37.37988333,
+    "lon": 127.2965222
+  },
+  {
+    "camera_id": "its-a99346704b",
+    "name": "[국도 39호선] 화성 팔탄교차로",
+    "source": "ITS",
+    "lat": 37.1660778,
+    "lon": 126.891681
+  },
+  {
+    "camera_id": "its-2e580dcd88",
+    "name": "[국도 17호선] 용인 백봉교차로",
+    "source": "ITS",
+    "lat": 37.143838,
+    "lon": 127.387999
+  },
+  {
+    "camera_id": "its-857480e7f9",
+    "name": "[국도 37호선] 양평 양평교차로",
+    "source": "ITS",
+    "lat": 37.497094,
+    "lon": 127.512697
+  },
+  {
+    "camera_id": "its-41f0464883",
+    "name": "[국도 37호선] 양평 백안교차로",
+    "source": "ITS",
+    "lat": 37.487125,
+    "lon": 127.517681
+  },
+  {
+    "camera_id": "its-1f6bd6b5f6",
+    "name": "[국도 37호선] 양평 회현교차로",
+    "source": "ITS",
+    "lat": 37.475449,
+    "lon": 127.518427
+  },
+  {
+    "camera_id": "its-787feb76d0",
+    "name": "[국도 37호선] 양평 공세교차로",
+    "source": "ITS",
+    "lat": 37.462805,
+    "lon": 127.528398
+  },
+  {
+    "camera_id": "its-b792df1bfa",
+    "name": "[국도 37호선] 여주시 대신IC",
+    "source": "ITS",
+    "lat": 37.380828,
+    "lon": 127.569057
+  },
+  {
+    "camera_id": "its-7e8885f2ca",
+    "name": "[국도 38호선] 평택 오성IC입구",
+    "source": "ITS",
+    "lat": 37.0116527777778,
+    "lon": 126.994644444444
+  },
+  {
+    "camera_id": "its-055d3c17c3",
+    "name": "[국도 3호선] 이천 가산삼거리",
+    "source": "ITS",
+    "lat": 37.2404805555556,
+    "lon": 127.511291666667
+  },
+  {
+    "camera_id": "its-c99a2745bc",
+    "name": "[국도 3호선] 광주 초월IC",
+    "source": "ITS",
+    "lat": 37.371827,
+    "lon": 127.319438
+  },
+  {
+    "camera_id": "its-d088dbde38",
+    "name": "[국도 3호선] 의정부 민락교차로",
+    "source": "ITS",
+    "lat": 37.742065,
+    "lon": 127.102981
+  },
+  {
+    "camera_id": "its-a549c01be2",
+    "name": "[국도 43호선] 화성 만년제교차로",
+    "source": "ITS",
+    "lat": 37.2003833333333,
+    "lon": 126.998516666667
+  },
+  {
+    "camera_id": "its-77ad3172e8",
+    "name": "[국도 43호선] 화성 보통교차로",
+    "source": "ITS",
+    "lat": 37.1976666666667,
+    "lon": 126.968316666667
+  },
+  {
+    "camera_id": "its-9cb6cf4e3b",
+    "name": "[국도 43호선] 화성 진안교차로",
+    "source": "ITS",
+    "lat": 37.2058,
+    "lon": 127.026766666667
+  },
+  {
+    "camera_id": "its-381cc8e29d",
+    "name": "[국도 43호선] 남양주 광전IC",
+    "source": "ITS",
+    "lat": 37.693875,
+    "lon": 127.129632
+  },
+  {
+    "camera_id": "its-cc5368437c",
+    "name": "[국도 45호선] 용인 덕성교차로",
+    "source": "ITS",
+    "lat": 37.1791916666667,
+    "lon": 127.2029
+  },
+  {
+    "camera_id": "its-bd727a56f1",
+    "name": "[국도 45호선] 남양주 영화촬영소입구교차로",
+    "source": "ITS",
+    "lat": 37.5948611111111,
+    "lon": 127.338791666667
+  },
+  {
+    "camera_id": "its-4b0aec3114",
+    "name": "[국도 45호선] 용인 묘봉교차로",
+    "source": "ITS",
+    "lat": 37.1326138888889,
+    "lon": 127.212666666667
+  },
+  {
+    "camera_id": "its-8d480a36c8",
+    "name": "[국도45호선] 안성 이현교차로앞",
+    "source": "ITS",
+    "lat": 37.0941527777778,
+    "lon": 127.213538888889
+  },
+  {
+    "camera_id": "its-1078ae192e",
+    "name": "[국도 45호선] 용인 장서교차로",
+    "source": "ITS",
+    "lat": 37.1124,
+    "lon": 127.214672222222
+  },
+  {
+    "camera_id": "its-d066cef94b",
+    "name": "[국도 45호선] 용인 원천교차로",
+    "source": "ITS",
+    "lat": 37.2013083333333,
+    "lon": 127.201794444444
+  },
+  {
+    "camera_id": "its-c606f1fa2d",
+    "name": "[국도 45호선] 평택 지제교차로",
+    "source": "ITS",
+    "lat": 37.017524,
+    "lon": 127.050762777778
+  },
+  {
+    "camera_id": "its-12b33acf02",
+    "name": "[국도 82호선] 화성 양감교차로",
+    "source": "ITS",
+    "lat": 37.07649,
+    "lon": 126.92042
+  },
+  {
+    "camera_id": "its-c0556b6069",
+    "name": "[국도 82호선] 화성 향남교차로(본선)",
+    "source": "ITS",
+    "lat": 37.116135,
+    "lon": 126.927868
+  },
+  {
+    "camera_id": "its-9f28d7b752",
+    "name": "[국도 37호선] 파주 당동삼거리 후",
+    "source": "ITS",
+    "lat": 37.8669638888889,
+    "lon": 126.769083333333
+  },
+  {
+    "camera_id": "its-0cd3240b71",
+    "name": "[국도 3호선] [국도 3호선] 이천 수광삼거리",
+    "source": "ITS",
+    "lat": 37.312737,
+    "lon": 127.399132
+  },
+  {
+    "camera_id": "its-e7c47febfa",
+    "name": "[국도 45호선] 안성 칠곡교차로",
+    "source": "ITS",
+    "lat": 37.0481477777778,
+    "lon": 127.160521666667
+  },
+  {
+    "camera_id": "its-8294b71ab6",
+    "name": "[국도 45호선] 용인 시미교차로",
+    "source": "ITS",
+    "lat": 37.1512777777778,
+    "lon": 127.204172222222
+  },
+  {
+    "camera_id": "its-120df37975",
+    "name": "[국도 45호선] 안성 양성교차로",
+    "source": "ITS",
+    "lat": 37.0718944444444,
+    "lon": 127.2078
+  },
+  {
+    "camera_id": "its-3e2d60eb8d",
+    "name": "[국도 46호선] 가평 운전학원 앞 교차로",
+    "source": "ITS",
+    "lat": 37.7990583333333,
+    "lon": 127.482794444444
+  },
+  {
+    "camera_id": "its-f5d4f79573",
+    "name": "[국도 46호선] 남양주 진관IC",
+    "source": "ITS",
+    "lat": 37.6467285,
+    "lon": 127.160797111111
+  },
+  {
+    "camera_id": "its-12f602412c",
+    "name": "[국도 43호선] [국도 43호선] 포천 신북IC",
+    "source": "ITS",
+    "lat": 37.912469,
+    "lon": 127.216134
+  },
+  {
+    "camera_id": "its-0b4a7f377e",
+    "name": "[국도 47호선] [국도 47호선] 남양주 임송IC",
+    "source": "ITS",
+    "lat": 37.670137,
+    "lon": 127.154294
+  },
+  {
+    "camera_id": "its-0157c6a48b",
+    "name": "[국도 47호선] [국도 47호선] 남양주 연평IC",
+    "source": "ITS",
+    "lat": 37.69160842,
+    "lon": 127.1657562
+  },
+  {
+    "camera_id": "its-e328aa3ae0",
+    "name": "[국도 47호선] [국도 47호선] 남양주 장현IC",
+    "source": "ITS",
+    "lat": 37.71186,
+    "lon": 127.180529
+  },
+  {
+    "camera_id": "its-fc6c4b6780",
+    "name": "[국도 47호선] [국도 47호선] 남양주 신월IC",
+    "source": "ITS",
+    "lat": 37.663868,
+    "lon": 127.153638
+  },
+  {
+    "camera_id": "its-f5c5daecaf",
+    "name": "[국도 3호선] [국도 3호선] 광주 봉현IC",
+    "source": "ITS",
+    "lat": 37.345659,
+    "lon": 127.393172
+  },
+  {
+    "camera_id": "its-c7fcb8dde7",
+    "name": "[국도 3호선] [국도 3호선] 이천 도암IC",
+    "source": "ITS",
+    "lat": 37.313171,
+    "lon": 127.436058
+  },
+  {
+    "camera_id": "its-27193e502a",
+    "name": "[국도 3호선] [국도 3호선] 이천 백사IC",
+    "source": "ITS",
+    "lat": 37.309079,
+    "lon": 127.469463
+  },
+  {
+    "camera_id": "its-3a33677d48",
+    "name": "[국도3호선] 이천 도지IC",
+    "source": "ITS",
+    "lat": 37.307098,
+    "lon": 127.489299
+  },
+  {
+    "camera_id": "its-26961cabfd",
+    "name": "[국도 3호선] 이천 부발IC",
+    "source": "ITS",
+    "lat": 37.28966,
+    "lon": 127.523337
+  },
+  {
+    "camera_id": "its-d3622f56f2",
+    "name": "[국도 3호선] 이천 수정IC",
+    "source": "ITS",
+    "lat": 37.261594,
+    "lon": 127.523945
+  },
+  {
+    "camera_id": "its-5e7cb89931",
+    "name": "[국도 3호선] 이천 응암IC",
+    "source": "ITS",
+    "lat": 37.235703,
+    "lon": 127.518942
+  },
+  {
+    "camera_id": "its-c97c3712db",
+    "name": "[국도 48호선] 김포 김포IC입구",
+    "source": "ITS",
+    "lat": 37.598294,
+    "lon": 126.773664
+  },
+  {
+    "camera_id": "its-b9a9a2ab8f",
+    "name": "[국도 48호선] 김포 고촌IC",
+    "source": "ITS",
+    "lat": 37.587885,
+    "lon": 126.791632
+  },
+  {
+    "camera_id": "its-d21c3c9248",
+    "name": "[국도 48호선] 김포 향산교차로",
+    "source": "ITS",
+    "lat": 37.621793,
+    "lon": 126.738228
+  },
+  {
+    "camera_id": "its-3dc433bcfd",
+    "name": "[국도 48호선] 김포 김포CC삼거리",
+    "source": "ITS",
+    "lat": 37.714968,
+    "lon": 126.543548
+  },
+  {
+    "camera_id": "its-8c220945a0",
+    "name": "[국도 48호선] 김포 갈산사거리",
+    "source": "ITS",
+    "lat": 37.707319,
+    "lon": 126.559143
+  },
+  {
+    "camera_id": "its-d9afbdcaf8",
+    "name": "[국도 48호선] 김포 마송우회도로사거리",
+    "source": "ITS",
+    "lat": 37.689835,
+    "lon": 126.597665
+  },
+  {
+    "camera_id": "its-bae51c17ec",
+    "name": "[국도48호선] 김포 누산교차로",
+    "source": "ITS",
+    "lat": 37.667832,
+    "lon": 126.64816
+  },
+  {
+    "camera_id": "its-cd4b4cb728",
+    "name": "[국도 37호선] 파주 리비사거리",
+    "source": "ITS",
+    "lat": 37.941975,
+    "lon": 126.833857
+  },
+  {
+    "camera_id": "its-7ee4458cab",
+    "name": "[국도 37호선] 파주 두포삼거리",
+    "source": "ITS",
+    "lat": 37.9094112,
+    "lon": 126.8267118
+  },
+  {
+    "camera_id": "its-70c50cbd7d",
+    "name": "[국도 37호선] 파주 율곡교차로",
+    "source": "ITS",
+    "lat": 37.8889474,
+    "lon": 126.8148634
+  },
+  {
+    "camera_id": "its-091bac3943",
+    "name": "[국도 42호선] 용인 상하교차로",
+    "source": "ITS",
+    "lat": 37.25325,
+    "lon": 127.1387
+  },
+  {
+    "camera_id": "its-9c7ee61754",
+    "name": "[국도 42호선] 용인 대촌교차로",
+    "source": "ITS",
+    "lat": 37.213817,
+    "lon": 127.205733
+  },
+  {
+    "camera_id": "its-418a28b03d",
+    "name": "[국도 42호선] 용인 명지교차로",
+    "source": "ITS",
+    "lat": 37.228827,
+    "lon": 127.184163
+  },
+  {
+    "camera_id": "its-c568fa1123",
+    "name": "[국도 48호선] 김포 천등교차로",
+    "source": "ITS",
+    "lat": 37.605207,
+    "lon": 126.752447
+  },
+  {
+    "camera_id": "its-08dc10f582",
+    "name": "[국도48호선] 강화 옥림교차로",
+    "source": "ITS",
+    "lat": 37.7501972,
+    "lon": 126.5069303
+  },
+  {
+    "camera_id": "its-8d838ec586",
+    "name": "[국도48호선] 김포 옹정교차로",
+    "source": "ITS",
+    "lat": 37.696911,
+    "lon": 126.578515
+  },
+  {
+    "camera_id": "its-3c7b51ad6a",
+    "name": "[국도48호선] 김포 하성삼거리",
+    "source": "ITS",
+    "lat": 37.676174,
+    "lon": 126.631797
+  },
+  {
+    "camera_id": "its-63f5c1c612",
+    "name": "[국도1] 평택 비행장사거리",
+    "source": "ITS",
+    "lat": 37.09500444,
+    "lon": 127.0635944
+  },
+  {
+    "camera_id": "its-c3e17148ac",
+    "name": "[국도1] 오산 오산운동장사거리",
+    "source": "ITS",
+    "lat": 37.15605,
+    "lon": 127.0728944
+  },
+  {
+    "camera_id": "its-35ec54c107",
+    "name": "[국도3] 광주 곤지암IC",
+    "source": "ITS",
+    "lat": 37.35757097,
+    "lon": 127.3216728
+  },
+  {
+    "camera_id": "its-528ea3329d",
+    "name": "[국도37] 가평 연하교차로",
+    "source": "ITS",
+    "lat": 37.800551,
+    "lon": 127.35004
+  },
+  {
+    "camera_id": "its-096556d75c",
+    "name": "[국도37] 가평 신청평대교삼거리",
+    "source": "ITS",
+    "lat": 37.718656,
+    "lon": 127.410933
+  },
+  {
+    "camera_id": "its-2e8d8eb242",
+    "name": "[국도47] 포천 청담마을입구교차로",
+    "source": "ITS",
+    "lat": 37.837942,
+    "lon": 127.27014
+  },
+  {
+    "camera_id": "its-9661853bfd",
+    "name": "[국도3] 여주 신해1리삼거리",
+    "source": "ITS",
+    "lat": 37.2109,
+    "lon": 127.5417
+  },
+  {
+    "camera_id": "its-858c930c8b",
+    "name": "[국도42] 이천 복하2교사거리",
+    "source": "ITS",
+    "lat": 37.2794,
+    "lon": 127.473
+  },
+  {
+    "camera_id": "its-c7e27f5ce5",
+    "name": "[국도3] 이천 은봉삼거리",
+    "source": "ITS",
+    "lat": 37.1736,
+    "lon": 127.5692
+  },
+  {
+    "camera_id": "its-74875ff6a5",
+    "name": "[국도17] 안성 당목교차로",
+    "source": "ITS",
+    "lat": 37.0367,
+    "lon": 127.4402
+  },
+  {
+    "camera_id": "its-934058174a",
+    "name": "[국도42] 여주 구능교차로",
+    "source": "ITS",
+    "lat": 37.2979,
+    "lon": 127.5992
+  },
+  {
+    "camera_id": "its-7d79e3e408",
+    "name": "[국도42] 이천 도드람교차로",
+    "source": "ITS",
+    "lat": 37.2541,
+    "lon": 127.3882
+  },
+  {
+    "camera_id": "its-408f8535a5",
+    "name": "[국도45] 용인 모산마을입구삼거리",
+    "source": "ITS",
+    "lat": 37.348,
+    "lon": 127.2507
+  },
+  {
+    "camera_id": "its-898f9cb34b",
+    "name": "[국도45] 용인 초부리휴게소사거리",
+    "source": "ITS",
+    "lat": 37.3127,
+    "lon": 127.2406
+  },
+  {
+    "camera_id": "its-ae26843dbd",
+    "name": "[국도45] 용인 동경주유소사거리",
+    "source": "ITS",
+    "lat": 37.2922,
+    "lon": 127.2353
+  },
+  {
+    "camera_id": "its-e642d76e35",
+    "name": "[국도77] 화성 석천사거리",
+    "source": "ITS",
+    "lat": 37.0525,
+    "lon": 126.7964
+  },
+  {
+    "camera_id": "its-7c07d0fb89",
+    "name": "[국도47호선] 남양주 진벌교차로",
+    "source": "ITS",
+    "lat": 37.74151,
+    "lon": 127.20514
+  },
+  {
+    "camera_id": "its-234821829f",
+    "name": "[국도47호선] 포천 소학1리삼거리",
+    "source": "ITS",
+    "lat": 37.80635,
+    "lon": 127.25234
+  },
+  {
+    "camera_id": "its-342a29a5d0",
+    "name": "[국도37호선] 포천 서파교차로",
+    "source": "ITS",
+    "lat": 37.847633,
+    "lon": 127.28054
+  },
+  {
+    "camera_id": "its-27b4a09658",
+    "name": "[국도47호선] 포천 일동교차로",
+    "source": "ITS",
+    "lat": 37.941765,
+    "lon": 127.300735
+  },
+  {
+    "camera_id": "its-b65533d21c",
+    "name": "[국도43호선] 포천 용상골입구사거리",
+    "source": "ITS",
+    "lat": 37.81634,
+    "lon": 127.13578
+  },
+  {
+    "camera_id": "its-e8bcd051eb",
+    "name": "[국도39호선] 고양 주교IC",
+    "source": "ITS",
+    "lat": 37.648956,
+    "lon": 126.82652
+  },
+  {
+    "camera_id": "its-466c7fa38c",
+    "name": "[국도77호선] 화성 수화교차로",
+    "source": "ITS",
+    "lat": 37.250088,
+    "lon": 126.81411
+  },
+  {
+    "camera_id": "its-20fb9d8944",
+    "name": "[국도43호선] 포천 신포천아파트앞삼거리",
+    "source": "ITS",
+    "lat": 37.93848,
+    "lon": 127.2292
+  },
+  {
+    "camera_id": "its-25c8905c19",
+    "name": "[국도21] 음성 정생교차로",
+    "source": "ITS",
+    "lat": 37.007423,
+    "lon": 127.59746
+  },
+  {
+    "camera_id": "its-b604c3f965",
+    "name": "[국도3호선] 동두천 소요산IC",
+    "source": "ITS",
+    "lat": 37.93222,
+    "lon": 127.04583
+  },
+  {
+    "camera_id": "its-601180f1f8",
+    "name": "[국도6호선] 양평 양평IC",
+    "source": "ITS",
+    "lat": 37.51307,
+    "lon": 127.43876
+  },
+  {
+    "camera_id": "its-31c5d46cbb",
+    "name": "[국도1] 평택 롯데제과삼거리",
+    "source": "ITS",
+    "lat": 37.117785,
+    "lon": 127.064418
+  },
+  {
+    "camera_id": "its-91b1c6e80c",
+    "name": "[국도43호선] 광주 엄미리계곡삼거리",
+    "source": "ITS",
+    "lat": 37.475582,
+    "lon": 127.24138
+  },
+  {
+    "camera_id": "its-65b62dd4f6",
+    "name": "[국도3호선] 여주 신해2리사거리",
+    "source": "ITS",
+    "lat": 37.217642,
+    "lon": 127.531807
+  },
+  {
+    "camera_id": "its-dc9dc6ca1d",
+    "name": "[국도3호선] 양주 회암교차로",
+    "source": "ITS",
+    "lat": 37.83213333,
+    "lon": 127.0778
+  },
+  {
+    "camera_id": "its-a9b2e416cd",
+    "name": "[국도6호선] 남양주 동막골입구교차로",
+    "source": "ITS",
+    "lat": 37.56365833,
+    "lon": 127.2312167
+  },
+  {
+    "camera_id": "its-bb1a8b6ae4",
+    "name": "[국도6호선] 양평 고읍교차로",
+    "source": "ITS",
+    "lat": 37.511645,
+    "lon": 127.446276
+  },
+  {
+    "camera_id": "its-eee5836b5c",
+    "name": "[국도37호선] 파주 아포삼거리",
+    "source": "ITS",
+    "lat": 37.925606,
+    "lon": 126.83184
+  },
+  {
+    "camera_id": "its-37f1a851b4",
+    "name": "[국도38호선] 안성 만정사거리",
+    "source": "ITS",
+    "lat": 37.004344,
+    "lon": 127.16897
+  },
+  {
+    "camera_id": "its-f0666e5008",
+    "name": "[국도38호선] 이천 제요교차로",
+    "source": "ITS",
+    "lat": 37.109573,
+    "lon": 127.574215
+  },
+  {
+    "camera_id": "its-e2269c9593",
+    "name": "[국도39호선] 화성 함백교차로",
+    "source": "ITS",
+    "lat": 37.27675833,
+    "lon": 126.9087472
+  },
+  {
+    "camera_id": "its-cd9b71a2d3",
+    "name": "[국도42호선] 이천 부발IC",
+    "source": "ITS",
+    "lat": 37.2896862,
+    "lon": 127.5234744
+  },
+  {
+    "camera_id": "its-d5ea985f2b",
+    "name": "[국도42호선] 여주 신근리삼거리",
+    "source": "ITS",
+    "lat": 37.29752,
+    "lon": 127.55027
+  },
+  {
+    "camera_id": "its-df81191447",
+    "name": "[국도42호선] 용인 제일초등학교사거리",
+    "source": "ITS",
+    "lat": 37.23849667,
+    "lon": 127.3171735
+  },
+  {
+    "camera_id": "its-322d5e08a1",
+    "name": "[국도42호선] 이천 윗들사거리",
+    "source": "ITS",
+    "lat": 37.2442965,
+    "lon": 127.420011
+  },
+  {
+    "camera_id": "its-959249a7c8",
+    "name": "[국도42호선] 용인 송문리입구삼거리",
+    "source": "ITS",
+    "lat": 37.22612,
+    "lon": 127.24853
+  },
+  {
+    "camera_id": "its-685839c69a",
+    "name": "[국도45호선] 용인 유운리입구삼거리",
+    "source": "ITS",
+    "lat": 37.301411,
+    "lon": 127.234741
+  },
+  {
+    "camera_id": "its-fa8f60c282",
+    "name": "[국도45호선] 남양주 금남교차로",
+    "source": "ITS",
+    "lat": 37.64824444,
+    "lon": 127.3658972
+  },
+  {
+    "camera_id": "its-8091c1d3d4",
+    "name": "[국도45호선] 용인 청광레미콘삼거리",
+    "source": "ITS",
+    "lat": 37.32116389,
+    "lon": 127.2434944
+  },
+  {
+    "camera_id": "its-c1a9b89473",
+    "name": "[국도46호선] 가평 수리재마을입구교차로",
+    "source": "ITS",
+    "lat": 37.77083333,
+    "lon": 127.4489722
+  },
+  {
+    "camera_id": "its-65b440adf5",
+    "name": "[국도47호선] 금곡리교차로",
+    "source": "ITS",
+    "lat": 37.72202,
+    "lon": 127.193308
+  },
+  {
+    "camera_id": "its-0bb2912dee",
+    "name": "[국도43호선] 포천 수내동입구교차로",
+    "source": "ITS",
+    "lat": 37.7899231,
+    "lon": 127.1263241
+  },
+  {
+    "camera_id": "its-610ae109a2",
+    "name": "[국도47호선] 남양주 부평교차로",
+    "source": "ITS",
+    "lat": 37.734269,
+    "lon": 127.201059
+  },
+  {
+    "camera_id": "its-4840366c10",
+    "name": "[국도47호선] 포천 기장대삼거리",
+    "source": "ITS",
+    "lat": 37.7950076,
+    "lon": 127.2327805
+  },
+  {
+    "camera_id": "its-b18aa63221",
+    "name": "[국도47호선] 포천 소학3리삼거리",
+    "source": "ITS",
+    "lat": 37.823115,
+    "lon": 127.2640144
+  },
+  {
+    "camera_id": "its-58013cc930",
+    "name": "[국도37호선] 포천 운악교차로",
+    "source": "ITS",
+    "lat": 37.8840048,
+    "lon": 127.3023346
+  },
+  {
+    "camera_id": "its-27d8867d4d",
+    "name": "[국도37호선] 포천 화현교차로",
+    "source": "ITS",
+    "lat": 37.8954986,
+    "lon": 127.3036769
+  },
+  {
+    "camera_id": "its-bfc001f5fd",
+    "name": "[국도37호선] 가평 다원교차로",
+    "source": "ITS",
+    "lat": 37.755799,
+    "lon": 127.406456
+  },
+  {
+    "camera_id": "its-9809909495",
+    "name": "[국도37호선] 가평 하천교차로",
+    "source": "ITS",
+    "lat": 37.749844,
+    "lon": 127.43086
+  },
+  {
+    "camera_id": "its-3eeaa49a46",
+    "name": "[국도43호선] 포천 부인터사거리",
+    "source": "ITS",
+    "lat": 37.8040205,
+    "lon": 127.1313617
+  },
+  {
+    "camera_id": "its-bf14a934a5",
+    "name": "[국도43호선] 포천 초가팔리입구사거리",
+    "source": "ITS",
+    "lat": 37.8258997,
+    "lon": 127.1476489
+  },
+  {
+    "camera_id": "its-f1da391238",
+    "name": "[국도43호선] 포천 하송우사거리",
+    "source": "ITS",
+    "lat": 37.8371011,
+    "lon": 127.1545765
+  },
+  {
+    "camera_id": "its-9a03e3cb8f",
+    "name": "[국도37호선] 양평 신애삼거리",
+    "source": "ITS",
+    "lat": 37.517047,
+    "lon": 127.486816
+  },
+  {
+    "camera_id": "its-3ecdcc6b75",
+    "name": "[국도37호선] 가평 신천교차로",
+    "source": "ITS",
+    "lat": 37.678092,
+    "lon": 127.485388
+  },
+  {
+    "camera_id": "its-87bdeec273",
+    "name": "[국도37호선] 가평 설악IC교차로",
+    "source": "ITS",
+    "lat": 37.67392,
+    "lon": 127.48661
+  },
+  {
+    "camera_id": "its-2244f5ee61",
+    "name": "[국도39호선] 고양 토당IC",
+    "source": "ITS",
+    "lat": 37.628157,
+    "lon": 126.817123
+  },
+  {
+    "camera_id": "its-107fbb827f",
+    "name": "[국도39호선] 고양 왕릉IC",
+    "source": "ITS",
+    "lat": 37.674362,
+    "lon": 126.841748
+  },
+  {
+    "camera_id": "its-601cfc7906",
+    "name": "[국도43호선] 화성 상두리입구삼거리",
+    "source": "ITS",
+    "lat": 37.10805,
+    "lon": 126.93326
+  },
+  {
+    "camera_id": "its-6f00725598",
+    "name": "[국도43호선] 화성 상산리입구삼거리",
+    "source": "ITS",
+    "lat": 37.088283,
+    "lon": 126.942414
+  },
+  {
+    "camera_id": "its-7b6eeecad6",
+    "name": "[국도77호선] 화성 송림교차로",
+    "source": "ITS",
+    "lat": 37.227888,
+    "lon": 126.828858
+  },
+  {
+    "camera_id": "its-80826c7f91",
+    "name": "[국도77호선] 화성 문호교차로",
+    "source": "ITS",
+    "lat": 37.2614875,
+    "lon": 126.8118528
+  },
+  {
+    "camera_id": "its-d647c0a72a",
+    "name": "[국도77호선] 화성 현대연구소삼거리",
+    "source": "ITS",
+    "lat": 37.169021,
+    "lon": 126.810651
+  },
+  {
+    "camera_id": "its-1f0a1e9b78",
+    "name": "[국도77호선] 화성 신남교차로",
+    "source": "ITS",
+    "lat": 37.177499,
+    "lon": 126.816324
+  },
+  {
+    "camera_id": "its-3ce31ba22b",
+    "name": "[국도77호선] 화성 삼부실교차로",
+    "source": "ITS",
+    "lat": 37.235411,
+    "lon": 126.821186
+  },
+  {
+    "camera_id": "its-c441cc686f",
+    "name": "[국도75호선] 가평 선촌1교차로",
+    "source": "ITS",
+    "lat": 37.687125,
+    "lon": 127.489494
+  },
+  {
+    "camera_id": "its-f611c50794",
+    "name": "[국도43호선] 포천 틀못이마을입구교차로",
+    "source": "ITS",
+    "lat": 37.923415,
+    "lon": 127.222501
+  },
+  {
+    "camera_id": "its-676bd7083d",
+    "name": "[국도43호선] 포천 둑곡마을입구삼거리",
+    "source": "ITS",
+    "lat": 37.930836,
+    "lon": 127.22514
+  },
+  {
+    "camera_id": "its-c5b8ba320d",
+    "name": "[국도37호선] 가평 서파교차로 북측",
+    "source": "ITS",
+    "lat": 37.85183,
+    "lon": 127.283436
+  },
+  {
+    "camera_id": "its-bdd01586d2",
+    "name": "[국도1호선] 평택 갈곶리삼거리",
+    "source": "ITS",
+    "lat": 37.124855,
+    "lon": 127.06629
+  },
+  {
+    "camera_id": "its-e4c898b575",
+    "name": "[국도1호선] 파주봉일천사거리",
+    "source": "ITS",
+    "lat": 37.747223,
+    "lon": 126.804886
+  },
+  {
+    "camera_id": "its-796bc2cce6",
+    "name": "[국도1호선] 파주 문산사거리",
+    "source": "ITS",
+    "lat": 37.854095,
+    "lon": 126.78869
+  },
+  {
+    "camera_id": "its-cc4277cc18",
+    "name": "[국도1호선] 파주 금촌신사거리",
+    "source": "ITS",
+    "lat": 37.769077,
+    "lon": 126.79191
+  },
+  {
+    "camera_id": "its-9084a24edf",
+    "name": "[국도6호선] 남양주 덕소IC",
+    "source": "ITS",
+    "lat": 37.586708,
+    "lon": 127.20581
+  },
+  {
+    "camera_id": "its-40e6e7cc41",
+    "name": "[국도6호선] 남양주 하팔당 삼거리",
+    "source": "ITS",
+    "lat": 37.552593,
+    "lon": 127.23854
+  },
+  {
+    "camera_id": "its-f33f987673",
+    "name": "[국도38호선] 평택고덕교차로",
+    "source": "ITS",
+    "lat": 37.008884,
+    "lon": 127.04438
+  },
+  {
+    "camera_id": "its-f35cb76f98",
+    "name": "[국도38호선] 안성 월정교차로",
+    "source": "ITS",
+    "lat": 37.08752,
+    "lon": 127.46325
+  },
+  {
+    "camera_id": "its-3902490204",
+    "name": "[국도42호선] 이천 오천삼거리",
+    "source": "ITS",
+    "lat": 37.256058,
+    "lon": 127.34777
+  },
+  {
+    "camera_id": "its-29ad536911",
+    "name": "[국도42호선] 여주 서여주IC",
+    "source": "ITS",
+    "lat": 37.298637,
+    "lon": 127.59119
+  },
+  {
+    "camera_id": "its-c51b295c33",
+    "name": "[국도42호선] 이천 달개실 사거리",
+    "source": "ITS",
+    "lat": 37.24428,
+    "lon": 127.435265
+  },
+  {
+    "camera_id": "its-131583ca04",
+    "name": "[국도45호선] 용인 포곡삼거리",
+    "source": "ITS",
+    "lat": 37.28241,
+    "lon": 127.23138
+  },
+  {
+    "camera_id": "its-f43bc862f9",
+    "name": "[국도37호선] 가평 명장삼거리",
+    "source": "ITS",
+    "lat": 37.668056,
+    "lon": 127.483826
+  },
+  {
+    "camera_id": "its-cf96202b26",
+    "name": "[국도43호선] 화성 신왕삼거리",
+    "source": "ITS",
+    "lat": 37.081387,
+    "lon": 126.945274
+  },
+  {
+    "camera_id": "its-3a0f845b33",
+    "name": "[국도43호선] 포천 한내사거리",
+    "source": "ITS",
+    "lat": 37.8975,
+    "lon": 127.20599
+  },
+  {
+    "camera_id": "its-25c44317e0",
+    "name": "[국도38] 당진 삼봉교차로",
+    "source": "ITS",
+    "lat": 37.004758,
+    "lon": 126.532878
+  },
+  {
+    "camera_id": "its-0dc3dcd958",
+    "name": "[국도82호선] 안성 용설교차로(2)",
+    "source": "ITS",
+    "lat": 37.0505833,
+    "lon": 127.4386334
+  },
+  {
+    "camera_id": "its-4414defbd0",
+    "name": "[국도37호선] 포천 화현교차로(2)",
+    "source": "ITS",
+    "lat": 37.89919,
+    "lon": 127.3021937
+  },
+  {
+    "camera_id": "its-200ae601fe",
+    "name": "[국도39호선] 화성 발안교차로",
+    "source": "ITS",
+    "lat": 37.1326979,
+    "lon": 126.8963384
+  },
+  {
+    "camera_id": "its-99b01db562",
+    "name": "[국도39호선] 화성 율암교차로(2)",
+    "source": "ITS",
+    "lat": 37.1567303,
+    "lon": 126.891531
+  },
+  {
+    "camera_id": "its-fca6f44880",
+    "name": "[국도45호선] 안성 서안성교차로(2)",
+    "source": "ITS",
+    "lat": 37.0403289,
+    "lon": 127.1532173
+  },
+  {
+    "camera_id": "its-86e493b8b4",
+    "name": "[국도45호선] 안성 안성JC",
+    "source": "ITS",
+    "lat": 37.0344765,
+    "lon": 127.1426153
+  },
+  {
+    "camera_id": "its-4da55e75d7",
+    "name": "[국도45호선] 안성 칠곡교차로(2)",
+    "source": "ITS",
+    "lat": 37.0491071,
+    "lon": 127.1610119
+  },
+  {
+    "camera_id": "its-5d4ee04693",
+    "name": "[국도75] 가평 고성교차로",
+    "source": "ITS",
+    "lat": 37.71069336,
+    "lon": 127.49808502
+  },
+  {
+    "camera_id": "its-529fb05b43",
+    "name": "[국도75] 가평 이화삼거리",
+    "source": "ITS",
+    "lat": 37.79936218,
+    "lon": 127.51296997
+  },
+  {
+    "camera_id": "its-1f283bf4b3",
+    "name": "[국도75] 가평 목동삼거리",
+    "source": "ITS",
+    "lat": 37.8851394,
+    "lon": 127.5491227
+  },
+  {
+    "camera_id": "its-29cd238c5f",
+    "name": "[국도75] 가평 달전교차로",
+    "source": "ITS",
+    "lat": 37.8103338,
+    "lon": 127.5170974
+  },
+  {
+    "camera_id": "its-76e49a98bd",
+    "name": "[국도75호선] 가평 가평역사거리",
+    "source": "ITS",
+    "lat": 37.8149475,
+    "lon": 127.5149211
+  },
+  {
+    "camera_id": "its-3e687d0ae6",
+    "name": "[국도77호선] 화성 화수사거리",
+    "source": "ITS",
+    "lat": 37.1098723,
+    "lon": 126.8013256
+  },
+  {
+    "camera_id": "its-710ea026e9",
+    "name": "[국도77호선] 화성 호곡길입구삼거리",
+    "source": "ITS",
+    "lat": 37.11824274,
+    "lon": 126.7944089
+  },
+  {
+    "camera_id": "its-4c276c9d1c",
+    "name": "[국도82] 화성 가재교차로(2)",
+    "source": "ITS",
+    "lat": 37.14778519,
+    "lon": 126.92384338
+  },
+  {
+    "camera_id": "its-92bbebfb52",
+    "name": "[국도87호선] 포천 용정교차로",
+    "source": "ITS",
+    "lat": 37.875269,
+    "lon": 127.215431
+  },
+  {
+    "camera_id": "its-ade87a5c89",
+    "name": "[국도87호선] 포천 진목사거리",
+    "source": "ITS",
+    "lat": 37.810577,
+    "lon": 127.209991
+  },
+  {
+    "camera_id": "its-66b1a17983",
+    "name": "[국도87호선] 포천 청성교차로",
+    "source": "ITS",
+    "lat": 37.88957,
+    "lon": 127.209099
+  },
+  {
+    "camera_id": "its-5cbb44122b",
+    "name": "[국도87호선] 포천 하심곡삼거리",
+    "source": "ITS",
+    "lat": 37.943476,
+    "lon": 127.187528
+  },
+  {
+    "camera_id": "its-bc3920b532",
+    "name": "[국도3호선] 동두천 동두천IC",
+    "source": "ITS",
+    "lat": 37.91015935,
+    "lon": 127.0298245
+  },
+  {
+    "camera_id": "its-15f2f1cc6e",
+    "name": "[국도3호선] 양주 고읍교차로",
+    "source": "ITS",
+    "lat": 37.80504067,
+    "lon": 127.0748452
+  },
+  {
+    "camera_id": "its-870eb903b9",
+    "name": "[국도39호선] 화성 남비봉ICR-A1교",
+    "source": "ITS",
+    "lat": 37.20384758,
+    "lon": 126.8784623
+  },
+  {
+    "camera_id": "its-1cbb3e2f38",
+    "name": "[국도46호선] 가평 팔각정삼거리",
+    "source": "ITS",
+    "lat": 37.72739143,
+    "lon": 127.4078052
+  },
+  {
+    "camera_id": "its-db5b6a784d",
+    "name": "[국도46호선] 남양주 먹골IC사거리",
+    "source": "ITS",
+    "lat": 37.6486033,
+    "lon": 127.1720774
+  }
+]

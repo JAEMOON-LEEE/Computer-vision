@@ -14,6 +14,7 @@ import json
 import sys
 import time
 from pathlib import Path
+from urllib.parse import quote
 
 import httpx
 
@@ -81,6 +82,33 @@ def append_failed(run_id: str, kind: str, line: str) -> None:
         handle.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def warn_missing_camera(client, camera_id: str | None, checked: set[str]) -> None:
+    """카메라 목록에 없으면 한 번만 알린다. 확인 요청이 실패해도 전송은 계속한다."""
+    if not camera_id or camera_id in checked:
+        return
+    checked.add(camera_id)
+    try:
+        response = client.get("/cameras/" + quote(str(camera_id), safe=""))
+    except Exception:
+        return
+    if getattr(response, "status_code", None) == 404:
+        print(
+            f"[주의] 카메라 목록에 없는 camera_id: {camera_id}. "
+            "지도에 표시되지 않습니다. 검출 실행 시 --camera-id를 카메라 목록의 ID로 맞추세요.",
+            flush=True,
+        )
+
+
+def warn_ignored_alerts(response, run_id: str) -> None:
+    try:
+        body = response.json()
+    except Exception:
+        return
+    ignored = body.get("ignored") if isinstance(body, dict) else None
+    if ignored:
+        print(f"[주의] run_id={run_id} 에서 이미 있는 alert_id라 무시됨: {ignored}", flush=True)
+
+
 def deliver(client, kind: str, payload: dict, line: str, run_id: str, attempts: int = 3, pause: float = 0.5) -> bool:
     """연결 실패면 3회까지 다시 보내고, 그래도 안 되면 실패 줄로 남긴다."""
     path = "/ingest/detections" if kind == "detections" else "/ingest/alerts"
@@ -88,6 +116,8 @@ def deliver(client, kind: str, payload: dict, line: str, run_id: str, attempts: 
         try:
             response = client.post(path, params={"run_id": run_id}, json=payload)
             if response.status_code < 400:
+                if kind == "alerts":
+                    warn_ignored_alerts(response, run_id)
                 return True
             if response.status_code < 500:
                 break
@@ -107,7 +137,10 @@ def progress_line(kind: str, payload: dict) -> str:
     return f"[경고] {payload.get('type')} {payload.get('message', '')}".rstrip()
 
 
-def publish_line(client, kind: str, line: str, run_id: str, attempts: int = 3, pause: float = 0.5) -> None:
+def publish_line(client, kind: str, line: str, run_id: str, attempts: int = 3, pause: float = 0.5,
+                 checked: set[str] | None = None) -> None:
+    if checked is None:
+        checked = set()
     try:
         payload = json.loads(line)
     except json.JSONDecodeError:
@@ -117,17 +150,21 @@ def publish_line(client, kind: str, line: str, run_id: str, attempts: int = 3, p
     if not isinstance(payload, dict):
         append_failed(run_id, kind, line)
         return
+    camera_id = payload.get("camera_id")
+    warn_missing_camera(client, str(camera_id) if camera_id else None, checked)
     if deliver(client, kind, payload, line, run_id, attempts=attempts, pause=pause):
         print(progress_line(kind, payload), flush=True)
 
 
 def publish_available(run_dir: Path, detections: TailReader, alerts: TailReader, client, run_id: str,
-                      attempts: int = 3, pause: float = 0.5) -> bool:
+                      attempts: int = 3, pause: float = 0.5, checked: set[str] | None = None) -> bool:
     """새로 생긴 줄을 보낸다. 실행이 끝났으면 True."""
+    if checked is None:
+        checked = set()
     pairs = (("detections", detections), ("alerts", alerts))
     for kind, reader in pairs:
         for line in reader.read_lines():
-            publish_line(client, kind, line, run_id, attempts=attempts, pause=pause)
+            publish_line(client, kind, line, run_id, attempts=attempts, pause=pause, checked=checked)
     if not (run_dir / "summary.json").is_file():
         return False
     extra = False
@@ -135,7 +172,7 @@ def publish_available(run_dir: Path, detections: TailReader, alerts: TailReader,
         lines = reader.read_lines()
         extra = extra or bool(lines)
         for line in lines:
-            publish_line(client, kind, line, run_id, attempts=attempts, pause=pause)
+            publish_line(client, kind, line, run_id, attempts=attempts, pause=pause, checked=checked)
     if extra or detections.pending or alerts.pending:
         return False
     print("실행 종료", flush=True)
@@ -165,8 +202,9 @@ def main() -> int:
     api = args.api.rstrip("/")
     try:
         with httpx.Client(base_url=api, timeout=30.0) as client:
+            checked: set[str] = set()
             while True:
-                if publish_available(run_dir, detections, alerts, client, run_id):
+                if publish_available(run_dir, detections, alerts, client, run_id, checked=checked):
                     return 0
                 time.sleep(args.poll)
     except KeyboardInterrupt:
