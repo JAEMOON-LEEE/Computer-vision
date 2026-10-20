@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 
 import pytest
@@ -192,7 +193,7 @@ def test_ingest_detections_and_latest(client):
     assert camera["source"] == "unknown"
 
 
-def test_alerts_idempotent_per_run_and_filters(client):
+def test_alerts_idempotent_per_run_and_filters(client, caplog):
     first = alert_record()
     second = alert_record(
         alert_id="cam-a:2",
@@ -206,10 +207,12 @@ def test_alerts_idempotent_per_run_and_filters(client):
     assert len(created.json()["saved"]) == 2
     assert created.json()["ignored"] == []
 
-    duplicate = client.post("/ingest/alerts", params={"run_id": "run-a"}, json=[first, second])
+    with caplog.at_level(logging.WARNING, logger="backend.app.routers.ingest"):
+        duplicate = client.post("/ingest/alerts", params={"run_id": "run-a"}, json=[first, second])
     assert duplicate.status_code == 200
     assert duplicate.json()["saved"] == []
     assert duplicate.json()["ignored"] == ["cam-a:1", "cam-a:2"]
+    assert any("run_id=run-a" in message and "2건" in message for message in caplog.messages)
 
     other_run = client.post("/ingest/alerts", params={"run_id": "run-b"}, json=first)
     assert other_run.status_code == 200

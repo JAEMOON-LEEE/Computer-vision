@@ -6,9 +6,9 @@ import { HistoryPage } from "./pages/HistoryPage";
 import { MonitorPage } from "./pages/MonitorPage";
 
 export function App() {
-  const { wsStatus, alerts } = useLive();
+  const { wsStatus, unconfirmedAlerts } = useLive();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const unconfirmed = alerts.filter((alert) => alert.status === "unconfirmed").length;
+  const unconfirmed = unconfirmedAlerts.length;
   const connected = wsStatus.startsWith("실시간");
   return (
     <div className="shell">

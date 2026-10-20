@@ -11,6 +11,7 @@ import json
 import sys
 import time
 from pathlib import Path
+from urllib.parse import quote
 
 import httpx
 
@@ -45,7 +46,61 @@ def default_run_id(detections: str | None, alerts: str | None) -> str:
     return source.parent.name or "replay"
 
 
-def play_once(client: httpx.Client, events: list[tuple], run_id: str, speed: float, stamp_now: bool) -> tuple[int, int]:
+def warn_missing_camera(client, camera_id: str | None, checked: set[str]) -> None:
+    """카메라 목록에 없으면 한 번만 알린다. 확인 요청이 실패해도 전송은 계속한다."""
+    if not camera_id or camera_id in checked:
+        return
+    checked.add(camera_id)
+    try:
+        response = client.get("/cameras/" + quote(camera_id, safe=""))
+    except Exception:
+        return
+    if getattr(response, "status_code", None) == 404:
+        print(
+            f"[주의] 카메라 목록에 없는 camera_id: {camera_id}. "
+            "지도에 표시되지 않습니다. 검출 실행 시 --camera-id를 카메라 목록의 ID로 맞추세요.",
+            flush=True,
+        )
+
+
+def warn_timestamp_kind(body: dict, notices: dict) -> None:
+    """unix_seconds가 아닌 검출 시각은 기간 집계에서 빠지므로 한 번만 알린다."""
+    if notices.get("timestamp_kind"):
+        return
+    kind = body.get("timestamp_kind")
+    if kind == "unix_seconds":
+        return
+    notices["timestamp_kind"] = True
+    print(
+        f"[주의] timestamp_kind={kind} 입니다. 기간 필터·카드 집계에서 빠집니다. --stamp-now를 고려하세요.",
+        flush=True,
+    )
+
+
+def warn_ignored_alerts(response, run_id: str) -> None:
+    try:
+        body = response.json()
+    except Exception:
+        return
+    ignored = body.get("ignored") if isinstance(body, dict) else None
+    if ignored:
+        print(f"[주의] run_id={run_id} 에서 이미 있는 alert_id라 무시됨: {ignored}", flush=True)
+
+
+def play_once(
+    client: httpx.Client,
+    events: list[tuple],
+    run_id: str,
+    speed: float,
+    stamp_now: bool,
+    send_alerts: bool = True,
+    checked_cameras: set[str] | None = None,
+    notices: dict | None = None,
+) -> tuple[int, int]:
+    if checked_cameras is None:
+        checked_cameras = set()
+    if notices is None:
+        notices = {}
     previous: float | None = None
     detections = alerts = 0
     for timestamp, _seq, kind, body in events:
@@ -54,23 +109,32 @@ def play_once(client: httpx.Client, events: list[tuple], run_id: str, speed: flo
             if gap > 0:
                 time.sleep(gap)
         previous = timestamp
+        if kind == "alerts" and not send_alerts:
+            continue
+        camera_id = body.get("camera_id")
+        warn_missing_camera(client, str(camera_id) if camera_id else None, checked_cameras)
+        if kind == "detections" and not stamp_now:
+            warn_timestamp_kind(body, notices)
         payload = body
         sent = timestamp
-        if stamp_now and kind == "detections":
+        if stamp_now:
             payload = dict(body)
             sent = time.time()
             payload["timestamp"] = sent
-            payload["timestamp_kind"] = "unix_seconds"
+            if kind == "detections":
+                payload["timestamp_kind"] = "unix_seconds"
         path = "/ingest/detections" if kind == "detections" else "/ingest/alerts"
         response = client.post(path, params={"run_id": run_id}, json=payload)
         if response.status_code >= 400:
             raise SystemExit(f"{path} 실패 ({response.status_code}): {response.text}")
+        if kind == "alerts":
+            warn_ignored_alerts(response, run_id)
         if kind == "detections":
             detections += 1
             print(f"[검출] run={run_id} frame={body.get('frame')} t={sent}", flush=True)
         else:
             alerts += 1
-            print(f"[경고] run={run_id} {body.get('alert_id')} {body.get('type')}", flush=True)
+            print(f"[경고] run={run_id} {body.get('alert_id')} {body.get('type')} t={sent}", flush=True)
     return detections, alerts
 
 
@@ -83,9 +147,14 @@ def main() -> int:
     parser.add_argument("--speed", type=float, default=1.0, help="1이면 기록된 시간 간격 그대로")
     parser.add_argument("--loop", action="store_true", help="반복할 때마다 run_id 뒤에 -1, -2를 붙인다")
     parser.add_argument(
+        "--alerts-first-loop-only",
+        action="store_true",
+        help="반복 재생에서 경고는 첫 번째 루프에만 보냅니다",
+    )
+    parser.add_argument(
         "--stamp-now",
         action="store_true",
-        help="검출 프레임을 보내기 직전에 timestamp를 현재 시각으로 바꿉니다. 파일 값은 간격 계산에만 씁니다",
+        help="검출 프레임과 경고를 보내기 직전에 timestamp를 현재 시각으로 바꿉니다. 파일 값은 간격 계산에만 씁니다",
     )
     args = parser.parse_args()
 
@@ -106,10 +175,22 @@ def main() -> int:
     try:
         with httpx.Client(base_url=api, timeout=30.0) as client:
             iteration = 0
+            checked_cameras: set[str] = set()
+            notices: dict = {}
             while True:
                 iteration += 1
                 run_id = f"{base_run_id}-{iteration}" if args.loop else base_run_id
-                detections, alerts = play_once(client, events, run_id, args.speed, args.stamp_now)
+                send_alerts = not (args.alerts_first_loop_only and iteration > 1)
+                detections, alerts = play_once(
+                    client,
+                    events,
+                    run_id,
+                    args.speed,
+                    args.stamp_now,
+                    send_alerts=send_alerts,
+                    checked_cameras=checked_cameras,
+                    notices=notices,
+                )
                 print(f"재생 완료 run={run_id} 검출 {detections}건, 경고 {alerts}건", flush=True)
                 if not args.loop:
                     break

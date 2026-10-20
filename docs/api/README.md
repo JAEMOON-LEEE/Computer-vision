@@ -232,6 +232,10 @@ python -m detection predict --source <영상 또는 스트림> --camera-id <카�
 
 이미 쌓인 줄을 건너뛰려면 `--no-from-start`를 붙입니다. 검출이 끝나 `summary.json`이 생기고 더 읽을 줄이 없으면 follow가 `실행 종료`를 찍고 멈춥니다.
 
+같은 카메라로 다시 실행할 때는 `run_id`를 다르게 줘야 경고가 저장됩니다.
+녹화 영상은 `--camera-id`를 카메라 목록의 ID로 맞춥니다.
+녹화 영상은 재생 시 `--stamp-now`를 씁니다.
+
 ## 주의
 
 - 경고의 고유 키는 `(run_id, alert_id)`입니다. `alert_id`는 `카메라ID:번호`이고 실행마다 1부터 다시 시작합니다.

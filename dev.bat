@@ -46,7 +46,7 @@ if not exist "%MOCK%\detections.jsonl" (
 
 if exist "%MOCK%\detections.jsonl" (
   echo [3/3] Mock replay for %CAM% (loop)
-  start "TwinSight Mock" cmd /k "cd /d "%~dp0" && %PY% backend\scripts\replay_jsonl.py --detections %MOCK%\detections.jsonl --alerts %MOCK%\alerts.jsonl --speed 1 --loop --stamp-now"
+  start "TwinSight Mock" cmd /k "cd /d "%~dp0" && %PY% backend\scripts\replay_jsonl.py --detections %MOCK%\detections.jsonl --alerts %MOCK%\alerts.jsonl --speed 1 --loop --stamp-now --alerts-first-loop-only"
 ) else (
   echo [3/3] mock data not found - skipped
 )

@@ -5,6 +5,22 @@ import type { Camera } from "../types";
 import { periodLabel, splitPlace, type Period } from "../mapModel";
 import "leaflet/dist/leaflet.css";
 
+// CARTO 베이스맵은 키가 필요하다. 키는 저장소 루트 .env의 VITE_CARTO_KEY.
+// 키가 없으면 OpenStreetMap 기본 지도를 써서 팀원 PC에서도 지도가 뜨게 한다.
+const CARTO_KEY = (import.meta.env.VITE_CARTO_KEY ?? "").trim();
+const TILES = CARTO_KEY
+  ? {
+      url: `https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png?key=${encodeURIComponent(CARTO_KEY)}`,
+      attribution: '&copy; OpenStreetMap contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    }
+  : {
+      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    };
+if (!CARTO_KEY) {
+  console.info("VITE_CARTO_KEY가 없어 OpenStreetMap 기본 지도를 씁니다.");
+}
+
 type Props = {
   cameras: Camera[];
   alertIds: Set<string>;
@@ -78,10 +94,7 @@ export function CameraMap({ cameras, alertIds, totals, selectedId, period, layou
   const label = periodLabel(period);
   return (
     <MapContainer center={[37.5, 127.0]} zoom={11} zoomControl={false} className="leaflet-map">
-      <TileLayer
-        attribution='&copy; OpenStreetMap &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-      />
+      <TileLayer attribution={TILES.attribution} url={TILES.url} maxZoom={19} />
       <ZoomControl position="topright" />
       <FitOnce cameras={located} />
       <Invalidate token={layoutToken} />

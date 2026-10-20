@@ -8,6 +8,8 @@ Vite + React + TypeScript 대시보드입니다. 이전 정적 화면은 [fronte
 
 백엔드 주소는 저장소 루트 `.env`의 `VITE_API_BASE`입니다. 없으면 `http://localhost:8000`을 씁니다. 예시는 [frontend/.env.example](.env.example)에 있습니다.
 
+지도 타일은 `.env`에 `VITE_CARTO_KEY`가 있으면 CARTO 밝은 지도(light_all), 없으면 OpenStreetMap 기본 지도를 씁니다. 키 없이도 지도는 뜹니다. CARTO 키는 https://www.carto.com/basemaps/apikey/ 에서 이메일로 무료 발급받고, 키는 커밋하지 않습니다.
+
 저장소 루트에서 `dev.bat`을 더블클릭하면 백엔드, 이 화면, 목업 재생이 함께 뜹니다. 목업 없이 띄우려면 `dev.bat nomock`입니다.
 
 직접 띄울 때는 저장소 루트에서 백엔드를 실행하고, `frontend`에서 `npm install` 후 `npm run dev`를 실행합니다. 주소는 http://localhost:5173 입니다. `127.0.0.1`로 열면 CORS에 막힙니다.

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { getDetectionStats, getLatest, getUnconfirmedAlerts } from "../api";
+import { getDetectionStats, getLatest } from "../api";
 import { CameraMap } from "../components/CameraMap";
 import { FilterSidebar } from "../components/FilterSidebar";
 import { LatencyPanel } from "../components/LatencyPanel";
@@ -29,7 +29,7 @@ export function MonitorPage() {
   const [sortKey, setSortKey] = useState<SortKey>("alerts");
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [visibleIds, setVisibleIds] = useState<string[]>([]);
-  const [alertCounts, setAlertCounts] = useState<Map<string, number>>(new Map());
+  const [tick, setTick] = useState(() => Date.now());
   const [statsByCamera, setStatsByCamera] = useState<Map<string, DetectionStats>>(new Map());
   const [frameLabel, setFrameLabel] = useState("프레임 -");
   const [boxLabel, setBoxLabel] = useState("박스 0");
@@ -61,25 +61,28 @@ export function MonitorPage() {
     return () => window.clearInterval(timer);
   }, [live.overlayRef, live.selectedId]);
 
+  const alertCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const alert of live.unconfirmedAlerts) {
+      counts.set(alert.camera_id, (counts.get(alert.camera_id) ?? 0) + 1);
+    }
+    return counts;
+  }, [live.unconfirmedAlerts]);
+
+  // 탭이 보일 때만 30초마다 기간 끝을 다시 잡아 카드 집계가 따라가게 한다.
   useEffect(() => {
-    let stopped = false;
-    const load = () => {
-      getUnconfirmedAlerts()
-        .then((rows) => {
-          if (stopped) return;
-          const counts = new Map<string, number>();
-          for (const alert of rows) counts.set(alert.camera_id, (counts.get(alert.camera_id) ?? 0) + 1);
-          setAlertCounts(counts);
-        })
-        .catch(() => undefined);
+    const timer = window.setInterval(() => {
+      if (!document.hidden) setTick(Date.now());
+    }, 30000);
+    const onVisibility = () => {
+      if (!document.hidden) setTick(Date.now());
     };
-    load();
-    const timer = window.setInterval(load, 15000);
+    document.addEventListener("visibilitychange", onVisibility);
     return () => {
-      stopped = true;
       window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [live.alerts]);
+  }, []);
 
   const searched = useMemo(() => {
     const text = query.trim().toLowerCase();
@@ -97,7 +100,7 @@ export function MonitorPage() {
   }, [live.cameras, query, alertCounts, applied]);
 
   const visibleKey = visibleIds.slice().sort().join(",");
-  const range = useMemo(() => periodRange(applied.period), [applied.period]);
+  const range = useMemo(() => periodRange(applied.period, new Date(tick)), [applied.period, tick]);
   useEffect(() => {
     const ids = visibleKey ? visibleKey.split(",") : [];
     const wanted = ids.filter((id) => searched.some((camera) => camera.camera_id === id));

@@ -9,7 +9,7 @@ import {
   type MutableRefObject,
   type ReactNode,
 } from "react";
-import { getAlerts, getCameras, patchAlert, wsUrl } from "./api";
+import { getAlerts, getCameras, getUnconfirmedAlerts, patchAlert, wsUrl } from "./api";
 import type { AlertItem, Camera, FrameRecord, LatencySample, OverlayState } from "./types";
 import { DEFAULT_CAMERA } from "./types";
 
@@ -17,6 +17,7 @@ type LiveValue = {
   cameras: Camera[];
   camerasError: string;
   alerts: AlertItem[];
+  unconfirmedAlerts: AlertItem[];
   alertError: string;
   selectedId: string;
   wsStatus: string;
@@ -50,6 +51,7 @@ function emptyOverlay(cameraId: string): OverlayState {
 export function LiveProvider({ children }: { children: ReactNode }) {
   const [cameras, setCameras] = useState<Camera[]>([]);
   const [alerts, setAlerts] = useState<AlertItem[]>([]);
+  const [unconfirmedAlerts, setUnconfirmedAlerts] = useState<AlertItem[]>([]);
   const [alertError, setAlertError] = useState("");
   const [camerasError, setCamerasError] = useState("");
   const [selectedId, setSelectedId] = useState(DEFAULT_CAMERA);
@@ -94,28 +96,40 @@ export function LiveProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const applyUnconfirmed = useCallback((alert: AlertItem) => {
+    setUnconfirmedAlerts((current) => {
+      const without = current.filter((item) => item.id !== alert.id);
+      if (alert.status !== "unconfirmed") return without;
+      return [alert, ...without].sort((a, b) => b.timestamp - a.timestamp || b.id - a.id);
+    });
+  }, []);
+
   const confirmAlert = useCallback(
     async (id: number) => {
       setAlertError("");
       try {
-        replaceAlert(await patchAlert(id, "confirmed"));
+        const updated = await patchAlert(id, "confirmed");
+        replaceAlert(updated);
+        applyUnconfirmed(updated);
       } catch (error) {
         setAlertError(error instanceof Error ? error.message : "경고 상태 변경 실패");
       }
     },
-    [replaceAlert],
+    [replaceAlert, applyUnconfirmed],
   );
 
   const dismissAlert = useCallback(
     async (id: number) => {
       setAlertError("");
       try {
-        replaceAlert(await patchAlert(id, "dismissed"));
+        const updated = await patchAlert(id, "dismissed");
+        replaceAlert(updated);
+        applyUnconfirmed(updated);
       } catch (error) {
         setAlertError(error instanceof Error ? error.message : "경고 상태 변경 실패");
       }
     },
-    [replaceAlert],
+    [replaceAlert, applyUnconfirmed],
   );
 
   const clearLatency = useCallback(() => {
@@ -137,6 +151,24 @@ export function LiveProvider({ children }: { children: ReactNode }) {
       });
     return () => {
       stopped = true;
+    };
+  }, []);
+
+  // 전체 미확인 경고. 실시간 이벤트 사이에 빠진 건 60초마다 다시 맞춘다.
+  useEffect(() => {
+    let stopped = false;
+    const load = () => {
+      getUnconfirmedAlerts()
+        .then((rows) => {
+          if (!stopped) setUnconfirmedAlerts(rows);
+        })
+        .catch(() => undefined);
+    };
+    load();
+    const timer = window.setInterval(load, 60000);
+    return () => {
+      stopped = true;
+      window.clearInterval(timer);
     };
   }, []);
 
@@ -186,8 +218,12 @@ export function LiveProvider({ children }: { children: ReactNode }) {
         }
         if (message.type === "detections" && message.frame && message.camera_id) {
           applyFrame({ ...message.frame, camera_id: message.frame.camera_id || message.camera_id }, true);
-        } else if ((message.type === "alert" || message.type === "alert_updated") && message.alert) {
+        } else if (message.type === "alert" && message.alert) {
           replaceAlert(message.alert);
+          if (message.alert.status === "unconfirmed") applyUnconfirmed(message.alert);
+        } else if (message.type === "alert_updated" && message.alert) {
+          replaceAlert(message.alert);
+          applyUnconfirmed(message.alert);
         }
       };
     };
@@ -197,13 +233,14 @@ export function LiveProvider({ children }: { children: ReactNode }) {
       window.clearTimeout(timer);
       socket?.close();
     };
-  }, [applyFrame, replaceAlert]);
+  }, [applyFrame, replaceAlert, applyUnconfirmed]);
 
   const value = useMemo<LiveValue>(
     () => ({
       cameras,
       camerasError,
       alerts,
+      unconfirmedAlerts,
       alertError,
       selectedId,
       wsStatus,
@@ -221,6 +258,7 @@ export function LiveProvider({ children }: { children: ReactNode }) {
       cameras,
       camerasError,
       alerts,
+      unconfirmedAlerts,
       alertError,
       selectedId,
       wsStatus,
