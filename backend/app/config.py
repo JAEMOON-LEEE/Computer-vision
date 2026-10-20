@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+from sqlalchemy.engine import URL
 
 # backend/app/config.py 기준 저장소 루트
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -21,12 +22,16 @@ ITS_CALL_LOG = REPO_ROOT / "backend" / "data" / "its" / "call_log.txt"
 DEFAULT_SQLITE_PATH = REPO_ROOT / "backend" / "data" / "twinsight.db"
 
 
-def database_url() -> str:
-    """DATABASE_URL이 없으면 임시 SQLite 파일의 절대 경로를 쓴다."""
+def database_url() -> str | URL:
+    """PostgreSQL 기본 설정. SQLite는 명시적인 DATABASE_URL/테스트에서만 사용."""
     url = os.getenv("DATABASE_URL")
     if url:
         return url
-    return "sqlite:///" + DEFAULT_SQLITE_PATH.resolve().as_posix()
+    return URL.create(
+        "postgresql+psycopg", username=os.getenv("POSTGRES_USER", "twinsight"),
+        password=os.getenv("POSTGRES_PASSWORD"), host=os.getenv("POSTGRES_HOST", "127.0.0.1"),
+        port=int(os.getenv("POSTGRES_PORT", "5432")), database=os.getenv("POSTGRES_DB", "twinsight"),
+    )
 
 
 def stream_ttl_minutes() -> float:

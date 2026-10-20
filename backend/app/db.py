@@ -1,6 +1,6 @@
 """SQLAlchemy 엔진과 세션.
 
-기본 저장소는 임시 SQLite다. DATABASE_URL을 바꾸면 같은 모델로 다른 DB에 붙는다.
+기본 저장소는 PostgreSQL이다. SQLite는 명시적 URL과 로컬 테스트를 지원한다.
 SQLite는 스레드를 가리지 않도록 두고, 외래 키 검사를 켠다.
 """
 
@@ -8,13 +8,16 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from fastapi import HTTPException
+
 from sqlalchemy import create_engine, event
-from sqlalchemy.engine import Engine
+from sqlalchemy.engine import Engine, URL, make_url
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import NullPool
 
 from backend.app.config import database_url
 from backend.app.models import Base, Camera, Run, utcnow
+from backend.app import catalog_models  # Register additive catalog tables before create_all.
 
 engine: Engine | None = None
 SessionLocal: sessionmaker | None = None
@@ -26,18 +29,21 @@ def _enable_sqlite_fk(dbapi_connection, _connection_record) -> None:
     cursor.close()
 
 
-def configure(url: str | None = None) -> None:
+def configure(url: str | URL | None = None) -> None:
     """엔진을 만들거나 테스트용 URL로 갈아끼운다."""
     global engine, SessionLocal
     if engine is not None:
         engine.dispose()
     resolved = url or database_url()
-    kwargs: dict = {}
-    if resolved.startswith("sqlite"):
+    dialect = make_url(resolved).get_backend_name()
+    kwargs: dict = {"pool_pre_ping": True, "hide_parameters": True}
+    if dialect == "postgresql":
+        kwargs["connect_args"] = {"connect_timeout": 5}
+    if dialect == "sqlite":
         kwargs["connect_args"] = {"check_same_thread": False}
         kwargs["poolclass"] = NullPool
     engine = create_engine(resolved, **kwargs)
-    if resolved.startswith("sqlite"):
+    if dialect == "sqlite":
         event.listen(engine, "connect", _enable_sqlite_fk)
     SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, expire_on_commit=False)
 
@@ -47,9 +53,13 @@ def init_db() -> None:
     if engine is None:
         configure()
     database = engine.url.database
-    if str(engine.url).startswith("sqlite") and database and database != ":memory:":
+    if engine.dialect.name == "sqlite" and database and database != ":memory:":
         Path(database).parent.mkdir(parents=True, exist_ok=True)
     Base.metadata.create_all(bind=engine)
+    for table in Base.metadata.sorted_tables:
+        for index in table.indexes:
+            if index.name.startswith("ix_map_"):
+                index.create(bind=engine, checkfirst=True)
 
 
 def get_db():
@@ -90,13 +100,14 @@ def ensure_camera(db: Session, camera_id: str) -> Camera:
 
 
 def ensure_run(db: Session, run_id: str, camera_id: str, timestamp_kind: str | None) -> Run:
-    """실행이 없으면 만들고, 이미 있으면 카메라 ID는 바꾸지 않는다.
-
-    한 실행은 카메라 하나에 묶는다. 같은 run_id로 다른 카메라가 나중에 오면
-    먼저 만든 실행을 그대로 쓰고, 경고 행의 camera_id만 입력값을 따른다.
-    """
-    ensure_camera(db, camera_id)
+    """실행의 카메라와 시간 기준을 고정해 서로 다른 이력이 섞이지 않게 한다."""
     run = db.get(Run, run_id)
+    if run is not None:
+        if run.camera_id != camera_id:
+            raise HTTPException(409, "run_id는 한 카메라에만 사용할 수 있습니다")
+        if timestamp_kind and run.timestamp_kind and run.timestamp_kind != timestamp_kind:
+            raise HTTPException(409, "실행의 timestamp_kind를 변경할 수 없습니다")
+    ensure_camera(db, camera_id)
     if run is None:
         run = Run(
             run_id=run_id,

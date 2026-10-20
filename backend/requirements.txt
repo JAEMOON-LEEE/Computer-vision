@@ -8,3 +8,4 @@ httpx==0.28.1
 pytest==9.1.1
 # ws_watch.py가 직접 사용. uvicorn[standard]가 같은 17.2를 함께 설치한다.
 websockets==17.2
+psycopg[binary]==3.3.6
