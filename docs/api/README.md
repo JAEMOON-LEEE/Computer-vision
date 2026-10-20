@@ -19,6 +19,8 @@
 
 ## 엔드포인트
 
+프로젝트 전 과정의 자료·출처·로그 API는 `/catalog`에 추가했습니다. [카탈로그 API와 팀원 등록 절차](../project_data.md)를 참고하세요. 기존 CCTV·검출·경고 API와 함께 사용합니다.
+
 | 메서드 | 경로 | 설명 | 누가 쓰는지 |
 | --- | --- | --- | --- |
 | GET | `/health` | 프로세스가 떠 있는지 | 모두 |
@@ -35,6 +37,8 @@
 | WS | `/ws` | 검출·경고·상태 변경을 즉시 수신 | 대시보드, 지도, 트윈 |
 
 `run_id`를 생략하면 `{camera_id}-default`가 됩니다. 프론트 개발 서버 `http://localhost:5173` 에서의 브라우저 호출은 CORS로 허용합니다.
+
+지도·DB 확장: `GET /runs`, `GET /runs/{run_id}/frames`, `PUT /runs/{run_id}/map-reference`, `GET /runs/{run_id}/map`, `GET /alerts/{id}/history`를 추가했습니다. 요청·응답과 페이지 조회 규칙은 [지도·DB 계약](../map_database.md)에 있습니다. 하나의 run_id에 다른 카메라 또는 시간 기준을 보내면 이제 HTTP 409이며 요청 전체를 롤백합니다. 카메라가 다른 데이터는 실행 ID를 나누세요.
 
 ## 검출 한 줄
 

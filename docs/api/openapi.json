@@ -561,6 +561,854 @@
         }
       }
     },
+    "/alerts/{id}/history": {
+      "get": {
+        "tags": [
+          "alerts"
+        ],
+        "summary": "Alert History",
+        "operationId": "alert_history_alerts__id__history_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "after_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "After Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs": {
+      "get": {
+        "tags": [
+          "history-map"
+        ],
+        "summary": "List Runs",
+        "operationId": "list_runs_runs_get",
+        "parameters": [
+          {
+            "name": "camera_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Id"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{run_id}/map-reference": {
+      "put": {
+        "tags": [
+          "history-map"
+        ],
+        "summary": "Set Reference",
+        "operationId": "set_reference_runs__run_id__map_reference_put",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReferenceIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReferenceIn"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{run_id}/frames": {
+      "get": {
+        "tags": [
+          "history-map"
+        ],
+        "summary": "Frame History",
+        "operationId": "frame_history_runs__run_id__frames_get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "after_frame",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": -1,
+              "default": -1,
+              "title": "After Frame"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FramePage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{run_id}/map": {
+      "get": {
+        "tags": [
+          "history-map"
+        ],
+        "summary": "Map Snapshot",
+        "operationId": "map_snapshot_runs__run_id__map_get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "frame_limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 200,
+              "title": "Frame Limit"
+            }
+          },
+          {
+            "name": "alert_limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 100,
+              "title": "Alert Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MapSnapshot"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog/records": {
+      "post": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "Create Record",
+        "operationId": "create_record_catalog_records_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecordIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "List Records",
+        "operationId": "list_records_catalog_records_get",
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "cctv_info",
+                    "calibration",
+                    "simulation",
+                    "capture",
+                    "dataset",
+                    "training",
+                    "model",
+                    "evaluation",
+                    "detection",
+                    "road_recognition"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Kind"
+            }
+          },
+          {
+            "name": "camera_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Id"
+            }
+          },
+          {
+            "name": "owner",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Owner"
+            }
+          },
+          {
+            "name": "data_origin",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Data Origin"
+            }
+          },
+          {
+            "name": "after_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "After Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog/records/{record_id}": {
+      "get": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "Read Record",
+        "operationId": "read_record_catalog_records__record_id__get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog/records/{record_id}/lineage": {
+      "get": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "Lineage",
+        "operationId": "lineage_catalog_records__record_id__lineage_get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ancestors",
+                "descendants"
+              ],
+              "type": "string",
+              "default": "ancestors",
+              "title": "Direction"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 1,
+              "default": 200,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog/records/{record_id}/files": {
+      "post": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "Register Files",
+        "operationId": "register_files_catalog_records__record_id__files_post",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FileIn"
+                },
+                "maxItems": 500,
+                "title": "Payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "List Files",
+        "operationId": "list_files_catalog_records__record_id__files_get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          },
+          {
+            "name": "after_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "After Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilePage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog/records/{record_id}/logs": {
+      "post": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "Register Logs",
+        "operationId": "register_logs_catalog_records__record_id__logs_post",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LogIn"
+                },
+                "maxItems": 500,
+                "title": "Payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "project-data"
+        ],
+        "summary": "List Logs",
+        "operationId": "list_logs_catalog_records__record_id__logs_get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          },
+          {
+            "name": "after_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "After Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "stream",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stream"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "tags": [
@@ -568,6 +1416,25 @@
         ],
         "summary": "Health",
         "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ready": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Ready",
+        "operationId": "ready_ready_get",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -832,7 +1699,9 @@
           "lat": {
             "anyOf": [
               {
-                "type": "number"
+                "type": "number",
+                "maximum": 90.0,
+                "minimum": -90.0
               },
               {
                 "type": "null"
@@ -843,7 +1712,9 @@
           "lon": {
             "anyOf": [
               {
-                "type": "number"
+                "type": "number",
+                "maximum": 180.0,
+                "minimum": -180.0
               },
               {
                 "type": "null"
@@ -1270,6 +2141,109 @@
         "type": "object",
         "title": "EvidenceIn"
       },
+      "FileIn": {
+        "properties": {
+          "path": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Path"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Size Bytes"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Sha256"
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Role"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "path",
+          "size_bytes",
+          "sha256",
+          "role"
+        ],
+        "title": "FileIn"
+      },
+      "FileOut": {
+        "properties": {
+          "path": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Path"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Size Bytes"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Sha256"
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Role"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "path",
+          "size_bytes",
+          "sha256",
+          "role",
+          "id"
+        ],
+        "title": "FileOut"
+      },
+      "FilePage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/FileOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "next_after_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next After Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "next_after_id"
+        ],
+        "title": "FilePage"
+      },
       "FrameIn": {
         "properties": {
           "camera_id": {
@@ -1278,6 +2252,7 @@
           },
           "frame": {
             "type": "integer",
+            "minimum": 0.0,
             "title": "Frame"
           },
           "timestamp": {
@@ -1296,10 +2271,12 @@
           },
           "width": {
             "type": "integer",
+            "exclusiveMinimum": 0.0,
             "title": "Width"
           },
           "height": {
             "type": "integer",
+            "exclusiveMinimum": 0.0,
             "title": "Height"
           },
           "inference_ms": {
@@ -1393,6 +2370,34 @@
           "width": 720
         }
       },
+      "FramePage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/HistoricalFrame"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "next_after_frame": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next After Frame"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "next_after_frame"
+        ],
+        "title": "FramePage"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -1405,6 +2410,182 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "HistoricalDetection": {
+        "properties": {
+          "class_name": {
+            "type": "string",
+            "title": "Class Name"
+          },
+          "class_id": {
+            "type": "integer",
+            "title": "Class Id"
+          },
+          "category_id": {
+            "type": "integer",
+            "title": "Category Id"
+          },
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "bbox_xyxy": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Bbox Xyxy"
+          },
+          "confidence": {
+            "type": "number",
+            "title": "Confidence"
+          },
+          "track_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Track Id"
+          },
+          "ground_point_px": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ground Point Px"
+          },
+          "mapped_xz": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mapped Xz"
+          },
+          "mapped_xz_raw": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mapped Xz Raw"
+          },
+          "mapped_xz_corrected": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mapped Xz Corrected"
+          },
+          "coordinate_provenance": {
+            "type": "string",
+            "enum": [
+              "preserved",
+              "legacy_preferred_only"
+            ],
+            "title": "Coordinate Provenance"
+          }
+        },
+        "type": "object",
+        "required": [
+          "class_name",
+          "class_id",
+          "category_id",
+          "model_id",
+          "bbox_xyxy",
+          "confidence",
+          "mapped_xz_raw",
+          "mapped_xz_corrected",
+          "coordinate_provenance"
+        ],
+        "title": "HistoricalDetection"
+      },
+      "HistoricalFrame": {
+        "properties": {
+          "camera_id": {
+            "type": "string",
+            "title": "Camera Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "frame": {
+            "type": "integer",
+            "title": "Frame"
+          },
+          "timestamp": {
+            "type": "number",
+            "title": "Timestamp"
+          },
+          "timestamp_kind": {
+            "type": "string",
+            "title": "Timestamp Kind"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Received At"
+          },
+          "width": {
+            "type": "integer",
+            "title": "Width"
+          },
+          "height": {
+            "type": "integer",
+            "title": "Height"
+          },
+          "detections": {
+            "items": {
+              "$ref": "#/components/schemas/HistoricalDetection"
+            },
+            "type": "array",
+            "title": "Detections"
+          }
+        },
+        "type": "object",
+        "required": [
+          "camera_id",
+          "run_id",
+          "frame",
+          "timestamp",
+          "timestamp_kind",
+          "received_at",
+          "width",
+          "height",
+          "detections"
+        ],
+        "title": "HistoricalFrame"
       },
       "ImportItsResult": {
         "properties": {
@@ -1534,6 +2715,606 @@
         ],
         "title": "LatestFrameOut"
       },
+      "Location": {
+        "properties": {
+          "xz": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Xz"
+          },
+          "latlon": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latlon"
+          }
+        },
+        "type": "object",
+        "required": [
+          "xz",
+          "latlon"
+        ],
+        "title": "Location"
+      },
+      "LogIn": {
+        "properties": {
+          "stream": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Stream"
+          },
+          "line_no": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Line No"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 16384,
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "stream",
+          "line_no",
+          "message"
+        ],
+        "title": "LogIn"
+      },
+      "LogOut": {
+        "properties": {
+          "stream": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Stream"
+          },
+          "line_no": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Line No"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 16384,
+            "title": "Message"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "stream",
+          "line_no",
+          "message",
+          "id"
+        ],
+        "title": "LogOut"
+      },
+      "LogPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/LogOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "next_after_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next After Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "next_after_id"
+        ],
+        "title": "LogPage"
+      },
+      "MapSnapshot": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "camera_id": {
+            "type": "string",
+            "title": "Camera Id"
+          },
+          "timestamp_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timestamp Kind"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReferenceIn"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tracks": {
+            "items": {
+              "$ref": "#/components/schemas/TrackOut"
+            },
+            "type": "array",
+            "title": "Tracks"
+          },
+          "untracked": {
+            "items": {
+              "$ref": "#/components/schemas/UntrackedPoint"
+            },
+            "type": "array",
+            "title": "Untracked"
+          },
+          "risks": {
+            "items": {
+              "$ref": "#/components/schemas/RiskOut"
+            },
+            "type": "array",
+            "title": "Risks"
+          },
+          "unmapped_detections": {
+            "type": "integer",
+            "title": "Unmapped Detections"
+          },
+          "frames_truncated": {
+            "type": "boolean",
+            "title": "Frames Truncated"
+          },
+          "alerts_truncated": {
+            "type": "boolean",
+            "title": "Alerts Truncated"
+          },
+          "first_frame": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Frame"
+          },
+          "last_frame": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Frame"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_id",
+          "camera_id",
+          "timestamp_kind",
+          "reference",
+          "tracks",
+          "untracked",
+          "risks",
+          "unmapped_detections",
+          "frames_truncated",
+          "alerts_truncated",
+          "first_frame",
+          "last_frame"
+        ],
+        "title": "MapSnapshot"
+      },
+      "RecordIn": {
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "title": "Record Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "cctv_info",
+              "calibration",
+              "simulation",
+              "capture",
+              "dataset",
+              "training",
+              "model",
+              "evaluation",
+              "detection",
+              "road_recognition"
+            ],
+            "title": "Kind"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "owner": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Owner"
+          },
+          "data_origin": {
+            "type": "string",
+            "enum": [
+              "real",
+              "synthetic",
+              "mixed",
+              "unspecified"
+            ],
+            "title": "Data Origin"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "running",
+              "completed",
+              "failed"
+            ],
+            "title": "Status"
+          },
+          "camera_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Camera Id"
+          },
+          "detection_run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detection Run Id"
+          },
+          "parents": {
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Parents"
+          },
+          "details": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Details"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "record_id",
+          "kind",
+          "title",
+          "owner",
+          "data_origin",
+          "status"
+        ],
+        "title": "RecordIn"
+      },
+      "RecordOut": {
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "title": "Record Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "cctv_info",
+              "calibration",
+              "simulation",
+              "capture",
+              "dataset",
+              "training",
+              "model",
+              "evaluation",
+              "detection",
+              "road_recognition"
+            ],
+            "title": "Kind"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "owner": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Owner"
+          },
+          "data_origin": {
+            "type": "string",
+            "enum": [
+              "real",
+              "synthetic",
+              "mixed",
+              "unspecified"
+            ],
+            "title": "Data Origin"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "running",
+              "completed",
+              "failed"
+            ],
+            "title": "Status"
+          },
+          "camera_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Camera Id"
+          },
+          "detection_run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detection Run Id"
+          },
+          "parents": {
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Parents"
+          },
+          "details": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Details"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "record_id",
+          "kind",
+          "title",
+          "owner",
+          "data_origin",
+          "status",
+          "created_at"
+        ],
+        "title": "RecordOut"
+      },
+      "RecordPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RecordOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "next_after_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next After Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "next_after_id"
+        ],
+        "title": "RecordPage"
+      },
+      "ReferenceIn": {
+        "properties": {
+          "coordinate_system": {
+            "type": "string",
+            "const": "local_enu",
+            "title": "Coordinate System"
+          },
+          "units": {
+            "type": "string",
+            "const": "m",
+            "title": "Units"
+          },
+          "origin_lat": {
+            "type": "number",
+            "exclusiveMaximum": 85.0,
+            "exclusiveMinimum": -85.0,
+            "title": "Origin Lat"
+          },
+          "origin_lon": {
+            "type": "number",
+            "maximum": 180.0,
+            "minimum": -180.0,
+            "title": "Origin Lon"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coordinate_system",
+          "units",
+          "origin_lat",
+          "origin_lon"
+        ],
+        "title": "ReferenceIn"
+      },
+      "RiskOut": {
+        "properties": {
+          "alert": {
+            "$ref": "#/components/schemas/AlertOut"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/Location"
+            },
+            "type": "array",
+            "title": "Locations"
+          },
+          "location_basis": {
+            "type": "string",
+            "enum": [
+              "same_run_frame_model_track",
+              "unlocated"
+            ],
+            "title": "Location Basis"
+          }
+        },
+        "type": "object",
+        "required": [
+          "alert",
+          "locations",
+          "location_basis"
+        ],
+        "title": "RiskOut"
+      },
+      "RunOut": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "camera_id": {
+            "type": "string",
+            "title": "Camera Id"
+          },
+          "timestamp_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timestamp Kind"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Started At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_id",
+          "camera_id",
+          "timestamp_kind",
+          "started_at"
+        ],
+        "title": "RunOut"
+      },
+      "RunPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RunOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "next_offset": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Offset"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "next_offset"
+        ],
+        "title": "RunPage"
+      },
       "SavedFrame": {
         "properties": {
           "run_id": {
@@ -1602,6 +3383,138 @@
           "refreshed"
         ],
         "title": "StreamOut"
+      },
+      "TrackOut": {
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "title": "Model Id"
+          },
+          "track_id": {
+            "type": "integer",
+            "title": "Track Id"
+          },
+          "class_name": {
+            "type": "string",
+            "title": "Class Name"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/TrackPoint"
+            },
+            "type": "array",
+            "title": "Points"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model_id",
+          "track_id",
+          "class_name",
+          "points"
+        ],
+        "title": "TrackOut"
+      },
+      "TrackPoint": {
+        "properties": {
+          "xz": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Xz"
+          },
+          "latlon": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latlon"
+          },
+          "frame": {
+            "type": "integer",
+            "title": "Frame"
+          },
+          "timestamp": {
+            "type": "number",
+            "title": "Timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "xz",
+          "latlon",
+          "frame",
+          "timestamp"
+        ],
+        "title": "TrackPoint"
+      },
+      "UntrackedPoint": {
+        "properties": {
+          "xz": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Xz"
+          },
+          "latlon": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latlon"
+          },
+          "frame": {
+            "type": "integer",
+            "title": "Frame"
+          },
+          "timestamp": {
+            "type": "number",
+            "title": "Timestamp"
+          },
+          "class_name": {
+            "type": "string",
+            "title": "Class Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "xz",
+          "latlon",
+          "frame",
+          "timestamp",
+          "class_name"
+        ],
+        "title": "UntrackedPoint"
       },
       "ValidationError": {
         "properties": {

@@ -1,0 +1,5439 @@
+{
+  "date": "2026-10-19",
+  "scope": "Project text files scanned; Python syntax parsed. Binary/large model assets inventoried only; Git/LFS clone is still external work. This is not a claim of semantic review of every asset.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 421,
+      "inspection": "text scan",
+      "lines": 7,
+      "sha256": "c4ca05b3fdf10710c3375ab0a54d9b12d2229444709067c05d150f80a5f5b4cf"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 1049,
+      "inspection": "text scan",
+      "lines": 42,
+      "sha256": "0fa3a72ffa8d337832496556c3f6feca0070ad46dee7f8f463548fe6c8247f21"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus1/bus.cs3o",
+      "bytes": 8433664,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus1/bus_1.clip",
+      "bytes": 9726779,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus1/bus_1.csmo",
+      "bytes": 8433664,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus1/bus_1.fbx",
+      "bytes": 7611776,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus1/bus_2.clip",
+      "bytes": 9408483,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus1/bus_2.cs3o",
+      "bytes": 8425472,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus1/bus_2.csmo",
+      "bytes": 8429568,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/262_(1).png",
+      "bytes": 63429,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/baner(3).jpg",
+      "bytes": 133551,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/baner(5).jpg",
+      "bytes": 284646,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/baner(7).jpg",
+      "bytes": 326841,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2.clip",
+      "bytes": 8713427,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2.cs3o",
+      "bytes": 7725056,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2.csmo",
+      "bytes": 7729152,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2.fbx",
+      "bytes": 6496800,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2.mtl",
+      "bytes": 5408,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2.obj",
+      "bytes": 34613115,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2_2.clip",
+      "bytes": 8750731,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2_2.cs3o",
+      "bytes": 7712768,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2_2.csmo",
+      "bytes": 7716864,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2_2.fbx",
+      "bytes": 6443584,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2_2.mtl",
+      "bytes": 5408,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/bus2_2.obj",
+      "bytes": 34317084,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/number.jpg",
+      "bytes": 154569,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/이미지1.PNG",
+      "bytes": 184447,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/이미지2.PNG",
+      "bytes": 130255,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/이미지3.PNG",
+      "bytes": 177917,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/이미지4.PNG",
+      "bytes": 122935,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/이미지5.PNG",
+      "bytes": 154827,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus2/이미지6.PNG",
+      "bytes": 103647,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/.mayaSwatches/AKR20190430155600063_02_i_P2.jpg_hcm.swatch",
+      "bytes": 9540,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/AKR20190430155600063_02_i_P2.jpg",
+      "bytes": 48635,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/baner(5).jpg",
+      "bytes": 284646,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/baner(8).jpg",
+      "bytes": 322321,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3.clip",
+      "bytes": 8706115,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3.cs3o",
+      "bytes": 7688192,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3.csmo",
+      "bytes": 7692288,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3.fbx",
+      "bytes": 6494592,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3.mtl",
+      "bytes": 5429,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3.obj",
+      "bytes": 34609853,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3_2.cs3o",
+      "bytes": 7675904,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3_2.csmo",
+      "bytes": 7680000,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3_2.fbx",
+      "bytes": 6441376,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3_2.mtl",
+      "bytes": 5429,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/bus3_2.obj",
+      "bytes": 34315214,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/number.jpg",
+      "bytes": 187261,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/이미지1.PNG",
+      "bytes": 147634,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/이미지2.PNG",
+      "bytes": 101690,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/이미지3.PNG",
+      "bytes": 155472,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/이미지4.PNG",
+      "bytes": 108042,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/이미지5.PNG",
+      "bytes": 141636,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus3/이미지6.PNG",
+      "bytes": 95168,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/.mayaSwatches/263CE237557957AC22.jpg_hcm.swatch",
+      "bytes": 12056,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/.mayaSwatches/baner(9).jpg_hcm.swatch",
+      "bytes": 4824,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/263CE237557957AC22.jpg",
+      "bytes": 168865,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/baner(5).jpg",
+      "bytes": 284646,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/baner(9).jpg",
+      "bytes": 391347,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4.clip",
+      "bytes": 8995699,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4.cs3o",
+      "bytes": 8028160,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4.csmo",
+      "bytes": 8032256,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4.fbx",
+      "bytes": 6473024,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4.mtl",
+      "bytes": 5420,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4.obj",
+      "bytes": 34604146,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4_2.clip",
+      "bytes": 9118971,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4_2.cs3o",
+      "bytes": 8015872,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4_2.csmo",
+      "bytes": 8015872,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4_2.fbx",
+      "bytes": 6419808,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4_2.mtl",
+      "bytes": 5420,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/bus4_2.obj",
+      "bytes": 34310114,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/number2.jpg",
+      "bytes": 185990,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/이미지1.PNG",
+      "bytes": 209644,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/이미지2.PNG",
+      "bytes": 148106,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/이미지3.PNG",
+      "bytes": 209841,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/이미지4.PNG",
+      "bytes": 153501,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/이미지5.PNG",
+      "bytes": 204600,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/Bus set_버스세트/bus4/이미지6.PNG",
+      "bytes": 145154,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/CAR_승용차/ford_tauras.clip",
+      "bytes": 2961355,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/CAR_승용차/ford_tauras.cs3o",
+      "bytes": 2195456,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/CAR_승용차/ford_tauras.csmo",
+      "bytes": 2195456,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/CAR_승용차/ford_tauras.fbx",
+      "bytes": 2859296,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/CAR_승용차/ford_tauras.mtl",
+      "bytes": 1358,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/CAR_승용차/ford_tauras.obj",
+      "bytes": 10742564,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/light.PNG",
+      "bytes": 150080,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/map.jpg",
+      "bytes": 111912,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/map2.jpg",
+      "bytes": 1051803,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/map5.jpg",
+      "bytes": 168032,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/map6.jpg",
+      "bytes": 918348,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/taxi1.clip",
+      "bytes": 3763235,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/taxi1.cs3o",
+      "bytes": 2940928,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/taxi1.csmo",
+      "bytes": 2904064,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/taxi1.fbx",
+      "bytes": 2611744,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/taxi1.mtl",
+      "bytes": 3497,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX1_택시1/taxi1.obj",
+      "bytes": 9691609,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/light.PNG",
+      "bytes": 150080,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/map.jpg",
+      "bytes": 111912,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/map2.jpg",
+      "bytes": 1051803,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/map5.jpg",
+      "bytes": 168032,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/map6.jpg",
+      "bytes": 918348,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/taxi2.clip",
+      "bytes": 3723595,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/taxi2.cs3o",
+      "bytes": 2887680,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/taxi2.csmo",
+      "bytes": 2887680,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/taxi2.fbx",
+      "bytes": 2636656,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/taxi2.mtl",
+      "bytes": 2061,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/TAX SET_택시세트/TAX2_택시2/taxi2.obj",
+      "bytes": 9684368,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike1/baminbike.clip",
+      "bytes": 1607379,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike1/baminbike.cs3o",
+      "bytes": 1134592,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike1/baminbike.csmo",
+      "bytes": 1056768,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike1/baminbike.fbx",
+      "bytes": 1041456,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike1/baminbike.mtl",
+      "bytes": 1473,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike1/baminbike.obj",
+      "bytes": 3832788,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike2/baminbike2.clip",
+      "bytes": 1767163,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike2/baminbike2.cs3o",
+      "bytes": 1142784,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike2/baminbike2.csmo",
+      "bytes": 1064960,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike2/baminbike2.fbx",
+      "bytes": 1046704,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike2/baminbike2.mtl",
+      "bytes": 1473,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike set_배달 오토바이 세트/bike2/baminbike2.obj",
+      "bytes": 3841590,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(할0)/bike.clip",
+      "bytes": 1942755,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(할0)/bike.cs3o",
+      "bytes": 1114112,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(할0)/bike.csmo",
+      "bytes": 1032192,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(할0)/bike.fbx",
+      "bytes": 1092160,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(혼0)/bike.clip",
+      "bytes": 7938691,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(혼0)/bike.cs3o",
+      "bytes": 7106560,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(혼0)/bike.csmo",
+      "bytes": 7020544,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(혼0)/bike.fbx",
+      "bytes": 7171392,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(혼0)/bike.mtl",
+      "bytes": 997,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/bike set_오토바이 세트/bike_오토바이(혼0)/bike.obj",
+      "bytes": 39586983,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/mini_coo0er_미니0퍼/mini_coo0er.clip",
+      "bytes": 3921563,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/mini_coo0er_미니0퍼/mini_coo0er.cs3o",
+      "bytes": 3338240,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/mini_coo0er_미니0퍼/mini_coo0er.csmo",
+      "bytes": 3338240,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/mini_coo0er_미니0퍼/mini_coo0er.fbx",
+      "bytes": 1933152,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/mini_coo0er_미니0퍼/mini_coo0er.mtl",
+      "bytes": 1322,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/mini_coo0er_미니0퍼/mini_coo0er.obj",
+      "bytes": 9038597,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/open car_오픈카/f0rrari.clip",
+      "bytes": 4603875,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/open car_오픈카/f0rrari.cs3o",
+      "bytes": 3538944,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/open car_오픈카/f0rrari.csmo",
+      "bytes": 3538944,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/open car_오픈카/f0rrari.fbx",
+      "bytes": 4421904,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/open car_오픈카/f0rrari.obj",
+      "bytes": 14544818,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/car_승용차/ford_tauras.clip",
+      "bytes": 2961355,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/car_승용차/ford_tauras.cs3o",
+      "bytes": 2195456,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/car_승용차/ford_tauras.csmo",
+      "bytes": 2195456,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/car_승용차/ford_tauras.fbx",
+      "bytes": 2859296,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/car_승용차/ford_tauras.mtl",
+      "bytes": 1358,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/car_승용차/ford_tauras.obj",
+      "bytes": 10742564,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_american_미국경찰차/police_american.clip",
+      "bytes": 5639491,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_american_미국경찰차/police_american.cs3o",
+      "bytes": 4382720,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_american_미국경찰차/police_american.csmo",
+      "bytes": 4362240,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_american_미국경찰차/police_american.fbx",
+      "bytes": 3074384,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_american_미국경찰차/police_american.mtl",
+      "bytes": 1822,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_american_미국경찰차/police_american.obj",
+      "bytes": 10275713,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/body_w6.jpg",
+      "bytes": 1197973,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/door.fbx",
+      "bytes": 116816,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/police.cs3o",
+      "bytes": 4349952,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/police.csmo",
+      "bytes": 4333568,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/police.fbx",
+      "bytes": 2921216,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/police.mtl",
+      "bytes": 1825,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/police.obj",
+      "bytes": 10017320,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/서브3.jpg",
+      "bytes": 318977,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/이미지1.PNG",
+      "bytes": 166630,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/이미지2.PNG",
+      "bytes": 120633,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/이미지3.PNG",
+      "bytes": 166095,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/이미지4.PNG",
+      "bytes": 121715,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/이미지5.PNG",
+      "bytes": 171169,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/police car set_경찰차세트/police_경찰차/이미지6.PNG",
+      "bytes": 140422,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/light.PNG",
+      "bytes": 150080,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/light.jpg",
+      "bytes": 63018,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/png-transparent-mercedes-benz-amg-s-65-luxury-vehicle-motor-vehicle-steering-wheels-mercedes-amg-dashboard-speedometer-compact-car-sedan-car.png",
+      "bytes": 76811,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/suv.clip",
+      "bytes": 3688939,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/suv.cs3o",
+      "bytes": 2936832,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/suv.csmo",
+      "bytes": 2895872,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/suv.fbx",
+      "bytes": 3478896,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/suv.mtl",
+      "bytes": 4525,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/suv.obj",
+      "bytes": 10136358,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/계기.jpg",
+      "bytes": 69896,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/suv_승용차/네비.PNG",
+      "bytes": 135290,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/truck_트럭/truck.clip",
+      "bytes": 2712091,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/truck_트럭/truck3.cs3o",
+      "bytes": 1978368,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "Papabear_Papabear Car Package/truck_트럭/truck3.csmo",
+      "bytes": 1978368,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "README.md",
+      "bytes": 11186,
+      "inspection": "text scan",
+      "lines": 145,
+      "sha256": "ef3d9135bed39a0e1161f1cd8663aa1003946041a3d572152e7c3a650d678fae"
+    },
+    {
+      "path": "backend/README.md",
+      "bytes": 7438,
+      "inspection": "text scan",
+      "lines": 118,
+      "sha256": "4bf329d945733537c8b52e334299ff0b7f3b9859d0c17712c7d2392d417e4462"
+    },
+    {
+      "path": "backend/__init__.py",
+      "bytes": 38,
+      "inspection": "text scan",
+      "lines": 1,
+      "sha256": "e99b348b2deee6c5fb238b64dcdab93457c0c5a67ce7b85be75f340cb70082a1"
+    },
+    {
+      "path": "backend/app/__init__.py",
+      "bytes": 45,
+      "inspection": "text scan",
+      "lines": 1,
+      "sha256": "f70df7a856dd4ead49ed091da4af6ff5766047ec77fe885aef6c693be0548b02"
+    },
+    {
+      "path": "backend/app/config.py",
+      "bytes": 1364,
+      "inspection": "text scan",
+      "lines": 41,
+      "sha256": "096f3fc14f2a4e8ad7ee5c5cbd8f198403c2db05d1d745b3b2df202e6c265fde"
+    },
+    {
+      "path": "backend/app/db.py",
+      "bytes": 4109,
+      "inspection": "text scan",
+      "lines": 122,
+      "sha256": "e363246aabb27ee104b5c838f85ddb09a1388af56f34e4f2ccb07a386b369f82"
+    },
+    {
+      "path": "backend/app/main.py",
+      "bytes": 1240,
+      "inspection": "text scan",
+      "lines": 51,
+      "sha256": "6e78ea540f7181e39b64533f913512563b0504228a63e51664e12225f6a20cbc"
+    },
+    {
+      "path": "backend/app/models.py",
+      "bytes": 8259,
+      "inspection": "text scan",
+      "lines": 160,
+      "sha256": "80d1c5ffb8ff1276ce98572e1ccd60667cf9025f760ce7f521e287441d8f80e7"
+    },
+    {
+      "path": "backend/app/routers/__init__.py",
+      "bytes": 34,
+      "inspection": "text scan",
+      "lines": 1,
+      "sha256": "bc3834bb82b378cc6610c55e10ed6c65df1c4d5b8f0f856ff76c6ec53bbd0dbd"
+    },
+    {
+      "path": "backend/app/routers/alerts.py",
+      "bytes": 3574,
+      "inspection": "text scan",
+      "lines": 81,
+      "sha256": "ab450998467963922a5f9e0531a098d0a500fd98869697fe54208a23d053d1ca"
+    },
+    {
+      "path": "backend/app/routers/cameras.py",
+      "bytes": 8609,
+      "inspection": "text scan",
+      "lines": 237,
+      "sha256": "b034e12a2932abd484639bc3a950b3be46e23bb27fdfbf8466542556665320e8"
+    },
+    {
+      "path": "backend/app/routers/history.py",
+      "bytes": 10069,
+      "inspection": "text scan",
+      "lines": 241,
+      "sha256": "48cbb7a8ed4b32c7386fe684dd74a77ac59b4a8e6de52d782325c8a54d2a2daa"
+    },
+    {
+      "path": "backend/app/routers/ingest.py",
+      "bytes": 6094,
+      "inspection": "text scan",
+      "lines": 171,
+      "sha256": "f56fcb71a6f694d4df0d2a6e778d4dd395391bdb0781f8272a592cb6cfd71dd1"
+    },
+    {
+      "path": "backend/app/routers/ws.py",
+      "bytes": 580,
+      "inspection": "text scan",
+      "lines": 20,
+      "sha256": "4fafbe339966dae1f253ab35c549d2eca7a1d52ac0ff9b45b565a7b962d85d51"
+    },
+    {
+      "path": "backend/app/schemas.py",
+      "bytes": 10575,
+      "inspection": "text scan",
+      "lines": 351,
+      "sha256": "8208251e1097e7c91ab3911972e0af84aae077023efc8faa203f608502bb7539"
+    },
+    {
+      "path": "backend/app/services/__init__.py",
+      "bytes": 32,
+      "inspection": "text scan",
+      "lines": 1,
+      "sha256": "f732209eba6a72305ffc39d50379605266fb276039fc3cf1ebc6a45023722d2e"
+    },
+    {
+      "path": "backend/app/services/its.py",
+      "bytes": 5343,
+      "inspection": "text scan",
+      "lines": 142,
+      "sha256": "bb88760851afdb57f60aabc8fbbdb55a15ca3afacfa0280870940d6ef7474c94"
+    },
+    {
+      "path": "backend/app/ws_manager.py",
+      "bytes": 927,
+      "inspection": "text scan",
+      "lines": 31,
+      "sha256": "9116e21d31af42a495b8404359305699349b71a4c1f17dc9c4bfb61bc75b1aa8"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "bytes": 305,
+      "inspection": "text scan",
+      "lines": 10,
+      "sha256": "6fded3a121833d2ebc567361aa7398a00ee536b111b5a198327dd24ddddd730d"
+    },
+    {
+      "path": "backend/scripts/export_openapi.py",
+      "bytes": 785,
+      "inspection": "text scan",
+      "lines": 30,
+      "sha256": "13ff33c200221c05b38287cf066308c79d449a7893b3055a798c8ec3909c045a"
+    },
+    {
+      "path": "backend/scripts/fetch_its_cctv.py",
+      "bytes": 6400,
+      "inspection": "text scan",
+      "lines": 134,
+      "sha256": "2ddbbe3c052596f66626450124be27d28fbf14fb6cae6cc023bf717eff67242b"
+    },
+    {
+      "path": "backend/scripts/follow_detections.py",
+      "bytes": 7148,
+      "inspection": "text scan",
+      "lines": 178,
+      "sha256": "3e5e4fa6f785a09d973c96ac8d6843aee6a79a086fd9b30f8ec347065d249a34"
+    },
+    {
+      "path": "backend/scripts/hls_test.html",
+      "bytes": 3028,
+      "inspection": "text scan",
+      "lines": 70,
+      "sha256": "5c54a2d383ec338e08bf78c59f6340d814cd064841039a6e5bac32809a6daf96"
+    },
+    {
+      "path": "backend/scripts/its_intersections.html",
+      "bytes": 14415,
+      "inspection": "text scan",
+      "lines": 352,
+      "sha256": "098cb5753fdff62441b3569e30d66e42c5895d26d85cacdf3012e6a4b9d20e24"
+    },
+    {
+      "path": "backend/scripts/make_mock_detections.py",
+      "bytes": 6424,
+      "inspection": "text scan",
+      "lines": 157,
+      "sha256": "337c6e1c4d4daae6f413b1d1e9982e761a2ccc27fdf3d0342045cf22594690ec"
+    },
+    {
+      "path": "backend/scripts/replay_jsonl.py",
+      "bytes": 4806,
+      "inspection": "text scan",
+      "lines": 114,
+      "sha256": "2760f9223aea5f181d8473aeae51730fd25896e0048fe9e15f70bbe42395a4e1"
+    },
+    {
+      "path": "backend/scripts/seed_map_demo.py",
+      "bytes": 2716,
+      "inspection": "text scan",
+      "lines": 54,
+      "sha256": "7ef6e54a8508ccb565bed109fff7d2bb7675087f0babca80ab5d4d0890d0fbda"
+    },
+    {
+      "path": "backend/scripts/ws_watch.py",
+      "bytes": 3021,
+      "inspection": "text scan",
+      "lines": 73,
+      "sha256": "a8294c7d17475e558559681e317b178247ebfd1acafb93c59f3baecc32b98a66"
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "bytes": 32,
+      "inspection": "text scan",
+      "lines": 1,
+      "sha256": "2d8e82408926f2c5ad6473a2f00f9e6202e100a2ed65fab5524843cb6db359f2"
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "bytes": 850,
+      "inspection": "text scan",
+      "lines": 34,
+      "sha256": "f321693b0f29a3c704d5ab5454229d7c0f2b335511c145257b4fd9974b0e1aff"
+    },
+    {
+      "path": "backend/tests/test_api.py",
+      "bytes": 14630,
+      "inspection": "text scan",
+      "lines": 383,
+      "sha256": "3da685740723e9173933978c49114da2eadb85bb8a52604f3321c5e7fec2c64f"
+    },
+    {
+      "path": "backend/tests/test_follow.py",
+      "bytes": 5448,
+      "inspection": "text scan",
+      "lines": 151,
+      "sha256": "064e5d0d11f6d813a5e4b5cfc38c3bba1cb93c12ee285d14f3a4693b2456a669"
+    },
+    {
+      "path": "backend/tests/test_history_map.py",
+      "bytes": 9729,
+      "inspection": "text scan",
+      "lines": 189,
+      "sha256": "6bf1896577327df2479e8a3568fe28edca01ab4016d932a859b44e99dbf5f795"
+    },
+    {
+      "path": "backend/tests/test_stream.py",
+      "bytes": 6476,
+      "inspection": "text scan",
+      "lines": 184,
+      "sha256": "6f7d9daa33981ff87966b08ed5528861d80637c84f69c7b27ce8a6d5dda8ca14"
+    },
+    {
+      "path": "detection/MODEL_CARD.md",
+      "bytes": 5910,
+      "inspection": "text scan",
+      "lines": 61,
+      "sha256": "6a45e1bd1970e415cefba060437154de7d200343793405cff5f2d5962749e8a2"
+    },
+    {
+      "path": "detection/README.md",
+      "bytes": 9919,
+      "inspection": "text scan",
+      "lines": 116,
+      "sha256": "690cae00ce3fba2b9d1262c3c89c8222f0159c888b2d00d6c9988af93d52200e"
+    },
+    {
+      "path": "detection/__init__.py",
+      "bytes": 367,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "dfa9ff13bb2cfcba886b1f805d0040f5675c9594d89399e492e31f38ff0a8e1e"
+    },
+    {
+      "path": "detection/__main__.py",
+      "bytes": 8497,
+      "inspection": "text scan",
+      "lines": 146,
+      "sha256": "4506ff8773ace14672a13ce21b4c683202899293fa289a3098febb2bd290650f"
+    },
+    {
+      "path": "detection/configs/all.example.yaml",
+      "bytes": 294,
+      "inspection": "text scan",
+      "lines": 16,
+      "sha256": "d47b7d2cdd153e0ff7d468f65110315b6319df57a5059126cf67294bdc9c6dfa"
+    },
+    {
+      "path": "detection/configs/road.example.yaml",
+      "bytes": 205,
+      "inspection": "text scan",
+      "lines": 10,
+      "sha256": "e7cbf904dcb8e4a50c97534e7a7be74dc6abb67946c6d91b6be2f21dc8336e0a"
+    },
+    {
+      "path": "detection/dataset.py",
+      "bytes": 4177,
+      "inspection": "text scan",
+      "lines": 80,
+      "sha256": "4c781e5bfb8aeb52056272c5a602b96d1262832a94a12664b11b57064c27645b"
+    },
+    {
+      "path": "detection/engine.py",
+      "bytes": 5522,
+      "inspection": "text scan",
+      "lines": 113,
+      "sha256": "a1d99c92d2ddcde3ccba1d02a6b14c7eb38d39a1bf43e1f227d09f1014c84df3"
+    },
+    {
+      "path": "detection/models/scenario-hazards.pt",
+      "bytes": 5464538,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "detection/prepare_unity.py",
+      "bytes": 3963,
+      "inspection": "text scan",
+      "lines": 75,
+      "sha256": "afac78bd6e6e7b076dfb025be6f48dd15e74da5d7fb3d940a13a76d6088beb62"
+    },
+    {
+      "path": "detection/requirements-cpu.txt",
+      "bytes": 120,
+      "inspection": "text scan",
+      "lines": 4,
+      "sha256": "30dbb7aebc707c4c097155139d17d4e0bd284517f321a49dbdf06ffe5a97a63e"
+    },
+    {
+      "path": "detection/requirements.txt",
+      "bytes": 91,
+      "inspection": "text scan",
+      "lines": 5,
+      "sha256": "eee3c22a44d8ccea116ad885897965005a965b5318e46f4f9aa8258da4463465"
+    },
+    {
+      "path": "detection/runner.py",
+      "bytes": 6986,
+      "inspection": "text scan",
+      "lines": 129,
+      "sha256": "b31ca3fa04e42aa1690101f2c88caae37eb84d6b065f6327d264b0b3b464e3fa"
+    },
+    {
+      "path": "detection/sources.py",
+      "bytes": 5048,
+      "inspection": "text scan",
+      "lines": 128,
+      "sha256": "5c22bbfa243fe6b1a1e5a255daaa3f684dc9b83080b38721efd922b6725d60ff"
+    },
+    {
+      "path": "detection/taxonomy.py",
+      "bytes": 583,
+      "inspection": "text scan",
+      "lines": 14,
+      "sha256": "4096432594f8ad43edb9ca0bd58c6d9792535b41b5cda3f7c52cd8bb58f3ef4b"
+    },
+    {
+      "path": "detection/tests/test_detection.py",
+      "bytes": 9075,
+      "inspection": "text scan",
+      "lines": 202,
+      "sha256": "d56efe6dbbe7e7f9507e0621ee3202a9d5dbfbb988ae4015f1e8795d8caf8da8"
+    },
+    {
+      "path": "detection/tests/test_prepare_unity.py",
+      "bytes": 1935,
+      "inspection": "text scan",
+      "lines": 41,
+      "sha256": "9d2c468b2ebe8b5f75c802bcbd09411a0a8910c681ff65f76201a9b33c46f9b1"
+    },
+    {
+      "path": "detection/tests/test_warnings.py",
+      "bytes": 4308,
+      "inspection": "text scan",
+      "lines": 94,
+      "sha256": "aa9acade84fb928412526ca8753813a991992d0bd92674ada2e5d0dffe48f751"
+    },
+    {
+      "path": "detection/warnings.py",
+      "bytes": 8945,
+      "inspection": "text scan",
+      "lines": 170,
+      "sha256": "496b979a36aa4488f0c33d9b4e1d27d4d680d42a1464e1b0de67ef2842100784"
+    },
+    {
+      "path": "dev.bat",
+      "bytes": 2056,
+      "inspection": "text scan",
+      "lines": 61,
+      "sha256": "b244ca9d141175b9cb4e69c912ba13fd064c61a0be09384eea3392769aa5474f"
+    },
+    {
+      "path": "docs/api/README.md",
+      "bytes": 7832,
+      "inspection": "text scan",
+      "lines": 192,
+      "sha256": "c85f7ca27fd0a5d479b5fce6af0437081788504c442e88f3e52844925d8affaf"
+    },
+    {
+      "path": "docs/api/openapi.json",
+      "bytes": 64956,
+      "inspection": "text scan",
+      "lines": 2578,
+      "sha256": "7db3b675d27caa9f3840773f869946fa5b5f59a985374e28b95e94b11d94f95b"
+    },
+    {
+      "path": "docs/city_lab.md",
+      "bytes": 7874,
+      "inspection": "text scan",
+      "lines": 88,
+      "sha256": "2ec0eee6d334a89a80d5540f05e9bd64e0dccca4a4849cd080687b908f1e4357"
+    },
+    {
+      "path": "docs/data_format.md",
+      "bytes": 8363,
+      "inspection": "text scan",
+      "lines": 127,
+      "sha256": "46883248b99c5f8b1e7477ad0cc47b3aa7aa64992b0dd877aaa091a2c612b74b"
+    },
+    {
+      "path": "docs/images/city-lab-lane-fit.png",
+      "bytes": 343107,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "docs/images/map-history-demo.png",
+      "bytes": 45207,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "docs/images/pothole-warning.jpg",
+      "bytes": 224418,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "docs/map_database.md",
+      "bytes": 7618,
+      "inspection": "text scan",
+      "lines": 80,
+      "sha256": "378a00642413cd02aec489030e1942d1cc07b0eb5d0f99522839a74b9a716279"
+    },
+    {
+      "path": "docs/traffic_incidents.md",
+      "bytes": 10410,
+      "inspection": "text scan",
+      "lines": 108,
+      "sha256": "6c952986ee97c394767cce3710260f00c3a4fcf50a2d5f5ffbc0b553c01b0fef"
+    },
+    {
+      "path": "docs/validation/pothole-alert.jsonl",
+      "bytes": 441,
+      "inspection": "text scan",
+      "lines": 1,
+      "sha256": "ab80781a7bab88bd603b1916ddd43d51ca20f7a6169fc371de292e37c4bf893d"
+    },
+    {
+      "path": "docs/validation/pothole-warning-summary.json",
+      "bytes": 564,
+      "inspection": "text scan",
+      "lines": 31,
+      "sha256": "ae21be588b76e317848368276432df322dbabb62662fe3b58276334b1ca66643"
+    },
+    {
+      "path": "docs/validation/synthetic-hazards-test-metrics.json",
+      "bytes": 654,
+      "inspection": "text scan",
+      "lines": 27,
+      "sha256": "2495724b98bbe94ba8a0bb19abab079faed19c13c88e0e86dbf49002bbe5df13"
+    },
+    {
+      "path": "docs/validation/traffic-scenario-validation.json",
+      "bytes": 1818,
+      "inspection": "text scan",
+      "lines": 85,
+      "sha256": "3a166745b304783140787d60dc26d246ffd741d5d8915c96165b3d94b854c601"
+    },
+    {
+      "path": "frontend/README.md",
+      "bytes": 3066,
+      "inspection": "text scan",
+      "lines": 46,
+      "sha256": "f042777eec09bbc774a7f74fc366d37778929e895ad4fef3915a004b0a557fc3"
+    },
+    {
+      "path": "frontend/app.js",
+      "bytes": 14135,
+      "inspection": "text scan",
+      "lines": 381,
+      "sha256": "a1734adbf4e44574633fca777fcf735529295632d8924f855f3ec5c3181c199f"
+    },
+    {
+      "path": "frontend/index.html",
+      "bytes": 2914,
+      "inspection": "text scan",
+      "lines": 65,
+      "sha256": "95c140778781704343a2f9c4f68cd452684e9ff12d8fff8c68207bda263d9170"
+    },
+    {
+      "path": "frontend/map.js",
+      "bytes": 9560,
+      "inspection": "text scan",
+      "lines": 158,
+      "sha256": "9d796da5646b9cc6d99c99a99015aa3d9ae59af0909e57bc373c7d88d1a5706f"
+    },
+    {
+      "path": "frontend/styles.css",
+      "bytes": 3714,
+      "inspection": "text scan",
+      "lines": 113,
+      "sha256": "4608430aa84189613969e3f54cf743b02e71307eb5e13256924b355f8532b27f"
+    },
+    {
+      "path": "mapping/README.md",
+      "bytes": 10522,
+      "inspection": "text scan",
+      "lines": 149,
+      "sha256": "3bae4be7ce8e1f44de6a99036b1b0360040ec4e338332eec6127fc0942d97f81"
+    },
+    {
+      "path": "mapping/requirements.txt",
+      "bytes": 97,
+      "inspection": "text scan",
+      "lines": 4,
+      "sha256": "b7a4cce6f5374c6ce104fcbe7c57accc532b27ca4ad4e84b7e6c115abbb91b7c"
+    },
+    {
+      "path": "mapping/scripts/calibrate_homography.py",
+      "bytes": 12608,
+      "inspection": "text scan",
+      "lines": 262,
+      "sha256": "efc27cdd9bcb9079abe07ad02d020a6086a1fef66e3fabdf5fd50b38c22e0897"
+    },
+    {
+      "path": "mapping/scripts/evaluate_mapping.py",
+      "bytes": 10221,
+      "inspection": "text scan",
+      "lines": 201,
+      "sha256": "e033f4bedffc3025a9da89f089bcbe2d2a12a8545f06795d09e42dcad2bfdc71"
+    },
+    {
+      "path": "mapping/scripts/make_synthetic_export.py",
+      "bytes": 2756,
+      "inspection": "text scan",
+      "lines": 60,
+      "sha256": "c542bd47ecaeab3d33647a16412ab1931d35e5aa3f21b278ecafe97b6fd74e66"
+    },
+    {
+      "path": "mapping/scripts/run_yolo_on_frames.py",
+      "bytes": 3717,
+      "inspection": "text scan",
+      "lines": 81,
+      "sha256": "8e939c7aa9ae2caedbc095775511f908feafa48570d19e5ce9624c296c1b41d4"
+    },
+    {
+      "path": "mapping/tests/test_calibration.py",
+      "bytes": 4450,
+      "inspection": "text scan",
+      "lines": 109,
+      "sha256": "7e2f095c8a106485696395c34b13af6cd9e8a4e0f1a1125dd0ed756c2056f149"
+    },
+    {
+      "path": "mapping/tests/test_correction.py",
+      "bytes": 5207,
+      "inspection": "text scan",
+      "lines": 119,
+      "sha256": "742a6f338f29da69fa621bb6d3e3320a9ecc24693eddbe6a28e8f98abe8ce1a0"
+    },
+    {
+      "path": "mapping/tests/test_mapping.py",
+      "bytes": 4168,
+      "inspection": "text scan",
+      "lines": 98,
+      "sha256": "90d25f980712a8b2e31c3610d1467894be70c7e3975ee379aa2b7170baad3415"
+    },
+    {
+      "path": "mapping/twinsight_mapping/__init__.py",
+      "bytes": 432,
+      "inspection": "text scan",
+      "lines": 15,
+      "sha256": "5f8743fa127ec56e4f49e2ce2582a7de1b0460ed76f5da74b76b2f79442e183e"
+    },
+    {
+      "path": "mapping/twinsight_mapping/calibration.py",
+      "bytes": 7885,
+      "inspection": "text scan",
+      "lines": 177,
+      "sha256": "19846e03afeef6d68ddf61ee506a6bd26c5f7ac74f668f3a1dd11d916e74a188"
+    },
+    {
+      "path": "mapping/twinsight_mapping/correction.py",
+      "bytes": 6629,
+      "inspection": "text scan",
+      "lines": 141,
+      "sha256": "197ddf127222c3734675f101944adb5969631da95f83191ef6700d9a58f9ecce"
+    },
+    {
+      "path": "mapping/twinsight_mapping/dataset.py",
+      "bytes": 3447,
+      "inspection": "text scan",
+      "lines": 106,
+      "sha256": "233dc904177b3a10b0499144c5968b973225af3042cafc26760d185470adb7da"
+    },
+    {
+      "path": "mapping/twinsight_mapping/evaluate.py",
+      "bytes": 14963,
+      "inspection": "text scan",
+      "lines": 300,
+      "sha256": "4c8df86e6061e79e56f94389d2ce62a752e000041da40d5feb34c29fe2f391f9"
+    },
+    {
+      "path": "mapping/twinsight_mapping/homography.py",
+      "bytes": 2325,
+      "inspection": "text scan",
+      "lines": 54,
+      "sha256": "bd0894d9d5b123bb6b2a42b306d61a0e13a2ac7c0e46895a5531342168c98ea3"
+    },
+    {
+      "path": "mapping/twinsight_mapping/synthetic.py",
+      "bytes": 10129,
+      "inspection": "text scan",
+      "lines": 226,
+      "sha256": "a21f487b3576188a985b0db20ae73ac470fc9b946f929c4e987befb26ee5bbf6"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight.meta",
+      "bytes": 180,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "586f6b6d113ed7f81913e182e071fdc45e0abf1b33c2b87745049e5770c0fc12"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo.meta",
+      "bytes": 180,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "1d41872efb2e37ed954005e3614a4b8fcc000e2162f5b7f2551b3738b6f7f629"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/DemoRoad.unity",
+      "bytes": 188347,
+      "inspection": "text scan",
+      "lines": 6525,
+      "sha256": "10f47092150da1cf2bc87bd6b898d1547b1c79b61e470bfd9b1865272f12d5c0"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/DemoRoad.unity.meta",
+      "bytes": 162,
+      "inspection": "text scan",
+      "lines": 7,
+      "sha256": "06750ac7e96a4bef5a89711776ed8753d7c71d45b5fc7d0a974bf8bebd8330af"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials.meta",
+      "bytes": 180,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "a013766631c7eb7d66ae8a1c36584989272ba70d9628475c7ad7ad23c5a8d6fd"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Asphalt.mat",
+      "bytes": 2292,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Asphalt.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "178aff903bffb45331fd2f6b74a7c9f48b8950396c426c2087a75e25baf3671d"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/CarPaint.mat",
+      "bytes": 2294,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/CarPaint.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "76330d6bd1ee40c83da36dd8815b0d96847a6e5c2081e1c32a4cc5881325eec5"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Glass.mat",
+      "bytes": 2291,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Glass.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "fbd9ab22bbe73b7d75418ed25e33a4637a344aa06e316de7bc034ad3d6266f06"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Ground.mat",
+      "bytes": 2291,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Ground.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "0a3360af891d73e576202abce07cf7c1dc0682bec49b3ffcfafcf38262fe8083"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/LaneWhite.mat",
+      "bytes": 2296,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/LaneWhite.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "66c23a9b8da4a0745fa2aeb3124f8fa902853696801b30da603ed7177e6d7f03"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/LaneYellow.mat",
+      "bytes": 2296,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/LaneYellow.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "b092dbd369f3b3d204937bbfb9ae62c2269f7b1e735b57ebccb7d5c0abff0112"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Pothole.mat",
+      "bytes": 2294,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/Pothole.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "8534f5e6074ff2b8fd5fc51bb55048855bfc2b6b4b11625232db9931d213d572"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/TruckPaint.mat",
+      "bytes": 2296,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Materials/TruckPaint.mat.meta",
+      "bytes": 196,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "ecc2fcaac2fba2606e04885400668f6e5d71d8e12d3788b03a11b429fc51eb35"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Prefabs.meta",
+      "bytes": 180,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "e28e4d9c894a8c3882485d1ed361186c541ebc195ddb5d5b30ace419cd546a4e"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Prefabs/BoxCar.prefab",
+      "bytes": 6978,
+      "inspection": "text scan",
+      "lines": 230,
+      "sha256": "5951bd1ceb08065bc71e0fe672b0e81681f178a1a1008a520355190089b46897"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Prefabs/BoxCar.prefab.meta",
+      "bytes": 161,
+      "inspection": "text scan",
+      "lines": 7,
+      "sha256": "3044de1bb1a1957723d7ae750cc20bbff234fefbc9327949b18ff503e574f62e"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Prefabs/BoxTruck.prefab",
+      "bytes": 6959,
+      "inspection": "text scan",
+      "lines": 230,
+      "sha256": "4853cb77681645b77eef397ac7d49f656e37857c31b4c1bf8c5d15b3855195db"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Demo/Prefabs/BoxTruck.prefab.meta",
+      "bytes": 161,
+      "inspection": "text scan",
+      "lines": 7,
+      "sha256": "64fcd401e2aa7feb8a10cb09b1e9dc8c4838d71703d6e7d77dbaa1081acb933d"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor.meta",
+      "bytes": 180,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "81f0a7857c7898a9aa890365f81282d6593d1c8a670ec1237cb6afe5e8c0058b"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityAssetTools.cs",
+      "bytes": 5619,
+      "inspection": "text scan",
+      "lines": 114,
+      "sha256": "a6b352cb7523bce7f50726ee0b7244911e3b85e741255380d390dbc9bfb1cf83"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityAssetTools.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "f5ab520519c54a2a226ef0bf44951c1f97ec880692f1151aae065bb5b53e2c59"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityLabBuilder.cs",
+      "bytes": 15581,
+      "inspection": "text scan",
+      "lines": 241,
+      "sha256": "96c4daf1736be1826465b006292360b5ffece3c958e2942a703d810eaa77e9ed"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityLabBuilder.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "64e883c7eb8b32de26a97047dc8203f81093388a72b015feec14344e8ec13148"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityLabValidation.cs",
+      "bytes": 7904,
+      "inspection": "text scan",
+      "lines": 126,
+      "sha256": "e025adf81a458b536bf3f0f785d21c005d7d10465707edc1f56a7390f47343fd"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityLabValidation.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "eb7d1ef484f041c90af2efe1ed55d5afc451815723681d52ea2809cca9300de6"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityMaterialBuilder.cs",
+      "bytes": 8911,
+      "inspection": "text scan",
+      "lines": 142,
+      "sha256": "5c47b4337a3e6024a62c83f21f97634aa67fb23297123d1cd8fe46c9b9362433"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CityMaterialBuilder.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "8b9ee2737ff79fa8f0c0ba58118bcd845676180a78371bd2c065d98fb82d57bc"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CitySignalAssetBinder.cs",
+      "bytes": 4484,
+      "inspection": "text scan",
+      "lines": 69,
+      "sha256": "3c7de151724adae9d196c93cdecab9f5b357769fbb25045aa8a446bd0e169928"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/CitySignalAssetBinder.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "c98e56b0b8080cb83c373ff951b8a5c7c0ee4da28fd1eecff395b5faaa0be582"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/DemoSceneBuilder.cs",
+      "bytes": 10436,
+      "inspection": "text scan",
+      "lines": 209,
+      "sha256": "bb6a4fd52a836050d4ea57a8a2a25b3bd809ec5a27dd35279057a98376e10041"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/DemoSceneBuilder.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "38ae5f6247d750ebc364b897938b8003ec484ac09de2ff555f73beee4cdba4a7"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/TrafficExperimentBuilder.cs",
+      "bytes": 7529,
+      "inspection": "text scan",
+      "lines": 105,
+      "sha256": "30021d17f547fb03e8d98dac66c8b13515e8c171081da8b88216e5577fff57ea"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/TrafficExperimentBuilder.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "81a09fec23296640fff9c0622a5da2619e2fa067d5148ffc82cd341e20c5d385"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/VehicleRigBuilder.cs",
+      "bytes": 15025,
+      "inspection": "text scan",
+      "lines": 260,
+      "sha256": "9d37fe6c2c07a0c29e2f5cfd2e50629ea4949e4520c3a5443f1990e10b81d237"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Editor/VehicleRigBuilder.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "e77950bdd81943f16fb743c8a54b5305f26422f4055bd9313ad817adb71a37ec"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts.meta",
+      "bytes": 180,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "7976754208939c9c4c19adf3c7db782cee4987eea05f9cac4acc2169b59cd733"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/AssetSignal.shader",
+      "bytes": 1967,
+      "inspection": "text scan",
+      "lines": 43,
+      "sha256": "901b608489a79b2998e7e62078103499c356424948b485a28522c9f025f259c9"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/AssetSignal.shader.meta",
+      "bytes": 213,
+      "inspection": "text scan",
+      "lines": 9,
+      "sha256": "bb85a13bca5f5ee6727c52887472b34a8caa70ea07c33721ed3cddf9547f36dc"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/CalibrationGrid.cs",
+      "bytes": 2932,
+      "inspection": "text scan",
+      "lines": 68,
+      "sha256": "3abf5534710a6b3fc1ba10d1c9fd734d82089b85f4abb57469959da4aaa7bd73"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/CalibrationGrid.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "9c9b3911100cb145afaf32d4ff76298c46ffb5e3bcf296be791cd2b79351f6f8"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/CityLabExperiment.cs",
+      "bytes": 1274,
+      "inspection": "text scan",
+      "lines": 34,
+      "sha256": "b662b1e750b3e38fdb4f549dfb23b66e57049c33ade69c0da5f9a2ea2b307439"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/CityLabExperiment.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "a7ada085294264fbb8ec399b6f1adc0e7c0b26ae4a20a96ebf5daf8333fd618f"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ExportRecords.cs",
+      "bytes": 1971,
+      "inspection": "text scan",
+      "lines": 71,
+      "sha256": "4a9086a5e91f22afeabc4136d3030270fe288860047552f4cf620dbfe41c514a"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ExportRecords.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "022f603b76d1332727782d0f8c1b30fdc3f715a6e98107fc845df715cda2fd4e"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/GroundTruthExporter.cs",
+      "bytes": 12656,
+      "inspection": "text scan",
+      "lines": 309,
+      "sha256": "b08b7ae9590d59ed5e2d0c0a8482d83e1808054a45f81955c6e812c68549e2a5"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/GroundTruthExporter.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "26bf9dd266dbbfa2b523a04594ef255a9401fa6fb391177075caae75433d509a"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/PedestrianCrossingAgent.cs",
+      "bytes": 2533,
+      "inspection": "text scan",
+      "lines": 55,
+      "sha256": "bf15b8e3f4b9a8cf714935b118278ee5ce75d0d235255fced026f18c12a97010"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/PedestrianCrossingAgent.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "1b0e4156b6181bff2f1df8350632f24caf6f0f04dacf1e8d2e7fc7fb89580f28"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/RoadScenarioDirector.cs",
+      "bytes": 11476,
+      "inspection": "text scan",
+      "lines": 204,
+      "sha256": "b5f9045389b53280101a834012bdcc38dc887d3f151fe1f635b7d1f6d3683b32"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/RoadScenarioDirector.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "977f1966b19df7be94656a979e09880dd5e1b10e4407f9e92cb3e15dde000326"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/RoadSurface.cs",
+      "bytes": 1360,
+      "inspection": "text scan",
+      "lines": 33,
+      "sha256": "c4cca27aaae4d969c60578c74f66705a9a015211a33050c0cb31c55041d4a79a"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/RoadSurface.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "2d7fd020f1698902d4f8617731c45ab83d07323caf24a5c3abd0f24110a590eb"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioCaptureBatch.cs",
+      "bytes": 865,
+      "inspection": "text scan",
+      "lines": 24,
+      "sha256": "7d4204414675c7d87a462efc033fb01f0e85bbed257654d4f9a6fe80a7cd2d9f"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioCaptureBatch.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "6529511607f8817a01a87fae371fe595741b132ba71f36a30b3b71b11b25828e"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioDatasetCapture.cs",
+      "bytes": 3266,
+      "inspection": "text scan",
+      "lines": 58,
+      "sha256": "a8f2326fa112bb375d5966eb1d754d81f249ea197c373e7552b6b8cbefa03655"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioDatasetCapture.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "6a9273df916ea2ee604db7d2bbbb3dc67391dbc03138e7fc46cd51082d96bc8b"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioImpactActor.cs",
+      "bytes": 1544,
+      "inspection": "text scan",
+      "lines": 36,
+      "sha256": "37432e4a648ccc95c9854f52c6a16158af7f2b3a88b4bbbf07188d2804c82f0b"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioImpactActor.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "98ae43094fa39cb34b9d2c0e0cceeebe22ab43c23cc39951ccc007f2215867e9"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioObstacle.cs",
+      "bytes": 1049,
+      "inspection": "text scan",
+      "lines": 25,
+      "sha256": "bcbf5c53cd7e0f9fc6b33100ef9faf1c00df83c795711c56aae1fe8db808d998"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioObstacle.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "54b36e0be7e88e92a8a10748b90cb135bd2ff9ef4b65333184b7e866655d5d92"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioRuntimeValidation.cs",
+      "bytes": 8048,
+      "inspection": "text scan",
+      "lines": 121,
+      "sha256": "37ae3b8540d5b70a459b4b62a6f406c43383b9fc11c1c05306eca9a0938beb42"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/ScenarioRuntimeValidation.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "c2b0093328811b20951e7ff3a9bdd7696f6b75b62d7cef5af1737573b7c2fafa"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/SignalLamp.cs",
+      "bytes": 672,
+      "inspection": "text scan",
+      "lines": 19,
+      "sha256": "90d2867bf5bfd90edc8b30940d8c135a4d82ba9f64b9ccee5c09895439ad8572"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/SignalLamp.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "29c8a58a651f8a10f6e4d404e8242d38f02d6c735d2731a706b5de0cad57a652"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrackedObject.cs",
+      "bytes": 4955,
+      "inspection": "text scan",
+      "lines": 128,
+      "sha256": "3780739fc24d6d38837380c159f6e978d4bc9cafe6bed9fe2b7d98079f9f70e2"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrackedObject.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "beeb2762682062cf5285c61530b9e9da0ad50998da0f6b0a1f4c33a501da21e1"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrafficSignalController.cs",
+      "bytes": 4352,
+      "inspection": "text scan",
+      "lines": 91,
+      "sha256": "f5e42a3983f4186bec8ac7a4a53fed616fea7032cc5726de8babf8cb0163d409"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrafficSignalController.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "e6a9bff6c99f6c94f97f95ac3c1eb181464014d857d62be47229d33dc1a74a5f"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrafficSpawner.cs",
+      "bytes": 4768,
+      "inspection": "text scan",
+      "lines": 122,
+      "sha256": "c89e0d0fcaf9ab713666a453c7a877a9c924d79f59c89bcb406770c6a83ea424"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrafficSpawner.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "05043a736fde368e269f4ea886a58f138f5b3190490daec5f2529f005007e383"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrafficVehicleAgent.cs",
+      "bytes": 3651,
+      "inspection": "text scan",
+      "lines": 71,
+      "sha256": "fed0ba1f9cb62c20f95549709349d1f761b84f471550edbbbadc47efad1c67c1"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/TrafficVehicleAgent.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "3e7e92b6fde1e52c1bc8a77f6e1477e9058f849f5c5f865e8e5cbf23ad720b2e"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/VehicleWheelAnimator.cs",
+      "bytes": 2872,
+      "inspection": "text scan",
+      "lines": 67,
+      "sha256": "f221c56699614b70c54d2669e7f9a831b1b4662c227fa551994a94cf3bb629d3"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/VehicleWheelAnimator.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "e99c903b8934a4da5e90a1823bef4f516129f269f6804ae096f592a612c12aad"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/WaypointMover.cs",
+      "bytes": 2440,
+      "inspection": "text scan",
+      "lines": 70,
+      "sha256": "1e21a8cf76f70145fe548b659f409f6f5e193395915574c02f0fbe18cf2351b4"
+    },
+    {
+      "path": "simulation/TwinSightSim/Assets/TwinSight/Scripts/WaypointMover.cs.meta",
+      "bytes": 60,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "b10c3e7d62e76929c76f5141491f2f52235108ad26676d088fef9ab88551b3cc"
+    },
+    {
+      "path": "simulation/TwinSightSim/Packages/manifest.json",
+      "bytes": 1840,
+      "inspection": "text scan",
+      "lines": 43,
+      "sha256": "d16f6276588ddddb950736e570acd16af9264afcce36db4f72137206989812aa"
+    },
+    {
+      "path": "simulation/TwinSightSim/Packages/packages-lock.json",
+      "bytes": 9713,
+      "inspection": "text scan",
+      "lines": 356,
+      "sha256": "058c9449f02ea4ada6f989b2381abde25244f35be0cd002e7f574430aa04938c"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/AudioManager.asset",
+      "bytes": 546,
+      "inspection": "text scan",
+      "lines": 23,
+      "sha256": "9543c41dbfc7d3951217c4dd9481ed026eb8e529b85ecf4463969a0fea747729"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/ClusterInputManager.asset",
+      "bytes": 120,
+      "inspection": "text scan",
+      "lines": 6,
+      "sha256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/DynamicsManager.asset",
+      "bytes": 1621,
+      "inspection": "text scan",
+      "lines": 46,
+      "sha256": "785919ec02924b9125bd572087d9e3ceb1844b1cceb3ff6144c1c1f56cd79047"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/EditorBuildSettings.asset",
+      "bytes": 168,
+      "inspection": "text scan",
+      "lines": 8,
+      "sha256": "1942c088ddfeeef348fdf12390e2a2d6da51056e197458d67969d44e7b2cbbd3"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/EditorSettings.asset",
+      "bytes": 1744,
+      "inspection": "text scan",
+      "lines": 53,
+      "sha256": "4b842c80c4e630b6cb5416b817aba84b97014072e1ab555b08742344687ccdf5"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/GraphicsSettings.asset",
+      "bytes": 2906,
+      "inspection": "text scan",
+      "lines": 81,
+      "sha256": "87bac5a6c9c3246744f81dd6b6df6db039b519976a9b0e552760754ee8ac3816"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/InputManager.asset",
+      "bytes": 6112,
+      "inspection": "text scan",
+      "lines": 296,
+      "sha256": "d0f454ddb880912abcae92e3e12957a7446786ba89e24937e019ff3bbc0d4300"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/MemorySettings.asset",
+      "bytes": 1302,
+      "inspection": "text scan",
+      "lines": 37,
+      "sha256": "25fb3fdd1ce94347ccdcf23d5d5e446055ca81d8b3756a7df85d614645a71ac4"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/MultiplayerManager.asset",
+      "bytes": 164,
+      "inspection": "text scan",
+      "lines": 7,
+      "sha256": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/NavMeshAreas.asset",
+      "bytes": 1454,
+      "inspection": "text scan",
+      "lines": 93,
+      "sha256": "7ebbf8f53b8033104e1878b95ca07a28d0954092d81c220f14196a42f651e658"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/PackageManagerSettings.asset",
+      "bytes": 1276,
+      "inspection": "text scan",
+      "lines": 44,
+      "sha256": "1b653236767defcd8b25944b169c221f4bc7ec724b88f95aef74dfc16a586926"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/Physics2DSettings.asset",
+      "bytes": 1920,
+      "inspection": "text scan",
+      "lines": 57,
+      "sha256": "7280037ac908e26d4519825446c92c80a8520308016b171522760b535aadcbc0"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/PhysicsCoreProjectSettings2D.asset",
+      "bytes": 157,
+      "inspection": "text scan",
+      "lines": 6,
+      "sha256": "bedc5339a832c60dc3f11b84abc4f4384dbfa20b0cd9ad6c444b907e751fc35e"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/PresetManager.asset",
+      "bytes": 153,
+      "inspection": "text scan",
+      "lines": 7,
+      "sha256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/ProjectAuditorSettings.asset",
+      "bytes": 1072,
+      "inspection": "text scan",
+      "lines": 36,
+      "sha256": "9e68444b9bda981e2927a98df9edf69ea88362f0c6b7f3c81b39b9d515d2a416"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/ProjectSettings.asset",
+      "bytes": 21305,
+      "inspection": "text scan",
+      "lines": 704,
+      "sha256": "2808267c040b9ee3096b8819fb00b299126ffaf45663381106306317a1f341d2"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/ProjectVersion.txt",
+      "bytes": 85,
+      "inspection": "text scan",
+      "lines": 2,
+      "sha256": "9207210a75d6f7e920816752a3a9228f1366df762e660fb6c1f8f56ee3af8661"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/QualitySettings.asset",
+      "bytes": 10149,
+      "inspection": "text scan",
+      "lines": 347,
+      "sha256": "f1f893b1be47ad2442f58338dd7c860dc1986bb317e2f5bb31084454ffabbf4c"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/SceneTemplateSettings.json",
+      "bytes": 3655,
+      "inspection": "text scan",
+      "lines": 121,
+      "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/TagManager.asset",
+      "bytes": 489,
+      "inspection": "text scan",
+      "lines": 46,
+      "sha256": "996628fdc904025b83606bbfbda4fe08c0bbe916475146110e77cdc2f22c2013"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/TimeManager.asset",
+      "bytes": 319,
+      "inspection": "text scan",
+      "lines": 14,
+      "sha256": "3396f52fdc16d445024e01d7a2d99db6f0a37569d1d73c0302e9ffb857d90287"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/UnityConnectSettings.asset",
+      "bytes": 1233,
+      "inspection": "text scan",
+      "lines": 42,
+      "sha256": "bfd9b4ad7ba0f6044f0957cd427df1d8e49dcf9453fdfc35dac74c64bbffa8f3"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/VFXManager.asset",
+      "bytes": 579,
+      "inspection": "text scan",
+      "lines": 21,
+      "sha256": "d2937fe93ff49c2ce60f888056b70ebc0a1df7dd5e22dab3fa41678c2a3f3858"
+    },
+    {
+      "path": "simulation/TwinSightSim/ProjectSettings/VersionControlSettings.asset",
+      "bytes": 179,
+      "inspection": "text scan",
+      "lines": 7,
+      "sha256": "e199cdfa6a8f2bf33cfd47e549198f13e3eb2a5099e908fdb4e0f14d939ccc6b"
+    },
+    {
+      "path": "simulation/TwinSightSim/README.md",
+      "bytes": 6023,
+      "inspection": "text scan",
+      "lines": 58,
+      "sha256": "3390bf79d46851cde18f139da054bf99538501f9a8f302ce6e37fda5df0f0e1c"
+    },
+    {
+      "path": "south_korea_FBX.fbx",
+      "bytes": 413717660,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_blend.blend",
+      "bytes": 461206810,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/,mg.PNG",
+      "bytes": 111552,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/.kh.PNG",
+      "bytes": 77755,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/0101.PNG",
+      "bytes": 491888,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/01544.PNG",
+      "bytes": 1378685,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/01_-_Default_baseColor.jpeg",
+      "bytes": 665117,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/1.PNG",
+      "bytes": 358686,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/10.PNG",
+      "bytes": 213022,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/1014.PNG",
+      "bytes": 201470,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/10147.PNG",
+      "bytes": 130201,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/11.PNG",
+      "bytes": 712413,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/112.PNG",
+      "bytes": 134964,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/1141.PNG",
+      "bytes": 78819,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/12.PNG",
+      "bytes": 547461,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/1201.PNG",
+      "bytes": 642270,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/1211.PNG",
+      "bytes": 244381,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/123.PNG",
+      "bytes": 362546,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/12354.PNG",
+      "bytes": 91394,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/1254u.PNG",
+      "bytes": 140568,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/13.PNG",
+      "bytes": 210612,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/14.PNG",
+      "bytes": 1229726,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/1454.PNG",
+      "bytes": 112514,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/15.PNG",
+      "bytes": 652449,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/16.PNG",
+      "bytes": 341781,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/17.PNG",
+      "bytes": 862114,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/18.PNG",
+      "bytes": 1459937,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/19.PNG",
+      "bytes": 427432,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/2.PNG",
+      "bytes": 420708,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/231.PNG",
+      "bytes": 331552,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/2311.PNG",
+      "bytes": 356475,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/231w.PNG",
+      "bytes": 370118,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/3.PNG",
+      "bytes": 214154,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/3245.PNG",
+      "bytes": 175034,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/3433.PNG",
+      "bytes": 444775,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/3r.PNG",
+      "bytes": 449294,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/4.PNG",
+      "bytes": 44352,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/4343.PNG",
+      "bytes": 249720,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/456.PNG",
+      "bytes": 242422,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/5.PNG",
+      "bytes": 97360,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/565jh.PNG",
+      "bytes": 65588,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/6.PNG",
+      "bytes": 25125,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/7.PNG",
+      "bytes": 293948,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/78787.PNG",
+      "bytes": 207160,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/8.PNG",
+      "bytes": 260873,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/9.PNG",
+      "bytes": 219899,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/;l0.PNG",
+      "bytes": 377293,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/BBCCS.PNG",
+      "bytes": 147616,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/BVD.PNG",
+      "bytes": 307289,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Bicycles_only_0_baseColor.png",
+      "bytes": 327054,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Bicycles_only_1_baseColor.png",
+      "bytes": 336521,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Bicycles_only_baseColor.png",
+      "bytes": 293036,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/BrickSmallBrown0243_5_S.jpg",
+      "bytes": 97899,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Bus_only_baseColor.png",
+      "bytes": 307774,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Busstop_legs_baseColor.png",
+      "bytes": 3350157,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Bustop_Bench_baseColor.png",
+      "bytes": 5144218,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Bustop_roof_baseColor.png",
+      "bytes": 3518010,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Bustop_screens_baseColor.png",
+      "bytes": 3206201,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVCC.PNG",
+      "bytes": 87954,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVCVZS.PNG",
+      "bytes": 26414,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVD.PNG",
+      "bytes": 170786,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVFDS.PNG",
+      "bytes": 163757,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVSA.PNG",
+      "bytes": 162547,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVVCCV.PNG",
+      "bytes": 347916,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVVCXX.PNG",
+      "bytes": 117983,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CVXZA.PNG",
+      "bytes": 864137,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CX2.PNG",
+      "bytes": 116818,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CXCXCX.PNG",
+      "bytes": 86128,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CXS.PNG",
+      "bytes": 117208,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Capture-decran-2024-02-22-a-15.58.37.png",
+      "bytes": 195089,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Capture22.PNG",
+      "bytes": 585019,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/CaptureUU.PNG",
+      "bytes": 66977,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Captureffd.PNG",
+      "bytes": 535429,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Capturehjhj.PNG",
+      "bytes": 174644,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Captureqw.PNG",
+      "bytes": 92526,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Capturexz.PNG",
+      "bytes": 116830,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Captvcure.PNG",
+      "bytes": 563264,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ConcreteNew0024_2_S_2.jpg",
+      "bytes": 49023,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ConcreteNew0024_2_S_3.jpg",
+      "bytes": 221768,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ConcreteNew0024_2_S_3_02 red copy.jpg",
+      "bytes": 244735,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ConcreteNew0024_2_S_3_02 red.jpg",
+      "bytes": 62984,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ConcreteNew0024_2_S_3_black.jpg",
+      "bytes": 166512,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/DS2.PNG",
+      "bytes": 82133,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/DSE.PNG",
+      "bytes": 130441,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Default_OBJ_baseColor.png",
+      "bytes": 2088988,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/FDDFA.PNG",
+      "bytes": 395534,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/FDDFS.PNG",
+      "bytes": 520847,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/FDDW.PNG",
+      "bytes": 332946,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/FDFDS.PNG",
+      "bytes": 54737,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/FDFDSSSA.PNG",
+      "bytes": 24285,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/FFDE3.PNG",
+      "bytes": 191272,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/FSW.PNG",
+      "bytes": 18434,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/GFD.PNG",
+      "bytes": 74139,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/GFUJUJY.PNG",
+      "bytes": 102208,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/GGDDD.PNG",
+      "bytes": 433757,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/GHDFD.PNG",
+      "bytes": 166326,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/HGFD.PNG",
+      "bytes": 297422,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Headlights_baseColor.jpeg",
+      "bytes": 18006,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/HighRiseGlass0023_L_NEW.jpg",
+      "bytes": 2042912,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/IIY.PNG",
+      "bytes": 221422,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Image_0.png",
+      "bytes": 1023657,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Image_18.jpg",
+      "bytes": 208075,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Image_6.png",
+      "bytes": 10059858,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/JKUY.PNG",
+      "bytes": 275483,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Korean ROADS_ROAD1.001_BaseColor.png",
+      "bytes": 3246003,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Korean ROADS_ROAD1.001_BaseColor.png.002.png",
+      "bytes": 3136503,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Korean ROADS_ROAD1.001_BaseColor.png.003.png",
+      "bytes": 3188233,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Korean ROADS_ROAD2.001_BaseColor.png.001.png",
+      "bytes": 3598219,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Korean ROADS_SIDEWALK1_BaseColor.png",
+      "bytes": 4444227,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Korean ROADS_SIDEWALK2_BaseColor.png.001.png",
+      "bytes": 3478478,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/MarbleTiles0161_2_350.jpg",
+      "bytes": 30518,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Material.007_baseColor.jpeg",
+      "bytes": 40050,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/NEW1.PNG",
+      "bytes": 283728,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/NNBG.PNG",
+      "bytes": 454681,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/No_U_turn_baseColor.png",
+      "bytes": 328714,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Parking_lot_baseColor.png",
+      "bytes": 298227,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Props1_u2NWBuild9_1_62_baseColor.jpeg",
+      "bytes": 58981,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Props1_u2NWBuild9_1_76_baseColor.jpeg",
+      "bytes": 5526,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Props1_u2NWBuild9_1_83_baseColor.jpeg",
+      "bytes": 130388,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Props1_u2NWBuild9_1_89_baseColor.jpeg",
+      "bytes": 3839,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Props1_u2NWBuild9_1_95_baseColor.jpeg",
+      "bytes": 30104,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/SDDDSSW.PNG",
+      "bytes": 192330,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/SL60_baseColor.png",
+      "bytes": 331155,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/SP_TNR_Electricpole_1-8_baseColor.png",
+      "bytes": 5231588,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/SP_TNR_Electricpole_1-8_baseColor.png.001.png",
+      "bytes": 5231588,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Shops0058_M_03.jpg",
+      "bytes": 427405,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Stop_baseColor.png",
+      "bytes": 301831,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Straight_and_turn_left_baseColor.png",
+      "bytes": 302872,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Atlas_RoadMarkings2_1K_alpha.tif",
+      "bytes": 486434,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Atlas_RoadMarkings2_1K_roughness.tif",
+      "bytes": 473809,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_BrickLargeBlocks0028_1_seamless_L.jpg",
+      "bytes": 1691468,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_ConcretePlates0200_L.jpg",
+      "bytes": 404750,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_DoorsRollup0166_1_M.jpg",
+      "bytes": 473379,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_HighRiseGlass0012_1_seamless_L.jpg",
+      "bytes": 406101,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_HighRiseGlass0042_1_seamless_L.jpg",
+      "bytes": 362314,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_HighRiseGlass0044_XL.jpg",
+      "bytes": 1245878,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_MarbleTiles0001_1_seamless_L.jpg",
+      "bytes": 1398447,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_MarbleTiles0033_1_seamless_L.jpg",
+      "bytes": 589477,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_MarbleTiles0061_1_seamless_M.jpg",
+      "bytes": 649963,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Pavement_Brick2_1.4x1.4_1K_albedo.tif",
+      "bytes": 1404385,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Sewer0078_1_masked_M.png",
+      "bytes": 5959994,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0008_M.jpg",
+      "bytes": 173439,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0009_1_S.jpg",
+      "bytes": 73217,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0032_M.jpg",
+      "bytes": 171095,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0041_4_M.jpg",
+      "bytes": 250392,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0097_S.jpg",
+      "bytes": 109684,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0126_3_L.jpg",
+      "bytes": 540563,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0127_1_M.jpg",
+      "bytes": 118031,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0158_2_M.jpg",
+      "bytes": 254712,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0175_M.jpg",
+      "bytes": 174334,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Shops0196_L.jpg",
+      "bytes": 578647,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_TilesPlain0266_1_seamless_L.jpg",
+      "bytes": 519204,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Various_HighRise6_1K_albedo.tif",
+      "bytes": 859119,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Wall_BrickSovietSilicateOld_2x1_1K_albedo.tif",
+      "bytes": 591645,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Wall_PlasterDamaged1_2x2_1K_roughness.tif",
+      "bytes": 546238,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_Wall_PlasterStripped_6x3_1K_albedo.tif",
+      "bytes": 713206,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_WindowsHouseOld0229_S.jpg",
+      "bytes": 82172,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_WindowsHouseOld0281_M.jpg",
+      "bytes": 254009,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_WindowsHouseOld0301_1_M.jpg",
+      "bytes": 415249,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_WindowsIndustrial0173_1_M.jpg",
+      "bytes": 278315,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/TCom_WoodPlanksBare0478_1_M.jpg",
+      "bytes": 87647,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Tailights_baseColor.jpeg",
+      "bytes": 51741,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Turn_left_baseColor.png",
+      "bytes": 301546,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/Turn_left_or_right_baseColor.png",
+      "bytes": 316321,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VBDE.PNG",
+      "bytes": 408625,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VBFD.PNG",
+      "bytes": 181792,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VBFDD.PNG",
+      "bytes": 523620,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VBFDSVFD.PNG",
+      "bytes": 407332,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VC2.PNG",
+      "bytes": 63043,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VCCVSSS.PNG",
+      "bytes": 282715,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VCDDDDS.PNG",
+      "bytes": 293174,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VCSSSS.PNG",
+      "bytes": 134011,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VCVCX.PNG",
+      "bytes": 529509,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VCVCZZ.PNG",
+      "bytes": 1104749,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VVVDW.PNG",
+      "bytes": 131638,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VVVX.PNG",
+      "bytes": 32929,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/VVWWQ.PNG",
+      "bytes": 86113,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/W2.PNG",
+      "bytes": 484728,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/XCZAAA.PNG",
+      "bytes": 246149,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/XWWWW.PNG",
+      "bytes": 317085,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/XXZ.PNG",
+      "bytes": 809866,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ZXSSSS.PNG",
+      "bytes": 731628,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/a8ff1d884aa919b29fe280b254bf2eb2.jpg",
+      "bytes": 29951,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/aasa.PNG",
+      "bytes": 72741,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ae03a44c5e400f80358ac875003b93a1.jpg",
+      "bytes": 26891,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/aiStandardSurface4_baseColor.png",
+      "bytes": 76171,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/aspen_bark_baseColor.jpeg",
+      "bytes": 840021,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/aspen_branch_baseColor.png",
+      "bytes": 757237,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/aw.PNG",
+      "bytes": 208257,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bark_baseColor.png",
+      "bytes": 7510655,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bbcc.PNG",
+      "bytes": 299020,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bfdss.PNG",
+      "bytes": 783674,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/black roof copy.jpg",
+      "bytes": 47037,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/black roof dirt copy.jpg",
+      "bytes": 22199,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bnbdd.PNG",
+      "bytes": 406576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bnbn.PNG",
+      "bytes": 702767,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bnddd.PNG",
+      "bytes": 153645,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bnfds.PNG",
+      "bytes": 395874,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bnnb.PNG",
+      "bytes": 466882,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bnnbd.PNG",
+      "bytes": 54287,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bvvbfdr.PNG",
+      "bytes": 135098,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bvvbx.PNG",
+      "bytes": 454699,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bvvbxxs.PNG",
+      "bytes": 176475,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bvvd.PNG",
+      "bytes": 31202,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bvvdd.PNG",
+      "bytes": 436633,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/bvxxzzz.PNG",
+      "bytes": 99743,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ccvzzsssa.PNG",
+      "bytes": 72218,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ccxxz.PNG",
+      "bytes": 465503,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cdds.PNG",
+      "bytes": 84286,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cfxfd.PNG",
+      "bytes": 233038,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/csa.PNG",
+      "bytes": 91749,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/csaaa.PNG",
+      "bytes": 910310,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cvds.PNG",
+      "bytes": 122888,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cvssss.PNG",
+      "bytes": 165399,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cvvcddd.PNG",
+      "bytes": 118402,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cvvcsssa.PNG",
+      "bytes": 1143826,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cvxz.PNG",
+      "bytes": 131063,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cvxzs.PNG",
+      "bytes": 924307,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxaa.PNG",
+      "bytes": 129278,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxcxss.PNG",
+      "bytes": 420510,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxd.PNG",
+      "bytes": 470700,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxsawww.PNG",
+      "bytes": 404463,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxssa.PNG",
+      "bytes": 273198,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxwa.PNG",
+      "bytes": 128320,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxxz.PNG",
+      "bytes": 414079,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxxzz.PNG",
+      "bytes": 92214,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxz.PNG",
+      "bytes": 107774,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/cxzzz.PNG",
+      "bytes": 193617,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/d.PNG",
+      "bytes": 572640,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/da.PNG",
+      "bytes": 220353,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dawq.PNG",
+      "bytes": 93027,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dawww.PNG",
+      "bytes": 80072,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ddds.PNG",
+      "bytes": 195795,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ddsssss.PNG",
+      "bytes": 124676,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ddwww.PNG",
+      "bytes": 392434,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/df.PNG",
+      "bytes": 129310,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dfaa.PNG",
+      "bytes": 148363,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dfew.PNG",
+      "bytes": 213852,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dfss.PNG",
+      "bytes": 231073,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dfssa.PNG",
+      "bytes": 113001,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dfssx.PNG",
+      "bytes": 79220,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dfsz.PNG",
+      "bytes": 226407,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dsa.PNG",
+      "bytes": 377358,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dsaa.PNG",
+      "bytes": 443504,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dsaaaw.PNG",
+      "bytes": 35638,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dsaw.PNG",
+      "bytes": 255349,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dsdaaa.PNG",
+      "bytes": 307927,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dssaa.PNG",
+      "bytes": 383646,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dsssa.PNG",
+      "bytes": 354321,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/dzxcxzdxc.PNG",
+      "bytes": 414377,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/e0985a265812b9b0ba8175e1c555251e.jpg",
+      "bytes": 13401,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/electpoles_elect cables_BaseColor.png",
+      "bytes": 1224741,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/electpoles_elects boxes_BaseColor.png",
+      "bytes": 2095734,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/electpoles_iron stand_BaseColor.png",
+      "bytes": 2156902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ere444.PNG",
+      "bytes": 151593,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/f1.PNG",
+      "bytes": 331379,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fd12.PNG",
+      "bytes": 223387,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fd2.PNG",
+      "bytes": 89256,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fda.PNG",
+      "bytes": 222242,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fddfds.PNG",
+      "bytes": 322053,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fddff.PNG",
+      "bytes": 411135,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdds.PNG",
+      "bytes": 325742,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdeed.PNG",
+      "bytes": 113232,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdefd.PNG",
+      "bytes": 106569,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdefer.PNG",
+      "bytes": 56031,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdfdse.PNG",
+      "bytes": 139927,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fds.PNG",
+      "bytes": 133031,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdsaa.PNG",
+      "bytes": 140543,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdsaq.PNG",
+      "bytes": 416057,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdsaw.PNG",
+      "bytes": 487212,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdss.PNG",
+      "bytes": 252028,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdsss.PNG",
+      "bytes": 541938,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fdxa.PNG",
+      "bytes": 149728,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ffff.PNG",
+      "bytes": 206166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ffs.PNG",
+      "bytes": 355698,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ffsa.PNG",
+      "bytes": 147618,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ffsw.PNG",
+      "bytes": 48669,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fg.PNG",
+      "bytes": 75876,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fg232.PNG",
+      "bytes": 120963,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fg4.PNG",
+      "bytes": 165980,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fg4443.PNG",
+      "bytes": 682746,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fgds.PNG",
+      "bytes": 215061,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fgfd.PNG",
+      "bytes": 119806,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fgfee.PNG",
+      "bytes": 143616,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fgfgee.PNG",
+      "bytes": 105091,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fgfgww.PNG",
+      "bytes": 78666,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fgfr3.PNG",
+      "bytes": 43882,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fggf.PNG",
+      "bytes": 76479,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fgsssq.PNG",
+      "bytes": 518797,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/foliage_baseColor.png",
+      "bytes": 3046814,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/foliage_baseColor.png.001.png",
+      "bytes": 4054845,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/fsf.PNG",
+      "bytes": 333177,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/g3.PNG",
+      "bytes": 273412,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/g44.PNG",
+      "bytes": 138371,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gdggd.PNG",
+      "bytes": 453351,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gdsa.PNG",
+      "bytes": 82790,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gdxc.PNG",
+      "bytes": 252649,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gf12.PNG",
+      "bytes": 106563,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gf123.PNG",
+      "bytes": 106563,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gf33.PNG",
+      "bytes": 201685,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gfdeew.PNG",
+      "bytes": 234480,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gfew.PNG",
+      "bytes": 131786,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gffg3e.PNG",
+      "bytes": 228893,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gffgd.PNG",
+      "bytes": 116278,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gffgff.PNG",
+      "bytes": 303070,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gffgfgfgfg.PNG",
+      "bytes": 471458,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gfg33.PNG",
+      "bytes": 252771,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gfw.PNG",
+      "bytes": 422592,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gfwww.PNG",
+      "bytes": 116997,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gg33.PNG",
+      "bytes": 210458,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ggd.PNG",
+      "bytes": 116700,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ggdss.PNG",
+      "bytes": 263073,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ggf4.PNG",
+      "bytes": 834581,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ggfd.PNG",
+      "bytes": 245365,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ggggr4.PNG",
+      "bytes": 55394,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gh5.PNG",
+      "bytes": 1362577,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ghdaa.PNG",
+      "bytes": 611882,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ghdee.PNG",
+      "bytes": 263577,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ghfd.PNG",
+      "bytes": 225985,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ghghg.PNG",
+      "bytes": 386422,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/gy2.PNG",
+      "bytes": 363677,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/h01.PNG",
+      "bytes": 270432,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/handle_baseColor.png",
+      "bytes": 532043,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hfd.PNG",
+      "bytes": 51465,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hffd.PNG",
+      "bytes": 284985,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hg10.PNG",
+      "bytes": 289503,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hg22.PNG",
+      "bytes": 639007,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hgghc.PNG",
+      "bytes": 173439,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hghg.PNG",
+      "bytes": 306166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hghgdddd.PNG",
+      "bytes": 492701,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hghgdw.PNG",
+      "bytes": 505819,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hghghghg.PNG",
+      "bytes": 87104,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hgmm.PNG",
+      "bytes": 106141,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hgvc.PNG",
+      "bytes": 712186,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hhhhh.PNG",
+      "bytes": 486183,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hjhhjghjj.PNG",
+      "bytes": 90163,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hjhjg.PNG",
+      "bytes": 207553,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hjht.PNG",
+      "bytes": 127459,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/hjtr.PNG",
+      "bytes": 156391,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/images (1).jpg",
+      "bytes": 3802,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/images (2).png",
+      "bytes": 10242,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/images (6).jpg",
+      "bytes": 3360,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/images (7).jpg",
+      "bytes": 2819,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/images (8).jpg",
+      "bytes": 11632,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/images.jpg",
+      "bytes": 11778,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/images.png",
+      "bytes": 8529,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/istockphoto-165981490-612x612.jpg",
+      "bytes": 55280,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jg1.PNG",
+      "bytes": 159270,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jgd.PNG",
+      "bytes": 163213,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jggff.PNG",
+      "bytes": 203157,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jgvv.PNG",
+      "bytes": 177531,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jhf.PNG",
+      "bytes": 1302590,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jhfmm.PNG",
+      "bytes": 251701,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jhhjrr.PNG",
+      "bytes": 106482,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jhjhff.PNG",
+      "bytes": 38500,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jhjhrre.PNG",
+      "bytes": 315316,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jht.PNG",
+      "bytes": 82569,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jjh.PNG",
+      "bytes": 44851,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jkggtee.PNG",
+      "bytes": 556987,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jkggtr.PNG",
+      "bytes": 156391,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jkkkjh.PNG",
+      "bytes": 241919,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jkuiyt.PNG",
+      "bytes": 233404,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jrrer.PNG",
+      "bytes": 921937,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/jy.PNG",
+      "bytes": 39799,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/k.,jftr.PNG",
+      "bytes": 238805,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/k01.PNG",
+      "bytes": 653809,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/khhhjhj.PNG",
+      "bytes": 346217,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/khkkh.PNG",
+      "bytes": 116442,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/kjh.PNG",
+      "bytes": 74978,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/kjkjg.PNG",
+      "bytes": 14694,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/kjt.PNG",
+      "bytes": 170832,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/kkkk.PNG",
+      "bytes": 91562,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/kkyy.PNG",
+      "bytes": 325816,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/kllh.PNG",
+      "bytes": 186226,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/kur.PNG",
+      "bytes": 196725,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/l;1.PNG",
+      "bytes": 872620,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/lju.PNG",
+      "bytes": 373371,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/lkk.PNG",
+      "bytes": 177113,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/lku.PNG",
+      "bytes": 61293,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/lljh.PNG",
+      "bytes": 216615,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/lluuy.PNG",
+      "bytes": 113868,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/m,,m.PNG",
+      "bytes": 227150,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/metals_baseColor.png",
+      "bytes": 457163,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nbb.PNG",
+      "bytes": 172447,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nbbn.PNG",
+      "bytes": 24345,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nbbncfd.PNG",
+      "bytes": 71320,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nbc.PNG",
+      "bytes": 322850,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nbddds.PNG",
+      "bytes": 559827,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nbg.PNG",
+      "bytes": 209861,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nbnbc.PNG",
+      "bytes": 150535,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD1.001_BaseColor.png",
+      "bytes": 2598699,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD1.001_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD1.001_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD1.001_Normal.png",
+      "bytes": 3296119,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD1.001_Roughness.png",
+      "bytes": 1119856,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD2.001_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD2.001_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD2.001_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD2.001_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_ROAD2.001_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK1_BaseColor.png",
+      "bytes": 4221694,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK1_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK1_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK1_Normal.png",
+      "bytes": 4021098,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK1_Roughness.png",
+      "bytes": 916233,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK2_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK2_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK2_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK2_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_SIDEWALK2_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_road3_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_road3_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_road3_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_road3_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/street3/Korean ROADS_road3_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD1.001_BaseColor.png",
+      "bytes": 2633027,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD1.001_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD1.001_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD1.001_Normal.png",
+      "bytes": 3179877,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD1.001_Roughness.png",
+      "bytes": 1098120,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD2.001_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD2.001_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD2.001_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD2.001_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_ROAD2.001_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK1_BaseColor.png",
+      "bytes": 4221694,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK1_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK1_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK1_Normal.png",
+      "bytes": 4021098,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK1_Roughness.png",
+      "bytes": 916233,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK2_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK2_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK2_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK2_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_SIDEWALK2_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_road3_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_road3_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_road3_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_road3_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets plane/Korean ROADS_road3_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD1.001_BaseColor.png",
+      "bytes": 2542946,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD1.001_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD1.001_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD1.001_Normal.png",
+      "bytes": 3183761,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD1.001_Roughness.png",
+      "bytes": 1098120,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD2.001_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD2.001_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD2.001_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD2.001_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_ROAD2.001_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK1_BaseColor.png",
+      "bytes": 4221694,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK1_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK1_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK1_Normal.png",
+      "bytes": 4021098,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK1_Roughness.png",
+      "bytes": 916233,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK2_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK2_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK2_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK2_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_SIDEWALK2_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_road3_BaseColor.png",
+      "bytes": 16903,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_road3_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_road3_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_road3_Normal.png",
+      "bytes": 16902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/streets/Korean ROADS_road3_Roughness.png",
+      "bytes": 8576,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_ROAD2.001_BaseColor.png",
+      "bytes": 3088173,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_ROAD2.001_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_ROAD2.001_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_ROAD2.001_Normal.png",
+      "bytes": 3634845,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_ROAD2.001_Roughness.png",
+      "bytes": 1258600,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_SIDEWALK2_BaseColor.png",
+      "bytes": 3227512,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_SIDEWALK2_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_SIDEWALK2_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_SIDEWALK2_Normal.png",
+      "bytes": 4249086,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/new road textures/wide road/Korean ROADS_SIDEWALK2_Roughness.png",
+      "bytes": 1098820,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ngr.PNG",
+      "bytes": 98119,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nhf.PNG",
+      "bytes": 304975,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nmcfdd.PNG",
+      "bytes": 290141,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nmh.PNG",
+      "bytes": 178538,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nmhh.PNG",
+      "bytes": 181107,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/nvd.PNG",
+      "bytes": 140189,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/o;p.PNG",
+      "bytes": 64703,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/oi999.PNG",
+      "bytes": 326158,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ooi8.PNG",
+      "bytes": 670913,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_park_BaseColor.png",
+      "bytes": 7047643,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_park_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_park_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_park_Normal.png",
+      "bytes": 8637157,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_park_Roughness.png",
+      "bytes": 2347030,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_parking_BaseColor.png",
+      "bytes": 1323990,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_parking_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_parking_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_parking_Normal.png",
+      "bytes": 9630521,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/park/parka_parking_Roughness.png",
+      "bytes": 1895519,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/parka_park_BaseColor.png",
+      "bytes": 7297882,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elect cables_BaseColor.png",
+      "bytes": 1100832,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elect cables_Height.png",
+      "bytes": 722298,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elect cables_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elect cables_Normal.png",
+      "bytes": 3209844,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elect cables_Roughness.png",
+      "bytes": 418838,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elects boxes_BaseColor.png",
+      "bytes": 1964288,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elects boxes_Height.png",
+      "bytes": 8575,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elects boxes_Metallic.png",
+      "bytes": 4166,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elects boxes_Normal.png",
+      "bytes": 18847,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_elects boxes_Roughness.png",
+      "bytes": 1042553,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_iron stand_BaseColor.png",
+      "bytes": 1844971,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_iron stand_Height.png",
+      "bytes": 23405,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_iron stand_Metallic.png",
+      "bytes": 1159033,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_iron stand_Normal.png",
+      "bytes": 2026397,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/poles textures/electpoles_iron stand_Roughness.png",
+      "bytes": 528500,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/r33.PNG",
+      "bytes": 320521,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/r43.PNG",
+      "bytes": 685237,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/r53.PNG",
+      "bytes": 107619,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/random-2-.jpg",
+      "bytes": 140327,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/rte.PNG",
+      "bytes": 95721,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s1.PNG",
+      "bytes": 382006,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s10.PNG",
+      "bytes": 196503,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s11.PNG",
+      "bytes": 404990,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s123.PNG",
+      "bytes": 303093,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s2.PNG",
+      "bytes": 230483,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s23.PNG",
+      "bytes": 223858,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s3.PNG",
+      "bytes": 217250,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s5.PNG",
+      "bytes": 144461,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s6.PNG",
+      "bytes": 671634,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s7.PNG",
+      "bytes": 1954589,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/s9.PNG",
+      "bytes": 346981,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/saa.PNG",
+      "bytes": 193669,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/saz.PNG",
+      "bytes": 322165,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sd.PNG",
+      "bytes": 758242,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sd22.PNG",
+      "bytes": 97599,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sddds.PNG",
+      "bytes": 547552,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sdsa.PNG",
+      "bytes": 105565,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sdsaaaq.PNG",
+      "bytes": 259225,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sdsda.PNG",
+      "bytes": 800068,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sdsdww.PNG",
+      "bytes": 62632,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/seat_baseColor.png",
+      "bytes": 247968,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/seoul_taxi_seoul_korea.jpg",
+      "bytes": 187310,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sffsaa.PNG",
+      "bytes": 596976,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/solid-painted-concrete-wall-textured-backdrop.jpg",
+      "bytes": 1941057,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/south korea DAE.dae",
+      "bytes": 454563544,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sq2.PNG",
+      "bytes": 123795,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sq23.PNG",
+      "bytes": 81115,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ssa.PNG",
+      "bytes": 152490,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sseq.PNG",
+      "bytes": 132811,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/stairs_r.jpg",
+      "bytes": 77981,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/standccped_baseColor.png",
+      "bytes": 974274,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sxa.PNG",
+      "bytes": 219227,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/sz.PNG",
+      "bytes": 413537,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/tdds.PNG",
+      "bytes": 341033,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/tent_003.jpg",
+      "bytes": 49470,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/tr5.PNG",
+      "bytes": 38463,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/treetop_platano_diffuse.png",
+      "bytes": 2592790,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/ttfr.PNG",
+      "bytes": 87616,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/tyty.PNG",
+      "bytes": 207495,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/u5.PNG",
+      "bytes": 595592,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/uiuiut.PNG",
+      "bytes": 658379,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/uug.PNG",
+      "bytes": 347263,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/uut.PNG",
+      "bytes": 56983,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/uuyuyuu.PNG",
+      "bytes": 55407,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/uyy.PNG",
+      "bytes": 1315445,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vb.PNG",
+      "bytes": 432600,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbfddc.PNG",
+      "bytes": 32997,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbffds.PNG",
+      "bytes": 141495,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbsaa.PNG",
+      "bytes": 428288,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbssa.PNG",
+      "bytes": 139056,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbvbds.PNG",
+      "bytes": 171035,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbvbdsa.PNG",
+      "bytes": 84414,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbvbfd.PNG",
+      "bytes": 39726,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbvbffd.PNG",
+      "bytes": 35529,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbvbx.PNG",
+      "bytes": 367034,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbvff.PNG",
+      "bytes": 46296,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbvfs.PNG",
+      "bytes": 65202,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbxssew.PNG",
+      "bytes": 595682,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vbxz.PNG",
+      "bytes": 125530,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vccvss.PNG",
+      "bytes": 163757,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vccvxs.PNG",
+      "bytes": 479996,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vccvzssa.PNG",
+      "bytes": 140934,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vccvzssss.PNG",
+      "bytes": 148607,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vccvzzzz.PNG",
+      "bytes": 132902,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vccxz.PNG",
+      "bytes": 193897,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcd3.PNG",
+      "bytes": 131928,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcds.PNG",
+      "bytes": 782445,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcds323.PNG",
+      "bytes": 173224,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcdsa.PNG",
+      "bytes": 243347,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcssz.PNG",
+      "bytes": 110145,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcsz.PNG",
+      "bytes": 56060,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcszsd.PNG",
+      "bytes": 89446,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcvcvcxx.PNG",
+      "bytes": 139052,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcvcxx.PNG",
+      "bytes": 165848,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcvvvr.PNG",
+      "bytes": 112325,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcxad.PNG",
+      "bytes": 268951,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcxx.PNG",
+      "bytes": 245312,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vcz.PNG",
+      "bytes": 44171,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vdaaz.PNG",
+      "bytes": 154710,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vdss.PNG",
+      "bytes": 162509,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vff00.PNG",
+      "bytes": 305161,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vffff.PNG",
+      "bytes": 711772,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vvdddd.PNG",
+      "bytes": 314854,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vvdsssd.PNG",
+      "bytes": 449304,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/vxzzzz.PNG",
+      "bytes": 119060,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/wheel_baseColor.png",
+      "bytes": 631725,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/wooden_fence_baseColor.png",
+      "bytes": 5297204,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/wwq.PNG",
+      "bytes": 89119,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/x.PNG",
+      "bytes": 123709,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xcsa.PNG",
+      "bytes": 253094,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xcssaa.PNG",
+      "bytes": 102425,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xcssss.PNG",
+      "bytes": 384031,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xcxa.PNG",
+      "bytes": 35725,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xcxza.PNG",
+      "bytes": 105779,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xcz.PNG",
+      "bytes": 404933,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xcza.PNG",
+      "bytes": 456216,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xsa.PNG",
+      "bytes": 199412,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xsdsd.PNG",
+      "bytes": 88496,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xssa.PNG",
+      "bytes": 508527,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xsxxs.PNG",
+      "bytes": 905131,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xwe.PNG",
+      "bytes": 68793,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xwed.PNG",
+      "bytes": 153768,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xxsa.PNG",
+      "bytes": 1528045,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xxxc.PNG",
+      "bytes": 263870,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xxzsa.PNG",
+      "bytes": 957931,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xz.PNG",
+      "bytes": 142286,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/xzzs.PNG",
+      "bytes": 206356,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/y4.PNG",
+      "bytes": 51636,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/y67.PNG",
+      "bytes": 1589448,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/yjkgdhjgjuy.PNG",
+      "bytes": 94833,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/za.PNG",
+      "bytes": 84056,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/zdsa.PNG",
+      "bytes": 262769,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/zont.jpg",
+      "bytes": 23053,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/zwq.PNG",
+      "bytes": 403621,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/zxc.PNG",
+      "bytes": 207773,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/zxsw.PNG",
+      "bytes": 657178,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/zz.PNG",
+      "bytes": 150417,
+      "inspection": "asset metadata only"
+    },
+    {
+      "path": "south_korea_textures/south korea textures/zzzx.PNG",
+      "bytes": 588771,
+      "inspection": "asset metadata only"
+    }
+  ]
+}

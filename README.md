@@ -134,6 +134,8 @@ flowchart TD
 | 폴더 | 내용 |
 | --- | --- |
 | [docs/data_format.md](docs/data_format.md) | 가상환경 정답·YOLO 검출 결과의 공통 데이터 형식(초안) |
+| [docs/map_database.md](docs/map_database.md) | 이상민 담당 지도·DB: 실행별 경로·위험 위치, 좌표 보존, 처리 이력 및 연동 규약 |
+| [docs/project_data.md](docs/project_data.md) | 이상민 담당 전 과정 데이터 관리: CCTV→좌표→가상환경→데이터셋→모델→검증 출처 연결, 파일·로그 등록/조회/내보내기 |
 | [simulation/TwinSightSim](simulation/TwinSightSim/README.md) | Unity 가상 CCTV 환경: 이미지·정답 박스·노면 좌표·기준점 저장 |
 | [docs/city_lab.md](docs/city_lab.md) | 실제 도시·SUV·Mini 에셋을 조합한 합성데이터 실험 씬, 바퀴 리그 및 실행 안내 |
 | [mapping](mapping/README.md) | 공간 매핑(Homography)과 가상환경 정답 기반 오차 평가 |
@@ -143,3 +145,9 @@ flowchart TD
 | [docs/api](docs/api/README.md) | 백엔드 API 명세(엔드포인트, 요청·응답 예시, WebSocket 이벤트, 검출 모듈 연동 방법)와 openapi.json |
 | [frontend](frontend/README.md) | 실시간 관제 화면 시제품: ITS 영상 재생, 검출 박스 오버레이, 실시간 경고 확인·기각 (React 대시보드로 전환 예정) |
 | [dev.bat](dev.bat) | 백엔드·관제 화면·목업 재생을 한 번에 띄우는 Windows 개발용 실행 파일 |
+
+### PostgreSQL 데이터 관리
+
+기본 DB는 PostgreSQL 17.11입니다. [설치, 실행, 기존 SQLite 이관, 팀 연결 안내](docs/postgresql.md)를 참고하세요.
+
+친구 PC에 팀 공용 서버를 설치하려면 [팀 서버 설치 안내](docs/team_server.md)를 따라주세요.
