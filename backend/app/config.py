@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from sqlalchemy.engine import URL
+from sqlalchemy.engine import URL, make_url
 
 # backend/app/config.py 기준 저장소 루트
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -26,7 +26,10 @@ def database_url() -> str | URL:
     """PostgreSQL 기본 설정. SQLite는 명시적인 DATABASE_URL/테스트에서만 사용."""
     url = os.getenv("DATABASE_URL")
     if url:
-        return url
+        parsed = make_url(url)
+        if parsed.drivername in ("postgres", "postgresql"):
+            parsed = parsed.set(drivername="postgresql+psycopg")
+        return parsed
     return URL.create(
         "postgresql+psycopg", username=os.getenv("POSTGRES_USER", "twinsight"),
         password=os.getenv("POSTGRES_PASSWORD"), host=os.getenv("POSTGRES_HOST", "127.0.0.1"),

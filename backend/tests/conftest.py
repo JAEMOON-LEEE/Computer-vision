@@ -17,6 +17,9 @@ if str(ROOT) not in sys.path:
 
 @pytest.fixture
 def client(tmp_path, monkeypatch):
+    # Never let a developer's Supabase settings redirect tests into the real schema.
+    monkeypatch.delenv("DATABASE_SCHEMA", raising=False)
+    monkeypatch.setenv("DATABASE_AUTO_CREATE", "true")
     from sqlalchemy import create_engine, text
     from sqlalchemy.engine import make_url
     postgres_url = os.getenv("TEST_DATABASE_URL")
