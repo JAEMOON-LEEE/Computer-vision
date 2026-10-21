@@ -141,6 +141,6 @@ flowchart TD
 | [docs/traffic_incidents.md](docs/traffic_incidents.md) | 원본 신호등·보행자, 확률적 사고 생성, 영상 기반 경고와 도로 인식 연동 |
 | [backend](backend/README.md) | FastAPI 백엔드: 카메라·검출·경고 API, WebSocket 실시간 전달, ITS CCTV 목록·스트림 갱신, 검출 결과 실시간 연동, 목업 재생 |
 | [docs/api](docs/api/README.md) | 백엔드 API 명세(엔드포인트, 요청·응답 예시, WebSocket 이벤트, 검출 모듈 연동 방법)와 openapi.json |
-| [frontend](frontend/README.md) | Vite + React + TypeScript 관제 대시보드: 지도·카메라 카드·HLS 재생·검출 박스 오버레이·경고 확인/기각·이력 조회·지연 측정 |
+| [frontend](frontend/README.md) | Vite + React + TypeScript 관제 대시보드: 지도·카메라 카드·HLS 재생·검출 박스 오버레이·경고 확인/기각·이력 조회·지연 측정. 2D 디지털 트윈 지도(예시 좌표), 선택 카메라 패널(3D 자리), 위험 이벤트 표, 분석 화면(히트맵·반복 구간·통계) |
 | [frontend-proto](frontend-proto/README.md) | 이전 정적 HTML 시제품(보존용) |
 | [dev.bat](dev.bat) | 백엔드·관제 화면·목업 재생을 한 번에 띄우는 Windows 개발용 실행 파일 |

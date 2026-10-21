@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { formatKst } from "../format";
+import { alertTypeLabel } from "../risk";
 import { useLive } from "../live";
 import type { AlertItem, Camera } from "../types";
 
@@ -79,7 +80,7 @@ function AlertRow({
   return (
     <li className="alert">
       <strong>
-        {alert.type} · {alert.status}
+        {alertTypeLabel(alert.type)} · {alert.status}
       </strong>
       <small>{cameraName}</small>
       <small>{alert.message}</small>
