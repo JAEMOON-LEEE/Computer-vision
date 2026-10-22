@@ -156,10 +156,7 @@ namespace TwinSight.Simulation.EditorTools
             var grid = Object.FindFirstObjectByType<CalibrationGrid>();
             var gridPosition = grid.transform.position; gridPosition.z = PaintedCentreZ; grid.transform.position = gridPosition;
             var camera = GameObject.Find("VirtualCCTV").GetComponent<Camera>();
-            var cameraPosition = camera.transform.position; cameraPosition.z = PaintedCentreZ - 3.6f; camera.transform.position = cameraPosition;
-            var nodes = GameObject.Find("Traffic/Outbound/Path").transform;
-            var target = Vector3.Lerp(nodes.GetChild(0).position, nodes.GetChild(1).position, 0.55f); target.z = PaintedCentreZ;
-            camera.transform.LookAt(target);
+            CityLabCameraProfile.Apply(camera);
             EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
             EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene(), ScenePath);
         }

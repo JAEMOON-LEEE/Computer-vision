@@ -1,0 +1,62 @@
+{
+  "features": [
+    "structure",
+    "iou",
+    "intersection_fraction",
+    "horizontal_overlap",
+    "vertical_overlap",
+    "dx",
+    "dy",
+    "distance",
+    "width_ratio",
+    "height_ratio",
+    "past_vx",
+    "past_vy",
+    "recent_vx",
+    "recent_vy",
+    "other_past_vx",
+    "other_past_vy",
+    "other_recent_vx",
+    "other_recent_vy",
+    "closing",
+    "height_change",
+    "other_height_change",
+    "past_top_vy",
+    "recent_top_vy",
+    "other_past_top_vy",
+    "other_recent_top_vy"
+  ],
+  "depth": 8,
+  "min_samples": 1,
+  "balanced_priors": false,
+  "threshold": 0.6016625,
+  "validation_false_alert_clips": 0,
+  "validation_detected_collision_clips": 8,
+  "synthetic_only": true,
+  "detector_weights_sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+  "focus": [
+    0.3194444444444444,
+    0.2708333333333333,
+    0.6111111111111112,
+    0.5625
+  ],
+  "training_samples": 549,
+  "training_classes": {
+    "0": 341,
+    "1": 208
+  },
+  "training_clips": 40,
+  "validation_clips": 20,
+  "test_clips": 20,
+  "legacy_training_feature_augmentation": true,
+  "training_feature_sources": [
+    "current_detector",
+    "legacy_detector",
+    "legacy detector features from train split only"
+  ],
+  "selection": "30 training-only RF configurations; select on validation false alerts, then detected collisions",
+  "test_used_for_selection": false,
+  "labels": "Training physics contact participants; runtime uses visual detections and causal history only",
+  "experimental": true,
+  "promotion_status": "candidate; held-out night queue false negative and early warning remain"
+}

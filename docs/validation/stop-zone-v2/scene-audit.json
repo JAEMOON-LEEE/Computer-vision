@@ -1,0 +1,16 @@
+{
+  "playing": false,
+  "incidentFraction": 0.4,
+  "captures": 0,
+  "position": [
+    -17,
+    5.01718235,
+    1.83312929
+  ],
+  "rotation": [
+    14.1642895,
+    98.99268,
+    1.94373226
+  ],
+  "fov": 38.0151176
+}

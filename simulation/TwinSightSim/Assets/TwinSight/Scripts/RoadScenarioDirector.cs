@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -7,6 +8,7 @@ namespace TwinSight.Simulation
 {
     public enum RoadScenario { Normal, Pothole, FallingDebris, VehicleCollision, StructureCollision }
     public enum ScenarioProfile { Training, Evaluation }
+    public enum StopZoneScenario { SignalQueue, TightQueue, BarrierStop, RearEnd, StructureImpact }
 
     [Serializable]
     public class ScenarioEventRecord
@@ -35,6 +37,8 @@ namespace TwinSight.Simulation
         public ScenarioProfile profile = ScenarioProfile.Training;
         public int seed = 42;
         public float episodeSeconds = 24f;
+        public Vector2 incidentXRange = new Vector2(10.7f, 14.3f);
+        [Range(0, 1)] public float stopZoneIncidentFraction = 0.4f;
         public float firstEpisodeDelay = 3f;
         public bool automaticEpisodes = true;
         [HideInInspector] public bool cleanDatasetCapture;
@@ -63,6 +67,10 @@ namespace TwinSight.Simulation
             if (Input.GetKeyDown(KeyCode.Alpha3)) BeginEpisode(RoadScenario.FallingDebris);
             if (Input.GetKeyDown(KeyCode.Alpha4)) BeginEpisode(RoadScenario.VehicleCollision);
             if (Input.GetKeyDown(KeyCode.Alpha5)) BeginEpisode(RoadScenario.StructureCollision);
+            if (Input.GetKeyDown(KeyCode.Alpha6)) BeginStopZoneEpisode(StopZoneScenario.RearEnd,false,0,2.4f,0.25f);
+            if (Input.GetKeyDown(KeyCode.Alpha7)) BeginStopZoneEpisode(StopZoneScenario.StructureImpact,false,0,2.4f,0.25f);
+            if (Input.GetKeyDown(KeyCode.Alpha8)) BeginStopZoneEpisode(StopZoneScenario.RearEnd,true,0,2.4f,0.25f);
+            if (Input.GetKeyDown(KeyCode.Alpha9)) BeginStopZoneEpisode(StopZoneScenario.StructureImpact,true,0,2.4f,0.25f);
             if (automaticEpisodes && Time.time >= nextEpisode) BeginEpisode(Sample((float)random.NextDouble(), profile));
         }
 
@@ -80,14 +88,25 @@ namespace TwinSight.Simulation
 
         public void BeginEpisode(RoadScenario scenario)
         {
+            if (!cleanDatasetCapture && signals != null) signals.enabled=true;
             if (random == null) random = new System.Random(seed);
             foreach (var item in spawned) if (item != null) { item.SetActive(false); Destroy(item); }
             spawned.Clear(); Events.Clear(); Current = scenario; Episode++; StartedAt = Time.time;
             foreach (var mesh in ownedMeshes) if (mesh != null) Destroy(mesh);
             ownedMeshes.Clear();
             nextEpisode = Time.time + Mathf.Max(5, episodeSeconds);
-            float x = 12.5f + Range(-1.8f, 1.8f), laneZ = Range(0, 1) > 0.5f ? -1.06f : 0.24f;
+            float x = Range(incidentXRange.x, incidentXRange.y), laneZ = Range(0, 1) > 0.5f ? -1.06f : 0.24f;
             if (cleanDatasetCapture) laneZ = -1.06f;
+            if (!cleanDatasetCapture && (scenario == RoadScenario.VehicleCollision || scenario == RoadScenario.StructureCollision)
+                && Range(0, 1) < stopZoneIncidentFraction)
+            {
+                signals.SetPhaseForExperiment(SignalPhase.PedestrianGreen);
+                signals.enabled = false;
+                SpawnStopZoneActors(scenario == RoadScenario.VehicleCollision ? StopZoneScenario.RearEnd : StopZoneScenario.StructureImpact,
+                    Range(0,1) > 0.5f, Range(-0.15f,0.15f), Range(2.1f,2.8f), 0.25f);
+                Record("episode_started", "sampling_configuration", null, null);
+                return;
+            }
             if (scenario == RoadScenario.Pothole) CreatePothole(new Vector3(x, Ground(x, laneZ), laneZ));
             else if (scenario == RoadScenario.FallingDebris) CreateDebris(new Vector3(x, Ground(x, laneZ) + 2.4f, laneZ));
             else if (scenario == RoadScenario.VehicleCollision)
@@ -105,6 +124,63 @@ namespace TwinSight.Simulation
                 Record("structure_collision_setup", "scheduled_not_yet_contact", vehicle, barrier);
             }
             Record("episode_started", "sampling_configuration", null, null);
+        }
+
+        public void BeginStopZoneEpisode(StopZoneScenario scenario, bool inbound, float offset, float speed, float gap)
+        {
+            BeginEpisode(RoadScenario.Normal);
+            Current = scenario == StopZoneScenario.RearEnd ? RoadScenario.VehicleCollision
+                : scenario == StopZoneScenario.StructureImpact ? RoadScenario.StructureCollision : RoadScenario.Normal;
+            signals.SetPhaseForExperiment(SignalPhase.PedestrianGreen);
+            signals.enabled = false;
+            SpawnStopZoneActors(scenario, inbound, offset, speed, gap);
+        }
+
+        void SpawnStopZoneActors(StopZoneScenario scenario, bool inbound, float offset, float speed, float gap)
+        {
+            float direction = inbound ? -1f : 1f;
+            float lane = inbound ? 0.24f : -1.06f;
+            float stop = inbound ? signals.inboundStopX : signals.outboundStopX;
+            float targetX = stop - direction * (0.9f + Mathf.Abs(offset));
+            Vector3 target = new Vector3(targetX, Ground(targetX,lane), lane);
+            Vector3 forward = Vector3.right * direction;
+            if (scenario == StopZoneScenario.RearEnd)
+            {
+                var lead = CreateImpactVehicle(suvPrefab,target,forward,0);
+                var follower = CreateImpactVehicle(miniPrefab,target-forward*Range(3.4f,4.2f),forward,speed);
+                Record("stop_zone_rear_end_setup","scheduled_not_yet_contact",follower,lead);
+            }
+            else if (scenario == StopZoneScenario.StructureImpact || scenario == StopZoneScenario.BarrierStop)
+            {
+                var barrier = CreateBarrier(target);
+                barrier.GetComponent<ScenarioObstacle>().radius = 0.25f;
+                if (scenario == StopZoneScenario.StructureImpact)
+                {
+                    var car = CreateImpactVehicle(suvPrefab,target-forward*Range(3.4f,4.2f),forward,speed);
+                    Record("stop_zone_structure_setup","scheduled_not_yet_contact",car,barrier);
+                }
+                else MakeQueueCar(suvPrefab,target-forward*3.6f,forward,inbound,speed,gap,true);
+            }
+            else
+            {
+                bool movingLead = scenario == StopZoneScenario.SignalQueue;
+                MakeQueueCar(suvPrefab,target,forward,inbound,speed,gap,movingLead);
+                MakeQueueCar(miniPrefab,target-forward*Range(3.2f,4.0f),forward,inbound,speed,gap,true);
+            }
+            Record("stop_zone_case","experiment_configuration",null,null);
+        }
+
+        void MakeQueueCar(GameObject prefab, Vector3 position, Vector3 forward, bool inbound, float speed, float gap, bool moving)
+        {
+            var car = Instantiate(prefab,position,Quaternion.LookRotation(forward));
+            car.name = "StopZone_"+prefab.name; Register(car);
+            var agent = car.AddComponent<TrafficVehicleAgent>(); agent.signals=signals; agent.gap=gap;
+            if (car.GetComponent<TrackedObject>().TryGetWorldBounds(out var bounds)) agent.halfLength=bounds.size.x*0.5f;
+            if (!moving) return;
+            var path = FindObjectsByType<TrafficSpawner>(FindObjectsSortMode.None)
+                .First(s=>s.name==(inbound?"Inbound":"Outbound")).path;
+            var mover=car.AddComponent<WaypointMover>(); mover.speed=speed; mover.destroyAtEnd=false;
+            mover.waypoints=Enumerable.Range(0,path.childCount).Select(i=>path.GetChild(i)).ToArray();
         }
 
         public ScenarioSnapshot Snapshot() => new ScenarioSnapshot

@@ -1,0 +1,206 @@
+{
+  "sessions": {
+    "stills": [
+      {
+        "session": "night-v1-test-31403_20261022_211346",
+        "frames": 40
+      },
+      {
+        "session": "night-v1-train-29201_20261022_211251",
+        "frames": 160
+      },
+      {
+        "session": "night-v1-val-30302_20261022_211335",
+        "frames": 40
+      }
+    ],
+    "queue": [
+      {
+        "session": "nightqueue-v1-test-BarrierStop-0-s35637_20261022_211641",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-BarrierStop-1-s35738_20261022_211707",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-RearEnd-0-s35654_20261022_211646",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-RearEnd-1-s35755_20261022_211714",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-SignalQueue-0-s35603_20261022_211630",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-SignalQueue-1-s35704_20261022_211657",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-StructureImpact-0-s35671_20261022_211652",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-StructureImpact-1-s35772_20261022_211721",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-TightQueue-0-s35620_20261022_211636",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-test-TightQueue-1-s35721_20261022_211702",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-BarrierStop-0-s33435_20261022_211406",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-BarrierStop-1-s33536_20261022_211432",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-BarrierStop-2-s33637_20261022_211458",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-BarrierStop-3-s33738_20261022_211524",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-RearEnd-0-s33452_20261022_211411",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-RearEnd-1-s33553_20261022_211438",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-RearEnd-2-s33654_20261022_211502",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-RearEnd-3-s33755_20261022_211529",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-SignalQueue-0-s33401_20261022_211356",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-SignalQueue-1-s33502_20261022_211420",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-SignalQueue-2-s33603_20261022_211448",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-SignalQueue-3-s33704_20261022_211513",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-StructureImpact-0-s33469_20261022_211416",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-StructureImpact-1-s33570_20261022_211443",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-StructureImpact-2-s33671_20261022_211508",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-StructureImpact-3-s33772_20261022_211534",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-TightQueue-0-s33418_20261022_211401",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-TightQueue-1-s33519_20261022_211426",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-TightQueue-2-s33620_20261022_211453",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-train-TightQueue-3-s33721_20261022_211518",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-BarrierStop-0-s34536_20261022_211549",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-BarrierStop-1-s34637_20261022_211615",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-RearEnd-0-s34553_20261022_211554",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-RearEnd-1-s34654_20261022_211620",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-SignalQueue-0-s34502_20261022_211539",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-SignalQueue-1-s34603_20261022_211605",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-StructureImpact-0-s34570_20261022_211559",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-StructureImpact-1-s34671_20261022_211625",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-TightQueue-0-s34519_20261022_211544",
+        "frames": 40
+      },
+      {
+        "session": "nightqueue-v1-val-TightQueue-1-s34620_20261022_211610",
+        "frames": 40
+      }
+    ],
+    "warnings": [
+      {
+        "session": "night-v1-clip-FallingDebris_20261022_211750",
+        "frames": 90
+      },
+      {
+        "session": "night-v1-clip-Normal_20261022_211727",
+        "frames": 90
+      },
+      {
+        "session": "night-v1-clip-Pothole_20261022_211740",
+        "frames": 90
+      },
+      {
+        "session": "night-v1-clip-StructureCollision_20261022_211812",
+        "frames": 90
+      },
+      {
+        "session": "night-v1-clip-VehicleCollision_20261022_211801",
+        "frames": 90
+      }
+    ]
+  },
+  "total_frames": 2290,
+  "night_lighting_all_frames_verified": true,
+  "synthetic_only": true,
+  "real_cctv_used_for_training": false
+}

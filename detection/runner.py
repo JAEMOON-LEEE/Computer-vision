@@ -33,7 +33,7 @@ def annotate(image, detections, alerts=None):
 
 
 def run_predictions(detector, source, output, camera_id=None, stride=1, max_frames=None,
-                    save_images=False, show=False, warnings=False, context=None, follow=False):
+                    save_images=False, show=False, warnings=False, context=None, follow=False, stop_model=None):
     output = Path(output)
     if output.exists() and any(output.iterdir()):
         raise ValueError(f"Output must be empty to preserve previous runs: {output}")
@@ -47,7 +47,12 @@ def run_predictions(detector, source, output, camera_id=None, stride=1, max_fram
                "detector": detector.metadata(), "category_id_schema": "twinsight-v1",
                "tracking": bool(getattr(detector, "track", False)), "warnings": warnings,
                "warning_basis": "visual_detections_and_motion", "stride": stride, "status": "running"}
-    warning_engine = WarningEngine(context) if warnings else None
+    warning_engine = WarningEngine(context, stop_model=stop_model) if warnings else None
+    if stop_model:
+        session["stop_zone_model"] = str(stop_model)
+        expected=warning_engine.stop_model.metadata.get("detector_weights_sha256") if warning_engine else None
+        if expected and session["detector"]["models"][0]["sha256"] != expected:
+            raise ValueError("Stop-zone classifier requires the detector weights used for its training")
     alert_writer = (output / "alerts.jsonl").open("w", encoding="utf-8") if warnings else None
     alert_counts = Counter()
     latest_alerts = []

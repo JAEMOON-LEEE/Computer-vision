@@ -1,0 +1,72 @@
+{
+  "synthetic_only": true,
+  "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+  "imgsz": 640,
+  "context": "D:\\Capston disign\\Computer-vision\\detection\\config\\geumchon-city-lab.context.json",
+  "focus": [
+    0.3194444444444444,
+    0.2708333333333333,
+    0.6111111111111112,
+    0.5625
+  ],
+  "stop_model": "D:\\Capston disign\\Computer-vision\\detection\\models\\stop-zone-collision-day-night.xml",
+  "cases": {
+    "Normal": {
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Normal_20261022_211727",
+      "expected": null,
+      "alerts": {},
+      "passed": true,
+      "frames": 90
+    },
+    "Pothole": {
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Pothole_20261022_211740",
+      "expected": "road_damage",
+      "alerts": {
+        "road_damage": 2
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "FallingDebris": {
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-FallingDebris_20261022_211750",
+      "expected": "road_debris",
+      "alerts": {
+        "road_debris": 2
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "VehicleCollision": {
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-VehicleCollision_20261022_211801",
+      "expected": "suspected_vehicle_collision",
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "StructureCollision": {
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-StructureCollision_20261022_211812",
+      "expected": "suspected_vehicle_structure_collision",
+      "alerts": {},
+      "passed": false,
+      "frames": 90
+    }
+  },
+  "passed": false,
+  "camera": {
+    "position": [
+      -17.0,
+      5.017182350158691,
+      1.8331292867660522
+    ],
+    "rotation_euler_deg": [
+      14.164289474487305,
+      98.99268341064453,
+      1.9437322616577148
+    ],
+    "vertical_fov_deg": 38.01511764526367,
+    "image_width": 1440,
+    "image_height": 960
+  }
+}

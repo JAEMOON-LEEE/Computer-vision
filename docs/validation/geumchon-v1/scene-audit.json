@@ -1,0 +1,140 @@
+{
+  "validation_only_not_used_by_warning_engine": true,
+  "cases": {
+    "Normal": {
+      "frames": 90,
+      "events": [
+        {
+          "event_id": "5404:1:0",
+          "event_type": "episode_started",
+          "evidence": "sampling_configuration",
+          "timestamp": 0.6866666674613953,
+          "object_a": 0,
+          "object_b": 0
+        }
+      ],
+      "last_queue_positions": [
+        [
+          5.921182155609131,
+          0.5070202350616455,
+          -1.059999942779541
+        ],
+        [
+          4.222972869873047,
+          0.5070202350616455,
+          -1.059999942779541
+        ]
+      ],
+      "leading_front_stopline_clearance_approx": 0.07881784439086892,
+      "last_ten_frames_max_movement": 0.0
+    },
+    "Pothole": {
+      "frames": 90,
+      "events": [
+        {
+          "event_id": "5404:2:1",
+          "event_type": "pothole_created",
+          "evidence": "procedural_visual",
+          "timestamp": 18.803945541381836,
+          "object_a": 7,
+          "object_b": 0
+        },
+        {
+          "event_id": "5404:2:2",
+          "event_type": "episode_started",
+          "evidence": "sampling_configuration",
+          "timestamp": 18.803945541381836,
+          "object_a": 0,
+          "object_b": 0
+        }
+      ]
+    },
+    "FallingDebris": {
+      "frames": 90,
+      "events": [
+        {
+          "event_id": "5404:3:3",
+          "event_type": "debris_dropped",
+          "evidence": "gravity_enabled",
+          "timestamp": 36.89751052856445,
+          "object_a": 8,
+          "object_b": 0
+        },
+        {
+          "event_id": "5404:3:4",
+          "event_type": "episode_started",
+          "evidence": "sampling_configuration",
+          "timestamp": 36.89751052856445,
+          "object_a": 0,
+          "object_b": 0
+        },
+        {
+          "event_id": "5404:3:5",
+          "event_type": "debris_landed",
+          "evidence": "physics_contact",
+          "timestamp": 37.53998565673828,
+          "object_a": 8,
+          "object_b": 0
+        }
+      ]
+    },
+    "VehicleCollision": {
+      "frames": 90,
+      "events": [
+        {
+          "event_id": "5404:4:6",
+          "event_type": "collision_setup",
+          "evidence": "scheduled_not_yet_contact",
+          "timestamp": 54.996463775634766,
+          "object_a": 10,
+          "object_b": 9
+        },
+        {
+          "event_id": "5404:4:7",
+          "event_type": "episode_started",
+          "evidence": "sampling_configuration",
+          "timestamp": 54.996463775634766,
+          "object_a": 0,
+          "object_b": 0
+        },
+        {
+          "event_id": "5404:4:8",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 56.079978942871094,
+          "object_a": 10,
+          "object_b": 9
+        }
+      ]
+    },
+    "StructureCollision": {
+      "frames": 90,
+      "events": [
+        {
+          "event_id": "5404:5:9",
+          "event_type": "structure_collision_setup",
+          "evidence": "scheduled_not_yet_contact",
+          "timestamp": 73.10888671875,
+          "object_a": 12,
+          "object_b": 11
+        },
+        {
+          "event_id": "5404:5:10",
+          "event_type": "episode_started",
+          "evidence": "sampling_configuration",
+          "timestamp": 73.10888671875,
+          "object_a": 0,
+          "object_b": 0
+        },
+        {
+          "event_id": "5404:5:11",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 74.33997344970703,
+          "object_a": 12,
+          "object_b": 11
+        }
+      ]
+    }
+  }
+}

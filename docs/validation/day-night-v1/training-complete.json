@@ -1,0 +1,29 @@
+{
+  "epochs": 12,
+  "batch": 4,
+  "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+  "sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+  "initial_weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-queue.pt",
+  "initial_sha256": "d9b55172132a8e0689565536deae545393a8c7cff3dfde625f9a91877ab7feea",
+  "synthetic_only": true,
+  "real_cctv_used_for_training": false,
+  "focus": [
+    0.3194444444444444,
+    0.2708333333333333,
+    0.6111111111111112,
+    0.5625
+  ],
+  "train_split_only_used_for_gradients": true,
+  "best_selected_on": "val",
+  "sessions": {
+    "train": [
+      "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-train-29201_20261022_211251"
+    ],
+    "val": [
+      "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-val-30302_20261022_211335"
+    ],
+    "test": [
+      "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-test-31403_20261022_211346"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+-r requirements.txt
+# Match the team's PostgreSQL branch; used by the experiment catalog importer.
+psycopg[binary]==3.3.6
+PyYAML==6.0.2

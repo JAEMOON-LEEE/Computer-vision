@@ -1,0 +1,35 @@
+{
+  "camera_id": "utic-국도1호선파주금촌신사거리",
+  "road_line": [
+    [
+      37.7688546,
+      126.79218891
+    ],
+    [
+      37.76989365,
+      126.79129256
+    ]
+  ],
+  "road_bearing_deg": 325.5967887784861,
+  "along_m": 30.537659340368783,
+  "lateral_m": -6.5499379127739825,
+  "height_m": 13.169732826844898,
+  "yaw_to_road_deg": 8.992677805328526,
+  "pitch_deg": 14.164289708294541,
+  "roll_deg": 1.9437324894399943,
+  "vertical_fov_deg": 38.015119457155606,
+  "horizontal_fov_deg": 54.65195588836005,
+  "image_size": [
+    720,
+    480
+  ],
+  "has_ref": true,
+  "ref_point": [
+    37.771067,
+    126.790516
+  ],
+  "ref_ahead_m": 255.3491378226178,
+  "ref_lateral_m": 17.130457568940653,
+  "virtual_camera_id": "city-lab-geumchon",
+  "source_pose": "RealCctv/geumchon.pose.json"
+}

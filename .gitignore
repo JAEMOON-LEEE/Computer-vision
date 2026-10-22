@@ -38,6 +38,7 @@ simulation/TwinSightSim/Assets/TwinSight/CityLab.meta
 
 # API keys / fetched CCTV lists (stream URLs are signed)
 .env
+.env.database
 backend/data/
 .pytest_cache/
 
@@ -45,3 +46,20 @@ backend/data/
 node_modules/
 frontend/dist/
 frontend/.env
+
+# Local browser verification and machine-specific download cache settings
+/.playwright-cli/
+/output/playwright/
+/.npmrc
+/frontend/.npmrc
+
+# Published experiment weights; datasets are distributed as verified LFS bundles.
+!detection/models/simulation-detection.pt
+!detection/models/simulation-cctv-base.pt
+!detection/models/simulation-cctv.pt
+!detection/models/simulation-cctv-queue.pt
+!detection/models/simulation-cctv-day-night.pt
+!detection/models/stop-zone-collision*.xml
+!detection/models/stop-zone-collision*.json
+.env.*
+!.env.example

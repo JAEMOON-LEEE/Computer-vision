@@ -1,0 +1,271 @@
+{
+  "timing_excluded": true,
+  "comparisons": [
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-BarrierStop-0-s35637\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-BarrierStop-0-s35637\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-BarrierStop-1-s35738\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-BarrierStop-1-s35738\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-RearEnd-0-s35654\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-RearEnd-0-s35654\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-RearEnd-1-s35755\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-RearEnd-1-s35755\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-SignalQueue-0-s35603\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-SignalQueue-0-s35603\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-SignalQueue-1-s35704\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-SignalQueue-1-s35704\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-StructureImpact-0-s35671\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-StructureImpact-0-s35671\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-StructureImpact-1-s35772\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-StructureImpact-1-s35772\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-TightQueue-0-s35620\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-TightQueue-0-s35620\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-test-TightQueue-1-s35721\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-test-TightQueue-1-s35721\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-BarrierStop-0-s34536\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-BarrierStop-0-s34536\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-BarrierStop-1-s34637\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-BarrierStop-1-s34637\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-RearEnd-0-s34553\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-RearEnd-0-s34553\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-RearEnd-1-s34654\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-RearEnd-1-s34654\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-SignalQueue-0-s34502\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-SignalQueue-0-s34502\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-SignalQueue-1-s34603\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-SignalQueue-1-s34603\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-StructureImpact-0-s34570\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-StructureImpact-0-s34570\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-StructureImpact-1-s34671\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-StructureImpact-1-s34671\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-TightQueue-0-s34519\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-TightQueue-0-s34519\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\nightqueue-v1-val-TightQueue-1-s34620\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\nightqueue-v1-val-TightQueue-1-s34620\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-BarrierStop-0-s13637\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-BarrierStop-0-s13637\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-BarrierStop-1-s13738\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-BarrierStop-1-s13738\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-RearEnd-0-s13654\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-RearEnd-0-s13654\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-RearEnd-1-s13755\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-RearEnd-1-s13755\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-SignalQueue-0-s13603\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-SignalQueue-0-s13603\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-SignalQueue-1-s13704\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-SignalQueue-1-s13704\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-StructureImpact-0-s13671\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-StructureImpact-0-s13671\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-StructureImpact-1-s13772\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-StructureImpact-1-s13772\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-TightQueue-0-s13620\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-TightQueue-0-s13620\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-test-TightQueue-1-s13721\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-test-TightQueue-1-s13721\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-BarrierStop-0-s12536\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-BarrierStop-0-s12536\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-BarrierStop-1-s12637\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-BarrierStop-1-s12637\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-RearEnd-0-s12553\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-RearEnd-0-s12553\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-RearEnd-1-s12654\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-RearEnd-1-s12654\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-SignalQueue-0-s12502\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-SignalQueue-0-s12502\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-SignalQueue-1-s12603\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-SignalQueue-1-s12603\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-StructureImpact-0-s12570\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-StructureImpact-0-s12570\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-StructureImpact-1-s12671\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-StructureImpact-1-s12671\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-TightQueue-0-s12519\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-TightQueue-0-s12519\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\temporal\\queue-v2-val-TightQueue-1-s12620\\detections.jsonl",
+      "prior": "runs\\night-v1\\temporal-combined\\queue-v2-val-TightQueue-1-s12620\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-day\\Normal\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\day\\Normal\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-day\\Pothole\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\day\\Pothole\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-day\\FallingDebris\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\day\\FallingDebris\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-day\\VehicleCollision\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\day\\VehicleCollision\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-day\\StructureCollision\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\day\\StructureCollision\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\detection-day\\detections.jsonl",
+      "prior": "runs\\night-v1\\evaluation\\day-after\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-night\\Normal\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\night\\Normal\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-night\\Pothole\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\night\\Pothole\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-night\\FallingDebris\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\night\\FallingDebris\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-night\\VehicleCollision\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\night\\VehicleCollision\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\warnings-night\\StructureCollision\\detections.jsonl",
+      "prior": "runs\\night-v1\\warning-checks\\night\\StructureCollision\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\detection-night\\detections.jsonl",
+      "prior": "runs\\night-v1\\evaluation\\night-after\\detections.jsonl",
+      "same_predictions": true
+    },
+    {
+      "output": "runs\\revalidation-20261022-01\\real-night\\detections.jsonl",
+      "prior": "runs\\night-v1\\evaluation\\real-night-after\\detections.jsonl",
+      "same_predictions": true
+    }
+  ],
+  "all_same_predictions": true
+}

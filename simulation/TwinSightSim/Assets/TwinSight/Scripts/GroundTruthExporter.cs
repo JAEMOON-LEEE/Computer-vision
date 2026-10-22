@@ -47,6 +47,7 @@ namespace TwinSight.Simulation
         bool done;
         TrafficSignalController signals;
         RoadScenarioDirector scenarios;
+        DayNightEnvironment environment;
         readonly List<Vector3> pointBuffer = new List<Vector3>();
 
         void Start()
@@ -54,6 +55,7 @@ namespace TwinSight.Simulation
             cam = GetComponent<Camera>();
             signals = FindFirstObjectByType<TrafficSignalController>();
             scenarios = FindFirstObjectByType<RoadScenarioDirector>();
+            environment = FindFirstObjectByType<DayNightEnvironment>();
             target = new RenderTexture(imageWidth, imageHeight, 24, RenderTextureFormat.ARGB32);
             target.Create();
             readback = new Texture2D(imageWidth, imageHeight, TextureFormat.RGB24, false);
@@ -110,6 +112,7 @@ namespace TwinSight.Simulation
                 height = imageHeight,
                 signals = signals != null ? signals.Snapshot() : null,
                 scenario = scenarios != null ? scenarios.Snapshot() : null,
+                lighting = environment != null ? environment.Snapshot() : null,
             };
 
             // 저장 해상도의 화면비로 잠시 바꿔 텍스처에 한 번 더 렌더링한다. Game 뷰는 평소대로 그려진다.

@@ -67,5 +67,6 @@ namespace TwinSight.Simulation
         public List<ObjectRecord> objects = new List<ObjectRecord>();
         public SignalSnapshot signals;
         public ScenarioSnapshot scenario;
+        public EnvironmentSnapshot lighting;
     }
 }

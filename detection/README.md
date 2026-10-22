@@ -1,6 +1,8 @@
 # TwinSight 객체 검출 모델
 
-이진규 담당의 객체 검출 모듈입니다. Ultralytics **YOLO11n 사전학습 모델**과 OpenCV로 실행하며, `--weights yolov8n.pt`로 YOLOv8도 사용할 수 있습니다. 배우준 팀원의 Unity 저장 형식을 입력으로 읽고, 같은 `detections.jsonl` 계약으로 결과를 출력합니다. 객체 추적과 공간 매핑은 기존 팀 모듈에 맡깁니다.
+이진규 담당의 객체 검출 모듈입니다. Ultralytics YOLO와 OpenCV로 실행하며, 기본 COCO 사전학습 모델과 Unity 합성데이터로 추가 학습한 모델을 제공합니다. 배우준 팀원의 Unity 저장 형식을 입력으로 읽고, 같은 `detections.jsonl` 계약으로 결과를 출력합니다. 객체 추적과 공간 매핑은 기존 팀 모듈을 재사용합니다.
+
+**학습 모델·데이터 다운로드:** [공유 자료와 복원 방법](../training_artifacts/README.md). 최신 주간·야간 실험 모델은 `detection/models/simulation-cctv-day-night.pt`, 대응 충돌 경고 모델은 `stop-zone-collision-day-night.xml`과 같은 이름의 JSON입니다. 야간 사고 누락이 남은 실험 후보이며 기본값을 실사용 모델로 자동 변경하지 않습니다.
 
 **신호·사고·경고 확장:** [실험 안내](../docs/traffic_incidents.md)를 참고합니다. `--alerts`는 기존 ByteTrack을 연결해 영상 기반 경고를 만들고, `warn`은 팀원의 추적 결과를 직접 받아 경고합니다. `--follow`는 Unity의 새 저장 프레임을 이어서 읽습니다.
 
@@ -8,11 +10,11 @@
 
 | 대상 | 현재 상태 |
 | --- | --- |
-| 차량·보행자 | COCO 사전학습 가중치로 검출 가능. 현장 CCTV 정확도 검증은 별도 필요 |
+| 차량·보행자 | COCO 기본 모델 및 주간·야간 합성데이터 추가 학습 모델 제공. 실제 CCTV 정확도 검증은 별도 필요 |
 | 교통 클래스 | `person`, `car`, `truck`, `bus`, `motorcycle`, `bicycle` |
-| 도로 결함·낙하물 | 라벨 데이터와 학습 가중치가 아직 없음. `pothole`, `crack`, `debris` 학습·연결 경로 구현 |
+| 도로 결함·낙하물 | 합성 포트홀·낙하물·구조물 학습 완료. 균열은 미학습. 야간 사고 경고와 실제 CCTV 오탐 보완 필요 |
 
-클래스 이름을 추가하는 것만으로 새 대상을 검출할 수는 없습니다. 기본 모델은 도로 결함·낙하물을 검출하지 않으며, 실행 결과의 `capabilities.unavailable`에도 이를 기록합니다. 현재 도로 결함은 포트홀·균열을 대상으로 정한 초기 분류안입니다.
+클래스 이름을 추가하는 것만으로 새 대상을 검출할 수는 없습니다. COCO 기본 모델은 도로 결함·낙하물을 검출하지 않으며, 프로젝트 학습 모델을 `--weights`로 지정해야 합니다. 실행 결과의 `capabilities.unavailable`에서 미지원 클래스를 확인합니다.
 
 ## 설치 (Windows, Python 3.11)
 
@@ -97,6 +99,8 @@ datasets/road/
 
 ## 검증
 
+2026-10-20 가상환경의 차량·보행자·포트홀·낙하물·방호벽을 함께 학습한 로컬 모델 `detection/models/simulation-detection.pt`를 추가했습니다. 촬영·학습 재현 방법과 제한 사항은 [가상환경 추가 학습](../docs/synthetic_training.md)을 참고하세요. 이 모델은 `--weights detection/models/simulation-detection.pt`로 실행합니다.
+
 합성 위험물 실험 가중치 `detection/models/scenario-hazards.pt`를 Git LFS로 제공합니다. 저장소를 받은 뒤 `git lfs pull --include="detection/models/scenario-hazards.pt"`로 내려받으세요. 포트홀·낙하물·방호벽을 학습했고, 균열은 미학습입니다. 실제 CCTV 성능과 합성 차량 검출에는 추가 학습이 필요하며, 세부 검증 범위는 아래 모델 카드에 기록했습니다.
 
 ```powershell
@@ -114,3 +118,11 @@ datasets/road/
 기존 코드와의 구분: 팀원 구현인 `mapping/scripts/run_yolo_on_frames.py`는 단순 프레임 검출·추적 실행 도구로 보존했습니다. 이 모듈은 검출 클래스 관리, 이미지·영상·웹캠 입력, 선택적 도로 위험 모델, 학습·평가·데이터 검사와 실행 기록을 추가합니다.
 
 설계 근거: [YOLO11 모델](https://docs.ultralytics.com/models/yolo11/), [YOLO 라벨 형식](https://docs.ultralytics.com/datasets/detect/), [학습](https://docs.ultralytics.com/modes/train/), [추론](https://docs.ultralytics.com/modes/predict/).
+
+- 사진 시점의 CCTV 복원·원거리 보강 학습·경고 재검사: [고정 CCTV 학습](../docs/cctv_training.md)
+
+- 신호 대기 구역 내부 사고와 정상 대기 구분 학습: [학습·실행 안내](../docs/stop_zone_training.md)
+
+- 실제 CCTV 연결·야간 검출 확인과 남은 한계: [실제 CCTV 검증](../docs/real_cctv_validation.md)
+
+- 낮·밤 환경 선택과 야간 합성 보강 학습: [야간 학습](../docs/day_night_training.md)

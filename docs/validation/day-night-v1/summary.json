@@ -1,0 +1,166 @@
+{
+  "synthetic_detector_test": {
+    "night": {
+      "before": 0.9200007486514572,
+      "after": 0.9943054461899905
+    },
+    "day": {
+      "before": 0.9556366405871357,
+      "after": 0.9511769890055115
+    }
+  },
+  "temporal": {
+    "val_day": {
+      "accident_clips": 4,
+      "clips_with_collision_warning": 4,
+      "post_contact_passed": 4,
+      "normal_clips": 6,
+      "normal_clips_with_any_warning": 0,
+      "failures": []
+    },
+    "val_night": {
+      "accident_clips": 4,
+      "clips_with_collision_warning": 4,
+      "post_contact_passed": 4,
+      "normal_clips": 6,
+      "normal_clips_with_any_warning": 0,
+      "failures": []
+    },
+    "test_day": {
+      "accident_clips": 4,
+      "clips_with_collision_warning": 4,
+      "post_contact_passed": 4,
+      "normal_clips": 6,
+      "normal_clips_with_any_warning": 0,
+      "failures": []
+    },
+    "test_night": {
+      "accident_clips": 4,
+      "clips_with_collision_warning": 3,
+      "post_contact_passed": 2,
+      "normal_clips": 6,
+      "normal_clips_with_any_warning": 0,
+      "failures": [
+        "nightqueue-v1-test-RearEnd-1-s35755",
+        "nightqueue-v1-test-StructureImpact-1-s35772"
+      ]
+    }
+  },
+  "temporal_all_passed": false,
+  "temporal_model_experimental": true,
+  "generic_warning_checks": {
+    "day": {
+      "passed": true,
+      "cases": {
+        "Normal": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Normal_20261020_230542",
+          "expected": null,
+          "alerts": {},
+          "passed": true,
+          "frames": 90
+        },
+        "Pothole": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Pothole_20261020_230553",
+          "expected": "road_damage",
+          "alerts": {
+            "road_damage": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "FallingDebris": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-FallingDebris_20261020_230602",
+          "expected": "road_debris",
+          "alerts": {
+            "road_debris": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "VehicleCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-VehicleCollision_20261020_230611",
+          "expected": "suspected_vehicle_collision",
+          "alerts": {
+            "suspected_vehicle_collision": 1
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "StructureCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-StructureCollision_20261020_230622",
+          "expected": "suspected_vehicle_structure_collision",
+          "alerts": {
+            "suspected_vehicle_structure_collision": 1
+          },
+          "passed": true,
+          "frames": 90
+        }
+      }
+    },
+    "night": {
+      "passed": false,
+      "cases": {
+        "Normal": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Normal_20261022_211727",
+          "expected": null,
+          "alerts": {},
+          "passed": true,
+          "frames": 90
+        },
+        "Pothole": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Pothole_20261022_211740",
+          "expected": "road_damage",
+          "alerts": {
+            "road_damage": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "FallingDebris": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-FallingDebris_20261022_211750",
+          "expected": "road_debris",
+          "alerts": {
+            "road_debris": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "VehicleCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-VehicleCollision_20261022_211801",
+          "expected": "suspected_vehicle_collision",
+          "alerts": {
+            "suspected_vehicle_collision": 1
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "StructureCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-StructureCollision_20261022_211812",
+          "expected": "suspected_vehicle_structure_collision",
+          "alerts": {},
+          "passed": false,
+          "frames": 90
+        }
+      }
+    }
+  },
+  "real_night": {
+    "frames": 600,
+    "media_seconds": 120.00003333333333,
+    "detections_by_class": {
+      "car": 884,
+      "pothole": 2,
+      "debris": 1
+    },
+    "alerts_by_type": {},
+    "warm_mean_inference_ms": 139.18759616384148,
+    "ground_truth_available": false,
+    "accuracy_evaluated": false,
+    "training_use": false,
+    "timestamp_basis": "original source PTS"
+  },
+  "real_caption_false_positives_observed": true,
+  "real_accuracy_verified": false,
+  "detector_sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+  "temporal_sha256": "37e3e1c0b2e4929628f2dba4d2f5b1218b2a8c1803be85027a5bd423a758ef69"
+}

@@ -8,6 +8,58 @@ namespace TwinSight.Simulation.EditorTools
 {
     public static class TrafficExperimentBuilder
     {
+        [MenuItem("TwinSight/City Lab/Install Day Night Controls")]
+        public static void InstallDayNightControls()
+        {
+            var environment = Object.FindFirstObjectByType<DayNightEnvironment>();
+            if (environment == null) environment = new GameObject("DayNightEnvironment").AddComponent<DayNightEnvironment>();
+            environment.Apply(SimulationTimeOfDay.Day, 22001);
+            if (!EditorApplication.isPlaying)
+            {
+                EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+            }
+        }
+
+        [MenuItem("TwinSight/City Lab/Capture Night Training Dataset (Play Mode)")]
+        public static void CaptureNightDataset()
+        {
+            if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode before capturing.");
+            var capture = new GameObject("NightTrainingCapture").AddComponent<SyntheticTrainingCapture>();
+            capture.distantDetailPass = true; capture.trainingSamples = 160; capture.evaluationSamples = 40;
+            capture.nightCapture = true; capture.seedOffset = 22000; capture.sessionPrefix = "night-v1-";
+        }
+        [MenuItem("TwinSight/City Lab/Capture Stop Zone Training and Checks (Play Mode)")]
+        public static void CaptureStopZoneDataset()
+        {
+            if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode before capturing.");
+            new GameObject("StopZoneCapture").AddComponent<StopZoneCapture>();
+        }
+        [MenuItem("TwinSight/City Lab/Capture Reference CCTV Detail Dataset (Play Mode)")]
+        public static void CaptureDetailDataset()
+        {
+            if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode before capturing.");
+            var capture = new GameObject("SyntheticTrainingCapture").AddComponent<SyntheticTrainingCapture>();
+            capture.distantDetailPass = true; capture.trainingSamples = 120; capture.evaluationSamples = 32;
+        }
+        [MenuItem("TwinSight/City Lab/Capture Reference CCTV Detail Warning Clips (Play Mode)")]
+        public static void CaptureDetailWarningClips()
+        {
+            if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode before capturing.");
+            new GameObject("SyntheticWarningCapture").AddComponent<SyntheticWarningCapture>().highResolution = true;
+        }
+        [MenuItem("TwinSight/City Lab/Capture Varied Training Dataset (Play Mode)")]
+        public static void CaptureVariedDataset()
+        {
+            if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode before capturing.");
+            new GameObject("SyntheticTrainingCapture").AddComponent<SyntheticTrainingCapture>();
+        }
+        [MenuItem("TwinSight/City Lab/Capture Warning Check Clips (Play Mode)")]
+        public static void CaptureWarningClips()
+        {
+            if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode before capturing.");
+            new GameObject("SyntheticWarningCapture").AddComponent<SyntheticWarningCapture>();
+        }
         [MenuItem("TwinSight/City Lab/Capture Prototype Incident Dataset (Play Mode)")]
         public static void CaptureDataset()
         {
@@ -30,6 +82,9 @@ namespace TwinSight.Simulation.EditorTools
             foreach (var probe in Object.FindObjectsByType<ScenarioDatasetCapture>(FindObjectsInactive.Include, FindObjectsSortMode.None)) Object.DestroyImmediate(probe.gameObject);
             foreach (var probe in Object.FindObjectsByType<ScenarioCaptureBatch>(FindObjectsInactive.Include, FindObjectsSortMode.None)) Object.DestroyImmediate(probe.gameObject);
             foreach (var probe in Object.FindObjectsByType<ScenarioRuntimeValidation>(FindObjectsInactive.Include, FindObjectsSortMode.None)) Object.DestroyImmediate(probe.gameObject);
+            foreach (var probe in Object.FindObjectsByType<SyntheticTrainingCapture>(FindObjectsInactive.Include, FindObjectsSortMode.None)) Object.DestroyImmediate(probe.gameObject);
+            foreach (var probe in Object.FindObjectsByType<SyntheticWarningCapture>(FindObjectsInactive.Include, FindObjectsSortMode.None)) Object.DestroyImmediate(probe.gameObject);
+            foreach (var probe in Object.FindObjectsByType<StopZoneCapture>(FindObjectsInactive.Include, FindObjectsSortMode.None)) Object.DestroyImmediate(probe.gameObject);
             var previous = GameObject.Find("TrainingScenarios");
             if (previous != null) Object.DestroyImmediate(previous);
             var root = new GameObject("TrainingScenarios");
@@ -55,12 +110,11 @@ namespace TwinSight.Simulation.EditorTools
             director.miniPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(CityAssetTools.Generated + "/Vehicles/Mini/Mini.prefab");
             director.concreteMaterial = concrete; director.roadDamageMaterial = damage; director.rimMaterial = rim;
             var cctv = GameObject.Find("VirtualCCTV").GetComponent<Camera>();
-            // Closer oblique view: training subjects occupy more pixels than the original city-wide view.
-            cctv.transform.position = new Vector3(8f, 11f, -3f);
-            cctv.transform.LookAt(new Vector3(12f, 0.507f, -0.41f)); cctv.fieldOfView = 52f;
+            CityLabCameraProfile.Apply(cctv);
             var exporter = cctv.GetComponent<GroundTruthExporter>(); exporter.enabled = false;
-            exporter.imageWidth = 1280; exporter.imageHeight = 720; exporter.maxFrames = 150;
+            exporter.maxFrames = 150;
             exporter.captureFps = 10; exporter.stopPlayModeWhenDone = false;
+            InstallDayNightControls();
             EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
             EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene(), CityLabBuilder.ScenePath);
             AssetDatabase.SaveAssets(); Selection.activeGameObject = root;

@@ -1,0 +1,3023 @@
+{
+  "source_catalog_code": "origin/codex/local-db-validation@3bddc0d",
+  "records": [
+    {
+      "record_id": "simulation-geumchon-city-lab-3effc548bc35347a",
+      "kind": "simulation",
+      "title": "simulation-geumchon-city-lab",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [],
+      "file_count": 3,
+      "log_count": 0
+    },
+    {
+      "record_id": "capture-city-lab-cctv-01_20261018_163750-dc758bd8d4994994",
+      "kind": "capture",
+      "title": "capture-city-lab-cctv-01_20261018_163750",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 11,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-city-lab-cctv-01_20261018_164117-54cb659f9d15b37d",
+      "kind": "capture",
+      "title": "capture-city-lab-cctv-01_20261018_164117",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 11,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-fixed-debris-warning_20261018_181935-3e17e9da599f2d41",
+      "kind": "capture",
+      "title": "capture-fixed-debris-warning_20261018_181935",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-fixed-pothole-warning_20261018_181843-2503cee38414578b",
+      "kind": "capture",
+      "title": "capture-fixed-pothole-warning_20261018_181843",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-geumchon-detail-clip-FallingDebris_20261020_230602-28058aa5d421a1ea",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-clip-FallingDebris_20261020_230602",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-detail-clip-Normal_20261020_230542-84023bd4fadc7da7",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-clip-Normal_20261020_230542",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-detail-clip-Pothole_20261020_230553-898a18c4b36cd7f2",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-clip-Pothole_20261020_230553",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-detail-clip-StructureCollision_20261020_230622-c77b25d35cc66cfe",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-clip-StructureCollision_20261020_230622",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-detail-clip-VehicleCollision_20261020_230611-8d8b4187cd81142b",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-clip-VehicleCollision_20261020_230611",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-detail-test-9403_20261020_230204-f5dbf966f3ca8b5c",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-test-9403_20261020_230204",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 36,
+      "log_count": 32
+    },
+    {
+      "record_id": "capture-geumchon-detail-train-7201_20261020_230126-5eadeb49d6b9b44e",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-train-7201_20261020_230126",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 124,
+      "log_count": 120
+    },
+    {
+      "record_id": "capture-geumchon-detail-val-8302_20261020_230156-9ecb1171737239f3",
+      "kind": "capture",
+      "title": "capture-geumchon-detail-val-8302_20261020_230156",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 36,
+      "log_count": 32
+    },
+    {
+      "record_id": "capture-geumchon-v1-clip-FallingDebris_20261020_224749-cdb4eeb20e68bf94",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-clip-FallingDebris_20261020_224749",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-v1-clip-Normal_20261020_224732-8a150207d0287847",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-clip-Normal_20261020_224732",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-v1-clip-Pothole_20261020_224741-388fc01b677445e7",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-clip-Pothole_20261020_224741",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-v1-clip-StructureCollision_20261020_224804-05320428f5b55041",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-clip-StructureCollision_20261020_224804",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-v1-clip-VehicleCollision_20261020_224756-900712895d3024cb",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-clip-VehicleCollision_20261020_224756",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 94,
+      "log_count": 90
+    },
+    {
+      "record_id": "capture-geumchon-v1-test-8403_20261020_224603-2dc8e7f2436e4f57",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-test-8403_20261020_224603",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 52,
+      "log_count": 48
+    },
+    {
+      "record_id": "capture-geumchon-v1-train-6201_20261020_224509-fd4ebc5e1b96066f",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-train-6201_20261020_224509",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 244,
+      "log_count": 240
+    },
+    {
+      "record_id": "capture-geumchon-v1-val-7302_20261020_224555-0c7c47ac811e6ccc",
+      "kind": "capture",
+      "title": "capture-geumchon-v1-val-7302_20261020_224555",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 52,
+      "log_count": 48
+    },
+    {
+      "record_id": "capture-incident-warning-demo_20261018_180920-0b1ee5c401d5a861",
+      "kind": "capture",
+      "title": "capture-incident-warning-demo_20261018_180920",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 104,
+      "log_count": 100
+    },
+    {
+      "record_id": "capture-queue-v1-test-BarrierStop-0-s13637_20261020_234042-45fd2566ae8f2ea4",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-BarrierStop-0-s13637_20261020_234042",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-BarrierStop-1-s13738_20261020_234102-3b3f0f64e9a4ed08",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-BarrierStop-1-s13738_20261020_234102",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-RearEnd-0-s13654_20261020_234046-e1287beb5f83bcec",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-RearEnd-0-s13654_20261020_234046",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-RearEnd-1-s13755_20261020_234105-956b26a5b5a89970",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-RearEnd-1-s13755_20261020_234105",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-SignalQueue-0-s13603_20261020_234035-a6f05d0f21377801",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-SignalQueue-0-s13603_20261020_234035",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-SignalQueue-1-s13704_20261020_234054-7eb22782f3d13c55",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-SignalQueue-1-s13704_20261020_234054",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-StructureImpact-0-s13671_20261020_234050-16d8c6a67dcfa4e4",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-StructureImpact-0-s13671_20261020_234050",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-StructureImpact-1-s13772_20261020_234109-3674ff480dff7adf",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-StructureImpact-1-s13772_20261020_234109",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-TightQueue-0-s13620_20261020_234038-9cc9b3ca4d7891f7",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-TightQueue-0-s13620_20261020_234038",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-test-TightQueue-1-s13721_20261020_234058-fe703c60906534a6",
+      "kind": "capture",
+      "title": "capture-queue-v1-test-TightQueue-1-s13721_20261020_234058",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-BarrierStop-0-s11435_20261020_233848-772ac9dbc17c0c70",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-BarrierStop-0-s11435_20261020_233848",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-BarrierStop-1-s11536_20261020_233907-a3457a1f1761fcc9",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-BarrierStop-1-s11536_20261020_233907",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-BarrierStop-2-s11637_20261020_233926-1303381d4be7fa28",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-BarrierStop-2-s11637_20261020_233926",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-BarrierStop-3-s11738_20261020_233945-7ac872184872827c",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-BarrierStop-3-s11738_20261020_233945",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-RearEnd-0-s11452_20261020_233852-a14e7d76df9fdaeb",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-RearEnd-0-s11452_20261020_233852",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-RearEnd-1-s11553_20261020_233911-ea48ac802b569726",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-RearEnd-1-s11553_20261020_233911",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-RearEnd-2-s11654_20261020_233930-728fd1aa63c0e162",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-RearEnd-2-s11654_20261020_233930",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-RearEnd-3-s11755_20261020_233949-be1fec51fcd838d7",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-RearEnd-3-s11755_20261020_233949",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-SignalQueue-0-s11401_20261020_233839-c01c18d6e496a802",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-SignalQueue-0-s11401_20261020_233839",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-SignalQueue-1-s11502_20261020_233859-f99b20531188c23c",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-SignalQueue-1-s11502_20261020_233859",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-SignalQueue-2-s11603_20261020_233918-eeb66fbe558af19f",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-SignalQueue-2-s11603_20261020_233918",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-SignalQueue-3-s11704_20261020_233938-a9ccb20e7062b1e7",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-SignalQueue-3-s11704_20261020_233938",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-StructureImpact-0-s11469_20261020_233856-d2458a2e01a573a5",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-StructureImpact-0-s11469_20261020_233856",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-StructureImpact-1-s11570_20261020_233915-e1a1c293a8251a30",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-StructureImpact-1-s11570_20261020_233915",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-StructureImpact-2-s11671_20261020_233934-c752a7c59f176d9a",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-StructureImpact-2-s11671_20261020_233934",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-StructureImpact-3-s11772_20261020_233953-344a1ae4fd097bb5",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-StructureImpact-3-s11772_20261020_233953",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-TightQueue-0-s11418_20261020_233844-d7ba2a162d67238d",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-TightQueue-0-s11418_20261020_233844",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-TightQueue-1-s11519_20261020_233903-536f133c21486adf",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-TightQueue-1-s11519_20261020_233903",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-TightQueue-2-s11620_20261020_233922-92bc5c2dc4fb37d8",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-TightQueue-2-s11620_20261020_233922",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-train-TightQueue-3-s11721_20261020_233941-787647bc1221bd3b",
+      "kind": "capture",
+      "title": "capture-queue-v1-train-TightQueue-3-s11721_20261020_233941",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-BarrierStop-0-s12536_20261020_234004-9b9f337416a171c1",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-BarrierStop-0-s12536_20261020_234004",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-BarrierStop-1-s12637_20261020_234023-28e5e0f3403ea828",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-BarrierStop-1-s12637_20261020_234023",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-RearEnd-0-s12553_20261020_234008-275008f17bc82c2b",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-RearEnd-0-s12553_20261020_234008",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-RearEnd-1-s12654_20261020_234027-4fe7ab24e5eef3d9",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-RearEnd-1-s12654_20261020_234027",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-SignalQueue-0-s12502_20261020_233957-aa901bba11375999",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-SignalQueue-0-s12502_20261020_233957",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-SignalQueue-1-s12603_20261020_234015-e5e3378b2c379136",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-SignalQueue-1-s12603_20261020_234015",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-StructureImpact-0-s12570_20261020_234012-b9722c0aca1164ec",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-StructureImpact-0-s12570_20261020_234012",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-StructureImpact-1-s12671_20261020_234031-1489e354f094e1e9",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-StructureImpact-1-s12671_20261020_234031",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-TightQueue-0-s12519_20261020_234000-419d3bc2054ce637",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-TightQueue-0-s12519_20261020_234000",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v1-val-TightQueue-1-s12620_20261020_234019-d9c3558d7ea0cd56",
+      "kind": "capture",
+      "title": "capture-queue-v1-val-TightQueue-1-s12620_20261020_234019",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-BarrierStop-0-s13637_20261021_001305-b77d7d279478e65f",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-BarrierStop-0-s13637_20261021_001305",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-BarrierStop-1-s13738_20261021_001325-51e22f973e685ebe",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-BarrierStop-1-s13738_20261021_001325",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-RearEnd-0-s13654_20261021_001309-e6bbc6e8918609f0",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-RearEnd-0-s13654_20261021_001309",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-RearEnd-1-s13755_20261021_001329-4bc150e97daa522f",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-RearEnd-1-s13755_20261021_001329",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-SignalQueue-0-s13603_20261021_001258-278ba2152c5a37b1",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-SignalQueue-0-s13603_20261021_001258",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-SignalQueue-1-s13704_20261021_001317-7eb6bc3c3f7b4c3d",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-SignalQueue-1-s13704_20261021_001317",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-StructureImpact-0-s13671_20261021_001313-a70485e0043d7334",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-StructureImpact-0-s13671_20261021_001313",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-StructureImpact-1-s13772_20261021_001333-c89268f745e1305a",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-StructureImpact-1-s13772_20261021_001333",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-TightQueue-0-s13620_20261021_001302-865820bf6df5f7eb",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-TightQueue-0-s13620_20261021_001302",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-test-TightQueue-1-s13721_20261021_001321-f28a268cf8c12726",
+      "kind": "capture",
+      "title": "capture-queue-v2-test-TightQueue-1-s13721_20261021_001321",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-BarrierStop-0-s11435_20261021_001112-8df13e1cc66728ec",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-BarrierStop-0-s11435_20261021_001112",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-BarrierStop-1-s11536_20261021_001131-4e4cbb47f133b8d9",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-BarrierStop-1-s11536_20261021_001131",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-BarrierStop-2-s11637_20261021_001150-be55e663a60fd1e8",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-BarrierStop-2-s11637_20261021_001150",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-BarrierStop-3-s11738_20261021_001209-4cf488b60618b049",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-BarrierStop-3-s11738_20261021_001209",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-RearEnd-0-s11452_20261021_001116-ee25c48c17e4493e",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-RearEnd-0-s11452_20261021_001116",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-RearEnd-1-s11553_20261021_001134-47066aa82ae5e7f1",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-RearEnd-1-s11553_20261021_001134",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-RearEnd-2-s11654_20261021_001154-776680b5aa2aa03e",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-RearEnd-2-s11654_20261021_001154",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-RearEnd-3-s11755_20261021_001213-877ed17e51b5021f",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-RearEnd-3-s11755_20261021_001213",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-SignalQueue-0-s11401_20261021_001103-2a8643afbfa52746",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-SignalQueue-0-s11401_20261021_001103",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-SignalQueue-1-s11502_20261021_001123-56730c0fa6c13eee",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-SignalQueue-1-s11502_20261021_001123",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-SignalQueue-2-s11603_20261021_001142-a79aec54879a88b5",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-SignalQueue-2-s11603_20261021_001142",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-SignalQueue-3-s11704_20261021_001201-8f824cd082ccd3b4",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-SignalQueue-3-s11704_20261021_001201",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-StructureImpact-0-s11469_20261021_001120-b88d75d29adf77a6",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-StructureImpact-0-s11469_20261021_001120",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-StructureImpact-1-s11570_20261021_001138-3c267240a4eece99",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-StructureImpact-1-s11570_20261021_001138",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-StructureImpact-2-s11671_20261021_001158-76cace4dbf0e2ece",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-StructureImpact-2-s11671_20261021_001158",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-StructureImpact-3-s11772_20261021_001217-67770476fc4ba226",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-StructureImpact-3-s11772_20261021_001217",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-TightQueue-0-s11418_20261021_001108-bb4fac7fce902e22",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-TightQueue-0-s11418_20261021_001108",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-TightQueue-1-s11519_20261021_001127-6a663d606246d1fd",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-TightQueue-1-s11519_20261021_001127",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-TightQueue-2-s11620_20261021_001146-8b5eb9ebf4aa7aa9",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-TightQueue-2-s11620_20261021_001146",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-train-TightQueue-3-s11721_20261021_001205-2e76d1d0eedc02ce",
+      "kind": "capture",
+      "title": "capture-queue-v2-train-TightQueue-3-s11721_20261021_001205",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-BarrierStop-0-s12536_20261021_001228-51b3860f534a2332",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-BarrierStop-0-s12536_20261021_001228",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-BarrierStop-1-s12637_20261021_001247-e78028078e98a38c",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-BarrierStop-1-s12637_20261021_001247",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-RearEnd-0-s12553_20261021_001232-fc2aafe009387a94",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-RearEnd-0-s12553_20261021_001232",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-RearEnd-1-s12654_20261021_001250-088c1b4e4f044f4f",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-RearEnd-1-s12654_20261021_001250",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-SignalQueue-0-s12502_20261021_001220-5271218811d4596b",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-SignalQueue-0-s12502_20261021_001220",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-SignalQueue-1-s12603_20261021_001239-b6a0f91d415a32cb",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-SignalQueue-1-s12603_20261021_001239",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-StructureImpact-0-s12570_20261021_001235-c4335cea4895b0d4",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-StructureImpact-0-s12570_20261021_001235",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-StructureImpact-1-s12671_20261021_001254-783f2b69d53b1e41",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-StructureImpact-1-s12671_20261021_001254",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-TightQueue-0-s12519_20261021_001224-fcb77c4d4ac2221c",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-TightQueue-0-s12519_20261021_001224",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-queue-v2-val-TightQueue-1-s12620_20261021_001243-937e341fb49dba3b",
+      "kind": "capture",
+      "title": "capture-queue-v2-val-TightQueue-1-s12620_20261021_001243",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 44,
+      "log_count": 40
+    },
+    {
+      "record_id": "capture-scenario-clean-train-411_20261018_175955-e05276f1f0bfa2fa",
+      "kind": "capture",
+      "title": "capture-scenario-clean-train-411_20261018_175955",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 68,
+      "log_count": 64
+    },
+    {
+      "record_id": "capture-scenario-clean-train-411_20261018_180408-8e9f00a2a775d203",
+      "kind": "capture",
+      "title": "capture-scenario-clean-train-411_20261018_180408",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 68,
+      "log_count": 64
+    },
+    {
+      "record_id": "capture-scenario-clean-train-411_20261018_180907-c3fe96770ab30e97",
+      "kind": "capture",
+      "title": "capture-scenario-clean-train-411_20261018_180907",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 68,
+      "log_count": 64
+    },
+    {
+      "record_id": "capture-scenario-clean-val-522_20261018_180115-5dbd4a6d6ba5295a",
+      "kind": "capture",
+      "title": "capture-scenario-clean-val-522_20261018_180115",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 20,
+      "log_count": 16
+    },
+    {
+      "record_id": "capture-scenario-safe-test-955_20261018_180426-07ea20f25752ac0e",
+      "kind": "capture",
+      "title": "capture-scenario-safe-test-955_20261018_180426",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 20,
+      "log_count": 16
+    },
+    {
+      "record_id": "capture-scenario-safe-train-733_20261018_180415-f88da59e32aff460",
+      "kind": "capture",
+      "title": "capture-scenario-safe-train-733_20261018_180415",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 68,
+      "log_count": 64
+    },
+    {
+      "record_id": "capture-scenario-safe-val-844_20261018_180425-4955392e32935e05",
+      "kind": "capture",
+      "title": "capture-scenario-safe-val-844_20261018_180425",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 20,
+      "log_count": 16
+    },
+    {
+      "record_id": "capture-scenario-test-330_20261018_174144-98f2dc1a7c5fc19b",
+      "kind": "capture",
+      "title": "capture-scenario-test-330_20261018_174144",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 28,
+      "log_count": 24
+    },
+    {
+      "record_id": "capture-scenario-train-110_20261018_173931-d7994bbdaead2cb4",
+      "kind": "capture",
+      "title": "capture-scenario-train-110_20261018_173931",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 83,
+      "log_count": 79
+    },
+    {
+      "record_id": "capture-scenario-val-220_20261018_174117-677a2720469f0693",
+      "kind": "capture",
+      "title": "capture-scenario-val-220_20261018_174117",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 28,
+      "log_count": 24
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-FallingDebris_20261020_222501-f470a71bb51e1186",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-FallingDebris_20261020_222501",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-FallingDebris_20261020_223121-e0d7f589f4196bbc",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-FallingDebris_20261020_223121",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-Normal_20261020_223114-ddb3368cb8c5ce9d",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-Normal_20261020_223114",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-Pothole_20261020_222457-51a150941168f9ee",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-Pothole_20261020_222457",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-Pothole_20261020_223118-de351e6b8b21b720",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-Pothole_20261020_223118",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-StructureCollision_20261020_222508-c27a4cebb1c545f4",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-StructureCollision_20261020_222508",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-StructureCollision_20261020_223128-fdbd792dfd5fdb29",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-StructureCollision_20261020_223128",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-VehicleCollision_20261020_222504-1182a31564b5fdb8",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-VehicleCollision_20261020_222504",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-clip-VehicleCollision_20261020_223124-23c7b63b0ff3ca2a",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-clip-VehicleCollision_20261020_223124",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 49,
+      "log_count": 45
+    },
+    {
+      "record_id": "capture-synthetic-v2-test-4303_20261020_221836-97822b432076d7ca",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-test-4303_20261020_221836",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 36,
+      "log_count": 32
+    },
+    {
+      "record_id": "capture-synthetic-v2-train-2101_20261020_221800-c04ac00fd2ecfe6d",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-train-2101_20261020_221800",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 164,
+      "log_count": 160
+    },
+    {
+      "record_id": "capture-synthetic-v2-val-3202_20261020_221830-26f5ae9924e6ad9c",
+      "kind": "capture",
+      "title": "capture-synthetic-v2-val-3202_20261020_221830",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "simulation-geumchon-city-lab-3effc548bc35347a"
+      ],
+      "file_count": 36,
+      "log_count": 32
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-BarrierStop-0-s13637-f05c3a4adb750289",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-BarrierStop-0-s13637",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-BarrierStop-0-s13637_20261020_234042-45fd2566ae8f2ea4"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-BarrierStop-1-s13738-a39959c30120da26",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-BarrierStop-1-s13738",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-BarrierStop-1-s13738_20261020_234102-3b3f0f64e9a4ed08"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-RearEnd-0-s13654-6d3e4aa4f8298233",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-RearEnd-0-s13654",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-RearEnd-0-s13654_20261020_234046-e1287beb5f83bcec"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-RearEnd-1-s13755-b1be4186fdbd91a1",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-RearEnd-1-s13755",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-RearEnd-1-s13755_20261020_234105-956b26a5b5a89970"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-SignalQueue-0-s13603-3d285d59a67ea154",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-SignalQueue-0-s13603",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-SignalQueue-0-s13603_20261020_234035-a6f05d0f21377801"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-SignalQueue-1-s13704-550d71e75d8dc2e3",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-SignalQueue-1-s13704",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-SignalQueue-1-s13704_20261020_234054-7eb22782f3d13c55"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-StructureImpact-0-s13671-c6129e8b67de8ae9",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-StructureImpact-0-s13671",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-StructureImpact-0-s13671_20261020_234050-16d8c6a67dcfa4e4"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-StructureImpact-1-s13772-5fd34d7dfca0b7c0",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-StructureImpact-1-s13772",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-StructureImpact-1-s13772_20261020_234109-3674ff480dff7adf"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-TightQueue-0-s13620-4272b7695fc4b8b8",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-TightQueue-0-s13620",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-TightQueue-0-s13620_20261020_234038-9cc9b3ca4d7891f7"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-test-TightQueue-1-s13721-36d93dc01be6694a",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-test-TightQueue-1-s13721",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-test-TightQueue-1-s13721_20261020_234058-fe703c60906534a6"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-BarrierStop-0-s11435-5c7941943182da0d",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-BarrierStop-0-s11435",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-BarrierStop-0-s11435_20261020_233848-772ac9dbc17c0c70"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-BarrierStop-1-s11536-5a362de5de723c82",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-BarrierStop-1-s11536",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-BarrierStop-1-s11536_20261020_233907-a3457a1f1761fcc9"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-BarrierStop-2-s11637-0aef37c57ef92bfb",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-BarrierStop-2-s11637",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-BarrierStop-2-s11637_20261020_233926-1303381d4be7fa28"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-BarrierStop-3-s11738-58280dea90231890",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-BarrierStop-3-s11738",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-BarrierStop-3-s11738_20261020_233945-7ac872184872827c"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-RearEnd-0-s11452-fe32be35a93beefe",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-RearEnd-0-s11452",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-RearEnd-0-s11452_20261020_233852-a14e7d76df9fdaeb"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-RearEnd-1-s11553-75f36603ea88f828",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-RearEnd-1-s11553",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-RearEnd-1-s11553_20261020_233911-ea48ac802b569726"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-RearEnd-2-s11654-ccd4ab09195958f6",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-RearEnd-2-s11654",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-RearEnd-2-s11654_20261020_233930-728fd1aa63c0e162"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-RearEnd-3-s11755-3eb83a028f94760a",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-RearEnd-3-s11755",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-RearEnd-3-s11755_20261020_233949-be1fec51fcd838d7"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-SignalQueue-0-s11401-86b3bc933f2a27df",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-SignalQueue-0-s11401",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-SignalQueue-0-s11401_20261020_233839-c01c18d6e496a802"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-SignalQueue-1-s11502-cc7463c17805a020",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-SignalQueue-1-s11502",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-SignalQueue-1-s11502_20261020_233859-f99b20531188c23c"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-SignalQueue-2-s11603-764046e45c1eed52",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-SignalQueue-2-s11603",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-SignalQueue-2-s11603_20261020_233918-eeb66fbe558af19f"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-SignalQueue-3-s11704-87d4937b9177165d",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-SignalQueue-3-s11704",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-SignalQueue-3-s11704_20261020_233938-a9ccb20e7062b1e7"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-StructureImpact-0-s11469-4595bb62ba039fe4",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-StructureImpact-0-s11469",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-StructureImpact-0-s11469_20261020_233856-d2458a2e01a573a5"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-StructureImpact-1-s11570-94972e1b5f6358dd",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-StructureImpact-1-s11570",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-StructureImpact-1-s11570_20261020_233915-e1a1c293a8251a30"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-StructureImpact-2-s11671-c008a8f12a5b3d03",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-StructureImpact-2-s11671",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-StructureImpact-2-s11671_20261020_233934-c752a7c59f176d9a"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-StructureImpact-3-s11772-9c06eadb12271afc",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-StructureImpact-3-s11772",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-StructureImpact-3-s11772_20261020_233953-344a1ae4fd097bb5"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-TightQueue-0-s11418-45f323e185e8f555",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-TightQueue-0-s11418",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-TightQueue-0-s11418_20261020_233844-d7ba2a162d67238d"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-TightQueue-1-s11519-a593ffd37839a6a4",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-TightQueue-1-s11519",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-TightQueue-1-s11519_20261020_233903-536f133c21486adf"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-TightQueue-2-s11620-da5b6889d307126d",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-TightQueue-2-s11620",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-TightQueue-2-s11620_20261020_233922-92bc5c2dc4fb37d8"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-train-TightQueue-3-s11721-c31d894750e9b64f",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-train-TightQueue-3-s11721",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-train-TightQueue-3-s11721_20261020_233941-787647bc1221bd3b"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-BarrierStop-0-s12536-e50610b35b38c8c1",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-BarrierStop-0-s12536",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-BarrierStop-0-s12536_20261020_234004-9b9f337416a171c1"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-BarrierStop-1-s12637-e0d456c86e4aefb4",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-BarrierStop-1-s12637",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-BarrierStop-1-s12637_20261020_234023-28e5e0f3403ea828"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-RearEnd-0-s12553-0349ea512e4c0274",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-RearEnd-0-s12553",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-RearEnd-0-s12553_20261020_234008-275008f17bc82c2b"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-RearEnd-1-s12654-5fa53fc89ab0a94d",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-RearEnd-1-s12654",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-RearEnd-1-s12654_20261020_234027-4fe7ab24e5eef3d9"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-SignalQueue-0-s12502-1439b22c096e9475",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-SignalQueue-0-s12502",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-SignalQueue-0-s12502_20261020_233957-aa901bba11375999"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-SignalQueue-1-s12603-5cf161b5e15990d3",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-SignalQueue-1-s12603",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-SignalQueue-1-s12603_20261020_234015-e5e3378b2c379136"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-StructureImpact-0-s12570-175f88027703a3b2",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-StructureImpact-0-s12570",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-StructureImpact-0-s12570_20261020_234012-b9722c0aca1164ec"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-StructureImpact-1-s12671-a3f1be24ac90c567",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-StructureImpact-1-s12671",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-StructureImpact-1-s12671_20261020_234031-1489e354f094e1e9"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-TightQueue-0-s12519-257ae07cf7e8be7f",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-TightQueue-0-s12519",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-TightQueue-0-s12519_20261020_234000-419d3bc2054ce637"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "capture-selected-queue-v1-val-TightQueue-1-s12620-1328b05a5b32fb1e",
+      "kind": "capture",
+      "title": "capture-selected-queue-v1-val-TightQueue-1-s12620",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v1-val-TightQueue-1-s12620_20261020_234019-d9c3558d7ea0cd56"
+      ],
+      "file_count": 9,
+      "log_count": 8
+    },
+    {
+      "record_id": "dataset-geumchon-detail-full-f262dace73f0ab61",
+      "kind": "dataset",
+      "title": "dataset-geumchon-detail-full",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-geumchon-detail-test-9403_20261020_230204-f5dbf966f3ca8b5c",
+        "capture-geumchon-detail-train-7201_20261020_230126-5eadeb49d6b9b44e",
+        "capture-geumchon-detail-val-8302_20261020_230156-9ecb1171737239f3"
+      ],
+      "file_count": 370,
+      "log_count": 0,
+      "split_counts": {
+        "train": 120,
+        "val": 32,
+        "test": 32
+      }
+    },
+    {
+      "record_id": "labels-geumchon-detail-full-train-000-b9efb09b7f9da2e3",
+      "kind": "dataset",
+      "title": "labels-geumchon-detail-full-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-detail-full-f262dace73f0ab61"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-detail-full-train-001-a0a6de7717f00197",
+      "kind": "dataset",
+      "title": "labels-geumchon-detail-full-train-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-detail-full-f262dace73f0ab61"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-detail-full-val-000-c6ca73d011e31954",
+      "kind": "dataset",
+      "title": "labels-geumchon-detail-full-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-detail-full-f262dace73f0ab61"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-detail-full-test-000-2107ee493a46abcd",
+      "kind": "dataset",
+      "title": "labels-geumchon-detail-full-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-detail-full-f262dace73f0ab61"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-geumchon-v1-fcfb37577c394885",
+      "kind": "dataset",
+      "title": "dataset-geumchon-v1",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-geumchon-v1-test-8403_20261020_224603-2dc8e7f2436e4f57",
+        "capture-geumchon-v1-train-6201_20261020_224509-fd4ebc5e1b96066f",
+        "capture-geumchon-v1-val-7302_20261020_224555-0c7c47ac811e6ccc"
+      ],
+      "file_count": 676,
+      "log_count": 0,
+      "split_counts": {
+        "train": 240,
+        "val": 48,
+        "test": 48
+      }
+    },
+    {
+      "record_id": "labels-geumchon-v1-train-000-395a6d9b24ee1b4a",
+      "kind": "dataset",
+      "title": "labels-geumchon-v1-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-v1-fcfb37577c394885"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-v1-train-001-01ce573f3a84248b",
+      "kind": "dataset",
+      "title": "labels-geumchon-v1-train-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-v1-fcfb37577c394885"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-v1-train-002-cd7da096b39e0031",
+      "kind": "dataset",
+      "title": "labels-geumchon-v1-train-002",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-v1-fcfb37577c394885"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-v1-val-000-77a928045c04afdc",
+      "kind": "dataset",
+      "title": "labels-geumchon-v1-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-v1-fcfb37577c394885"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-v1-test-000-f72031010b1963ac",
+      "kind": "dataset",
+      "title": "labels-geumchon-v1-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-v1-fcfb37577c394885"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-queue-objects-full-9a3d7426871f613f",
+      "kind": "dataset",
+      "title": "dataset-queue-objects-full",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-selected-queue-v1-test-BarrierStop-0-s13637-f05c3a4adb750289",
+        "capture-selected-queue-v1-test-BarrierStop-1-s13738-a39959c30120da26",
+        "capture-selected-queue-v1-test-RearEnd-0-s13654-6d3e4aa4f8298233",
+        "capture-selected-queue-v1-test-RearEnd-1-s13755-b1be4186fdbd91a1",
+        "capture-selected-queue-v1-test-SignalQueue-0-s13603-3d285d59a67ea154",
+        "capture-selected-queue-v1-test-SignalQueue-1-s13704-550d71e75d8dc2e3",
+        "capture-selected-queue-v1-test-StructureImpact-0-s13671-c6129e8b67de8ae9",
+        "capture-selected-queue-v1-test-StructureImpact-1-s13772-5fd34d7dfca0b7c0",
+        "capture-selected-queue-v1-test-TightQueue-0-s13620-4272b7695fc4b8b8",
+        "capture-selected-queue-v1-test-TightQueue-1-s13721-36d93dc01be6694a",
+        "capture-selected-queue-v1-train-BarrierStop-0-s11435-5c7941943182da0d",
+        "capture-selected-queue-v1-train-BarrierStop-1-s11536-5a362de5de723c82",
+        "capture-selected-queue-v1-train-BarrierStop-2-s11637-0aef37c57ef92bfb",
+        "capture-selected-queue-v1-train-BarrierStop-3-s11738-58280dea90231890",
+        "capture-selected-queue-v1-train-RearEnd-0-s11452-fe32be35a93beefe",
+        "capture-selected-queue-v1-train-RearEnd-1-s11553-75f36603ea88f828",
+        "capture-selected-queue-v1-train-RearEnd-2-s11654-ccd4ab09195958f6",
+        "capture-selected-queue-v1-train-RearEnd-3-s11755-3eb83a028f94760a",
+        "capture-selected-queue-v1-train-SignalQueue-0-s11401-86b3bc933f2a27df",
+        "capture-selected-queue-v1-train-SignalQueue-1-s11502-cc7463c17805a020",
+        "capture-selected-queue-v1-train-SignalQueue-2-s11603-764046e45c1eed52",
+        "capture-selected-queue-v1-train-SignalQueue-3-s11704-87d4937b9177165d",
+        "capture-selected-queue-v1-train-StructureImpact-0-s11469-4595bb62ba039fe4",
+        "capture-selected-queue-v1-train-StructureImpact-1-s11570-94972e1b5f6358dd",
+        "capture-selected-queue-v1-train-StructureImpact-2-s11671-c008a8f12a5b3d03",
+        "capture-selected-queue-v1-train-StructureImpact-3-s11772-9c06eadb12271afc",
+        "capture-selected-queue-v1-train-TightQueue-0-s11418-45f323e185e8f555",
+        "capture-selected-queue-v1-train-TightQueue-1-s11519-a593ffd37839a6a4",
+        "capture-selected-queue-v1-train-TightQueue-2-s11620-da5b6889d307126d",
+        "capture-selected-queue-v1-train-TightQueue-3-s11721-c31d894750e9b64f",
+        "capture-selected-queue-v1-val-BarrierStop-0-s12536-e50610b35b38c8c1",
+        "capture-selected-queue-v1-val-BarrierStop-1-s12637-e0d456c86e4aefb4",
+        "capture-selected-queue-v1-val-RearEnd-0-s12553-0349ea512e4c0274",
+        "capture-selected-queue-v1-val-RearEnd-1-s12654-5fa53fc89ab0a94d",
+        "capture-selected-queue-v1-val-SignalQueue-0-s12502-1439b22c096e9475",
+        "capture-selected-queue-v1-val-SignalQueue-1-s12603-5cf161b5e15990d3",
+        "capture-selected-queue-v1-val-StructureImpact-0-s12570-175f88027703a3b2",
+        "capture-selected-queue-v1-val-StructureImpact-1-s12671-a3f1be24ac90c567",
+        "capture-selected-queue-v1-val-TightQueue-0-s12519-257ae07cf7e8be7f",
+        "capture-selected-queue-v1-val-TightQueue-1-s12620-1328b05a5b32fb1e"
+      ],
+      "file_count": 642,
+      "log_count": 0,
+      "split_counts": {
+        "train": 160,
+        "val": 80,
+        "test": 80
+      }
+    },
+    {
+      "record_id": "labels-queue-objects-full-train-000-afe863aefddf91f0",
+      "kind": "dataset",
+      "title": "labels-queue-objects-full-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-full-9a3d7426871f613f"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-full-train-001-3c1c608e646199e4",
+      "kind": "dataset",
+      "title": "labels-queue-objects-full-train-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-full-9a3d7426871f613f"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-full-val-000-e25c0edf7e5ddd11",
+      "kind": "dataset",
+      "title": "labels-queue-objects-full-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-full-9a3d7426871f613f"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-full-test-000-be3b13feebfbb5d5",
+      "kind": "dataset",
+      "title": "labels-queue-objects-full-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-full-9a3d7426871f613f"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-scenario-prototype-da97978b582f2578",
+      "kind": "dataset",
+      "title": "dataset-scenario-prototype",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "capture-scenario-test-330_20261018_174144-98f2dc1a7c5fc19b",
+        "capture-scenario-train-110_20261018_173931-d7994bbdaead2cb4",
+        "capture-scenario-val-220_20261018_174117-677a2720469f0693"
+      ],
+      "file_count": 258,
+      "log_count": 0,
+      "split_counts": {
+        "train": 79,
+        "val": 24,
+        "test": 24
+      }
+    },
+    {
+      "record_id": "labels-scenario-prototype-train-000-b725c185309993da",
+      "kind": "dataset",
+      "title": "labels-scenario-prototype-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-prototype-da97978b582f2578"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-scenario-prototype-val-000-ef28c70e3ed3f1b5",
+      "kind": "dataset",
+      "title": "labels-scenario-prototype-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-prototype-da97978b582f2578"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-scenario-prototype-test-000-34d76de219b5c002",
+      "kind": "dataset",
+      "title": "labels-scenario-prototype-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-prototype-da97978b582f2578"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-scenario-safe-2636512dc451f151",
+      "kind": "dataset",
+      "title": "dataset-scenario-safe",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-scenario-safe-test-955_20261018_180426-07ea20f25752ac0e",
+        "capture-scenario-safe-train-733_20261018_180415-f88da59e32aff460",
+        "capture-scenario-safe-val-844_20261018_180425-4955392e32935e05"
+      ],
+      "file_count": 197,
+      "log_count": 0,
+      "split_counts": {
+        "train": 64,
+        "val": 16,
+        "test": 16
+      }
+    },
+    {
+      "record_id": "labels-scenario-safe-train-000-d824925c6ea1f42f",
+      "kind": "dataset",
+      "title": "labels-scenario-safe-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-safe-2636512dc451f151"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-scenario-safe-val-000-5e2655af5369c366",
+      "kind": "dataset",
+      "title": "labels-scenario-safe-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-safe-2636512dc451f151"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-scenario-safe-test-000-55f6b53c688ffa04",
+      "kind": "dataset",
+      "title": "labels-scenario-safe-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-safe-2636512dc451f151"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-synthetic-v2-057a24d71b03a338",
+      "kind": "dataset",
+      "title": "dataset-synthetic-v2",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-synthetic-v2-test-4303_20261020_221836-97822b432076d7ca",
+        "capture-synthetic-v2-train-2101_20261020_221800-c04ac00fd2ecfe6d",
+        "capture-synthetic-v2-val-3202_20261020_221830-26f5ae9924e6ad9c"
+      ],
+      "file_count": 452,
+      "log_count": 0,
+      "split_counts": {
+        "train": 160,
+        "val": 32,
+        "test": 32
+      }
+    },
+    {
+      "record_id": "labels-synthetic-v2-train-000-ad6f877334ae1aa0",
+      "kind": "dataset",
+      "title": "labels-synthetic-v2-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-synthetic-v2-057a24d71b03a338"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-synthetic-v2-train-001-69587397fdead2f0",
+      "kind": "dataset",
+      "title": "labels-synthetic-v2-train-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-synthetic-v2-057a24d71b03a338"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-synthetic-v2-val-000-7d7b98996af55b36",
+      "kind": "dataset",
+      "title": "labels-synthetic-v2-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-synthetic-v2-057a24d71b03a338"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-synthetic-v2-test-000-16d3c776aa47ea1d",
+      "kind": "dataset",
+      "title": "labels-synthetic-v2-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-synthetic-v2-057a24d71b03a338"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-geumchon-focus-dc999be0747fe6f9",
+      "kind": "dataset",
+      "title": "dataset-geumchon-focus",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-detail-full-f262dace73f0ab61",
+        "dataset-geumchon-v1-fcfb37577c394885"
+      ],
+      "file_count": 1044,
+      "log_count": 0,
+      "split_counts": {
+        "train": 360,
+        "val": 80,
+        "test": 80
+      }
+    },
+    {
+      "record_id": "labels-geumchon-focus-train-000-adaedd19fd2a1629",
+      "kind": "dataset",
+      "title": "labels-geumchon-focus-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-focus-train-001-81f07eef84362df5",
+      "kind": "dataset",
+      "title": "labels-geumchon-focus-train-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-focus-train-002-2ee135b9671fff6d",
+      "kind": "dataset",
+      "title": "labels-geumchon-focus-train-002",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-focus-train-003-dfb5b1437de8e1f9",
+      "kind": "dataset",
+      "title": "labels-geumchon-focus-train-003",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-focus-val-000-440ad6d0a25d0af4",
+      "kind": "dataset",
+      "title": "labels-geumchon-focus-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-geumchon-focus-test-000-f7144685a76dac39",
+      "kind": "dataset",
+      "title": "labels-geumchon-focus-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-queue-retention-4ba5f39fcf446ac2",
+      "kind": "dataset",
+      "title": "dataset-queue-retention",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9"
+      ],
+      "file_count": 361,
+      "log_count": 0,
+      "split_counts": {
+        "train": 100,
+        "val": 40,
+        "test": 40
+      }
+    },
+    {
+      "record_id": "labels-queue-retention-train-000-2d6aa4761630d345",
+      "kind": "dataset",
+      "title": "labels-queue-retention-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-retention-4ba5f39fcf446ac2"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-retention-val-000-bdf377749a67b7dc",
+      "kind": "dataset",
+      "title": "labels-queue-retention-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-retention-4ba5f39fcf446ac2"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-retention-test-000-d864909d514601ef",
+      "kind": "dataset",
+      "title": "labels-queue-retention-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-retention-4ba5f39fcf446ac2"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-queue-objects-focus-6e3c6f92330c7a50",
+      "kind": "dataset",
+      "title": "dataset-queue-objects-focus",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-full-9a3d7426871f613f",
+        "dataset-queue-retention-4ba5f39fcf446ac2"
+      ],
+      "file_count": 1004,
+      "log_count": 0,
+      "split_counts": {
+        "train": 260,
+        "val": 120,
+        "test": 120
+      }
+    },
+    {
+      "record_id": "labels-queue-objects-focus-train-000-bd36b8dfd91c8b8c",
+      "kind": "dataset",
+      "title": "labels-queue-objects-focus-train-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-focus-train-001-2ab8eba10e1c87b3",
+      "kind": "dataset",
+      "title": "labels-queue-objects-focus-train-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-focus-train-002-c2e9a985d6723827",
+      "kind": "dataset",
+      "title": "labels-queue-objects-focus-train-002",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-focus-val-000-e680561d3081aedb",
+      "kind": "dataset",
+      "title": "labels-queue-objects-focus-val-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-focus-val-001-d825929af0e0d5ef",
+      "kind": "dataset",
+      "title": "labels-queue-objects-focus-val-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-focus-test-000-aa1e08bd10fb8553",
+      "kind": "dataset",
+      "title": "labels-queue-objects-focus-test-000",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "labels-queue-objects-focus-test-001-bff37509de5e9c22",
+      "kind": "dataset",
+      "title": "labels-queue-objects-focus-test-001",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50"
+      ],
+      "file_count": 0,
+      "log_count": 0
+    },
+    {
+      "record_id": "model-yolo11n-coco-482648f0162ae8e1",
+      "kind": "model",
+      "title": "model-yolo11n-coco",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [],
+      "file_count": 1,
+      "log_count": 0
+    },
+    {
+      "record_id": "training-train_20261018_174338_803038-road-prototype-cbc2e8ad3a800857",
+      "kind": "training",
+      "title": "training-train_20261018_174338_803038-road-prototype",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-prototype-da97978b582f2578",
+        "model-yolo11n-coco-482648f0162ae8e1"
+      ],
+      "file_count": 23,
+      "log_count": 31
+    },
+    {
+      "record_id": "model-road-prototype-667708cdfae1-7b8866c768cf72b6",
+      "kind": "model",
+      "title": "model-road-prototype-667708cdfae1",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "training-train_20261018_174338_803038-road-prototype-cbc2e8ad3a800857"
+      ],
+      "file_count": 1,
+      "log_count": 0
+    },
+    {
+      "record_id": "training-train_20261018_180558_055177-road-visible-bd0f4df8cac618a9",
+      "kind": "training",
+      "title": "training-train_20261018_180558_055177-road-visible",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-scenario-safe-2636512dc451f151",
+        "model-road-prototype-667708cdfae1-7b8866c768cf72b6"
+      ],
+      "file_count": 23,
+      "log_count": 13
+    },
+    {
+      "record_id": "model-road-visible-8e2e0be792f5-c4adcf7973f334ce",
+      "kind": "model",
+      "title": "model-road-visible-8e2e0be792f5",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "training-train_20261018_180558_055177-road-visible-bd0f4df8cac618a9"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "training-train_20261020_222033_566866-synthetic-v2-69f831a39a519803",
+      "kind": "training",
+      "title": "training-train_20261020_222033_566866-synthetic-v2",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-synthetic-v2-057a24d71b03a338",
+        "model-yolo11n-coco-482648f0162ae8e1"
+      ],
+      "file_count": 23,
+      "log_count": 21
+    },
+    {
+      "record_id": "model-synthetic-v2-7c444f7f3b0d-c58c15323ba23c5e",
+      "kind": "model",
+      "title": "model-synthetic-v2-7c444f7f3b0d",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "training-train_20261020_222033_566866-synthetic-v2-69f831a39a519803"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "training-train_20261020_224704_460742-geumchon-v1-9bbe88f4d8c2452e",
+      "kind": "training",
+      "title": "training-train_20261020_224704_460742-geumchon-v1",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-v1-fcfb37577c394885",
+        "model-synthetic-v2-7c444f7f3b0d-c58c15323ba23c5e"
+      ],
+      "file_count": 25,
+      "log_count": 21
+    },
+    {
+      "record_id": "model-geumchon-v1-4783e1641628-3660b8f61190ee22",
+      "kind": "model",
+      "title": "model-geumchon-v1-4783e1641628",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "training-train_20261020_224704_460742-geumchon-v1-9bbe88f4d8c2452e"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "training-train_20261020_230929_923687-geumchon-focus-aa2cba18a25bc932",
+      "kind": "training",
+      "title": "training-train_20261020_230929_923687-geumchon-focus",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-geumchon-focus-dc999be0747fe6f9",
+        "model-geumchon-v1-4783e1641628-3660b8f61190ee22"
+      ],
+      "file_count": 22,
+      "log_count": 9
+    },
+    {
+      "record_id": "model-geumchon-focus-65fc0eb37fd9-a67c7d13b7775938",
+      "kind": "model",
+      "title": "model-geumchon-focus-65fc0eb37fd9",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "training-train_20261020_230929_923687-geumchon-focus-aa2cba18a25bc932"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "training-train_20261020_234855_005366-queue-occlusion-18f3db681256cfcb",
+      "kind": "training",
+      "title": "training-train_20261020_234855_005366-queue-occlusion",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-queue-objects-focus-6e3c6f92330c7a50",
+        "model-geumchon-focus-65fc0eb37fd9-a67c7d13b7775938"
+      ],
+      "file_count": 22,
+      "log_count": 9
+    },
+    {
+      "record_id": "model-queue-occlusion-d9b55172132a-890f279cb3384356",
+      "kind": "model",
+      "title": "model-queue-occlusion-d9b55172132a",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "training-train_20261020_234855_005366-queue-occlusion-18f3db681256cfcb"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "dataset-stop-zone-temporal-c680f484b91dd5c3",
+      "kind": "dataset",
+      "title": "dataset-stop-zone-temporal",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "capture-queue-v2-test-BarrierStop-0-s13637_20261021_001305-b77d7d279478e65f",
+        "capture-queue-v2-test-BarrierStop-1-s13738_20261021_001325-51e22f973e685ebe",
+        "capture-queue-v2-test-RearEnd-0-s13654_20261021_001309-e6bbc6e8918609f0",
+        "capture-queue-v2-test-RearEnd-1-s13755_20261021_001329-4bc150e97daa522f",
+        "capture-queue-v2-test-SignalQueue-0-s13603_20261021_001258-278ba2152c5a37b1",
+        "capture-queue-v2-test-SignalQueue-1-s13704_20261021_001317-7eb6bc3c3f7b4c3d",
+        "capture-queue-v2-test-StructureImpact-0-s13671_20261021_001313-a70485e0043d7334",
+        "capture-queue-v2-test-StructureImpact-1-s13772_20261021_001333-c89268f745e1305a",
+        "capture-queue-v2-test-TightQueue-0-s13620_20261021_001302-865820bf6df5f7eb",
+        "capture-queue-v2-test-TightQueue-1-s13721_20261021_001321-f28a268cf8c12726",
+        "capture-queue-v2-train-BarrierStop-0-s11435_20261021_001112-8df13e1cc66728ec",
+        "capture-queue-v2-train-BarrierStop-1-s11536_20261021_001131-4e4cbb47f133b8d9",
+        "capture-queue-v2-train-BarrierStop-2-s11637_20261021_001150-be55e663a60fd1e8",
+        "capture-queue-v2-train-BarrierStop-3-s11738_20261021_001209-4cf488b60618b049",
+        "capture-queue-v2-train-RearEnd-0-s11452_20261021_001116-ee25c48c17e4493e",
+        "capture-queue-v2-train-RearEnd-1-s11553_20261021_001134-47066aa82ae5e7f1",
+        "capture-queue-v2-train-RearEnd-2-s11654_20261021_001154-776680b5aa2aa03e",
+        "capture-queue-v2-train-RearEnd-3-s11755_20261021_001213-877ed17e51b5021f",
+        "capture-queue-v2-train-SignalQueue-0-s11401_20261021_001103-2a8643afbfa52746",
+        "capture-queue-v2-train-SignalQueue-1-s11502_20261021_001123-56730c0fa6c13eee",
+        "capture-queue-v2-train-SignalQueue-2-s11603_20261021_001142-a79aec54879a88b5",
+        "capture-queue-v2-train-SignalQueue-3-s11704_20261021_001201-8f824cd082ccd3b4",
+        "capture-queue-v2-train-StructureImpact-0-s11469_20261021_001120-b88d75d29adf77a6",
+        "capture-queue-v2-train-StructureImpact-1-s11570_20261021_001138-3c267240a4eece99",
+        "capture-queue-v2-train-StructureImpact-2-s11671_20261021_001158-76cace4dbf0e2ece",
+        "capture-queue-v2-train-StructureImpact-3-s11772_20261021_001217-67770476fc4ba226",
+        "capture-queue-v2-train-TightQueue-0-s11418_20261021_001108-bb4fac7fce902e22",
+        "capture-queue-v2-train-TightQueue-1-s11519_20261021_001127-6a663d606246d1fd",
+        "capture-queue-v2-train-TightQueue-2-s11620_20261021_001146-8b5eb9ebf4aa7aa9",
+        "capture-queue-v2-train-TightQueue-3-s11721_20261021_001205-2e76d1d0eedc02ce",
+        "capture-queue-v2-val-BarrierStop-0-s12536_20261021_001228-51b3860f534a2332",
+        "capture-queue-v2-val-BarrierStop-1-s12637_20261021_001247-e78028078e98a38c",
+        "capture-queue-v2-val-RearEnd-0-s12553_20261021_001232-fc2aafe009387a94",
+        "capture-queue-v2-val-RearEnd-1-s12654_20261021_001250-088c1b4e4f044f4f",
+        "capture-queue-v2-val-SignalQueue-0-s12502_20261021_001220-5271218811d4596b",
+        "capture-queue-v2-val-SignalQueue-1-s12603_20261021_001239-b6a0f91d415a32cb",
+        "capture-queue-v2-val-StructureImpact-0-s12570_20261021_001235-c4335cea4895b0d4",
+        "capture-queue-v2-val-StructureImpact-1-s12671_20261021_001254-783f2b69d53b1e41",
+        "capture-queue-v2-val-TightQueue-0-s12519_20261021_001224-fcb77c4d4ac2221c",
+        "capture-queue-v2-val-TightQueue-1-s12620_20261021_001243-937e341fb49dba3b"
+      ],
+      "file_count": 2,
+      "log_count": 351
+    },
+    {
+      "record_id": "training-stop-zone-final-12cca2c1fd5f56fe",
+      "kind": "training",
+      "title": "training-stop-zone-final",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "dataset-stop-zone-temporal-c680f484b91dd5c3",
+        "model-queue-occlusion-d9b55172132a-890f279cb3384356"
+      ],
+      "file_count": 1,
+      "log_count": 0
+    },
+    {
+      "record_id": "model-stop-zone-collision-final-193bae2318b9dbf6",
+      "kind": "model",
+      "title": "model-stop-zone-collision-final",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "training-stop-zone-final-12cca2c1fd5f56fe"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "model-stop-zone-collision-v2-1561baaeff89ec71",
+      "kind": "model",
+      "title": "model-stop-zone-collision-v2",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "model-queue-occlusion-d9b55172132a-890f279cb3384356"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "model-stop-zone-collision-f24ce661273490e9",
+      "kind": "model",
+      "title": "model-stop-zone-collision",
+      "data_origin": "synthetic",
+      "status": "draft",
+      "parents": [
+        "model-queue-occlusion-d9b55172132a-890f279cb3384356"
+      ],
+      "file_count": 2,
+      "log_count": 0
+    },
+    {
+      "record_id": "capture-real-geumchon-20261022-51e3941c5b0487a5",
+      "kind": "capture",
+      "title": "capture-real-geumchon-20261022",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [],
+      "file_count": 611,
+      "log_count": 600
+    },
+    {
+      "record_id": "capture-real-geumchon-day-20261019-4ea3fecdc04feda0",
+      "kind": "capture",
+      "title": "capture-real-geumchon-day-20261019",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [],
+      "file_count": 16,
+      "log_count": 0
+    },
+    {
+      "record_id": "detection-real-geumchon-synthetic-live-d511fa3d42bd2780",
+      "kind": "detection",
+      "title": "detection-real-geumchon-synthetic-live",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [
+        "capture-real-geumchon-20261022-51e3941c5b0487a5",
+        "model-queue-occlusion-d9b55172132a-890f279cb3384356"
+      ],
+      "file_count": 29,
+      "log_count": 600
+    },
+    {
+      "record_id": "detection-real-geumchon-coco-live-fc9b83558ea00938",
+      "kind": "detection",
+      "title": "detection-real-geumchon-coco-live",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [
+        "capture-real-geumchon-20261022-51e3941c5b0487a5",
+        "model-yolo11n-coco-482648f0162ae8e1"
+      ],
+      "file_count": 29,
+      "log_count": 600
+    },
+    {
+      "record_id": "detection-real-geumchon-synthetic-model-2d0bc069cc980ba5",
+      "kind": "detection",
+      "title": "detection-real-geumchon-synthetic-model",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [
+        "capture-real-geumchon-day-20261019-4ea3fecdc04feda0",
+        "model-queue-occlusion-d9b55172132a-890f279cb3384356"
+      ],
+      "file_count": 19,
+      "log_count": 16
+    },
+    {
+      "record_id": "detection-real-geumchon-coco-baseline-3d6fe38f36e5a7e1",
+      "kind": "detection",
+      "title": "detection-real-geumchon-coco-baseline",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [
+        "capture-real-geumchon-day-20261019-4ea3fecdc04feda0",
+        "model-yolo11n-coco-482648f0162ae8e1"
+      ],
+      "file_count": 19,
+      "log_count": 16
+    },
+    {
+      "record_id": "evaluation-synthetic-v2-7e2b8f9fe0fd81ce",
+      "kind": "evaluation",
+      "title": "evaluation-synthetic-v2",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "model-synthetic-v2-7c444f7f3b0d-c58c15323ba23c5e"
+      ],
+      "file_count": 4,
+      "log_count": 4
+    },
+    {
+      "record_id": "evaluation-geumchon-v1-2395a714198dcc75",
+      "kind": "evaluation",
+      "title": "evaluation-geumchon-v1",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "model-geumchon-focus-65fc0eb37fd9-a67c7d13b7775938"
+      ],
+      "file_count": 9,
+      "log_count": 6
+    },
+    {
+      "record_id": "evaluation-stop-zone-v2-b20ea0ebea8626fc",
+      "kind": "evaluation",
+      "title": "evaluation-stop-zone-v2",
+      "data_origin": "synthetic",
+      "status": "completed",
+      "parents": [
+        "model-stop-zone-collision-v2-1561baaeff89ec71"
+      ],
+      "file_count": 184,
+      "log_count": 1977
+    },
+    {
+      "record_id": "evaluation-real-cctv-20261022-ed7e0f7b9f51bf54",
+      "kind": "evaluation",
+      "title": "evaluation-real-cctv-20261022",
+      "data_origin": "real",
+      "status": "completed",
+      "parents": [
+        "model-queue-occlusion-d9b55172132a-890f279cb3384356"
+      ],
+      "file_count": 10,
+      "log_count": 0
+    }
+  ]
+}

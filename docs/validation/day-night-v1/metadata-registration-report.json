@@ -1,0 +1,23 @@
+{
+  "committed": true,
+  "records": 78,
+  "new_records": 78,
+  "file_references": 8429,
+  "log_lines": 10855,
+  "parent_links": 164,
+  "exact_yolo_labels": 1700,
+  "label_objects": 5004,
+  "records_by_kind": {
+    "simulation": 1,
+    "capture": 49,
+    "dataset": 23,
+    "training": 2,
+    "model": 2,
+    "evaluation": 1
+  },
+  "readback_verified": true,
+  "image_video_model_bytes_uploaded": false,
+  "source_root": "D:\\Capston disign",
+  "schema_changed": false,
+  "manifest_sha256": "735652e7677af472ed4d5ed5800f7b95c9bfd2897cbc54ee77d9a433280992e4"
+}

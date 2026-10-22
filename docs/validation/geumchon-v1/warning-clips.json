@@ -1,0 +1,80 @@
+{
+  "synthetic_only": true,
+  "weights": "detection/models/simulation-cctv.pt",
+  "imgsz": 640,
+  "context": "detection/config/geumchon-city-lab.context.json",
+  "focus": [
+    0.319444444,
+    0.270833333,
+    0.611111111,
+    0.5625
+  ],
+  "cases": {
+    "Normal": {
+      "source": "simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Normal_20261020_230542",
+      "expected": null,
+      "alerts": {},
+      "passed": true,
+      "frames": 90
+    },
+    "Pothole": {
+      "source": "simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Pothole_20261020_230553",
+      "expected": "road_damage",
+      "alerts": {
+        "road_damage": 2
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "FallingDebris": {
+      "source": "simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-FallingDebris_20261020_230602",
+      "expected": "road_debris",
+      "alerts": {
+        "road_debris": 2
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "VehicleCollision": {
+      "source": "simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-VehicleCollision_20261020_230611",
+      "expected": "suspected_vehicle_collision",
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "StructureCollision": {
+      "source": "simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-StructureCollision_20261020_230622",
+      "expected": "suspected_vehicle_structure_collision",
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "frames": 90
+    }
+  },
+  "passed": true,
+  "camera": {
+    "position": [
+      -17.0,
+      5.017182350158691,
+      1.8331292867660522
+    ],
+    "rotation_euler_deg": [
+      14.164289474487305,
+      98.99268341064453,
+      1.9437322616577148
+    ],
+    "vertical_fov_deg": 38.01511764526367,
+    "image_width": 1440,
+    "image_height": 960
+  },
+  "warning_validation": "Same 450 detector records replayed after adding a continuing-contact collision latch; detector and weights unchanged",
+  "warning_replay": "D:\\Capston disign\\Computer-vision\\runs\\geumchon-v1\\final-replay",
+  "tests": {
+    "detection": 37,
+    "mapping": 26
+  },
+  "model_sha256": "65fc0eb37fd99c6294746a602533440e7bd25c39c4b3dd435df8521c5254f3b0"
+}

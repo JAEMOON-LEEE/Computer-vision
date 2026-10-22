@@ -1,0 +1,143 @@
+{
+  "completed_at": "2026-10-22T14:43:40.129327+00:00",
+  "evaluation_record": "evaluation-revalidation-20261022-01-502cc9ef432688ac",
+  "binary_storage": {
+    "committed": true,
+    "record_id": "night-v1-binary-archive-ecb3ea8323aa35480d903bd0",
+    "new_record": true,
+    "large_object_oid": 18096,
+    "archive_sha256": "ecb3ea8323aa35480d903bd0cd060db9dd325fbf5161310cc2695f3d54b850bf",
+    "archive_bytes": 802888,
+    "original_files": 229,
+    "file_bytes_uploaded": true,
+    "fresh_connection_binary_hash_verified": true,
+    "schema_changed": false,
+    "public_grants_added": false
+  },
+  "restored_files": 229,
+  "restore": {
+    "archive_sha256": "ecb3ea8323aa35480d903bd0cd060db9dd325fbf5161310cc2695f3d54b850bf",
+    "member_hashes_verified": 229,
+    "destination": "D:\\Capston disign\\Computer-vision\\runs\\revalidation-20261022-01\\database\\restored-results.zip.xz",
+    "extracted_to": "D:\\Capston disign\\Computer-vision\\runs\\revalidation-20261022-01\\database\\restored-results"
+  },
+  "metadata_registration": {
+    "committed": true,
+    "records": 1,
+    "new_records": 1,
+    "file_references": 229,
+    "log_lines": 0,
+    "parent_links": 3,
+    "exact_yolo_labels": 0,
+    "label_objects": 0,
+    "records_by_kind": {
+      "evaluation": 1
+    },
+    "readback_verified": true,
+    "image_video_model_bytes_uploaded": false,
+    "source_root": "D:\\Capston disign",
+    "schema_changed": false,
+    "manifest_sha256": "e1710b20b62f6bb9953de1703280a20f04c86ff3e7f608de647460f8fe650a7c"
+  },
+  "models_unchanged": true,
+  "all_warning_checks_passed": false,
+  "all_same_predictions": true,
+  "original_data_storage_revalidation": {
+    "checked_at": "2026-10-22T14:39:19.964052+00:00",
+    "d_root": "D:\\Capston disign",
+    "archives": [
+      {
+        "record_id": "night-v1-binary-archive-a1c5db40f6f2a3e1b295a1cd",
+        "original_files": 7992,
+        "local_file_mismatches": [],
+        "d_archive_hash_verified": true,
+        "fresh_remote_binary_hash_verified": true,
+        "fresh_remote_file_index_verified": true,
+        "archive_bytes": 318306328,
+        "verification_method": "All remote 1-MiB block SHA256 values compared with D archive; full D archive SHA256 also verified",
+        "remote_blocks_verified": 304
+      },
+      {
+        "record_id": "night-v1-binary-archive-f9af09938cf2fe438d04bc8f",
+        "original_files": 935,
+        "local_file_mismatches": [],
+        "d_archive_hash_verified": true,
+        "fresh_remote_binary_hash_verified": true,
+        "fresh_remote_file_index_verified": true,
+        "archive_bytes": 19320096,
+        "verification_method": "All remote 1-MiB block SHA256 values compared with D archive; full D archive SHA256 also verified",
+        "remote_blocks_verified": 19
+      }
+    ],
+    "moved_files": [
+      {
+        "source": "C:\\Users\\soonj\\Documents\\카카오톡 받은 파일\\1팀_이정배_45709_1035549_[서식2] 캡스톤디자인 과제 신청서 양식(신청서, 계획서 등).pdf",
+        "destination": "D:\\Capston disign\\참고자료\\신청서\\1팀_이정배_45709_1035549_[서식2] 캡스톤디자인 과제 신청서 양식(신청서, 계획서 등).pdf",
+        "c_copy_exists": false,
+        "d_sha256_matches": true
+      },
+      {
+        "source": "C:\\Users\\soonj\\.codex\\attachments\\e129c313-8145-4e8f-9c8c-ade60b9efa0c\\붙여넣은 텍스트.txt",
+        "destination": "D:\\Capston disign\\참고자료\\대화기록\\붙여넣은 텍스트.txt",
+        "c_copy_exists": false,
+        "d_sha256_matches": true
+      },
+      {
+        "source": "C:\\Users\\soonj\\AppData\\Local\\Temp\\codex-clipboard-c5ba8a85-0b03-4815-b9b6-ba8c888f2c96.png",
+        "destination": "D:\\Capston disign\\참고자료\\스크린샷\\codex-clipboard-c5ba8a85-0b03-4815-b9b6-ba8c888f2c96.png",
+        "c_copy_exists": false,
+        "d_sha256_matches": true
+      },
+      {
+        "source": "C:\\Users\\soonj\\Downloads\\캡스톤디자인 제출 서류 양식.zip",
+        "destination": "D:\\Capston disign\\참고자료\\서식원본\\캡스톤디자인 제출 서류 양식.zip",
+        "c_copy_exists": false,
+        "d_sha256_matches": true
+      },
+      {
+        "source": "C:\\Users\\soonj\\.codex\\visualizations\\2026\\10\\16\\01a1435b-674e-77e0-888a-a66adee6f33c\\twinsight-readme-github.png",
+        "destination": "D:\\Capston disign\\참고자료\\스크린샷\\twinsight-readme-github.png",
+        "c_copy_exists": false,
+        "d_sha256_matches": true
+      },
+      {
+        "source": "C:\\Users\\soonj\\.codex\\visualizations\\2026\\10\\16\\01a1435b-674e-77e0-888a-a66adee6f33c\\tmp\\pdfs\\twinsight-page-3.png",
+        "destination": "D:\\Capston disign\\참고자료\\신청서\\미리보기\\twinsight-page-3.png",
+        "c_copy_exists": false,
+        "d_sha256_matches": true
+      },
+      {
+        "source": "C:\\Users\\soonj\\.codex\\visualizations\\2026\\10\\16\\01a1435b-674e-77e0-888a-a66adee6f33c\\tmp\\pdfs\\twinsight-page-4.png",
+        "destination": "D:\\Capston disign\\참고자료\\신청서\\미리보기\\twinsight-page-4.png",
+        "c_copy_exists": false,
+        "d_sha256_matches": true
+      }
+    ],
+    "known_C_project_roots": [
+      {
+        "path": "C:/Users/soonj/Documents/Capston disign",
+        "exists": false
+      },
+      {
+        "path": "C:/Users/soonj/Computer-vision",
+        "exists": false
+      },
+      {
+        "path": "C:/Users/soonj/Downloads/Computer-vision",
+        "exists": false
+      },
+      {
+        "path": "C:/Users/soonj/AppData/Local/Temp/TwinSightExport",
+        "exists": false
+      },
+      {
+        "path": "C:/Users/soonj/AppData/Local/Temp/night-v1",
+        "exists": false
+      }
+    ],
+    "known_C_copies_absent": true,
+    "all_d_hashes_match": true,
+    "scope": "Known project migration sources and archived experiment files; not an assertion about every C-drive file"
+  },
+  "scope": "New verification outputs stored as original bytes; registration receipt JSON stored exactly in catalog details; no GitHub upload requested."
+}

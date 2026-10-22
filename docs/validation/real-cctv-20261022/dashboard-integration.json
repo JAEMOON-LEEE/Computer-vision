@@ -1,0 +1,17 @@
+{
+  "recording": "real-geumchon-validation-20261022",
+  "http_status": 200,
+  "expected_frame": 50,
+  "returned_frame": 50,
+  "expected_boxes": 3,
+  "returned_boxes": 3,
+  "websocket_event": "detections",
+  "websocket_keys": [
+    "type",
+    "camera_id",
+    "run_id",
+    "frame"
+  ],
+  "frame_and_count_match": true,
+  "note": "Recorded real CCTV detections transported to teammate dashboard API; live video/box time alignment not established"
+}

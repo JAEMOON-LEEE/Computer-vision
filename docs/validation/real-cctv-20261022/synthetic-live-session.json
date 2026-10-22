@@ -1,0 +1,72 @@
+{
+  "source": "bounded ITS live HLS validation capture",
+  "camera_id": "its-cc4277cc18",
+  "detector": {
+    "options": {
+      "device": "cpu",
+      "imgsz": 640,
+      "iou": 0.7,
+      "verbose": false
+    },
+    "focus": [
+      0.3194444444444444,
+      0.2708333333333333,
+      0.6111111111111112,
+      0.5625
+    ],
+    "capabilities": {
+      "available": [
+        "person",
+        "car",
+        "pothole",
+        "debris",
+        "barrier"
+      ],
+      "unavailable": [
+        "truck",
+        "bus",
+        "motorcycle",
+        "bicycle",
+        "crack"
+      ]
+    },
+    "tracking": "bytetrack",
+    "versions": {
+      "ultralytics": "8.4.182",
+      "torch": "2.9.1+cpu",
+      "opencv-python": "4.11.0.86"
+    },
+    "models": [
+      {
+        "id": "primary",
+        "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-queue.pt",
+        "sha256": "d9b55172132a8e0689565536deae545393a8c7cff3dfde625f9a91877ab7feea",
+        "classes": {
+          "0": "person",
+          "1": "car",
+          "2": "pothole",
+          "3": "debris",
+          "4": "barrier"
+        },
+        "conf": 0.25
+      },
+      {
+        "id": "focus",
+        "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-queue.pt",
+        "sha256": "d9b55172132a8e0689565536deae545393a8c7cff3dfde625f9a91877ab7feea",
+        "classes": {
+          "0": "person",
+          "1": "car",
+          "2": "pothole",
+          "3": "debris",
+          "4": "barrier"
+        },
+        "conf": 0.25
+      }
+    ]
+  },
+  "road_context": "teammate OpenCV real Geumchon calibration; no Unity stop zones",
+  "stop_zone_count": 0,
+  "training_use": false,
+  "frames": 600
+}

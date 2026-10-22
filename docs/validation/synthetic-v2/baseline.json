@@ -1,0 +1,53 @@
+{
+  "iou_threshold": 0.5,
+  "confidence_for_precision_recall": 0.25,
+  "images": 32,
+  "data": "D:\\Capston disign\\Computer-vision\\datasets\\synthetic-v2\\dataset.yaml",
+  "split": "test",
+  "weights": "detection/models/yolo11n.pt",
+  "road_weights": "detection/models/scenario-hazards.pt",
+  "synthetic_only": true,
+  "classes": {
+    "person": {
+      "ground_truth": 31,
+      "true_positives": 0,
+      "false_positives": 0,
+      "precision": 0,
+      "recall": 0.0,
+      "AP50_101point": 0.0
+    },
+    "car": {
+      "ground_truth": 40,
+      "true_positives": 2,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.05,
+      "AP50_101point": 0.43602440631821066
+    },
+    "pothole": {
+      "ground_truth": 7,
+      "true_positives": 6,
+      "false_positives": 8,
+      "precision": 0.42857142857142855,
+      "recall": 0.8571428571428571,
+      "AP50_101point": 0.7715492137449037
+    },
+    "debris": {
+      "ground_truth": 6,
+      "true_positives": 4,
+      "false_positives": 3,
+      "precision": 0.5714285714285714,
+      "recall": 0.6666666666666666,
+      "AP50_101point": 0.5198019801980198
+    },
+    "barrier": {
+      "ground_truth": 6,
+      "true_positives": 4,
+      "false_positives": 5,
+      "precision": 0.4444444444444444,
+      "recall": 0.6666666666666666,
+      "AP50_101point": 0.6423642364236422
+    }
+  },
+  "mAP50_101point": 0.4739479673369553
+}

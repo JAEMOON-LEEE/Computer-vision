@@ -1,0 +1,759 @@
+{
+  "synthetic_only": true,
+  "model": "detection/models/stop-zone-collision-final.xml",
+  "clips": [
+    {
+      "clip": "queue-v2-test-BarrierStop-0-s13637",
+      "split": "test",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-BarrierStop-0-s13637_20261021_001305",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.3227498054504394,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-test-BarrierStop-1-s13738",
+      "split": "test",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-BarrierStop-1-s13738_20261021_001325",
+      "first_impact": null,
+      "eligible_candidates": 0,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.34659023284912105,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-test-RearEnd-0-s13654",
+      "split": "test",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-RearEnd-0-s13654_20261021_001309",
+      "first_impact": 275.4198913574219,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "13654:34:93",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 275.4198913574219,
+          "object_a": 72,
+          "object_b": 71
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.24530029296875
+    },
+    {
+      "clip": "queue-v2-test-RearEnd-1-s13755",
+      "split": "test",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-RearEnd-1-s13755_20261021_001329",
+      "first_impact": 316.93988037109375,
+      "eligible_candidates": 9,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "13755:39:107",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 316.93988037109375,
+          "object_a": 82,
+          "object_b": 81
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.018829345703125
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-0-s13603",
+      "split": "test",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-SignalQueue-0-s13603_20261021_001258",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.25040798187255864,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-1-s13704",
+      "split": "test",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-SignalQueue-1-s13704_20261021_001317",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.2849491119384766,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-test-StructureImpact-0-s13671",
+      "split": "test",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-StructureImpact-0-s13671_20261021_001313",
+      "first_impact": 283.71990966796875,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "13671:35:97",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 283.71990966796875,
+          "object_a": 74,
+          "object_b": 73
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.447357177734375
+    },
+    {
+      "clip": "queue-v2-test-StructureImpact-1-s13772",
+      "split": "test",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-StructureImpact-1-s13772_20261021_001333",
+      "first_impact": 325.4198913574219,
+      "eligible_candidates": 8,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "13772:40:111",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 325.4198913574219,
+          "object_a": 84,
+          "object_b": 83
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.0506591796875
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-0-s13620",
+      "split": "test",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-TightQueue-0-s13620_20261021_001302",
+      "first_impact": null,
+      "eligible_candidates": 9,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.18987636566162114,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-1-s13721",
+      "split": "test",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-TightQueue-1-s13721_20261021_001321",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.18883781433105473,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-BarrierStop-0-s11435",
+      "split": "train",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-BarrierStop-0-s11435_20261021_001112",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.28218431472778316,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-BarrierStop-1-s11536",
+      "split": "train",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-BarrierStop-1-s11536_20261021_001131",
+      "first_impact": null,
+      "eligible_candidates": 8,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.3497554779052734,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-BarrierStop-2-s11637",
+      "split": "train",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-BarrierStop-2-s11637_20261021_001150",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.33851928710937496,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-BarrierStop-3-s11738",
+      "split": "train",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-BarrierStop-3-s11738_20261021_001209",
+      "first_impact": null,
+      "eligible_candidates": 0,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.35066242218017574,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-RearEnd-0-s11452",
+      "split": "train",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-RearEnd-0-s11452_20261021_001116",
+      "first_impact": 26.279991149902344,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11452:4:9",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 26.279991149902344,
+          "object_a": 12,
+          "object_b": 11
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.45447731018066406
+    },
+    {
+      "clip": "queue-v2-train-RearEnd-1-s11553",
+      "split": "train",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-RearEnd-1-s11553_20261021_001134",
+      "first_impact": 67.97997283935547,
+      "eligible_candidates": 8,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11553:9:23",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 67.97997283935547,
+          "object_a": 22,
+          "object_b": 21
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.24267578125
+    },
+    {
+      "clip": "queue-v2-train-RearEnd-2-s11654",
+      "split": "train",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-RearEnd-2-s11654_20261021_001154",
+      "first_impact": 109.71996307373047,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11654:14:37",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 109.71996307373047,
+          "object_a": 32,
+          "object_b": 31
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.4043426513671875
+    },
+    {
+      "clip": "queue-v2-train-RearEnd-3-s11755",
+      "split": "train",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-RearEnd-3-s11755_20261021_001213",
+      "first_impact": 150.79994201660156,
+      "eligible_candidates": 9,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11755:19:51",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 150.79994201660156,
+          "object_a": 42,
+          "object_b": 41
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.2174835205078125
+    },
+    {
+      "clip": "queue-v2-train-SignalQueue-0-s11401",
+      "split": "train",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-SignalQueue-0-s11401_20261021_001103",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.34982137680053715,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-SignalQueue-1-s11502",
+      "split": "train",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-SignalQueue-1-s11502_20261021_001123",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.34771232604980473,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-SignalQueue-2-s11603",
+      "split": "train",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-SignalQueue-2-s11603_20261021_001142",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.2975938796997071,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-SignalQueue-3-s11704",
+      "split": "train",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-SignalQueue-3-s11704_20261021_001201",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.261141586303711,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-StructureImpact-0-s11469",
+      "split": "train",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-StructureImpact-0-s11469_20261021_001120",
+      "first_impact": 34.859989166259766,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11469:5:13",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 34.859989166259766,
+          "object_a": 14,
+          "object_b": 13
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.3710594177246094
+    },
+    {
+      "clip": "queue-v2-train-StructureImpact-1-s11570",
+      "split": "train",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-StructureImpact-1-s11570_20261021_001138",
+      "first_impact": 75.99996948242188,
+      "eligible_candidates": 2,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11570:10:27",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 75.99996948242188,
+          "object_a": 24,
+          "object_b": 23
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.118988037109375
+    },
+    {
+      "clip": "queue-v2-train-StructureImpact-2-s11671",
+      "split": "train",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-StructureImpact-2-s11671_20261021_001158",
+      "first_impact": 118.21995544433594,
+      "eligible_candidates": 9,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11671:15:41",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 118.21995544433594,
+          "object_a": 34,
+          "object_b": 33
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.408416748046875
+    },
+    {
+      "clip": "queue-v2-train-StructureImpact-3-s11772",
+      "split": "train",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-StructureImpact-3-s11772_20261021_001217",
+      "first_impact": 159.15994262695312,
+      "eligible_candidates": 8,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "11772:20:55",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 159.15994262695312,
+          "object_a": 44,
+          "object_b": 43
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.1524200439453125
+    },
+    {
+      "clip": "queue-v2-train-TightQueue-0-s11418",
+      "split": "train",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-TightQueue-0-s11418_20261021_001108",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.15594177246093754,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-TightQueue-1-s11519",
+      "split": "train",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-TightQueue-1-s11519_20261021_001127",
+      "first_impact": null,
+      "eligible_candidates": 8,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.18110160827636723,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-TightQueue-2-s11620",
+      "split": "train",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-TightQueue-2-s11620_20261021_001146",
+      "first_impact": null,
+      "eligible_candidates": 9,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.13994150161743169,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-train-TightQueue-3-s11721",
+      "split": "train",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-train-TightQueue-3-s11721_20261021_001205",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.13691501617431645,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-val-BarrierStop-0-s12536",
+      "split": "val",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-BarrierStop-0-s12536_20261021_001228",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.24246711730957027,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-val-BarrierStop-1-s12637",
+      "split": "val",
+      "case": "BarrierStop",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-BarrierStop-1-s12637_20261021_001247",
+      "first_impact": null,
+      "eligible_candidates": 8,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.2881719589233398,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-val-RearEnd-0-s12553",
+      "split": "val",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-RearEnd-0-s12553_20261021_001232",
+      "first_impact": 192.39993286132812,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "12553:24:65",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 192.39993286132812,
+          "object_a": 52,
+          "object_b": 51
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.3006591796875
+    },
+    {
+      "clip": "queue-v2-val-RearEnd-1-s12654",
+      "split": "val",
+      "case": "RearEnd",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-RearEnd-1-s12654_20261021_001250",
+      "first_impact": 233.87991333007812,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "12654:29:79",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 233.87991333007812,
+          "object_a": 62,
+          "object_b": 61
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.301422119140625
+    },
+    {
+      "clip": "queue-v2-val-SignalQueue-0-s12502",
+      "split": "val",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-SignalQueue-0-s12502_20261021_001220",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.300114917755127,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-val-SignalQueue-1-s12603",
+      "split": "val",
+      "case": "SignalQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-SignalQueue-1-s12603_20261021_001239",
+      "first_impact": null,
+      "eligible_candidates": 9,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.3163316726684571,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-val-StructureImpact-0-s12570",
+      "split": "val",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-StructureImpact-0-s12570_20261021_001235",
+      "first_impact": 200.61993408203125,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "12570:25:69",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 200.61993408203125,
+          "object_a": 54,
+          "object_b": 53
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.380584716796875
+    },
+    {
+      "clip": "queue-v2-val-StructureImpact-1-s12671",
+      "split": "val",
+      "case": "StructureImpact",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-StructureImpact-1-s12671_20261021_001254",
+      "first_impact": 242.659912109375,
+      "eligible_candidates": 7,
+      "frames": 40,
+      "physics_events": [
+        {
+          "event_id": "12671:30:83",
+          "event_type": "vehicle_structure_collision",
+          "evidence": "physics_contact",
+          "timestamp": 242.659912109375,
+          "object_a": 64,
+          "object_b": 63
+        }
+      ],
+      "unmatched_ambiguous_candidates": 0,
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "both_participants_inside_stop_zone": true,
+      "alert_latency_seconds": 0.81756591796875
+    },
+    {
+      "clip": "queue-v2-val-TightQueue-0-s12519",
+      "split": "val",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-TightQueue-0-s12519_20261021_001224",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.17290906906127934,
+      "alerts": {},
+      "passed": true
+    },
+    {
+      "clip": "queue-v2-val-TightQueue-1-s12620",
+      "split": "val",
+      "case": "TightQueue",
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-val-TightQueue-1-s12620_20261021_001243",
+      "first_impact": null,
+      "eligible_candidates": 10,
+      "frames": 40,
+      "physics_events": [],
+      "unmatched_ambiguous_candidates": 0,
+      "final_clearance_units": 0.14496974945068364,
+      "alerts": {},
+      "passed": true
+    }
+  ],
+  "passed": true
+}

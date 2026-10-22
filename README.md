@@ -139,8 +139,21 @@ flowchart TD
 | [mapping](mapping/README.md) | 공간 매핑(Homography)과 가상환경 정답 기반 오차 평가 |
 | [detection](detection/README.md) | YOLO11/v8 객체 검출, Unity·CCTV 입력, 추가 학습·검증 및 팀 연동 |
 | [docs/traffic_incidents.md](docs/traffic_incidents.md) | 원본 신호등·보행자, 확률적 사고 생성, 영상 기반 경고와 도로 인식 연동 |
+| [docs/synthetic_training.md](docs/synthetic_training.md) | 가상환경 5종 추가 학습, 기존 모델 비교와 연속 영상 경고 검증 |
 | [backend](backend/README.md) | FastAPI 백엔드: 카메라·검출·경고 API, WebSocket 실시간 전달, ITS CCTV 목록·스트림 갱신, 검출 결과 실시간 연동, 목업 재생 |
 | [docs/api](docs/api/README.md) | 백엔드 API 명세(엔드포인트, 요청·응답 예시, WebSocket 이벤트, 검출 모듈 연동 방법)와 openapi.json |
-| [frontend](frontend/README.md) | Vite + React + TypeScript 관제 대시보드: 지도·카메라 카드·HLS 재생·검출 박스 오버레이·경고 확인/기각·이력 조회·지연 측정 |
+| [frontend](frontend/README.md) | Vite + React + TypeScript 관제 대시보드: 지도·카메라 카드·HLS 재생·검출 박스 오버레이·경고 확인/기각·이력 조회·지연 측정. 2D 디지털 트윈 지도(예시 좌표), 선택 카메라 패널(3D 자리), 위험 이벤트 표, 분석 화면(히트맵·반복 구간·통계) |
 | [frontend-proto](frontend-proto/README.md) | 이전 정적 HTML 시제품(보존용) |
 | [dev.bat](dev.bat) | 백엔드·관제 화면·목업 재생을 한 번에 띄우는 Windows 개발용 실행 파일 |
+
+- 사진 시점의 CCTV 복원·원거리 보강 학습·경고 재검사: [고정 CCTV 학습](docs/cctv_training.md)
+
+- 신호 대기 구역 내부 사고와 정상 대기 구분 학습: [학습·실행 안내](docs/stop_zone_training.md)
+
+- 실제 CCTV 연결·야간 검출 확인과 남은 한계: [실제 CCTV 검증](docs/real_cctv_validation.md)
+
+- 학습·검증 자료의 DB 등록 결과와 조회 방법: [DB 등록 안내](docs/database_registration.md)
+
+- 가상 CCTV 낮·밤 선택과 야간 보강 학습: [낮·밤 학습 안내](docs/day_night_training.md)
+
+- 학습된 모델·이미지·라벨·분할·검증 결과 다운로드: [공유 학습 자료](training_artifacts/README.md)

@@ -1,0 +1,253 @@
+{
+  "work_completed": true,
+  "production_ready": false,
+  "data_root": "D:\\Capston disign",
+  "source_archive": {
+    "committed": true,
+    "record_id": "night-v1-binary-archive-a1c5db40f6f2a3e1b295a1cd",
+    "new_record": true,
+    "large_object_oid": 18025,
+    "archive_sha256": "a1c5db40f6f2a3e1b295a1cd082e1da00b5d20841a2e63903e6e422d03804fb0",
+    "archive_bytes": 318306328,
+    "original_files": 7992,
+    "file_bytes_uploaded": true,
+    "fresh_connection_binary_hash_verified": true,
+    "schema_changed": false,
+    "public_grants_added": false
+  },
+  "output_archive": {
+    "committed": true,
+    "record_id": "night-v1-binary-archive-f9af09938cf2fe438d04bc8f",
+    "new_record": true,
+    "large_object_oid": 18093,
+    "archive_sha256": "f9af09938cf2fe438d04bc8f0ae3c57943ace0187ae1dcf712e777cb2f32a108",
+    "archive_bytes": 19320096,
+    "original_files": 935,
+    "file_bytes_uploaded": true,
+    "fresh_connection_binary_hash_verified": true,
+    "schema_changed": false,
+    "public_grants_added": false
+  },
+  "metadata_registration": {
+    "committed": true,
+    "records": 78,
+    "new_records": 78,
+    "file_references": 8429,
+    "log_lines": 10855,
+    "parent_links": 164,
+    "exact_yolo_labels": 1700,
+    "label_objects": 5004,
+    "records_by_kind": {
+      "simulation": 1,
+      "capture": 49,
+      "dataset": 23,
+      "training": 2,
+      "model": 2,
+      "evaluation": 1
+    },
+    "readback_verified": true,
+    "image_video_model_bytes_uploaded": false,
+    "source_root": "D:\\Capston disign",
+    "schema_changed": false,
+    "manifest_sha256": "735652e7677af472ed4d5ed5800f7b95c9bfd2897cbc54ee77d9a433280992e4"
+  },
+  "source_restore": {
+    "archive_sha256": "a1c5db40f6f2a3e1b295a1cd082e1da00b5d20841a2e63903e6e422d03804fb0",
+    "member_hashes_verified": 7992,
+    "destination": "D:\\Capston disign\\Computer-vision\\runs\\night-v1\\database\\restored-sources.zip.xz",
+    "extracted_to": "D:\\Capston disign\\Computer-vision\\runs\\night-v1\\database\\restored-sources"
+  },
+  "output_restore": {
+    "archive_sha256": "f9af09938cf2fe438d04bc8f0ae3c57943ace0187ae1dcf712e777cb2f32a108",
+    "member_hashes_verified": 935,
+    "destination": "D:\\Capston disign\\Computer-vision\\runs\\night-v1\\database\\restored-outputs.zip.xz",
+    "extracted_to": "D:\\Capston disign\\Computer-vision\\runs\\night-v1\\database\\restored-outputs"
+  },
+  "distinct_archived_file_paths": 8927,
+  "all_archived_paths_under_D": true,
+  "empty_C_project_folder_removed": true,
+  "previous_C_project_copies_remaining": 0,
+  "schema_changed": false,
+  "binary_permissions": [
+    {
+      "oid": 18025,
+      "owned_by_app_role": true,
+      "owner_default_acl": true,
+      "app_readback_verified": true
+    },
+    {
+      "oid": 18093,
+      "owned_by_app_role": true,
+      "owner_default_acl": true,
+      "app_readback_verified": true
+    }
+  ],
+  "database_size_before_receipt_bytes": 514627251,
+  "model_and_validation": {
+    "synthetic_detector_test": {
+      "night": {
+        "before": 0.9200007486514572,
+        "after": 0.9943054461899905
+      },
+      "day": {
+        "before": 0.9556366405871357,
+        "after": 0.9511769890055115
+      }
+    },
+    "temporal": {
+      "val_day": {
+        "accident_clips": 4,
+        "clips_with_collision_warning": 4,
+        "post_contact_passed": 4,
+        "normal_clips": 6,
+        "normal_clips_with_any_warning": 0,
+        "failures": []
+      },
+      "val_night": {
+        "accident_clips": 4,
+        "clips_with_collision_warning": 4,
+        "post_contact_passed": 4,
+        "normal_clips": 6,
+        "normal_clips_with_any_warning": 0,
+        "failures": []
+      },
+      "test_day": {
+        "accident_clips": 4,
+        "clips_with_collision_warning": 4,
+        "post_contact_passed": 4,
+        "normal_clips": 6,
+        "normal_clips_with_any_warning": 0,
+        "failures": []
+      },
+      "test_night": {
+        "accident_clips": 4,
+        "clips_with_collision_warning": 3,
+        "post_contact_passed": 2,
+        "normal_clips": 6,
+        "normal_clips_with_any_warning": 0,
+        "failures": [
+          "nightqueue-v1-test-RearEnd-1-s35755",
+          "nightqueue-v1-test-StructureImpact-1-s35772"
+        ]
+      }
+    },
+    "temporal_all_passed": false,
+    "temporal_model_experimental": true,
+    "generic_warning_checks": {
+      "day": {
+        "passed": true,
+        "cases": {
+          "Normal": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Normal_20261020_230542",
+            "expected": null,
+            "alerts": {},
+            "passed": true,
+            "frames": 90
+          },
+          "Pothole": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Pothole_20261020_230553",
+            "expected": "road_damage",
+            "alerts": {
+              "road_damage": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "FallingDebris": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-FallingDebris_20261020_230602",
+            "expected": "road_debris",
+            "alerts": {
+              "road_debris": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "VehicleCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-VehicleCollision_20261020_230611",
+            "expected": "suspected_vehicle_collision",
+            "alerts": {
+              "suspected_vehicle_collision": 1
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "StructureCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-StructureCollision_20261020_230622",
+            "expected": "suspected_vehicle_structure_collision",
+            "alerts": {
+              "suspected_vehicle_structure_collision": 1
+            },
+            "passed": true,
+            "frames": 90
+          }
+        }
+      },
+      "night": {
+        "passed": false,
+        "cases": {
+          "Normal": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Normal_20261022_211727",
+            "expected": null,
+            "alerts": {},
+            "passed": true,
+            "frames": 90
+          },
+          "Pothole": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Pothole_20261022_211740",
+            "expected": "road_damage",
+            "alerts": {
+              "road_damage": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "FallingDebris": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-FallingDebris_20261022_211750",
+            "expected": "road_debris",
+            "alerts": {
+              "road_debris": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "VehicleCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-VehicleCollision_20261022_211801",
+            "expected": "suspected_vehicle_collision",
+            "alerts": {
+              "suspected_vehicle_collision": 1
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "StructureCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-StructureCollision_20261022_211812",
+            "expected": "suspected_vehicle_structure_collision",
+            "alerts": {},
+            "passed": false,
+            "frames": 90
+          }
+        }
+      }
+    },
+    "real_night": {
+      "frames": 600,
+      "media_seconds": 120.00003333333333,
+      "detections_by_class": {
+        "car": 884,
+        "pothole": 2,
+        "debris": 1
+      },
+      "alerts_by_type": {},
+      "warm_mean_inference_ms": 139.18759616384148,
+      "ground_truth_available": false,
+      "accuracy_evaluated": false,
+      "training_use": false,
+      "timestamp_basis": "original source PTS"
+    },
+    "real_caption_false_positives_observed": true,
+    "real_accuracy_verified": false,
+    "detector_sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+    "temporal_sha256": "37e3e1c0b2e4929628f2dba4d2f5b1218b2a8c1803be85027a5bd423a758ef69"
+  },
+  "metadata_report_byte_upload_flag_scope": "The metadata transaction stores text/indexes; the two archive transactions store original file bytes."
+}

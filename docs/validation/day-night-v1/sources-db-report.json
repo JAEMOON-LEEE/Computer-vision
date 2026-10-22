@@ -1,0 +1,13 @@
+{
+  "committed": true,
+  "record_id": "night-v1-binary-archive-a1c5db40f6f2a3e1b295a1cd",
+  "new_record": true,
+  "large_object_oid": 18025,
+  "archive_sha256": "a1c5db40f6f2a3e1b295a1cd082e1da00b5d20841a2e63903e6e422d03804fb0",
+  "archive_bytes": 318306328,
+  "original_files": 7992,
+  "file_bytes_uploaded": true,
+  "fresh_connection_binary_hash_verified": true,
+  "schema_changed": false,
+  "public_grants_added": false
+}
