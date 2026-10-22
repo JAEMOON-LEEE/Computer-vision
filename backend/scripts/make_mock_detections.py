@@ -2,7 +2,8 @@
 
 박스 위치는 실제 CCTV 영상 속 물체와 맞지 않는다.
 timestamp는 이 파일을 만드는 시각의 Unix 초이고, 프레임마다 1/fps씩 늘어난다.
-화면 위를 가로지르는 차량·보행자와 제자리 포트홀이 있는지만 보여 준다.
+화면 위를 가로지르는 차량·보행자와 제자리 포트홀·낙하물·방호벽이 있는지만 보여 준다.
+경고 6건은 그 프레임에 있는 검출의 track_id·bbox만 근거로 쓴다.
 
 저장소 루트에서:
     .\\.venv\\Scripts\\python.exe backend\\scripts\\make_mock_detections.py
@@ -39,8 +40,8 @@ def clamp_box(x1, y1, x2, y2, width, height):
 
 
 def detection(name, track_id, box, confidence, taxonomy):
-    if name == "pothole":
-        class_id = taxonomy.ROAD_MODEL_CLASSES.index("pothole")
+    if name in {"pothole", "debris", "barrier"}:
+        class_id = taxonomy.ROAD_MODEL_CLASSES.index(name)
         model_id = "road"
     else:
         class_id = PRIMARY_CLASS_IDS[name]
@@ -74,23 +75,93 @@ def object_boxes(frame, frames, width, height):
     boxes.append(("person", 4, clamp_box(person_x, person_y, person_x + 46, person_y + 128, width, height), 0.74))
     hole_x, hole_y = width * 0.48, height * 0.72
     boxes.append(("pothole", 5, clamp_box(hole_x, hole_y, hole_x + 96, hole_y + 52, width, height), 0.62))
+    debris_x, debris_y = width * 0.62, height * 0.66
+    boxes.append(("debris", 6, clamp_box(debris_x, debris_y, debris_x + 72, debris_y + 48, width, height), 0.58))
+    barrier_x, barrier_y = width * 0.18, height * 0.38
+    boxes.append(("barrier", 7, clamp_box(barrier_x, barrier_y, barrier_x + 220, barrier_y + 64, width, height), 0.71))
     return [(name, track, box, conf) for name, track, box, conf in boxes if box is not None]
 
 
+# 기본 300프레임에서 차량이 화면에 있는 시각으로 흩어 둔다.
+ALERT_FRAMES = [20, 70, 120, 180, 230, 270]
+ALERT_SPECS = [
+    ("road_damage", ("pothole",)),
+    ("road_debris", ("debris",)),
+    ("suspected_vehicle_collision", ("car", "car")),
+    ("suspected_vehicle_structure_collision", ("car", "barrier")),
+    ("road_debris", ("debris",)),
+    ("suspected_vehicle_collision", ("car", "car")),
+]
+
+
+def pick_evidence(items, need):
+    chosen = []
+    used = set()
+    for name in need:
+        found = next((item for item in items if item["class_name"] == name and item["track_id"] not in used), None)
+        if found is None:
+            return None
+        used.add(found["track_id"])
+        chosen.append(found)
+    return chosen
+
+
+def alert_message(kind, evidence):
+    if kind in {"road_damage", "road_debris"}:
+        return f"Persistent {evidence[0]['class_name']} detected on the road"
+    return "Contact-like overlap followed by abrupt stopping; review video"
+
+
+def evidence_row(item):
+    return {
+        "class_name": item["class_name"],
+        "track_id": item["track_id"],
+        "model_id": item["model_id"],
+        "bbox_xyxy": item["bbox_xyxy"],
+        "confidence": item["confidence"],
+    }
+
+
+def alert_plan(frame_count):
+    if frame_count >= ALERT_FRAMES[-1] + 1:
+        return [(frame, kind, need) for frame, (kind, need) in zip(ALERT_FRAMES, ALERT_SPECS)]
+    count = min(len(ALERT_SPECS), frame_count)
+    span = max(frame_count - 1, 1)
+    frames = [min(frame_count - 1, round(index * span / max(count - 1, 1))) for index in range(count)]
+    return [(frame, *ALERT_SPECS[index]) for index, frame in enumerate(frames)]
+
+
+def build_alerts(camera_id, records):
+    """프레임 안에 있는 검출의 track_id·bbox만 근거로 쓴다."""
+    alerts = []
+    for frame, kind, need in alert_plan(len(records)):
+        evidence = pick_evidence(records[frame]["detections"], need)
+        if evidence is None:
+            raise SystemExit(f"프레임 {frame}에 {kind} 근거 검출이 없습니다.")
+        alerts.append({
+            "alert_id": f"{camera_id}:{len(alerts) + 1}",
+            "camera_id": camera_id,
+            "frame": frame,
+            "timestamp": records[frame]["timestamp"],
+            "type": kind,
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": alert_message(kind, evidence),
+            "evidence": [evidence_row(item) for item in evidence],
+            "basis": "visual_detections_and_motion",
+        })
+    return alerts
+
+
 def build(camera_id, frames, fps, width, height, taxonomy):
-    alert_frame = min(20, frames - 1)
     records = []
-    pothole_at_alert = None
     # 재생 간격은 그대로 두고, 첫 프레임만 이 파일을 만드는 시각으로 둔다.
     origin = time.time()
     for frame in range(frames):
         items = []
         for name, track_id, box, confidence in object_boxes(frame, frames, width, height):
-            item = detection(name, track_id, box, confidence, taxonomy)
-            items.append(item)
-            if frame == alert_frame and name == "pothole":
-                pothole_at_alert = item
-        record = {
+            items.append(detection(name, track_id, box, confidence, taxonomy))
+        records.append({
             "camera_id": camera_id,
             "frame": frame,
             "timestamp": round(origin + frame / fps, 3),
@@ -99,31 +170,11 @@ def build(camera_id, frames, fps, width, height, taxonomy):
             "height": height,
             "detections": items,
             "inference_ms": round(12.0 + (frame % 5) * 0.35, 3),
-        }
-        if frame == alert_frame:
-            record["alert_ids"] = [f"{camera_id}:1"]
-        records.append(record)
-    if pothole_at_alert is None:
-        raise SystemExit("포트홀 상자가 경고 프레임에 없습니다.")
-    alert = {
-        "alert_id": f"{camera_id}:1",
-        "camera_id": camera_id,
-        "frame": alert_frame,
-        "timestamp": records[alert_frame]["timestamp"],
-        "type": "road_damage",
-        "severity": "warning",
-        "status": "unconfirmed",
-        "message": "Persistent pothole detected on the road",
-        "evidence": [{
-            "class_name": "pothole",
-            "track_id": pothole_at_alert["track_id"],
-            "model_id": pothole_at_alert["model_id"],
-            "bbox_xyxy": pothole_at_alert["bbox_xyxy"],
-            "confidence": pothole_at_alert["confidence"],
-        }],
-        "basis": "visual_detections_and_motion",
-    }
-    return records, alert
+        })
+    alerts = build_alerts(camera_id, records)
+    for alert in alerts:
+        records[alert["frame"]]["alert_ids"] = [alert["alert_id"]]
+    return records, alerts
 
 
 def write_jsonl(path: Path, rows: list[dict]) -> None:
@@ -148,10 +199,10 @@ def main() -> int:
     if not out.is_absolute():
         out = Path.cwd() / out
     taxonomy = load_taxonomy()
-    records, alert = build(args.camera_id, args.frames, args.fps, args.width, args.height, taxonomy)
+    records, alerts = build(args.camera_id, args.frames, args.fps, args.width, args.height, taxonomy)
     out.mkdir(parents=True, exist_ok=True)
     write_jsonl(out / "detections.jsonl", records)
-    write_jsonl(out / "alerts.jsonl", [alert])
+    write_jsonl(out / "alerts.jsonl", alerts)
     print(f"오버레이 동작 확인용 목업 {args.frames}프레임 -> {out}")
     print("박스 위치는 실제 영상 속 물체와 맞지 않습니다.")
     return 0
