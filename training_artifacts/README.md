@@ -30,8 +30,6 @@
 저장소를 D드라이브에 복제한 뒤 저장소 루트에서 실행합니다. 기존 작업 자료가 없는 새 복제본을 권장합니다. 기존 파일 내용이 다르면 복원 도구가 덮어쓰지 않고 중단합니다.
 
 ```powershell
-git lfs install
-git lfs pull --include="detection/models/*,training_artifacts/**"
 $artifactWorkspace = Split-Path -Parent (Get-Location).Path
 $env:TEMP = Join-Path $artifactWorkspace 'tmp'
 $env:TMP = $env:TEMP
@@ -42,6 +40,8 @@ $env:HF_HOME = Join-Path $artifactWorkspace 'tools/huggingface-cache'
 $env:XDG_CACHE_HOME = Join-Path $artifactWorkspace 'tools/cache'
 $env:MPLCONFIGDIR = Join-Path $artifactWorkspace 'tools/matplotlib'
 New-Item -ItemType Directory -Path $env:TEMP -Force | Out-Null
+git lfs install
+git lfs pull --include="detection/models/*,training_artifacts/**"
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r detection/requirements-cpu.txt
 

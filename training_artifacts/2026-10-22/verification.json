@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-10-22T18:39:15.406908+00:00",
+  "bundles": [
+    {
+      "bundle": "training_artifacts/2026-10-22/prepared-datasets.zip.xz",
+      "archive_sha256": "4b4eff0b0a261c20f823314f514694ec9f22bb985507bc7a780d3e3bca406eb8",
+      "verified_files": 8413,
+      "restored_files": 8413,
+      "portable_configs": [
+        "datasets/day-night-v1/dataset.yaml",
+        "datasets/geumchon-detail-full/dataset.yaml",
+        "datasets/geumchon-focus/dataset.yaml",
+        "datasets/geumchon-v1/dataset.yaml",
+        "datasets/night-v1-focus/dataset.yaml",
+        "datasets/night-v1-full/dataset.yaml",
+        "datasets/queue-objects-focus/dataset.yaml",
+        "datasets/queue-objects-full/dataset.yaml",
+        "datasets/queue-retention/dataset.yaml",
+        "datasets/scenario-prototype/dataset.yaml",
+        "datasets/scenario-safe/dataset.yaml",
+        "datasets/synthetic-v2/dataset.yaml"
+      ],
+      "root": "D:\\Capston disign\\Computer-vision\\runs\\github-publish-20261023\\restored"
+    },
+    {
+      "bundle": "training_artifacts/2026-10-22/synthetic-captures.zip.xz",
+      "archive_sha256": "f231efb03d6eb7ab2354160b1c99e9fdafef0f3d34c814d0c4d6c62312c23db7",
+      "verified_files": 6099,
+      "restored_files": 6099,
+      "portable_configs": [],
+      "root": "D:\\Capston disign\\Computer-vision\\runs\\github-publish-20261023\\restored"
+    },
+    {
+      "bundle": "training_artifacts/2026-10-22/experiment-results.zip.xz",
+      "archive_sha256": "ec812ce9dee47d20c7b49febe69982894578de181f99e2bd03843df5b5d6f67d",
+      "verified_files": 2349,
+      "restored_files": 2349,
+      "portable_configs": [],
+      "root": "D:\\Capston disign\\Computer-vision\\runs\\github-publish-20261023\\restored"
+    }
+  ],
+  "model_files_sha256_verified": 14,
+  "datasets_checked": 12,
+  "model_pair_smoke": {
+    "boxes": 0,
+    "categories": [],
+    "temporal_features": 25,
+    "pair_sha256_matches": true
+  },
+  "image_label_split_checks_passed": true,
+  "unit_tests": {
+    "detection": 46,
+    "mapping": 26,
+    "all_passed": true
+  },
+  "strict_warning_all_passed": false,
+  "production_ready": false,
+  "credential_scan": "All uncompressed bundle input files and proposed model files checked before packaging; staged Git objects checked separately before push."
+}

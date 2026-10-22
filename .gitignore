@@ -63,3 +63,4 @@ frontend/.env
 !detection/models/stop-zone-collision*.json
 .env.*
 !.env.example
+/training_artifacts/**/*.building.zip
