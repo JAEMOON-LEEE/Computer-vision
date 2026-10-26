@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { getDetectionStats, getLatest } from "../api";
+import { databaseRequest, getDetectionStats, getLatest } from "../api";
 import { CameraMap } from "../components/CameraMap";
 import { CameraPanel } from "../components/CameraPanel";
 import { FilterSidebar } from "../components/FilterSidebar";
@@ -37,6 +37,16 @@ export function MonitorPage() {
   const [frameLabel, setFrameLabel] = useState("프레임 -");
   const [boxLabel, setBoxLabel] = useState("박스 0");
   const [overlaySnap, setOverlaySnap] = useState<OverlayState | null>(null);
+  const [reference, setReference] = useState<{ run_id: string; origin_lat: number; origin_lon: number } | null>(null);
+  const runId = overlaySnap?.runId;
+  useEffect(() => {
+    let active = true;
+    setReference(null);
+    if (runId) databaseRequest<{ run_id: string; origin_lat: number; origin_lon: number } | null>(
+      `/map-reference?${new URLSearchParams({ run_id: runId })}`
+    ).then(value => { if (active) setReference(value); }).catch(() => { if (active) setReference(null); });
+    return () => { active = false; };
+  }, [runId]);
   const [listOpen, setListOpen] = useState(false);
 
   const { selectedId, applyFrame } = live;
@@ -56,6 +66,7 @@ export function MonitorPage() {
     const timer = window.setInterval(() => {
       const overlay = live.overlayRef.current;
       if (overlay.cameraId !== live.selectedId || overlay.frame < 0) {
+        setOverlaySnap(null);
         setFrameLabel("프레임 -");
         setBoxLabel("박스 0");
         return;
@@ -182,11 +193,13 @@ export function MonitorPage() {
   const alertIds = useMemo(() => new Set(alertCounts.keys()), [alertCounts]);
   const selectedCamera = live.cameras.find((camera) => camera.camera_id === live.selectedId) ?? null;
   const twinObjects = useMemo(() => {
-    if (!selectedCamera) return [];
-    const rows = objectsForCamera(selectedCamera, overlaySnap);
+    if (!selectedCamera || (overlaySnap && overlaySnap.cameraId !== selectedCamera.camera_id)) return [];
+    const calibration = reference && reference.run_id === overlaySnap?.runId
+      ? { originLat: reference.origin_lat, originLon: reference.origin_lon } : null;
+    const rows = objectsForCamera(selectedCamera, overlaySnap, calibration);
     if (!applied.classes.length) return rows;
     return rows.filter((object) => applied.classes.includes(object.className));
-  }, [selectedCamera, overlaySnap, applied.classes]);
+  }, [selectedCamera, overlaySnap, applied.classes, reference]);
   const visibleObjects = useMemo(
     () => twinObjects.filter((object) => passesRisk(object.riskScore, applied.riskLevels)),
     [twinObjects, applied.riskLevels],

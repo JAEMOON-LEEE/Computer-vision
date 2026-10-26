@@ -1,4 +1,4 @@
-import { CALIBRATION } from "./calibration";
+import { CALIBRATION, type CameraCalibration } from "./calibration";
 import { splitPlace } from "./mapModel";
 import { riskLevel } from "./risk";
 import type { AlertItem, Camera, Detection, LatestFrame, OverlayState } from "./types";
@@ -145,8 +145,8 @@ function demoObjects(camera: Camera): TwinObject[] {
   return objects;
 }
 
-function placedDetection(cameraId: string, detection: Detection): TwinObject | null {
-  const calibration = CALIBRATION[cameraId];
+function placedDetection(cameraId: string, detection: Detection, reference?: CameraCalibration | null): TwinObject | null {
+  const calibration = reference === undefined ? CALIBRATION[cameraId] : reference;
   // mapped_xz는 백엔드가 mapped_xz_corrected를 우선해 저장한 값이다.
   const mapped = detection.mapped_xz;
   if (!calibration || !mapped || mapped.length < 2) return null;
@@ -163,10 +163,10 @@ function placedDetection(cameraId: string, detection: Detection): TwinObject | n
 }
 
 /** TODO: 캘리브레이션과 risk_score가 오면 예시 분기를 지우면 된다. */
-export function objectsForCamera(camera: Camera, frame: OverlayState | LatestFrame | null): TwinObject[] {
+export function objectsForCamera(camera: Camera, frame: OverlayState | LatestFrame | null, reference?: CameraCalibration | null): TwinObject[] {
   const detections = frame == null ? [] : "boxes" in frame ? frame.boxes : frame.detections;
   const placed = detections
-    .map((detection) => placedDetection(camera.camera_id, detection))
+    .map((detection) => placedDetection(camera.camera_id, detection, reference))
     .filter((item): item is TwinObject => item !== null);
   if (placed.length) return placed;
   if (!demoTwinEnabled()) return [];

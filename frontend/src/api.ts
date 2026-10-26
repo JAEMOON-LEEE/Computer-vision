@@ -1,20 +1,26 @@
 import type { AlertItem, Camera, DetectionList, DetectionStats, LatestFrame, StreamInfo } from "./types";
 
-export const API_BASE = (import.meta.env.VITE_API_BASE || "http://localhost:8000").replace(/\/$/, "");
+export const API_BASE = new URL(import.meta.env.VITE_API_BASE || "/api", window.location.origin).toString().replace(/\/$/, "");
 
 export function wsUrl(): string {
   const url = new URL(API_BASE);
   url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
-  url.pathname = "/ws";
+  url.pathname = url.pathname.replace(/\/$/, "") + "/ws";
   url.search = "";
   url.hash = "";
   return url.toString();
 }
 
 async function readError(response: Response): Promise<string> {
+  if (response.status === 401) {
+    window.location.assign("/login");
+    return "다시 로그인하세요";
+  }
   try {
     const body = (await response.json()) as { detail?: unknown };
     if (typeof body.detail === "string") return body.detail;
+    if (Array.isArray(body.detail)) return body.detail.map((item: { loc?: string[]; msg?: string }) =>
+      `${item.loc?.slice(1).join(".") || "입력"}: ${item.msg || "값을 확인하세요"}`).join(" / ");
   } catch {
     /* 본문이 JSON이 아니면 상태 코드만 쓴다. */
   }
@@ -75,4 +81,11 @@ export async function patchAlert(id: number, status: "confirmed" | "dismissed"):
   });
   if (!response.ok) throw new Error(await readError(response));
   return response.json() as Promise<AlertItem>;
+}
+
+
+export async function databaseRequest<T>(path: string, init?: RequestInit): Promise<T> {
+  const response = await fetch(`${API_BASE}/database${path}`, init);
+  if (!response.ok) throw new Error(await readError(response));
+  return response.json() as Promise<T>;
 }

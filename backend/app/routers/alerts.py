@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from backend.app.db import get_db
-from backend.app.models import Alert, utcnow
+from backend.app.models import Alert, AlertHistory, utcnow
 from backend.app.schemas import AlertOut, AlertPatch, to_alert_out
 from backend.app.ws_manager import manager
 
@@ -46,17 +46,20 @@ def list_alerts(
 @router.patch("/{id}", response_model=AlertOut)
 async def patch_alert(id: int, payload: AlertPatch, db: Session = Depends(get_db)):
     """서버가 발급한 정수 id로 상태를 바꾼다. 경로의 id는 입력 alert_id가 아니다."""
-    row = db.get(Alert, id)
+    row = db.scalar(select(Alert).where(Alert.id == id).with_for_update())
     if row is None:
         raise HTTPException(status_code=404, detail="경고를 찾을 수 없습니다")
+    old_status, old_handler = row.status, row.handled_by
     changes = payload.model_dump(exclude_unset=True)
     if "status" in changes and changes["status"] is not None:
         row.status = changes["status"]
     if "handled_by" in changes:
         row.handled_by = changes["handled_by"]
-    if not changes:
+    if (row.status, row.handled_by) == (old_status, old_handler):
         return to_alert_out(row)
     row.updated_at = utcnow()
+    db.add(AlertHistory(alert_id=row.id, old_status=old_status, new_status=row.status,
+                        old_handled_by=old_handler, handled_by=row.handled_by, changed_at=row.updated_at))
     db.commit()
     body = to_alert_out(row)
     await manager.broadcast({"type": "alert_updated", "alert": body.model_dump(mode="json")})

@@ -35,6 +35,7 @@ export type Detection = {
 };
 
 export type FrameRecord = {
+  run_id?: string;
   camera_id: string;
   frame: number;
   timestamp: number;
@@ -110,6 +111,7 @@ export type LatencySample = {
 };
 
 export type OverlayState = {
+  runId?: string;
   cameraId: string;
   width: number;
   height: number;

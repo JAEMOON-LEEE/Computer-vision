@@ -104,7 +104,7 @@ def detection_stats(
         .group_by(Detection.class_name)
         .order_by(func.count().desc(), Detection.class_name)
     ).all()
-    bucket = cast((Frame.timestamp + KST_SHIFT) / 3600, Integer)
+    bucket = cast(func.floor((Frame.timestamp + KST_SHIFT) / 3600), Integer)
     hour_query = (
         select(bucket, func.count())
         .select_from(Detection)

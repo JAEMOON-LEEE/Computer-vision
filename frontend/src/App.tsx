@@ -5,6 +5,7 @@ import { formatKstClock } from "./format";
 import { useLive } from "./live";
 import { AnalysisPage } from "./pages/AnalysisPage";
 import { HistoryPage } from "./pages/HistoryPage";
+import { DatabasePage } from "./pages/DatabasePage";
 import { MonitorPage } from "./pages/MonitorPage";
 
 export function App() {
@@ -30,6 +31,7 @@ export function App() {
             </NavLink>
             <NavLink to="/history">이력</NavLink>
             <NavLink to="/analysis">분석</NavLink>
+            <NavLink to="/database">DB 관리</NavLink>
           </nav>
         </div>
         <div className="top-actions">
@@ -48,6 +50,7 @@ export function App() {
         <Route path="/" element={<MonitorPage />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/analysis" element={<AnalysisPage />} />
+        <Route path="/database" element={<DatabasePage />} />
       </Routes>
       <AlertDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </div>

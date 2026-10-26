@@ -15,6 +15,9 @@ if str(ROOT) not in sys.path:
 
 @pytest.fixture
 def client(tmp_path, monkeypatch):
+    monkeypatch.setenv("DATABASE_SCHEMA", "")
+    monkeypatch.setenv("TEAM_ACCESS_TOKEN", "")
+    monkeypatch.setenv("DATABASE_AUTO_CREATE", "true")
     db_path = tmp_path / "test.db"
     url = "sqlite:///" + db_path.resolve().as_posix()
     monkeypatch.setenv("DATABASE_URL", url)

@@ -7,12 +7,19 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+from pathlib import Path
+import logging
+
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from sqlalchemy.exc import SQLAlchemyError
+from backend.app.team_auth import TeamAuth
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.db import init_db
-from backend.app.routers import alerts, cameras, detections, ingest, ws
+from backend.app.routers import alerts, cameras, database, detections, ingest, ws
 
 
 @asynccontextmanager
@@ -39,6 +46,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.add_middleware(TeamAuth)
+
+app.include_router(database.router)
 app.include_router(cameras.router)
 app.include_router(detections.router)
 app.include_router(ingest.router)
@@ -49,3 +59,35 @@ app.include_router(ws.router)
 @app.get("/health", tags=["health"])
 def health():
     return {"status": "ok"}
+
+
+# Same-origin API for the built dashboard and Vite proxy; preserve existing clients.
+for router in (cameras.router, detections.router, ingest.router, alerts.router, ws.router, database.router):
+    app.include_router(router, prefix="/api")
+
+
+@app.exception_handler(SQLAlchemyError)
+async def database_error(_request, exc):
+    logging.getLogger(__name__).error("Database operation failed: %s", type(exc).__name__)
+    return JSONResponse({"detail": "DB 요청에 실패했습니다. 연결 상태를 확인하고 다시 시도하세요."}, status_code=503)
+
+
+DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+if (DIST / "assets").is_dir():
+    app.mount("/dashboard/assets", StaticFiles(directory=DIST / "assets"), name="dashboard-assets")
+
+
+@app.get("/", include_in_schema=False)
+def home():
+    return RedirectResponse("/dashboard/")
+
+
+@app.get("/dashboard", include_in_schema=False)
+@app.get("/dashboard/", include_in_schema=False)
+@app.get("/dashboard/{route:path}", include_in_schema=False)
+def dashboard(route: str = ""):
+    if route not in ("", "history", "analysis", "database"):
+        return JSONResponse({"detail": "페이지를 찾을 수 없습니다"}, status_code=404)
+    if not (DIST / "index.html").is_file():
+        return JSONResponse({"detail": "frontend에서 npm ci와 npm run build를 먼저 실행하세요"}, status_code=503)
+    return FileResponse(DIST / "index.html", headers={"Cache-Control": "no-cache"})

@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+from sqlalchemy.engine import make_url
 
 # backend/app/config.py 기준 저장소 루트
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -25,7 +26,10 @@ def database_url() -> str:
     """DATABASE_URL이 없으면 임시 SQLite 파일의 절대 경로를 쓴다."""
     url = os.getenv("DATABASE_URL")
     if url:
-        return url
+        parsed = make_url(url)
+        if parsed.drivername in ("postgres", "postgresql"):
+            parsed = parsed.set(drivername="postgresql+psycopg")
+        return parsed
     return "sqlite:///" + DEFAULT_SQLITE_PATH.resolve().as_posix()
 
 

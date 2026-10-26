@@ -118,3 +118,29 @@ WebSocket으로 들어오는 이벤트를 보려면 서버와 다른 터미널�
 ## 한 번에 실행
 
 저장소 루트의 [dev.bat](../dev.bat)을 더블클릭하면 백엔드, 관제 화면, 목업 재생 창이 각각 뜹니다. 목업 없이 띄우려면 `dev.bat nomock`를 실행합니다. ITS 키는 저장소 루트 `.env`의 `ITS_API_KEY`에 넣습니다.
+
+
+## Supabase와 React DB 관리 화면 (2026-10-26)
+
+최신 React 화면의 `/dashboard/database`에서 프로젝트의 12개 테이블을 조회합니다.
+CCTV 등록·이름/위치/상태 수정, 실행별 지도 기준점 등록, 경고 확인·기각 및 처리 이력 조회를 지원합니다.
+산출물·파일·로그는 ID 검색과 페이지 이동으로 조회하며 파일 원본 다운로드나 일괄 삭제는 제공하지 않습니다.
+지도 기준점은 등록 후 불변이며 관제 화면은 현재 프레임의 `run_id`에 해당하는 원점을 DB에서 읽습니다.
+
+1. Python 가상환경에 `pip install -r backend/requirements.txt`를 실행합니다.
+2. 루트 `.env`에 별도로 전달받은 `DATABASE_URL`, `DATABASE_SCHEMA=twinsight`, `DATABASE_AUTO_CREATE=false`를 설정합니다. 연결 예시는 `.env.supabase.example`입니다. 관리용 postgres 계정 대신 앱 계정을 사용합니다.
+3. 루트 `.env`에 무작위 `TEAM_ACCESS_TOKEN`(32자 이상)을 추가합니다. `python -c "import secrets; print(secrets.token_urlsafe(36))"`으로 만들 수 있습니다. DB 비밀번호와 다른 값이며 프론트 `VITE_` 환경변수에 넣지 않습니다.
+4. `frontend`에서 `npm ci`, `npm run build`를 실행합니다. 기본 `/api`를 사용하고 `VITE_DEMO_TWIN=0`으로 실제 DB만 표시합니다.
+5. 저장소 루트에서 `python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8010`을 실행하고 `http://127.0.0.1:8010/dashboard/database`로 접속합니다. 팀 접속 키로 로그인합니다.
+
+이 주소는 실행 중인 PC에서만 사용합니다. 팀 전체가 브라우저로 접속할 공용 URL은 별도 HTTPS 호스팅이 필요합니다. Supabase DB 자체는 PC와 무관하게 운영됩니다.
+프론트 개발 시에는 백엔드 포트 8000, Vite 포트 5173을 사용합니다. Vite가 `/api`, `/login`, `/logout`을 프록시하므로 `http://localhost:5173/login`에서 로그인한 뒤 `/dashboard/`를 엽니다.
+
+- 기존 API 경로와 같은 기능을 `/api/...`에서도 제공합니다.
+- `DATABASE_SCHEMA`를 설정하면 팀 접속 키 없이 서버를 실행할 수 없습니다. 읽기·쓰기 API와 WebSocket 모두 인증을 검사합니다.
+- 브라우저는 HttpOnly 세션 쿠키를 사용합니다. 수집기 등 기계 클라이언트는 `Authorization: Bearer <TEAM_ACCESS_TOKEN>` 헤더를 보내야 합니다.
+- 공용 HTTPS 배포 시 `DEPLOYMENT_MODE=cloud`, `PUBLIC_BASE_URL=https://실제호스트`를 설정합니다. 현재 인증은 팀 공용 키 방식이며 개인별 역할/계정 관리는 아닙니다.
+- 앱은 Supabase DDL을 실행하지 않고 기존 테이블·컬럼을 검증합니다. 이미 생성된 `twinsight` 스키마를 사용하며 초기 SQL을 다시 적용하지 않습니다.
+- 같은 `run_id`를 다른 카메라나 다른 시간 기준으로 재사용하면 409를 반환합니다. 각 분석 실행에는 고유 ID를 사용합니다.
+
+검증: 백엔드 테스트, 프론트 TypeScript/production build, 실제 Supabase 앱 계정으로 목록 조회 및 롤백 트랜잭션 내 CCTV·프레임·좌표·기준점·경고·처리 이력 저장을 확인했습니다. DB 인증정보와 팀 접속 키는 Git에 넣지 않습니다.

@@ -10,7 +10,7 @@ if (!root) throw new Error("root 요소가 없습니다");
 
 createRoot(root).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <LiveProvider>
         <App />
       </LiveProvider>

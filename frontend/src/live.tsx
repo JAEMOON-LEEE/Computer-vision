@@ -70,6 +70,7 @@ export function LiveProvider({ children }: { children: ReactNode }) {
     if (frame.camera_id !== selectedRef.current) return;
     overlayRef.current = {
       cameraId: frame.camera_id,
+      runId: frame.run_id,
       width: frame.width || overlayRef.current.width,
       height: frame.height || overlayRef.current.height,
       boxes: frame.detections ?? [],
@@ -139,7 +140,7 @@ export function LiveProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let stopped = false;
-    getCameras()
+    const load = () => { getCameras()
       .then((rows) => {
         if (!stopped) {
           setCameras(rows);
@@ -149,7 +150,11 @@ export function LiveProvider({ children }: { children: ReactNode }) {
       .catch((error: unknown) => {
         if (!stopped) setCamerasError(error instanceof Error ? error.message : "카메라 목록 실패");
       });
+    };
+    load();
+    window.addEventListener("twinsight-data-updated", load);
     return () => {
+      window.removeEventListener("twinsight-data-updated", load);
       stopped = true;
     };
   }, []);
@@ -207,6 +212,7 @@ export function LiveProvider({ children }: { children: ReactNode }) {
       ws.onmessage = (event) => {
         let message: {
           type?: string;
+          run_id?: string;
           camera_id?: string;
           frame?: FrameRecord;
           alert?: AlertItem;
@@ -217,7 +223,7 @@ export function LiveProvider({ children }: { children: ReactNode }) {
           return;
         }
         if (message.type === "detections" && message.frame && message.camera_id) {
-          applyFrame({ ...message.frame, camera_id: message.frame.camera_id || message.camera_id }, true);
+          applyFrame({ ...message.frame, run_id: message.run_id || message.frame.run_id, camera_id: message.frame.camera_id || message.camera_id }, true);
         } else if (message.type === "alert" && message.alert) {
           replaceAlert(message.alert);
           if (message.alert.status === "unconfirmed") applyUnconfirmed(message.alert);

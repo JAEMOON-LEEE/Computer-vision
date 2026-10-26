@@ -197,7 +197,7 @@ def test_alerts_idempotent_per_run_and_filters(client, caplog):
     first = alert_record()
     second = alert_record(
         alert_id="cam-a:2",
-        camera_id="cam-b",
+        camera_id="cam-a",
         timestamp=20.0,
         type="road_debris",
         message="Persistent debris detected on the road",
@@ -228,7 +228,8 @@ def test_alerts_idempotent_per_run_and_filters(client, caplog):
     assert len({row["id"] for row in same_alert}) == 2
 
     assert len(client.get("/alerts", params={"run_id": "run-a"}).json()) == 2
-    assert len(client.get("/alerts", params={"camera_id": "cam-b"}).json()) == 1
+    assert len(client.get("/alerts", params={"camera_id": "cam-a"}).json()) == 3
+    assert client.get("/alerts", params={"camera_id": "cam-b"}).json() == []
     assert client.get("/alerts", params={"type": "road_debris"}).json()[0]["alert_id"] == "cam-a:2"
     assert len(client.get("/alerts", params={"from_ts": 15}).json()) == 1
     assert len(client.get("/alerts", params={"to_ts": 15}).json()) == 2
