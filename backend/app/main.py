@@ -19,7 +19,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.db import init_db
-from backend.app.routers import alerts, cameras, database, detections, ingest, ws
+from backend.app.routers import alerts, cameras, database, detections, ingest, ws, saved_results
 
 
 @asynccontextmanager
@@ -62,7 +62,7 @@ def health():
 
 
 # Same-origin API for the built dashboard and Vite proxy; preserve existing clients.
-for router in (cameras.router, detections.router, ingest.router, alerts.router, ws.router, database.router):
+for router in (cameras.router, detections.router, ingest.router, alerts.router, ws.router, database.router, saved_results.router):
     app.include_router(router, prefix="/api")
 
 
@@ -86,7 +86,7 @@ def home():
 @app.get("/dashboard/", include_in_schema=False)
 @app.get("/dashboard/{route:path}", include_in_schema=False)
 def dashboard(route: str = ""):
-    if route not in ("", "history", "analysis", "database"):
+    if route not in ("", "history", "analysis", "database", "saved"):
         return JSONResponse({"detail": "페이지를 찾을 수 없습니다"}, status_code=404)
     if not (DIST / "index.html").is_file():
         return JSONResponse({"detail": "frontend에서 npm ci와 npm run build를 먼저 실행하세요"}, status_code=503)
