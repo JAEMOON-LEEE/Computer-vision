@@ -33,3 +33,19 @@ def test_malformed_saved_frame_is_reported(client):
     seed('{"width":NaN,"height":480,"detections":[]}')
     assert client.get("/api/database/saved-results/frame?record_id=saved").status_code == 422
     assert client.get("/api/database/saved-results/frame?record_id=missing").status_code == 404
+
+
+def test_virtual_ground_truth_keeps_world_coordinates_separate(client):
+    seed('{"width":720,"height":480,"detections":[]}')
+    with db.SessionLocal() as session:
+        session.add(CatalogLog(record_id="saved", stream="ground_truth.jsonl-abc", line_no=1,
+            message=json.dumps({"camera_id": "sim", "frame": 0, "width": 720, "height": 480,
+                "objects": [{"class_name": "car", "bbox_xyxy": [1,2,10,20], "ground_point_world": [3,0.5,-7]}]})))
+        session.commit()
+    rows = client.get("/api/database/saved-results").json()
+    assert {r["source"] for r in rows} == {"detections", "ground_truth"}
+    frame = client.get("/api/database/saved-results/frame?record_id=saved&source=ground_truth").json()
+    assert frame["detections"][0]["world_xz"] == [3,-7]
+    assert frame["camera_location"] is None
+    assert client.get("/api/database/saved-results/frame?record_id=saved").json()["detections"] == []
+    assert client.get("/api/database/saved-results/frame?record_id=saved&source=other").status_code == 422

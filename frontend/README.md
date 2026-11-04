@@ -43,3 +43,15 @@ Vite 개발 서버는 기존 백엔드 포트 8000으로 `/api`, `/login`, `/log
 위치가 없으면 DB 관리에서 해당 CCTV ID와 위치를 등록하세요. 카메라 위치는 객체 위치가 아닙니다.
 현재 저장 로그에는 mapped_xz가 없으므로 객체의 실제 지도 표시는 카메라 보정 파일/대응점과
 좌표 변환 연동이 추가로 필요합니다. 영상 좌표 화면은 원본 이미지 없이 검출 상자만 표시합니다.
+
+가상환경 자료는 작업 목록의 `[가상환경 정답]` 항목을 선택합니다.
+`ground_truth.jsonl`의 `objects[].ground_point_world`에서 X/Z를 읽어 미터 단위 평면도로 표시합니다.
+이 좌표는 Unity 정답이며 YOLO 검출의 지도 변환 결과가 아닙니다. 다른 스트림/실험과 임의로 합치지 않습니다.
+
+Git에서 확인한 카메라 참고 자료:
+- `docs/validation/geumchon-v1/camera.json`: 1440×960 CityTrafficLab 카메라 투영행렬
+- `docs/validation/geumchon-v1/reference-camera-720.json`: 720×480 참조 카메라
+- `simulation/TwinSightSim/RealCctv/geumchon.pose.json`: 실제 CCTV pose와 위경도 기준점
+
+실제 CCTV pose의 camera_id/좌표계와 Unity 실험 로그가 다르므로 자동 적용하지 않습니다.
+가상환경 정답 평면도는 DB에 저장된 월드 좌표를 직접 사용하므로 이 파일에 의존하지 않습니다.
