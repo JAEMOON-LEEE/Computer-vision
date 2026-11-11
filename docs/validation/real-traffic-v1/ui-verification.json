@@ -1,0 +1,153 @@
+{
+  "functional_only": true,
+  "cases": [
+    {
+      "session_id": "0c40ba0c6f674b958ba31b43b64eaeaf",
+      "options": {
+        "model": "real-coco",
+        "simulation_collision_policy": false,
+        "real_incident_scene": true,
+        "source_kind": "video",
+        "source_label": "video106.mp4",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": true,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "source_clock_steps",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 26,
+      "classes": {
+        "truck": 128,
+        "car": 121,
+        "person": 5
+      },
+      "alerts": [
+        {
+          "alert_id": "lab-0c40ba0c6f674b958ba31b43b64eaeaf:real-scene:6",
+          "camera_id": "lab-0c40ba0c6f674b958ba31b43b64eaeaf",
+          "frame": 6,
+          "timestamp": 1.2,
+          "type": "suspected_traffic_incident_scene",
+          "severity": "warning",
+          "status": "unconfirmed",
+          "message": "Real-data scene classifier suggests an accident scene; review source video",
+          "basis": "weakly_supervised_real_scene_appearance",
+          "evidence": [],
+          "scene_decision": {
+            "vote_ratio": 0.9296875,
+            "threshold": 0.55,
+            "not_calibrated_probability": true,
+            "contact_or_participants_identified": false
+          }
+        }
+      ],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    },
+    {
+      "session_id": "2162e3c10164417499164d9dd56355d8",
+      "options": {
+        "model": "real-coco",
+        "simulation_collision_policy": false,
+        "real_incident_scene": false,
+        "source_kind": "image",
+        "source_label": "user-example-input.png",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": false,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "single",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 1,
+      "classes": {
+        "truck": 2,
+        "person": 1
+      },
+      "alerts": [],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    },
+    {
+      "session_id": "3cbc5a70308942cd9f5709c947720227",
+      "options": {
+        "model": "real-coco",
+        "simulation_collision_policy": false,
+        "real_incident_scene": false,
+        "source_kind": "image",
+        "source_label": "user-example-input.png",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": false,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "single",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 1,
+      "classes": {
+        "truck": 2,
+        "person": 1
+      },
+      "alerts": [],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    },
+    {
+      "session_id": "904ec068e2134a84b5756bca281080f7",
+      "options": {
+        "model": "real-traffic",
+        "simulation_collision_policy": false,
+        "real_incident_scene": false,
+        "source_kind": "image",
+        "source_label": "00016301.jpg",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": false,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "single",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 1,
+      "classes": {
+        "car": 3
+      },
+      "alerts": [],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    }
+  ],
+  "bus_miss_recorded": true
+}

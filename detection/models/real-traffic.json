@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "completed_at": "2026-10-25T09:08:19.880983+00:00",
+  "retrained": true,
+  "training_epochs": 8,
+  "training_images": 459,
+  "selected": "mio_n",
+  "selected_sha256": "8a96309daf9c7e4e35b10527f2d6b77be3f0e5a1403448b731fd5b00d8242472",
+  "real_cctv_pilot": true,
+  "camera_disjoint": false,
+  "accident_accuracy_evaluated": false,
+  "available_classes": [
+    "person",
+    "car",
+    "truck",
+    "bus",
+    "motorcycle",
+    "bicycle"
+  ],
+  "unavailable_classes": [
+    "pothole",
+    "debris",
+    "barrier",
+    "crack"
+  ],
+  "production_ready": false
+}

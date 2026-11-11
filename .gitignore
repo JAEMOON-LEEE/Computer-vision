@@ -61,6 +61,13 @@ frontend/.env
 !detection/models/simulation-cctv-day-night.pt
 !detection/models/stop-zone-collision*.xml
 !detection/models/stop-zone-collision*.json
+!detection/models/simulation-cctv-collision-v2.pt
+!detection/models/collision-policy-v2.xml
+!detection/models/collision-policy-v2.json
+!detection/models/real-traffic.pt
+!detection/models/real-traffic.json
+!detection/models/real-incident-scene-v1.xml
+!detection/models/real-incident-scene-v1.json
 .env.*
 !.env.example
 /training_artifacts/**/*.building.zip

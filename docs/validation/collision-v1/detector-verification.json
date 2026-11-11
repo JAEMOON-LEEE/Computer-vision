@@ -1,0 +1,643 @@
+{
+  "synthetic_only": true,
+  "retrained": false,
+  "production_ready": false,
+  "profiles": {
+    "unity-focus": {
+      "cases": [
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Day-NormalQueue-out-s271001_20261025_041516",
+          "scenario": "NormalQueue",
+          "lighting": "Day",
+          "expected_collision": false,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 160,
+              "person": 33
+            },
+            "elapsed_seconds": 17.266,
+            "pipeline_fps": 4.633,
+            "mean_inference_ms": 189.127,
+            "warm_mean_inference_ms": 113.743,
+            "warm_p95_inference_ms": 133.178,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {}
+          },
+          "collision_alerts": 0,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Day-TightQueue-in-s271098_20261025_041524",
+          "scenario": "TightQueue",
+          "lighting": "Day",
+          "expected_collision": false,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 160,
+              "person": 29
+            },
+            "elapsed_seconds": 13.396,
+            "pipeline_fps": 5.972,
+            "mean_inference_ms": 132.159,
+            "warm_mean_inference_ms": 132.345,
+            "warm_p95_inference_ms": 176.559,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {}
+          },
+          "collision_alerts": 0,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Day-RearEnd-out-s271195_20261025_041532",
+          "scenario": "RearEnd",
+          "lighting": "Day",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 159,
+              "person": 27
+            },
+            "elapsed_seconds": 11.738,
+            "pipeline_fps": 6.815,
+            "mean_inference_ms": 118.84,
+            "warm_mean_inference_ms": 118.672,
+            "warm_p95_inference_ms": 153.617,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": true,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Day-HighSpeedRearEnd-in-s271292_20261025_041539",
+          "scenario": "HighSpeedRearEnd",
+          "lighting": "Day",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 211,
+              "person": 20
+            },
+            "elapsed_seconds": 13.903,
+            "pipeline_fps": 5.754,
+            "mean_inference_ms": 142.242,
+            "warm_mean_inference_ms": 142.623,
+            "warm_p95_inference_ms": 192.826,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 1
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Day-HeadOn-out-s271389_20261025_041547",
+          "scenario": "HeadOn",
+          "lighting": "Day",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 110,
+              "person": 38
+            },
+            "elapsed_seconds": 13.194,
+            "pipeline_fps": 6.063,
+            "mean_inference_ms": 138.575,
+            "warm_mean_inference_ms": 138.276,
+            "warm_p95_inference_ms": 166.64,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {}
+          },
+          "collision_alerts": 0,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Day-SideImpact-in-s271486_20261025_041555",
+          "scenario": "SideImpact",
+          "lighting": "Day",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 167,
+              "person": 23
+            },
+            "elapsed_seconds": 12.329,
+            "pipeline_fps": 6.489,
+            "mean_inference_ms": 127.891,
+            "warm_mean_inference_ms": 127.741,
+            "warm_p95_inference_ms": 148.403,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 1
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Day-ChainReaction-out-s271583_20261025_041603",
+          "scenario": "ChainReaction",
+          "lighting": "Day",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 188,
+              "person": 24
+            },
+            "elapsed_seconds": 11.91,
+            "pipeline_fps": 6.717,
+            "mean_inference_ms": 121.881,
+            "warm_mean_inference_ms": 121.714,
+            "warm_p95_inference_ms": 140.262,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 1
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Night-NormalQueue-in-s272001_20261025_041611",
+          "scenario": "NormalQueue",
+          "lighting": "Night",
+          "expected_collision": false,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 160,
+              "person": 23
+            },
+            "elapsed_seconds": 11.893,
+            "pipeline_fps": 6.727,
+            "mean_inference_ms": 122.827,
+            "warm_mean_inference_ms": 122.974,
+            "warm_p95_inference_ms": 142.154,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {}
+          },
+          "collision_alerts": 0,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Night-TightQueue-out-s272098_20261025_041620",
+          "scenario": "TightQueue",
+          "lighting": "Night",
+          "expected_collision": false,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 160,
+              "person": 23
+            },
+            "elapsed_seconds": 12.214,
+            "pipeline_fps": 6.55,
+            "mean_inference_ms": 132.58,
+            "warm_mean_inference_ms": 132.561,
+            "warm_p95_inference_ms": 167.945,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 1
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Night-RearEnd-in-s272195_20261025_041630",
+          "scenario": "RearEnd",
+          "lighting": "Night",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 160,
+              "person": 18
+            },
+            "elapsed_seconds": 12.776,
+            "pipeline_fps": 6.262,
+            "mean_inference_ms": 137.432,
+            "warm_mean_inference_ms": 137.596,
+            "warm_p95_inference_ms": 191.532,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": true,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Night-HighSpeedRearEnd-out-s272292_20261025_041640",
+          "scenario": "HighSpeedRearEnd",
+          "lighting": "Night",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 160,
+              "person": 34
+            },
+            "elapsed_seconds": 12.483,
+            "pipeline_fps": 6.409,
+            "mean_inference_ms": 133.974,
+            "warm_mean_inference_ms": 134.098,
+            "warm_p95_inference_ms": 184.722,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": true,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Night-HeadOn-in-s272389_20261025_041649",
+          "scenario": "HeadOn",
+          "lighting": "Night",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 207,
+              "person": 24
+            },
+            "elapsed_seconds": 11.17,
+            "pipeline_fps": 7.162,
+            "mean_inference_ms": 118.568,
+            "warm_mean_inference_ms": 118.505,
+            "warm_p95_inference_ms": 133.104,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": true,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Night-SideImpact-out-s272486_20261025_041658",
+          "scenario": "SideImpact",
+          "lighting": "Night",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 147,
+              "person": 14
+            },
+            "elapsed_seconds": 12.452,
+            "pipeline_fps": 6.425,
+            "mean_inference_ms": 134.687,
+            "warm_mean_inference_ms": 134.609,
+            "warm_p95_inference_ms": 172.378,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {
+              "suspected_vehicle_collision": 1
+            }
+          },
+          "collision_alerts": 1,
+          "correct_pair_after_contact": true,
+          "unmatched_or_early_alerts": 0
+        },
+        {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\collision-v1\\collision-v1-test-Night-ChainReaction-in-s272583_20261025_041708",
+          "scenario": "ChainReaction",
+          "lighting": "Night",
+          "expected_collision": true,
+          "summary": {
+            "status": "completed",
+            "frames": 80,
+            "detections_by_class": {
+              "car": 191,
+              "person": 20
+            },
+            "elapsed_seconds": 13.065,
+            "pipeline_fps": 6.123,
+            "mean_inference_ms": 140.141,
+            "warm_mean_inference_ms": 139.829,
+            "warm_p95_inference_ms": 179.756,
+            "capabilities": {
+              "available": [
+                "person",
+                "car",
+                "pothole",
+                "debris",
+                "barrier"
+              ],
+              "unavailable": [
+                "truck",
+                "bus",
+                "motorcycle",
+                "bicycle",
+                "crack"
+              ]
+            },
+            "alerts_by_type": {}
+          },
+          "collision_alerts": 0,
+          "correct_pair_after_contact": false,
+          "unmatched_or_early_alerts": 0
+        }
+      ],
+      "accident_clips": 10,
+      "correct_pair_after_contact_clips": 5,
+      "normal_clips": 4,
+      "normal_clips_with_collision_alert": 1,
+      "detector": {
+        "options": {
+          "device": "cpu",
+          "imgsz": 640,
+          "iou": 0.7,
+          "verbose": false
+        },
+        "focus": [
+          0.3194444444444444,
+          0.2708333333333333,
+          0.6111111111111112,
+          0.5625
+        ],
+        "capabilities": {
+          "available": [
+            "person",
+            "car",
+            "pothole",
+            "debris",
+            "barrier"
+          ],
+          "unavailable": [
+            "truck",
+            "bus",
+            "motorcycle",
+            "bicycle",
+            "crack"
+          ]
+        },
+        "tracking": "bytetrack",
+        "versions": {
+          "ultralytics": "8.4.182",
+          "torch": "2.9.1+cpu",
+          "opencv-python": "4.11.0.86"
+        },
+        "models": [
+          {
+            "id": "primary",
+            "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+            "sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+            "classes": {
+              "0": "person",
+              "1": "car",
+              "2": "pothole",
+              "3": "debris",
+              "4": "barrier"
+            },
+            "conf": 0.25
+          },
+          {
+            "id": "focus",
+            "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+            "sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+            "classes": {
+              "0": "person",
+              "1": "car",
+              "2": "pothole",
+              "3": "debris",
+              "4": "barrier"
+            },
+            "conf": 0.25
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "completed_at": "2026-10-24T19:27:40.946513+00:00",
+  "environment_and_dataset_complete": true,
+  "retrained": false,
+  "recognition_improvement_verified": false,
+  "production_ready": false,
+  "scene_audit_passed": true,
+  "raw_clips": 42,
+  "raw_frames": 3360,
+  "dataset": "D:/Capston disign/Computer-vision/datasets/day-night-collision-v1/dataset.yaml",
+  "dataset_check": "detection.prepare_focus.prepare completed check_dataset(require_all_classes=True); valid labels and no cross-split exact-image leakage",
+  "dataset_counts": {
+    "train": {
+      "images": 1700,
+      "labels": 1700,
+      "objects_by_class_id": {
+        "0": 2928,
+        "1": 3160,
+        "4": 152,
+        "2": 75,
+        "3": 85
+      }
+    },
+    "val": {
+      "images": 1320,
+      "labels": 1320,
+      "objects_by_class_id": {
+        "0": 2495,
+        "1": 2674,
+        "4": 55,
+        "3": 24,
+        "2": 22
+      }
+    },
+    "test": {
+      "images": 1320,
+      "labels": 1320,
+      "objects_by_class_id": {
+        "0": 2501,
+        "1": 2672,
+        "4": 59,
+        "3": 21,
+        "2": 22
+      }
+    }
+  },
+  "dataset_total_images": 4340,
+  "human_label_review_complete": false,
+  "detector_sha256_unchanged": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+  "detection_tests_passed": 51,
+  "unity_compile_errors": 0,
+  "capture_console_errors": 0,
+  "scene_after_capture": {
+    "play_mode": false,
+    "capture_probes": 0,
+    "automatic_episodes": true,
+    "clean_dataset_capture": false,
+    "cctv_position": [
+      -17,
+      5.017182,
+      1.833129
+    ],
+    "cctv_fov": 38.0151176
+  },
+  "strict_correct_collision_clips": 5,
+  "tested_collision_clips": 10,
+  "normal_control_clips": 4,
+  "normal_control_clips_with_warning": 1,
+  "previews": [
+    {
+      "path": "D:\\Capston disign\\Computer-vision\\runs\\collision-v1\\previews\\ChainReaction-focus.webm",
+      "opened": true,
+      "first_frame_decodes": true,
+      "frames": 80,
+      "fps": 8.0,
+      "size": [
+        960,
+        640
+      ]
+    },
+    {
+      "path": "D:\\Capston disign\\Computer-vision\\runs\\collision-v1\\previews\\HeadOn-focus.webm",
+      "opened": true,
+      "first_frame_decodes": true,
+      "frames": 80,
+      "fps": 8.0,
+      "size": [
+        960,
+        640
+      ]
+    },
+    {
+      "path": "D:\\Capston disign\\Computer-vision\\runs\\collision-v1\\previews\\HighSpeedRearEnd-focus.webm",
+      "opened": true,
+      "first_frame_decodes": true,
+      "frames": 80,
+      "fps": 8.0,
+      "size": [
+        960,
+        640
+      ]
+    },
+    {
+      "path": "D:\\Capston disign\\Computer-vision\\runs\\collision-v1\\previews\\NormalQueue-focus.webm",
+      "opened": true,
+      "first_frame_decodes": true,
+      "frames": 80,
+      "fps": 8.0,
+      "size": [
+        960,
+        640
+      ]
+    },
+    {
+      "path": "D:\\Capston disign\\Computer-vision\\runs\\collision-v1\\previews\\RearEnd-focus.webm",
+      "opened": true,
+      "first_frame_decodes": true,
+      "frames": 80,
+      "fps": 8.0,
+      "size": [
+        960,
+        640
+      ]
+    },
+    {
+      "path": "D:\\Capston disign\\Computer-vision\\runs\\collision-v1\\previews\\SideImpact-focus.webm",
+      "opened": true,
+      "first_frame_decodes": true,
+      "frames": 80,
+      "fps": 8.0,
+      "size": [
+        960,
+        640
+      ]
+    },
+    {
+      "path": "D:\\Capston disign\\Computer-vision\\runs\\collision-v1\\previews\\TightQueue-focus.webm",
+      "opened": true,
+      "first_frame_decodes": true,
+      "frames": 80,
+      "fps": 8.0,
+      "size": [
+        960,
+        640
+      ]
+    }
+  ],
+  "github_pushed": false,
+  "team_database_modified": false
+}

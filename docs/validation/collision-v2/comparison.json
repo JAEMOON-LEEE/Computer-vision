@@ -1,0 +1,173 @@
+{
+  "completed_at": "2026-10-25T08:23:24.130369+00:00",
+  "retrained": true,
+  "night_collisions_included": true,
+  "synthetic_only": true,
+  "production_ready": false,
+  "fixed_test_previously_benchmarked": true,
+  "test_used_for_training_or_threshold_selection": false,
+  "actual_epochs": 12,
+  "dataset_counts": {
+    "train": 804,
+    "val": 424,
+    "test": 424
+  },
+  "before": {
+    "varied-Day": {
+      "accident_clips": 5,
+      "correct_after_contact_clips": 1,
+      "clean_correct_clips": 1,
+      "normal_clips": 2,
+      "normal_collision_false_alert_clips": 0,
+      "clips_with_wrong_pair_or_early_alert": 3
+    },
+    "varied-Night": {
+      "accident_clips": 5,
+      "correct_after_contact_clips": 4,
+      "clean_correct_clips": 4,
+      "normal_clips": 2,
+      "normal_collision_false_alert_clips": 1,
+      "clips_with_wrong_pair_or_early_alert": 1
+    },
+    "legacy-Day": {
+      "accident_clips": 4,
+      "correct_after_contact_clips": 4,
+      "clean_correct_clips": 4,
+      "normal_clips": 6,
+      "normal_collision_false_alert_clips": 0,
+      "clips_with_wrong_pair_or_early_alert": 0
+    },
+    "legacy-Night": {
+      "accident_clips": 4,
+      "correct_after_contact_clips": 2,
+      "clean_correct_clips": 2,
+      "normal_clips": 6,
+      "normal_collision_false_alert_clips": 0,
+      "clips_with_wrong_pair_or_early_alert": 1
+    }
+  },
+  "after": {
+    "varied-Day": {
+      "accident_clips": 5,
+      "correct_after_contact_clips": 5,
+      "clean_correct_clips": 5,
+      "normal_clips": 2,
+      "normal_collision_false_alert_clips": 0,
+      "clips_with_wrong_pair_or_early_alert": 0
+    },
+    "varied-Night": {
+      "accident_clips": 5,
+      "correct_after_contact_clips": 5,
+      "clean_correct_clips": 5,
+      "normal_clips": 2,
+      "normal_collision_false_alert_clips": 0,
+      "clips_with_wrong_pair_or_early_alert": 0
+    },
+    "legacy-Day": {
+      "accident_clips": 4,
+      "correct_after_contact_clips": 3,
+      "clean_correct_clips": 3,
+      "normal_clips": 6,
+      "normal_collision_false_alert_clips": 0,
+      "clips_with_wrong_pair_or_early_alert": 0
+    },
+    "legacy-Night": {
+      "accident_clips": 4,
+      "correct_after_contact_clips": 3,
+      "clean_correct_clips": 3,
+      "normal_clips": 6,
+      "normal_collision_false_alert_clips": 0,
+      "clips_with_wrong_pair_or_early_alert": 0
+    }
+  },
+  "normal_all_warning_audit": [
+    {
+      "clip": "collision-v1-test-Day-NormalQueue-out-s271001_20261025_041516",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "collision-v1-test-Day-TightQueue-in-s271098_20261025_041524",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "collision-v1-test-Night-NormalQueue-in-s272001_20261025_041611",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "collision-v1-test-Night-TightQueue-out-s272098_20261025_041620",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "queue-v2-test-BarrierStop-0-s13637",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "queue-v2-test-BarrierStop-1-s13738",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-0-s13603",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-1-s13704",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-0-s13620",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-1-s13721",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "nightqueue-v1-test-BarrierStop-0-s35637",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "nightqueue-v1-test-BarrierStop-1-s35738",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "nightqueue-v1-test-SignalQueue-0-s35603",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "nightqueue-v1-test-SignalQueue-1-s35704",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "nightqueue-v1-test-TightQueue-0-s35620",
+      "alerts_by_type": {}
+    },
+    {
+      "clip": "nightqueue-v1-test-TightQueue-1-s35721",
+      "alerts_by_type": {}
+    }
+  ],
+  "models": {
+    "detector": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-collision-v2.pt",
+    "detector_sha256": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e",
+    "collision_policy": "detection/models/collision-policy-v2.xml",
+    "collision_policy_sha256": "ec45078409b067d9b2b9af738c7f338a90cb570ae2ed678c9a1c7f73fcc99f6c"
+  },
+  "policy_selection": {
+    "depth": 6,
+    "minimum_samples": 1,
+    "threshold": 0.8204125,
+    "training_samples": 1091,
+    "training_classes": {
+      "0": 632,
+      "1": 459
+    },
+    "training_feature_sources": {
+      "current_detector": 348,
+      "legacy_detector": 743
+    },
+    "validation_false_alert_clips": 0,
+    "validation_true_collision_clips": 14
+  },
+  "real_cctv_accuracy_evaluated": false,
+  "human_label_review_complete": false
+}

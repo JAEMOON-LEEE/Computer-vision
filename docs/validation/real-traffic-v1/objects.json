@@ -1,0 +1,126 @@
+{
+  "previous_synthetic": {
+    "iou_threshold": 0.5,
+    "confidence_for_precision_recall": 0.25,
+    "images": 146,
+    "data": "D:\\Capston disign\\Computer-vision\\datasets\\real-traffic-mio-v1\\dataset.yaml",
+    "split": "test",
+    "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-collision-v2.pt",
+    "road_weights": null,
+    "focus": null,
+    "synthetic_only": null,
+    "classes": {
+      "person": {
+        "ground_truth": 17,
+        "true_positives": 4,
+        "false_positives": 14,
+        "precision": 0.2222222222222222,
+        "recall": 0.23529411764705882,
+        "AP50_101point": 0.09959713558399426
+      },
+      "car": {
+        "ground_truth": 359,
+        "true_positives": 166,
+        "false_positives": 164,
+        "precision": 0.503030303030303,
+        "recall": 0.4623955431754875,
+        "AP50_101point": 0.39508715777823705
+      },
+      "truck": {
+        "ground_truth": 75,
+        "true_positives": 0,
+        "false_positives": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "AP50_101point": 0.0
+      },
+      "bus": {
+        "ground_truth": 14,
+        "true_positives": 0,
+        "false_positives": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "AP50_101point": 0.0
+      },
+      "motorcycle": {
+        "ground_truth": 2,
+        "true_positives": 0,
+        "false_positives": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "AP50_101point": 0.0
+      },
+      "bicycle": {
+        "ground_truth": 9,
+        "true_positives": 0,
+        "false_positives": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "AP50_101point": 0.0
+      }
+    },
+    "mAP50_101point": 0.08244738222703855
+  },
+  "selected_real": {
+    "iou_threshold": 0.5,
+    "confidence_for_precision_recall": 0.25,
+    "images": 146,
+    "data": "D:\\Capston disign\\Computer-vision\\datasets\\real-traffic-mio-v1\\dataset.yaml",
+    "split": "test",
+    "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\real-traffic.pt",
+    "road_weights": null,
+    "focus": null,
+    "synthetic_only": null,
+    "classes": {
+      "person": {
+        "ground_truth": 17,
+        "true_positives": 9,
+        "false_positives": 12,
+        "precision": 0.42857142857142855,
+        "recall": 0.5294117647058824,
+        "AP50_101point": 0.3462221163777889
+      },
+      "car": {
+        "ground_truth": 359,
+        "true_positives": 285,
+        "false_positives": 166,
+        "precision": 0.6319290465631929,
+        "recall": 0.7938718662952646,
+        "AP50_101point": 0.7813762413106246
+      },
+      "truck": {
+        "ground_truth": 75,
+        "true_positives": 27,
+        "false_positives": 46,
+        "precision": 0.3698630136986301,
+        "recall": 0.36,
+        "AP50_101point": 0.30424971901426356
+      },
+      "bus": {
+        "ground_truth": 14,
+        "true_positives": 6,
+        "false_positives": 4,
+        "precision": 0.6,
+        "recall": 0.42857142857142855,
+        "AP50_101point": 0.49079631040027083
+      },
+      "motorcycle": {
+        "ground_truth": 2,
+        "true_positives": 0,
+        "false_positives": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "AP50_101point": 0.12623762376237624
+      },
+      "bicycle": {
+        "ground_truth": 9,
+        "true_positives": 7,
+        "false_positives": 6,
+        "precision": 0.5384615384615384,
+        "recall": 0.7777777777777778,
+        "AP50_101point": 0.8512336947980511
+      }
+    },
+    "mAP50_101point": 0.48335261761056253
+  }
+}

@@ -45,6 +45,7 @@ namespace TwinSight.Simulation
         string runDir;
         int frame;
         bool done;
+        public string RunDirectory => runDir;
         TrafficSignalController signals;
         RoadScenarioDirector scenarios;
         DayNightEnvironment environment;

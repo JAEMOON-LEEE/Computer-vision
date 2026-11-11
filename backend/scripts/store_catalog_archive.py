@@ -140,7 +140,7 @@ def upload(manifest, env, team_root, parents, report):
     archive = Path(manifest['archive'])
     if sha(archive) != manifest['sha256'] or archive.stat().st_size != manifest['archive_bytes']:
         raise ValueError('Archive changed since packaging')
-    record_id = 'night-v1-binary-archive-' + manifest['sha256'][:24]
+    record_id = manifest.get('record_prefix', 'night-v1-binary-archive-') + manifest['sha256'][:24]
     new = False
     with connect(env) as conn:
         conn.execute("SET LOCAL statement_timeout='120s'")
@@ -166,7 +166,7 @@ def upload(manifest, env, team_root, parents, report):
                        'storage': {'kind': 'postgres_large_object', 'availability': 'database_app_role',
                                    'local_source_retained': True},
                        'scope': manifest.get('scope','Night experiment original files; see artifact index')}
-            body = RecordIn(record_id=record_id, kind='dataset', title='Night v1 archive: '+archive.name,
+            body = RecordIn(record_id=record_id, kind='dataset', title=manifest.get('title', 'Night v1 archive: '+archive.name),
                             owner='TwinSight 팀 / 이진규 실험', data_origin=manifest.get('data_origin','synthetic'), status='completed',
                             camera_id=None, detection_run_id=None, parents=sorted(set(parents)), details=details).model_dump()
             fingerprint = hashlib.sha256(canonical(body).encode()).hexdigest()
@@ -176,13 +176,11 @@ def upload(manifest, env, team_root, parents, report):
                 VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,now())''',
                 (r['record_id'],r['kind'],r['title'],r['owner'],r['data_origin'],r['status'],None,None,Json(details),fingerprint))
             with conn.cursor() as cur:
-                cur.executemany('INSERT INTO twinsight.catalog_parents(record_id,parent_id) VALUES(%s,%s)',
-                                [(record_id,p) for p in r['parents']])
+                from database_bulk import insert_rows
+                insert_rows(cur,'catalog_parents','record_id,parent_id',[(record_id,p) for p in r['parents']])
                 files = [FileIn(path=f['path'],size_bytes=f['size_bytes'],sha256=f['sha256'],
                                 role='artifact').model_dump() for f in manifest['files']]
-                cur.executemany('''INSERT INTO twinsight.catalog_files(record_id,path,size_bytes,sha256,role)
-                                VALUES(%s,%s,%s,%s,%s)''',
-                                [(record_id,f['path'],f['size_bytes'],f['sha256'],f['role']) for f in files])
+                insert_rows(cur,'catalog_files','record_id,path,size_bytes,sha256,role',[(record_id,f['path'],f['size_bytes'],f['sha256'],f['role']) for f in files])
             new = True
         verify_object(conn, oid, manifest['archive_bytes'], manifest['sha256'])
     # A second connection proves the committed remote object is readable.

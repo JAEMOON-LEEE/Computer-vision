@@ -8,6 +8,7 @@ import { HistoryPage } from "./pages/HistoryPage";
 import { DatabasePage } from "./pages/DatabasePage";
 import { MonitorPage } from "./pages/MonitorPage";
 import { SavedResultsPage } from "./pages/SavedResultsPage";
+import { ValidationLab } from "./pages/ValidationLab";
 
 export function App() {
   const { wsStatus, unconfirmedAlerts } = useLive();
@@ -34,6 +35,7 @@ export function App() {
             <NavLink to="/analysis">분석</NavLink>
             <NavLink to="/database">DB 관리</NavLink>
             <NavLink to="/saved">팀원 저장 결과</NavLink>
+            <NavLink to="/lab">영상 검증</NavLink>
           </nav>
         </div>
         <div className="top-actions">
@@ -54,6 +56,7 @@ export function App() {
         <Route path="/analysis" element={<AnalysisPage />} />
         <Route path="/database" element={<DatabasePage />} />
         <Route path="/saved" element={<SavedResultsPage />} />
+        <Route path="/lab" element={<ValidationLab />} />
       </Routes>
       <AlertDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </div>

@@ -1,0 +1,488 @@
+{
+  "status": "complete",
+  "task": "weakly_supervised_accident_scene_presence",
+  "synthetic_only": false,
+  "source": "https://github.com/UnicomAI/UnicomBenchmark/tree/main/TADBench",
+  "labels": "Weak clip-level labels from official accident/normal folders; not contact-frame or participant labels",
+  "license": "No explicit dataset license in source README; local research pilot only; no redistribution",
+  "embedding_weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\yolo11n.pt",
+  "embedding_sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+  "embedding_layer": 10,
+  "embedding_dimensions": 256,
+  "imgsz": 416,
+  "model_sha256": "25033beaeb05c079bc868ee71aa8cba1972548cbb6ebacfac3a09f49d50ae5b8",
+  "threshold": 0.55,
+  "depth": 3,
+  "trees": 128,
+  "alerts_enabled": true,
+  "gate": "val recall>=0.5 and val FPR<=0.1; no test-based promotion",
+  "training_rows": 2056,
+  "split_counts": {
+    "val": 24,
+    "train": 96,
+    "test": 32
+  },
+  "cross_split_exact_duplicates_excluded": 0,
+  "selection": {
+    "depth": 3,
+    "threshold": 0.55,
+    "tp": 12,
+    "fp": 1,
+    "positive_clips": 12,
+    "negative_clips": 12,
+    "recall": 1.0,
+    "false_positive_rate": 0.08333333333333333
+  },
+  "validation": {
+    "tp": 12,
+    "fp": 1,
+    "positive_clips": 12,
+    "negative_clips": 12,
+    "recall": 1.0,
+    "false_positive_rate": 0.08333333333333333,
+    "clips": [
+      {
+        "video": "video109.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video109.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.78125,
+        "sample_count": 29
+      },
+      {
+        "video": "video33.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video33.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.671875,
+        "sample_count": 11
+      },
+      {
+        "video": "video117.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video117.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.9453125,
+        "sample_count": 18
+      },
+      {
+        "video": "video140.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video140.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.9765625,
+        "sample_count": 21
+      },
+      {
+        "video": "video36.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video36.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.8828125,
+        "sample_count": 8
+      },
+      {
+        "video": "video200.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video200.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.90625,
+        "sample_count": 21
+      },
+      {
+        "video": "video136.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video136.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.7109375,
+        "sample_count": 34
+      },
+      {
+        "video": "video42.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video42.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.953125,
+        "sample_count": 23
+      },
+      {
+        "video": "video135.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video135.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.8828125,
+        "sample_count": 28
+      },
+      {
+        "video": "video106.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video106.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.9921875,
+        "sample_count": 16
+      },
+      {
+        "video": "video172.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video172.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.9921875,
+        "sample_count": 25
+      },
+      {
+        "video": "video162.mp4",
+        "source": "TAD-benchmark/train/accident_小于1M/video162.mp4",
+        "split": "val",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.8984375,
+        "sample_count": 31
+      },
+      {
+        "video": "20230818_acci-bg_31.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_31.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.1328125,
+        "sample_count": 23
+      },
+      {
+        "video": "20230818_acci-bg_129.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_129.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": true,
+        "maximum_vote_ratio": 0.8125,
+        "sample_count": 20
+      },
+      {
+        "video": "20230818_acci-bg_107.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_107.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.171875,
+        "sample_count": 14
+      },
+      {
+        "video": "20230818_acci-bg_33.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_33.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.328125,
+        "sample_count": 22
+      },
+      {
+        "video": "20230818_acci-bg_1.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_1.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.0390625,
+        "sample_count": 28
+      },
+      {
+        "video": "20230818_acci-bg_91.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_91.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.4921875,
+        "sample_count": 16
+      },
+      {
+        "video": "20230818_acci-bg_57.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_57.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.2890625,
+        "sample_count": 24
+      },
+      {
+        "video": "20220518_acci-bg6.mp4",
+        "source": "TAD-benchmark/train/normal/20220518_acci-bg6.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.1640625,
+        "sample_count": 40
+      },
+      {
+        "video": "20220518_acci-bg16.mp4",
+        "source": "TAD-benchmark/train/normal/20220518_acci-bg16.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.234375,
+        "sample_count": 40
+      },
+      {
+        "video": "20230818_acci-bg_47.mp4",
+        "source": "TAD-benchmark/train/normal/20230818_acci-bg_47.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.0234375,
+        "sample_count": 24
+      },
+      {
+        "video": "20220518_acci-bg12.mp4",
+        "source": "TAD-benchmark/train/normal/20220518_acci-bg12.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.28125,
+        "sample_count": 40
+      },
+      {
+        "video": "20220518_acci-bg34.mp4",
+        "source": "TAD-benchmark/train/normal/20220518_acci-bg34.mp4",
+        "split": "val",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.4296875,
+        "sample_count": 8
+      }
+    ]
+  },
+  "trials": [
+    {
+      "depth": 3,
+      "threshold": 0.55,
+      "tp": 12,
+      "fp": 1,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 1.0,
+      "false_positive_rate": 0.08333333333333333
+    },
+    {
+      "depth": 3,
+      "threshold": 0.65,
+      "tp": 10,
+      "fp": 1,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.8333333333333334,
+      "false_positive_rate": 0.08333333333333333
+    },
+    {
+      "depth": 3,
+      "threshold": 0.75,
+      "tp": 9,
+      "fp": 1,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.75,
+      "false_positive_rate": 0.08333333333333333
+    },
+    {
+      "depth": 3,
+      "threshold": 0.85,
+      "tp": 7,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.5833333333333334,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 3,
+      "threshold": 0.9,
+      "tp": 3,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.25,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 3,
+      "threshold": 0.95,
+      "tp": 2,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.16666666666666666,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 3,
+      "threshold": 1.001,
+      "tp": 0,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.0,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 5,
+      "threshold": 0.55,
+      "tp": 12,
+      "fp": 2,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 1.0,
+      "false_positive_rate": 0.16666666666666666
+    },
+    {
+      "depth": 5,
+      "threshold": 0.65,
+      "tp": 11,
+      "fp": 1,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.9166666666666666,
+      "false_positive_rate": 0.08333333333333333
+    },
+    {
+      "depth": 5,
+      "threshold": 0.75,
+      "tp": 9,
+      "fp": 1,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.75,
+      "false_positive_rate": 0.08333333333333333
+    },
+    {
+      "depth": 5,
+      "threshold": 0.85,
+      "tp": 9,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.75,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 5,
+      "threshold": 0.9,
+      "tp": 6,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.5,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 5,
+      "threshold": 0.95,
+      "tp": 3,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.25,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 5,
+      "threshold": 1.001,
+      "tp": 0,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.0,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 8,
+      "threshold": 0.55,
+      "tp": 12,
+      "fp": 2,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 1.0,
+      "false_positive_rate": 0.16666666666666666
+    },
+    {
+      "depth": 8,
+      "threshold": 0.65,
+      "tp": 12,
+      "fp": 1,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 1.0,
+      "false_positive_rate": 0.08333333333333333
+    },
+    {
+      "depth": 8,
+      "threshold": 0.75,
+      "tp": 9,
+      "fp": 1,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.75,
+      "false_positive_rate": 0.08333333333333333
+    },
+    {
+      "depth": 8,
+      "threshold": 0.85,
+      "tp": 8,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.6666666666666666,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 8,
+      "threshold": 0.9,
+      "tp": 6,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.5,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 8,
+      "threshold": 0.95,
+      "tp": 2,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.16666666666666666,
+      "false_positive_rate": 0.0
+    },
+    {
+      "depth": 8,
+      "threshold": 1.001,
+      "tp": 0,
+      "fp": 0,
+      "positive_clips": 12,
+      "negative_clips": 12,
+      "recall": 0.0,
+      "false_positive_rate": 0.0
+    }
+  ],
+  "test_used_for_selection": false,
+  "camera_disjoint": false,
+  "contact_or_participants_supervised": false,
+  "production_ready": false,
+  "limitations": [
+    "weak clip-level source labels",
+    "center20 seconds may miss contact",
+    "static aftermath can be positive",
+    "camera identities unknown",
+    "near duplicate videos not exhaustively audited",
+    "vote ratio is not accident probability",
+    "small selected size-biased pilot"
+  ],
+  "completed_at": "2026-10-25T09:10:07.827899+00:00"
+}

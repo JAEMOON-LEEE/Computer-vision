@@ -32,7 +32,7 @@ def iou(a, b):
 
 
 class WarningEngine:
-    def __init__(self, context=None, confidence=0.5, persistence=0.4, cooldown=15.0, stop_model=None):
+    def __init__(self, context=None, confidence=0.5, persistence=0.4, cooldown=15.0, stop_model=None, collision_model=None):
         self.context = context or {}
         self.confidence, self.persistence, self.cooldown = confidence, persistence, cooldown
         for polygon in [self.context.get("road_polygon", []), *self.context.get("stop_zones", [])]:
@@ -53,6 +53,12 @@ class WarningEngine:
             stop_model = StopCollisionModel(stop_model)
         self.stop_model = stop_model
         self.stop_candidates = []
+        if isinstance(collision_model,(str,Path)):
+            from .collision_policy import CollisionPolicy
+            collision_model=CollisionPolicy(collision_model)
+        self.collision_model=collision_model
+        self.collision_candidates=[]
+        self.learned_votes={}
 
     def key(self, detection):
         track = detection.get("track_id")
@@ -125,6 +131,7 @@ class WarningEngine:
 
     def update(self, record):
         self.stop_candidates = []
+        self.collision_candidates = []
         now = float(record["timestamp"])
         width, height = record["width"], record["height"]
         if not math.isfinite(now) or width <= 0 or height <= 0:
@@ -134,6 +141,7 @@ class WarningEngine:
             self.hazard_alerts.clear()
             self.structure_memory.clear()
             self.collision_latches.clear()
+            self.learned_votes.clear()
         self.camera, self.last_time = record["camera_id"], now
         detections = []
         for detection in record.get("detections", []):
@@ -206,11 +214,14 @@ class WarningEngine:
                 other_point = ((other_box[0] + other_box[2]) / width / 2, other_box[3] / height)
                 in_stop = vehicle_in_stop or any(inside(other_point, polygon) for polygon in self.context.get("stop_zones", []))
                 strong = min(vehicle["confidence"], other["confidence"]) >= self.confidence
-                if not in_stop and not strong:
+                if not in_stop and not strong and self.collision_model is None:
                     continue
                 # Rear-end contact in an oblique view can overlap only a few pixels.
                 # Approach, abrupt stopping and persistence remain required below.
-                if iou(box, other["bbox_xyxy"]) < 0.02:
+                if self.collision_model is not None:
+                    from .collision_policy import close_pair
+                    if not close_pair(vehicle,other):continue
+                elif iou(box, other["bbox_xyxy"]) < 0.02:
                     continue
                 other_key = self.key(other) or "barrier:" + str(tuple(round(v / 20) for v in other["bbox_xyxy"]))
                 pair = tuple(sorted((self.key(vehicle), other_key)))
@@ -219,6 +230,32 @@ class WarningEngine:
                 if now - last > 0.5:
                     first = now
                 self.contacts[pair] = (first, now)
+                if self.collision_model is not None:
+                    from .collision_policy import interaction_features
+                    features=interaction_features(vehicle,other,self.history,self.key,now,now-first)
+                    shared_age=features[-4]
+                    eligible=strong and shared_age>=.5 and now-first>=.25 and features[-3]>=.1
+                    score=self.collision_model.score(features)
+                    self.collision_candidates.append({'frame':record['frame'],'timestamp':now,'pair':pair,
+                        'features':features,'eligible':eligible,'boxes':[list(box),list(other_box)],
+                        'classes':[vehicle['class_name'],other['class_name']]})
+                    if pair in self.collision_latches:
+                        self.collision_latches[pair]=now
+                        continue
+                    if not eligible or score<self.collision_model.threshold:
+                        self.learned_votes.pop(pair,None)
+                        continue
+                    start,last,count=self.learned_votes.get(pair,(now,now,0))
+                    if now-last>.5:start,count=now,0
+                    count+=1;self.learned_votes[pair]=(start,now,count)
+                    if count<3 or now-start<.25:continue
+                    kind='suspected_vehicle_structure_collision' if other['class_name']=='barrier' else 'suspected_vehicle_collision'
+                    alert=self._emit(record,kind,str(pair),[vehicle,other],'Learned visual interaction; review video')
+                    if alert:
+                        alert['collision_decision']={'score':score,'threshold':self.collision_model.threshold,
+                            'basis':'trained_visual_boxes_and_causal_motion','synthetic_only':True}
+                        alerts.append(alert);self.collision_latches[pair]=now
+                    continue
                 if pair in self.collision_latches:
                     self.collision_latches[pair] = now
                     continue
@@ -250,6 +287,7 @@ class WarningEngine:
                     self.collision_latches[pair] = now
         self.contacts = {key: value for key, value in self.contacts.items() if now - value[1] <= 0.5}
         self.collision_latches = {key: time for key, time in self.collision_latches.items() if now - time <= 1.0}
+        self.learned_votes = {key:value for key,value in self.learned_votes.items() if now-value[1]<=.5}
         return alerts
 
 

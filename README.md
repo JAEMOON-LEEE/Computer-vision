@@ -157,3 +157,10 @@ flowchart TD
 - 가상 CCTV 낮·밤 선택과 야간 보강 학습: [낮·밤 학습 안내](docs/day_night_training.md)
 
 - 학습된 모델·이미지·라벨·분할·검증 결과 다운로드: [공유 학습 자료](training_artifacts/README.md)
+
+- 유튜브 참고 재생·영상/사진·수동 모델 ON/OFF: [영상 검증 대시보드](docs/manual_validation_lab.md)
+
+- 정상 대기 간격 확대·고속/정면/측면/연쇄 추돌 장면과 합성 자료: [차량 충돌 확장](docs/varied_vehicle_collisions.md)
+
+- 주간·야간 충돌 검출기와 시간 변화 판정 재학습: [재학습 기록·사용법](docs/collision_retraining.md)
+- 트럭·버스 포함 실제 CCTV 차량 학습, 실제 사고 장면 분류 실험: [실제 영상 보강·검증](docs/real_traffic_training.md)

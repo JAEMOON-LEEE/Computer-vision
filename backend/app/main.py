@@ -19,13 +19,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.db import init_db
-from backend.app.routers import alerts, cameras, database, detections, ingest, ws, saved_results, catalog_governance
+from backend.app.routers import alerts, cameras, database, detections, ingest, ws, saved_results, catalog_governance, lab
 
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     init_db()
     yield
+    lab.service.shutdown()
 
 
 app = FastAPI(
@@ -40,7 +41,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:5174", "http://127.0.0.1:5174"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -54,6 +55,7 @@ app.include_router(detections.router)
 app.include_router(ingest.router)
 app.include_router(alerts.router)
 app.include_router(ws.router)
+app.include_router(lab.router)
 
 
 @app.get("/health", tags=["health"])
@@ -62,7 +64,7 @@ def health():
 
 
 # Same-origin API for the built dashboard and Vite proxy; preserve existing clients.
-for router in (cameras.router, detections.router, ingest.router, alerts.router, ws.router, database.router, saved_results.router, catalog_governance.router):
+for router in (cameras.router, detections.router, ingest.router, alerts.router, ws.router, database.router, saved_results.router, catalog_governance.router, lab.router):
     app.include_router(router, prefix="/api")
 
 
@@ -86,7 +88,7 @@ def home():
 @app.get("/dashboard/", include_in_schema=False)
 @app.get("/dashboard/{route:path}", include_in_schema=False)
 def dashboard(route: str = ""):
-    if route not in ("", "history", "analysis", "database", "saved"):
+    if route not in ("", "history", "analysis", "database", "saved", "lab"):
         return JSONResponse({"detail": "페이지를 찾을 수 없습니다"}, status_code=404)
     if not (DIST / "index.html").is_file():
         return JSONResponse({"detail": "frontend에서 npm ci와 npm run build를 먼저 실행하세요"}, status_code=503)
