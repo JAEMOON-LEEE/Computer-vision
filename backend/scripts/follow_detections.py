@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -65,6 +66,12 @@ class TailReader:
                 lines.append(line)
         return lines
 
+
+
+def auth_headers() -> dict[str, str]:
+    """팀 로그인이 켜진 서버(Render 등)에 보낼 때 TEAM_ACCESS_TOKEN 환경변수를 Bearer로 붙인다."""
+    token = os.getenv("TEAM_ACCESS_TOKEN", "").strip()
+    return {"Authorization": "Bearer " + token} if token else {}
 
 def safe_run_id(run_id: str) -> str:
     return run_id.replace("/", "_").replace("\\", "_").replace(":", "_")
@@ -201,7 +208,7 @@ def main() -> int:
     alerts = TailReader(run_dir / "alerts.jsonl", from_start=args.from_start)
     api = args.api.rstrip("/")
     try:
-        with httpx.Client(base_url=api, timeout=30.0) as client:
+        with httpx.Client(base_url=api, timeout=30.0, headers=auth_headers()) as client:
             checked: set[str] = set()
             while True:
                 if publish_available(run_dir, detections, alerts, client, run_id, checked=checked):

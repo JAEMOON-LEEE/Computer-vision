@@ -1,0 +1,17 @@
+# 이미지에는 backend/app, backend/requirements.txt, frontend 소스만 필요하다.
+**
+!backend/__init__.py
+!backend/requirements.txt
+!backend/app/**
+!detection/__init__.py
+!detection/warnings.py
+!frontend/package.json
+!frontend/package-lock.json
+!frontend/index.html
+!frontend/tsconfig.json
+!frontend/vite.config.ts
+!frontend/src/**
+**/__pycache__
+**/node_modules
+**/dist
+**/.env

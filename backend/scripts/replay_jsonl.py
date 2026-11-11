@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -15,6 +16,12 @@ from urllib.parse import quote
 
 import httpx
 
+
+
+def auth_headers() -> dict[str, str]:
+    """팀 로그인이 켜진 서버(Render 등)에 보낼 때 TEAM_ACCESS_TOKEN 환경변수를 Bearer로 붙인다."""
+    token = os.getenv("TEAM_ACCESS_TOKEN", "").strip()
+    return {"Authorization": "Bearer " + token} if token else {}
 
 def load_events(path: str | None, kind: str, seq_start: int) -> tuple[list[tuple], int]:
     if not path:
@@ -173,7 +180,7 @@ def main() -> int:
 
     api = args.api.rstrip("/")
     try:
-        with httpx.Client(base_url=api, timeout=30.0) as client:
+        with httpx.Client(base_url=api, timeout=30.0, headers=auth_headers()) as client:
             iteration = 0
             checked_cameras: set[str] = set()
             notices: dict = {}
