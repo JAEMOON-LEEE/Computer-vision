@@ -8,7 +8,9 @@ namespace TwinSight.Simulation
         public static readonly List<TrafficVehicleAgent> All = new List<TrafficVehicleAgent>();
         public TrafficSignalController signals;
         public float halfLength = 0.8f;
-        public float gap = 0.25f;
+        // Bumper clearance in this miniature city's Unity units (not metres).
+        public const float NormalQueueGap = 0.75f;
+        public float gap = NormalQueueGap;
         public float stopLineGap = 0.08f;
         public bool collisionActor;
         public string StopReason { get; private set; } = "moving";

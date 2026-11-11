@@ -34,6 +34,7 @@ def parser():
     predict.add_argument("--context", type=Path, help="Road/stop polygons from the road-recognition module")
     predict.add_argument("--focus", help="Optional far-road crop, normalized x1,y1,x2,y2; overview coverage is retained")
     predict.add_argument("--stop-model", type=Path, help="Trained visual motion classifier for collisions inside signal queues")
+    predict.add_argument("--collision-model",type=Path,help="Experimental synthetic collision policy; requires matching detector weights")
     warn = commands.add_parser("warn", help="Generate warnings from teammate's tracked detections.jsonl")
     warn.add_argument("--detections", required=True, type=Path)
     warn.add_argument("--out", required=True, type=Path)
@@ -86,13 +87,13 @@ def main(argv=None):
             from .runner import run_predictions
 
             detector = Detector(args.weights, args.road_weights, args.device, args.imgsz,
-                                args.conf, args.road_conf, args.iou, args.threads, args.track or args.alerts,
+                                args.conf, args.road_conf, args.iou, args.threads, args.track or args.alerts or args.collision_model is not None,
                                 tuple(map(float, args.focus.split(","))) if args.focus else None)
             context = json.loads(args.context.read_text(encoding="utf-8")) if args.context else None
             print("Capabilities: " + json.dumps(detector.capabilities, ensure_ascii=False))
             output = args.out or Path("runs/detection") / datetime.now().strftime("%Y%m%d_%H%M%S_%f")
             report = run_predictions(detector, args.source, output, args.camera_id, args.stride,
-                                     args.max_frames, args.save_images, args.show, args.alerts, context, args.follow, args.stop_model)
+                                     args.max_frames, args.save_images, args.show, args.alerts or args.collision_model is not None, context, args.follow, args.stop_model,args.collision_model)
             print(json.dumps(report, ensure_ascii=False, indent=2))
             print(f"Output: {output.resolve()}")
             return 0

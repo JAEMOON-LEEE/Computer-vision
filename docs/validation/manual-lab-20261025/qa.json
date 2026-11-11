@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-10-25T03:41:30.2407384+09:00",
+  "purpose": "UI and API integration only, not accident accuracy",
+  "backend_tests": {
+    "passed": 48,
+    "failed": 0
+  },
+  "typescript": "passed",
+  "production_build": "passed",
+  "actual_model": "simulation-cctv-day-night.pt",
+  "model_sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+  "video_ui": {
+    "human_observation": "Bottom text caption falsely detected as car",
+    "session_id": "710ffc6d4d4343158db183dba42814b8",
+    "fixture": "Re-encoded archived real night CCTV for UI checks, not original source timing",
+    "timestamps_seconds": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "enabled_at_end": false,
+    "input": "runs/validation-lab-ui/real-night-6s.webm",
+    "frames": 5,
+    "accident_success_verified": false
+  },
+  "screen_ui": {
+    "mock_removed_by_reload": true,
+    "input": "Temporary canvas.captureStream test fixture",
+    "manual_off_stops_results": true,
+    "disconnect_tested": true,
+    "native_permission_picker_tested": false
+  },
+  "report_saved_to_D": true,
+  "actual_youtube_clip_tested": false,
+  "real_accident_accuracy_evaluated": false,
+  "retrained": false,
+  "team_database_modified": false,
+  "screenshot": "output/playwright/validation-lab-ready.png",
+  "usage": "docs/manual_validation_lab.md"
+}

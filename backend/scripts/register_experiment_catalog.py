@@ -294,6 +294,7 @@ class Builder:
 
 def upload(manifest, env_file, out):
     import psycopg
+    from database_bulk import insert_rows
     from psycopg.types.json import Json
     cfg = dotenv_values(env_file)
     if cfg.get("DATABASE_SCHEMA") != "twinsight" or cfg.get("DATABASE_AUTO_CREATE") != "false":
@@ -332,14 +333,26 @@ def upload(manifest, env_file, out):
             if key in existing and existing[key] != entry["fingerprint"]:
                 raise ValueError("Existing immutable catalog record differs")
         with conn.cursor() as cur:
-            cur.executemany("""INSERT INTO twinsight.catalog_records
-                (record_id,kind,title,owner,data_origin,status,camera_id,detection_run_id,details,fingerprint,created_at)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,now()) ON CONFLICT(record_id) DO NOTHING""",
-                [(r["record_id"],r["kind"],r["title"],r["owner"],r["data_origin"],r["status"],r["camera_id"],
-                  r["detection_run_id"],Json(r["details"]),e["fingerprint"]) for e in entries for r in [e["record"]]])
-            cur.executemany("INSERT INTO twinsight.catalog_parents(record_id,parent_id) VALUES(%s,%s) ON CONFLICT DO NOTHING", expected_parents)
-            cur.executemany("INSERT INTO twinsight.catalog_files(record_id,path,size_bytes,sha256,role) VALUES(%s,%s,%s,%s,%s) ON CONFLICT(record_id,path) DO NOTHING",expected_files)
-            cur.executemany("INSERT INTO twinsight.catalog_logs(record_id,stream,line_no,message) VALUES(%s,%s,%s,%s) ON CONFLICT(record_id,stream,line_no) DO NOTHING",expected_logs)
+            fresh_records=[(r["record_id"],r["kind"],r["title"],r["owner"],r["data_origin"],r["status"],r["camera_id"],
+                            r["detection_run_id"],Json(r["details"]),e["fingerprint"]) for e in entries for r in [e["record"]] if r['record_id'] not in existing]
+            if fresh_records:
+                insert_rows(cur,'catalog_records','record_id,kind,title,owner,data_origin,status,camera_id,detection_run_id,details,fingerprint',fresh_records)
+            print('catalog_records_written',len(entries),flush=True)
+            # Multi-row INSERT retains existing RLS policies (COPY cannot).
+            for table, columns, rows, insert in [
+                ('catalog_parents','record_id,parent_id',expected_parents,'INSERT INTO twinsight.catalog_parents(record_id,parent_id) VALUES(%s,%s) ON CONFLICT DO NOTHING'),
+                ('catalog_files','record_id,path,size_bytes,sha256,role',expected_files,'INSERT INTO twinsight.catalog_files(record_id,path,size_bytes,sha256,role) VALUES(%s,%s,%s,%s,%s) ON CONFLICT(record_id,path) DO NOTHING'),
+                ('catalog_logs','record_id,stream,line_no,message',expected_logs,'INSERT INTO twinsight.catalog_logs(record_id,stream,line_no,message) VALUES(%s,%s,%s,%s) ON CONFLICT(record_id,stream,line_no) DO NOTHING'),
+            ]:
+                new_rows=[row for row in rows if row[0] not in existing]
+                if new_rows:
+                    insert_rows(cur,table,columns,new_rows)
+                old_rows=[row for row in rows if row[0] in existing]
+                if old_rows:
+                    old_set=set(conn.execute('SELECT '+columns+' FROM twinsight.'+table+' WHERE record_id=ANY(%s)',(list(existing),)).fetchall())
+                    missing_rows=[row for row in old_rows if row not in old_set]
+                    if missing_rows:insert_rows(cur,table,columns,missing_rows,conflict=True)
+                print(table+'_written',len(rows),flush=True)
         # Read back complete contents before committing; any mismatch rolls back.
         actual_files = conn.execute("SELECT record_id,path,size_bytes,sha256,role FROM twinsight.catalog_files WHERE record_id=ANY(%s)",(ids,)).fetchall()
         actual_logs = conn.execute("SELECT record_id,stream,line_no,message FROM twinsight.catalog_logs WHERE record_id=ANY(%s)",(ids,)).fetchall()

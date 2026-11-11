@@ -126,3 +126,8 @@ datasets/road/
 - 실제 CCTV 연결·야간 검출 확인과 남은 한계: [실제 CCTV 검증](../docs/real_cctv_validation.md)
 
 - 낮·밤 환경 선택과 야간 합성 보강 학습: [야간 학습](../docs/day_night_training.md)
+
+- 정상 대기 간격과 고속·정면·측면·연쇄 추돌 장면: [차량 충돌 확장](../docs/varied_vehicle_collisions.md)
+
+- 주간·야간 차량 충돌 재학습과 판정 모델 연결: [재학습 기록](../docs/collision_retraining.md)
+- 트럭·버스 포함 실제 CCTV 차량 학습과 실제 사고 장면 후보: [실제 영상 보강·검증](../docs/real_traffic_training.md)

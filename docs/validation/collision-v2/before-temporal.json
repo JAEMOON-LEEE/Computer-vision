@@ -1,0 +1,1255 @@
+{
+  "synthetic_only": true,
+  "prediction_cache_sha_verified": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+  "retrained": false,
+  "clips": [
+    {
+      "clip": "collision-v1-test-Day-NormalQueue-out-s271001_20261025_041516",
+      "case": "NormalQueue",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Day-TightQueue-in-s271098_20261025_041524",
+      "case": "TightQueue",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Day-RearEnd-out-s271195_20261025_041532",
+      "case": "RearEnd",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-RearEnd-out-s271195:1",
+            "camera_id": "collision-v1-test-Day-RearEnd-out-s271195",
+            "frame": 37,
+            "timestamp": 404.8616943359375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  625.501,
+                  318.436,
+                  663.534,
+                  349.543
+                ],
+                "confidence": 0.874754,
+                "observed_at": 404.8616943359375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  634.221,
+                  326.858,
+                  667.935,
+                  359.253
+                ],
+                "confidence": 0.923351,
+                "observed_at": 404.8616943359375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion"
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            77,
+            78
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Day-HighSpeedRearEnd-in-s271292_20261025_041539",
+      "case": "HighSpeedRearEnd",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 1,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-HighSpeedRearEnd-in-s271292:1",
+            "camera_id": "collision-v1-test-Day-HighSpeedRearEnd-in-s271292",
+            "frame": 40,
+            "timestamp": 415.46875,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  547.22,
+                  311.867,
+                  581.347,
+                  348.556
+                ],
+                "confidence": 0.824538,
+                "observed_at": 415.46875,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 59,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  549.838,
+                  311.89300000000003,
+                  596.906,
+                  348.028
+                ],
+                "confidence": 0.777682,
+                "observed_at": 415.46875,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.6796875,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": false,
+          "matched_truth_ids": [
+            80,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Day-HeadOn-out-s271389_20261025_041547",
+      "case": "HeadOn",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Day-SideImpact-in-s271486_20261025_041555",
+      "case": "SideImpact",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 1,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-SideImpact-in-s271486:1",
+            "camera_id": "collision-v1-test-Day-SideImpact-in-s271486",
+            "frame": 50,
+            "timestamp": 437.1964111328125,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  536.232,
+                  320.58,
+                  584.321,
+                  355.254
+                ],
+                "confidence": 0.859763,
+                "observed_at": 437.1964111328125,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 87,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  538.937,
+                  327.247,
+                  586.708,
+                  357.974
+                ],
+                "confidence": 0.611256,
+                "observed_at": 437.1964111328125,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.6796875,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": false,
+          "matched_truth_ids": [
+            83,
+            83
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Day-ChainReaction-out-s271583_20261025_041603",
+      "case": "ChainReaction",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 1,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-ChainReaction-out-s271583:1",
+            "camera_id": "collision-v1-test-Day-ChainReaction-out-s271583",
+            "frame": 37,
+            "timestamp": 445.808349609375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  622.462,
+                  320.39,
+                  658.592,
+                  351.898
+                ],
+                "confidence": 0.823918,
+                "observed_at": 445.808349609375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 5,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  617.706,
+                  303.71500000000003,
+                  658.415,
+                  336.885
+                ],
+                "confidence": 0.718906,
+                "observed_at": 445.808349609375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion"
+          },
+          "correct_pair_after_contact": false,
+          "matched_truth_ids": [
+            87,
+            85
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-NormalQueue-in-s272001_20261025_041611",
+      "case": "NormalQueue",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Night-TightQueue-out-s272098_20261025_041620",
+      "case": "TightQueue",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 1,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-TightQueue-out-s272098:1",
+            "camera_id": "collision-v1-test-Night-TightQueue-out-s272098",
+            "frame": 9,
+            "timestamp": 462.8028564453125,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  669.056,
+                  385.14300000000003,
+                  716.625,
+                  429.256
+                ],
+                "confidence": 0.92096,
+                "observed_at": 462.8028564453125,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  655.838,
+                  369.81,
+                  704.645,
+                  411.139
+                ],
+                "confidence": 0.93148,
+                "observed_at": 462.8028564453125,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.65625,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": false,
+          "matched_truth_ids": [
+            91,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-RearEnd-in-s272195_20261025_041630",
+      "case": "RearEnd",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-RearEnd-in-s272195:1",
+            "camera_id": "collision-v1-test-Night-RearEnd-in-s272195",
+            "frame": 35,
+            "timestamp": 476.34857177734375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  566.447,
+                  316.327,
+                  602.242,
+                  352.212
+                ],
+                "confidence": 0.926896,
+                "observed_at": 476.34857177734375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  565.183,
+                  305.716,
+                  598.812,
+                  341.454
+                ],
+                "confidence": 0.757791,
+                "observed_at": 476.34857177734375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.625,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            92,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-HighSpeedRearEnd-out-s272292_20261025_041640",
+      "case": "HighSpeedRearEnd",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-HighSpeedRearEnd-out-s272292:1",
+            "camera_id": "collision-v1-test-Night-HighSpeedRearEnd-out-s272292",
+            "frame": 39,
+            "timestamp": 487.11334228515625,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  613.479,
+                  319.513,
+                  647.355,
+                  351.576
+                ],
+                "confidence": 0.919139,
+                "observed_at": 487.11334228515625,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  625.203,
+                  312.081,
+                  662.893,
+                  341.825
+                ],
+                "confidence": 0.870323,
+                "observed_at": 487.11334228515625,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion"
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            95,
+            94
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-HeadOn-in-s272389_20261025_041649",
+      "case": "HeadOn",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-HeadOn-in-s272389:1",
+            "camera_id": "collision-v1-test-Night-HeadOn-in-s272389",
+            "frame": 42,
+            "timestamp": 497.7510681152344,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  568.272,
+                  321.726,
+                  601.918,
+                  356.248
+                ],
+                "confidence": 0.93797,
+                "observed_at": 497.7510681152344,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  563.769,
+                  308.471,
+                  599.316,
+                  346.419
+                ],
+                "confidence": 0.821712,
+                "observed_at": 497.7510681152344,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.640625,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            97,
+            96
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-SideImpact-out-s272486_20261025_041658",
+      "case": "SideImpact",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-SideImpact-out-s272486:1",
+            "camera_id": "collision-v1-test-Night-SideImpact-out-s272486",
+            "frame": 39,
+            "timestamp": 507.6260986328125,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 3,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  635.408,
+                  320.146,
+                  691.439,
+                  354.347
+                ],
+                "confidence": 0.83092,
+                "observed_at": 507.6260986328125,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  600.399,
+                  313.848,
+                  642.25,
+                  346.70799999999997
+                ],
+                "confidence": 0.706071,
+                "observed_at": 507.6260986328125,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion"
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            99,
+            98
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-ChainReaction-in-s272583_20261025_041708",
+      "case": "ChainReaction",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-BarrierStop-0-s13637",
+      "case": "BarrierStop",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-BarrierStop-1-s13738",
+      "case": "BarrierStop",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-RearEnd-0-s13654",
+      "case": "RearEnd",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "queue-v2-test-RearEnd-0-s13654:1",
+            "camera_id": "queue-v2-test-RearEnd-0-s13654",
+            "frame": 7,
+            "timestamp": 275.6651916503906,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  668.96,
+                  385.413,
+                  712.815,
+                  426.262
+                ],
+                "confidence": 0.902733,
+                "observed_at": 275.6651916503906,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  655.969,
+                  370.03700000000003,
+                  705.015,
+                  410.788
+                ],
+                "confidence": 0.925368,
+                "observed_at": 275.6651916503906,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.8046875,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            72,
+            71
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-RearEnd-1-s13755",
+      "case": "RearEnd",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "queue-v2-test-RearEnd-1-s13755:1",
+            "camera_id": "queue-v2-test-RearEnd-1-s13755",
+            "frame": 7,
+            "timestamp": 317.15869140625,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  568.3,
+                  324.448,
+                  605.284,
+                  360.296
+                ],
+                "confidence": 0.928158,
+                "observed_at": 317.15869140625,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  566.124,
+                  312.156,
+                  600.354,
+                  349.306
+                ],
+                "confidence": 0.894645,
+                "observed_at": 317.15869140625,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.625,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            81,
+            82
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-0-s13603",
+      "case": "SignalQueue",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-1-s13704",
+      "case": "SignalQueue",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-StructureImpact-0-s13671",
+      "case": "StructureImpact",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "queue-v2-test-StructureImpact-0-s13671:1",
+            "camera_id": "queue-v2-test-StructureImpact-0-s13671",
+            "frame": 9,
+            "timestamp": 284.3672790527344,
+            "type": "suspected_vehicle_structure_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  662.737,
+                  379.392,
+                  712.669,
+                  421.071
+                ],
+                "confidence": 0.932985,
+                "observed_at": 284.3672790527344,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "barrier",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  648.056,
+                  363.933,
+                  712.885,
+                  407.976
+                ],
+                "confidence": 0.892206,
+                "observed_at": 284.3672790527344,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.78125,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            74,
+            73
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-StructureImpact-1-s13772",
+      "case": "StructureImpact",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "queue-v2-test-StructureImpact-1-s13772:1",
+            "camera_id": "queue-v2-test-StructureImpact-1-s13772",
+            "frame": 7,
+            "timestamp": 325.4705505371094,
+            "type": "suspected_vehicle_structure_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 5,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  567.461,
+                  316.573,
+                  600.963,
+                  352.88800000000003
+                ],
+                "confidence": 0.792015,
+                "observed_at": 325.4705505371094,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "barrier",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  558.78,
+                  322.16700000000003,
+                  613.358,
+                  360.545
+                ],
+                "confidence": 0.930862,
+                "observed_at": 325.4705505371094,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.6171875,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            84,
+            83
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-0-s13620",
+      "case": "TightQueue",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-1-s13721",
+      "case": "TightQueue",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-BarrierStop-0-s35637",
+      "case": "BarrierStop",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-BarrierStop-1-s35738",
+      "case": "BarrierStop",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-RearEnd-0-s35654",
+      "case": "RearEnd",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "nightqueue-v1-test-RearEnd-0-s35654:1",
+            "camera_id": "nightqueue-v1-test-RearEnd-0-s35654",
+            "frame": 7,
+            "timestamp": 583.5859375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  668.6659999999999,
+                  384.398,
+                  712.587,
+                  426.028
+                ],
+                "confidence": 0.927015,
+                "observed_at": 583.5859375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  655.844,
+                  370.053,
+                  704.841,
+                  411.317
+                ],
+                "confidence": 0.923893,
+                "observed_at": 583.5859375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.6953125,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            765,
+            764
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "nightqueue-v1-test-RearEnd-1-s35755",
+      "case": "RearEnd",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-SignalQueue-0-s35603",
+      "case": "SignalQueue",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-SignalQueue-1-s35704",
+      "case": "SignalQueue",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-StructureImpact-0-s35671",
+      "case": "StructureImpact",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "nightqueue-v1-test-StructureImpact-0-s35671:1",
+            "camera_id": "nightqueue-v1-test-StructureImpact-0-s35671",
+            "frame": 7,
+            "timestamp": 591.9191284179688,
+            "type": "suspected_vehicle_structure_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  662.748,
+                  379.067,
+                  713.563,
+                  420.949
+                ],
+                "confidence": 0.908418,
+                "observed_at": 591.9191284179688,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "barrier",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  649.9259999999999,
+                  363.312,
+                  713.115,
+                  407.7
+                ],
+                "confidence": 0.93783,
+                "observed_at": 591.9191284179688,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.84375,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            767,
+            766
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "nightqueue-v1-test-StructureImpact-1-s35772",
+      "case": "StructureImpact",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "collision_alerts": 1,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 1,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "nightqueue-v1-test-StructureImpact-1-s35772:1",
+            "camera_id": "nightqueue-v1-test-StructureImpact-1-s35772",
+            "frame": 8,
+            "timestamp": 633.9859008789062,
+            "type": "suspected_vehicle_structure_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Contact-like overlap followed by abrupt stopping; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 3,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  569.4,
+                  316.193,
+                  598.765,
+                  354.048
+                ],
+                "confidence": 0.508478,
+                "observed_at": 633.9859008789062,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "barrier",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  560.701,
+                  322.649,
+                  612.593,
+                  360.622
+                ],
+                "confidence": 0.793471,
+                "observed_at": 633.9859008789062,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "stop_zone_decision": {
+              "score": 0.65625,
+              "threshold": 0.6016625,
+              "basis": "trained_visual_pair_motion"
+            }
+          },
+          "correct_pair_after_contact": false,
+          "matched_truth_ids": [
+            777,
+            776
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "nightqueue-v1-test-TightQueue-0-s35620",
+      "case": "TightQueue",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-TightQueue-1-s35721",
+      "case": "TightQueue",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    }
+  ],
+  "groups": {
+    "varied-Day": {
+      "positive_clips": 5,
+      "correct_collision_clips": 1,
+      "negative_clips": 2,
+      "negative_clips_with_alert": 0,
+      "clips_with_wrong_or_early_alert": 3
+    },
+    "varied-Night": {
+      "positive_clips": 5,
+      "correct_collision_clips": 4,
+      "negative_clips": 2,
+      "negative_clips_with_alert": 1,
+      "clips_with_wrong_or_early_alert": 1
+    },
+    "legacy-Day": {
+      "positive_clips": 4,
+      "correct_collision_clips": 4,
+      "negative_clips": 6,
+      "negative_clips_with_alert": 0,
+      "clips_with_wrong_or_early_alert": 0
+    },
+    "legacy-Night": {
+      "positive_clips": 4,
+      "correct_collision_clips": 2,
+      "negative_clips": 6,
+      "negative_clips_with_alert": 0,
+      "clips_with_wrong_or_early_alert": 1
+    }
+  }
+}

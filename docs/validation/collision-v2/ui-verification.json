@@ -1,0 +1,20 @@
+{
+  "session_id": "7e076f173cc942f7a112ce8c265198ad",
+  "source": "Night ChainReaction lossy WebM focus preview",
+  "frames": 61,
+  "model_off_at_end": true,
+  "simulation_policy_applied": true,
+  "alerts": [
+    {
+      "video_seconds": 4.25,
+      "original_frame": 34,
+      "correct_physical_pair_after_contact": true,
+      "matched_truth_ids": [
+        101,
+        102
+      ]
+    }
+  ],
+  "offline_ground_truth_used_for_audit_only": true,
+  "trained_weights_sha256": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e"
+}

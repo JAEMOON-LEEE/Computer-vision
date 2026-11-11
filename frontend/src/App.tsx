@@ -6,6 +6,7 @@ import { useLive } from "./live";
 import { AnalysisPage } from "./pages/AnalysisPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { MonitorPage } from "./pages/MonitorPage";
+import { ValidationLab } from "./pages/ValidationLab";
 
 export function App() {
   const { wsStatus, unconfirmedAlerts } = useLive();
@@ -30,6 +31,7 @@ export function App() {
             </NavLink>
             <NavLink to="/history">이력</NavLink>
             <NavLink to="/analysis">분석</NavLink>
+            <NavLink to="/lab">영상 검증</NavLink>
           </nav>
         </div>
         <div className="top-actions">
@@ -48,6 +50,7 @@ export function App() {
         <Route path="/" element={<MonitorPage />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/analysis" element={<AnalysisPage />} />
+        <Route path="/lab" element={<ValidationLab />} />
       </Routes>
       <AlertDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </div>

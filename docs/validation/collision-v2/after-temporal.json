@@ -1,0 +1,1365 @@
+{
+  "completed_at": "2026-10-25T08:22:38.494591+00:00",
+  "synthetic_only": true,
+  "test_used_for_selection": false,
+  "fixed_test_previously_benchmarked": true,
+  "clips": [
+    {
+      "clip": "collision-v1-test-Day-NormalQueue-out-s271001_20261025_041516",
+      "case": "NormalQueue",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-NormalQueue-out-s271001_20261025_041516",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Day-TightQueue-in-s271098_20261025_041524",
+      "case": "TightQueue",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-TightQueue-in-s271098_20261025_041524",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Day-RearEnd-out-s271195_20261025_041532",
+      "case": "RearEnd",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-RearEnd-out-s271195_20261025_041532",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-RearEnd-out-s271195:1",
+            "camera_id": "collision-v1-test-Day-RearEnd-out-s271195",
+            "frame": 35,
+            "timestamp": 404.6116943359375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  633.0840000000001,
+                  326.181,
+                  668.655,
+                  360.193
+                ],
+                "confidence": 0.933229,
+                "observed_at": 404.6116943359375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  624.816,
+                  317.872,
+                  664.102,
+                  350.608
+                ],
+                "confidence": 0.886684,
+                "observed_at": 404.6116943359375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.9765625,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            78,
+            77
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Day-HighSpeedRearEnd-in-s271292_20261025_041539",
+      "case": "HighSpeedRearEnd",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-HighSpeedRearEnd-in-s271292_20261025_041539",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-HighSpeedRearEnd-in-s271292:1",
+            "camera_id": "collision-v1-test-Day-HighSpeedRearEnd-in-s271292",
+            "frame": 33,
+            "timestamp": 414.59375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  569.425,
+                  320.276,
+                  608.321,
+                  357.576
+                ],
+                "confidence": 0.925119,
+                "observed_at": 414.59375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  553.321,
+                  309.669,
+                  587.622,
+                  345.78
+                ],
+                "confidence": 0.882101,
+                "observed_at": 414.59375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.9140625,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            79,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Day-HeadOn-out-s271389_20261025_041547",
+      "case": "HeadOn",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-HeadOn-out-s271389_20261025_041547",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-HeadOn-out-s271389:1",
+            "camera_id": "collision-v1-test-Day-HeadOn-out-s271389",
+            "frame": 35,
+            "timestamp": 425.0817565917969,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  626.481,
+                  322.912,
+                  667.639,
+                  356.73900000000003
+                ],
+                "confidence": 0.801625,
+                "observed_at": 425.0817565917969,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  626.05,
+                  309.932,
+                  663.293,
+                  348.323
+                ],
+                "confidence": 0.830191,
+                "observed_at": 425.0817565917969,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.828125,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            81,
+            82
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Day-SideImpact-in-s271486_20261025_041555",
+      "case": "SideImpact",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-SideImpact-in-s271486_20261025_041555",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-SideImpact-in-s271486:1",
+            "camera_id": "collision-v1-test-Day-SideImpact-in-s271486",
+            "frame": 33,
+            "timestamp": 435.0714111328125,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  550.91,
+                  316.313,
+                  592.84,
+                  355.291
+                ],
+                "confidence": 0.887889,
+                "observed_at": 435.0714111328125,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  575.235,
+                  307.964,
+                  626.312,
+                  346.856
+                ],
+                "confidence": 0.915462,
+                "observed_at": 435.0714111328125,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.953125,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            83,
+            84
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Day-ChainReaction-out-s271583_20261025_041603",
+      "case": "ChainReaction",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-ChainReaction-out-s271583_20261025_041603",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Day-ChainReaction-out-s271583:1",
+            "camera_id": "collision-v1-test-Day-ChainReaction-out-s271583",
+            "frame": 32,
+            "timestamp": 445.183349609375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  625.077,
+                  315.446,
+                  660.02,
+                  347.471
+                ],
+                "confidence": 0.62805,
+                "observed_at": 445.183349609375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  623.184,
+                  323.673,
+                  661.703,
+                  355.902
+                ],
+                "confidence": 0.841177,
+                "observed_at": 445.183349609375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.9296875,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            86,
+            87
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-NormalQueue-in-s272001_20261025_041611",
+      "case": "NormalQueue",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-NormalQueue-in-s272001_20261025_041611",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Night-TightQueue-out-s272098_20261025_041620",
+      "case": "TightQueue",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-TightQueue-out-s272098_20261025_041620",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "collision-v1-test-Night-RearEnd-in-s272195_20261025_041630",
+      "case": "RearEnd",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-RearEnd-in-s272195_20261025_041630",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-RearEnd-in-s272195:1",
+            "camera_id": "collision-v1-test-Night-RearEnd-in-s272195",
+            "frame": 35,
+            "timestamp": 476.34857177734375,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  566.451,
+                  316.406,
+                  602.327,
+                  351.992
+                ],
+                "confidence": 0.934192,
+                "observed_at": 476.34857177734375,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 3,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  564.6179999999999,
+                  304.725,
+                  598.274,
+                  341.395
+                ],
+                "confidence": 0.758097,
+                "observed_at": 476.34857177734375,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.8671875,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            92,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-HighSpeedRearEnd-out-s272292_20261025_041640",
+      "case": "HighSpeedRearEnd",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-HighSpeedRearEnd-out-s272292_20261025_041640",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-HighSpeedRearEnd-out-s272292:1",
+            "camera_id": "collision-v1-test-Night-HighSpeedRearEnd-out-s272292",
+            "frame": 32,
+            "timestamp": 486.23834228515625,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  619.902,
+                  322.826,
+                  655.323,
+                  356.452
+                ],
+                "confidence": 0.901821,
+                "observed_at": 486.23834228515625,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  626.473,
+                  317.4,
+                  663.85,
+                  348.952
+                ],
+                "confidence": 0.857897,
+                "observed_at": 486.23834228515625,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.9453125,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            95,
+            94
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-HeadOn-in-s272389_20261025_041649",
+      "case": "HeadOn",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-HeadOn-in-s272389_20261025_041649",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-HeadOn-in-s272389:1",
+            "camera_id": "collision-v1-test-Night-HeadOn-in-s272389",
+            "frame": 33,
+            "timestamp": 496.6260681152344,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  567.879,
+                  321.353,
+                  601.815,
+                  355.844
+                ],
+                "confidence": 0.925396,
+                "observed_at": 496.6260681152344,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  563.553,
+                  312.45799999999997,
+                  599.954,
+                  346.748
+                ],
+                "confidence": 0.881334,
+                "observed_at": 496.6260681152344,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.953125,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            97,
+            96
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-SideImpact-out-s272486_20261025_041658",
+      "case": "SideImpact",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-SideImpact-out-s272486_20261025_041658",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-SideImpact-out-s272486:1",
+            "camera_id": "collision-v1-test-Night-SideImpact-out-s272486",
+            "frame": 34,
+            "timestamp": 507.0010986328125,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  608.984,
+                  315.954,
+                  646.898,
+                  347.849
+                ],
+                "confidence": 0.875982,
+                "observed_at": 507.0010986328125,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  635.436,
+                  321.421,
+                  693.9639999999999,
+                  356.674
+                ],
+                "confidence": 0.894432,
+                "observed_at": 507.0010986328125,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.921875,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            98,
+            99
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "collision-v1-test-Night-ChainReaction-in-s272583_20261025_041708",
+      "case": "ChainReaction",
+      "split": "test",
+      "domain": "varied",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-ChainReaction-in-s272583_20261025_041708",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "collision-v1-test-Night-ChainReaction-in-s272583:1",
+            "camera_id": "collision-v1-test-Night-ChainReaction-in-s272583",
+            "frame": 33,
+            "timestamp": 517.130126953125,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 3,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  558.551,
+                  312.005,
+                  595.583,
+                  347.821
+                ],
+                "confidence": 0.889365,
+                "observed_at": 517.130126953125,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  569.817,
+                  319.431,
+                  602.329,
+                  355.909
+                ],
+                "confidence": 0.784283,
+                "observed_at": 517.130126953125,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.875,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            102,
+            101
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-BarrierStop-0-s13637",
+      "case": "BarrierStop",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-BarrierStop-0-s13637_20261021_001305",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-BarrierStop-1-s13738",
+      "case": "BarrierStop",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-BarrierStop-1-s13738_20261021_001325",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-RearEnd-0-s13654",
+      "case": "RearEnd",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-RearEnd-0-s13654_20261021_001309",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "queue-v2-test-RearEnd-0-s13654:1",
+            "camera_id": "queue-v2-test-RearEnd-0-s13654",
+            "frame": 12,
+            "timestamp": 276.6651916503906,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  667.399,
+                  385.26,
+                  714.1,
+                  427.21500000000003
+                ],
+                "confidence": 0.935557,
+                "observed_at": 276.6651916503906,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  656.219,
+                  370.031,
+                  704.877,
+                  410.877
+                ],
+                "confidence": 0.938392,
+                "observed_at": 276.6651916503906,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.8359375,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            72,
+            71
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-RearEnd-1-s13755",
+      "case": "RearEnd",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-RearEnd-1-s13755_20261021_001329",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "queue-v2-test-RearEnd-1-s13755:1",
+            "camera_id": "queue-v2-test-RearEnd-1-s13755",
+            "frame": 11,
+            "timestamp": 317.9587097167969,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  568.457,
+                  323.823,
+                  606.274,
+                  360.95799999999997
+                ],
+                "confidence": 0.94952,
+                "observed_at": 317.9587097167969,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  566.167,
+                  311.863,
+                  600.845,
+                  350.26099999999997
+                ],
+                "confidence": 0.922921,
+                "observed_at": 317.9587097167969,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.8515625,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            81,
+            82
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-0-s13603",
+      "case": "SignalQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-SignalQueue-0-s13603_20261021_001258",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-SignalQueue-1-s13704",
+      "case": "SignalQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-SignalQueue-1-s13704_20261021_001317",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-StructureImpact-0-s13671",
+      "case": "StructureImpact",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-StructureImpact-0-s13671_20261021_001313",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "queue-v2-test-StructureImpact-0-s13671:1",
+            "camera_id": "queue-v2-test-StructureImpact-0-s13671",
+            "frame": 9,
+            "timestamp": 284.3672790527344,
+            "type": "suspected_vehicle_structure_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  661.998,
+                  379.145,
+                  712.638,
+                  421.419
+                ],
+                "confidence": 0.927951,
+                "observed_at": 284.3672790527344,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "barrier",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  648.7239999999999,
+                  363.294,
+                  713.024,
+                  408.18
+                ],
+                "confidence": 0.915079,
+                "observed_at": 284.3672790527344,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.9609375,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            74,
+            73
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "queue-v2-test-StructureImpact-1-s13772",
+      "case": "StructureImpact",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-StructureImpact-1-s13772_20261021_001333",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-0-s13620",
+      "case": "TightQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-TightQueue-0-s13620_20261021_001302",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "queue-v2-test-TightQueue-1-s13721",
+      "case": "TightQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Day",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\queue-v2-test-TightQueue-1-s13721_20261021_001321",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-BarrierStop-0-s35637",
+      "case": "BarrierStop",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-BarrierStop-0-s35637_20261022_211641",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-BarrierStop-1-s35738",
+      "case": "BarrierStop",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-BarrierStop-1-s35738_20261022_211707",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-RearEnd-0-s35654",
+      "case": "RearEnd",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-RearEnd-0-s35654_20261022_211646",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-RearEnd-1-s35755",
+      "case": "RearEnd",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-RearEnd-1-s35755_20261022_211714",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "nightqueue-v1-test-RearEnd-1-s35755:1",
+            "camera_id": "nightqueue-v1-test-RearEnd-1-s35755",
+            "frame": 22,
+            "timestamp": 628.2525634765625,
+            "type": "suspected_vehicle_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  568.422,
+                  323.431,
+                  606.0360000000001,
+                  361.488
+                ],
+                "confidence": 0.922394,
+                "observed_at": 628.2525634765625,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "car",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  566.596,
+                  311.351,
+                  600.115,
+                  349.126
+                ],
+                "confidence": 0.931275,
+                "observed_at": 628.2525634765625,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.828125,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            774,
+            775
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "nightqueue-v1-test-SignalQueue-0-s35603",
+      "case": "SignalQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-SignalQueue-0-s35603_20261022_211630",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-SignalQueue-1-s35704",
+      "case": "SignalQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-SignalQueue-1-s35704_20261022_211657",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-StructureImpact-0-s35671",
+      "case": "StructureImpact",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-StructureImpact-0-s35671_20261022_211652",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "nightqueue-v1-test-StructureImpact-0-s35671:1",
+            "camera_id": "nightqueue-v1-test-StructureImpact-0-s35671",
+            "frame": 8,
+            "timestamp": 592.1190795898438,
+            "type": "suspected_vehicle_structure_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  661.441,
+                  378.255,
+                  713.358,
+                  422.01599999999996
+                ],
+                "confidence": 0.919685,
+                "observed_at": 592.1190795898438,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "barrier",
+                "track_id": 2,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  647.282,
+                  363.006,
+                  712.495,
+                  408.899
+                ],
+                "confidence": 0.866555,
+                "observed_at": 592.1190795898438,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.984375,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            767,
+            766
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "nightqueue-v1-test-StructureImpact-1-s35772",
+      "case": "StructureImpact",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": true,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-StructureImpact-1-s35772_20261022_211721",
+      "collision_alerts": 1,
+      "correct_pair_after_contact": true,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": [
+        {
+          "alert": {
+            "alert_id": "nightqueue-v1-test-StructureImpact-1-s35772:1",
+            "camera_id": "nightqueue-v1-test-StructureImpact-1-s35772",
+            "frame": 22,
+            "timestamp": 636.7859497070312,
+            "type": "suspected_vehicle_structure_collision",
+            "severity": "warning",
+            "status": "unconfirmed",
+            "message": "Learned visual interaction; review video",
+            "evidence": [
+              {
+                "class_name": "car",
+                "track_id": 3,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  567.056,
+                  317.632,
+                  601.979,
+                  353.918
+                ],
+                "confidence": 0.838395,
+                "observed_at": 636.7859497070312,
+                "temporarily_occluded": false
+              },
+              {
+                "class_name": "barrier",
+                "track_id": 1,
+                "model_id": "focus",
+                "bbox_xyxy": [
+                  559.792,
+                  321.901,
+                  611.721,
+                  360.279
+                ],
+                "confidence": 0.872982,
+                "observed_at": 636.7859497070312,
+                "temporarily_occluded": false
+              }
+            ],
+            "basis": "visual_detections_and_motion",
+            "collision_decision": {
+              "score": 0.8671875,
+              "threshold": 0.8204125,
+              "basis": "trained_visual_boxes_and_causal_motion",
+              "synthetic_only": true
+            }
+          },
+          "correct_pair_after_contact": true,
+          "matched_truth_ids": [
+            777,
+            776
+          ]
+        }
+      ]
+    },
+    {
+      "clip": "nightqueue-v1-test-TightQueue-0-s35620",
+      "case": "TightQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-TightQueue-0-s35620_20261022_211636",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    },
+    {
+      "clip": "nightqueue-v1-test-TightQueue-1-s35721",
+      "case": "TightQueue",
+      "split": "test",
+      "domain": "legacy",
+      "lighting": "Night",
+      "positive": false,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-TightQueue-1-s35721_20261022_211702",
+      "collision_alerts": 0,
+      "correct_pair_after_contact": false,
+      "wrong_or_early_alerts": 0,
+      "alert_audit": []
+    }
+  ],
+  "groups": {
+    "varied-Day": {
+      "positive_clips": 5,
+      "correct_collision_clips": 5,
+      "negative_clips": 2,
+      "negative_clips_with_alert": 0,
+      "clips_with_wrong_or_early_alert": 0
+    },
+    "varied-Night": {
+      "positive_clips": 5,
+      "correct_collision_clips": 5,
+      "negative_clips": 2,
+      "negative_clips_with_alert": 0,
+      "clips_with_wrong_or_early_alert": 0
+    },
+    "legacy-Day": {
+      "positive_clips": 4,
+      "correct_collision_clips": 3,
+      "negative_clips": 6,
+      "negative_clips_with_alert": 0,
+      "clips_with_wrong_or_early_alert": 0
+    },
+    "legacy-Night": {
+      "positive_clips": 4,
+      "correct_collision_clips": 3,
+      "negative_clips": 6,
+      "negative_clips_with_alert": 0,
+      "clips_with_wrong_or_early_alert": 0
+    }
+  },
+  "resume_audit": {
+    "previous_clips": 19,
+    "previous_results_unchanged": true,
+    "policy_refitted": false
+  }
+}

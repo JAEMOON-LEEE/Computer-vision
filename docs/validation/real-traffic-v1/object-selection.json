@@ -1,0 +1,200 @@
+{
+  "selected": "mio_n",
+  "criterion": "val mean AP50(car,truck,bus), no test use",
+  "scores": {
+    "coco_n": 0.305696976065758,
+    "coco_s": 0.3964655511606849,
+    "mio_n": 0.5357278213578668
+  },
+  "source": "D:\\Capston disign\\Computer-vision\\runs\\real-traffic-v1\\detector\\weights\\best.pt",
+  "sha256": "8a96309daf9c7e4e35b10527f2d6b77be3f0e5a1403448b731fd5b00d8242472",
+  "validation": {
+    "coco_n": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 195,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\real-traffic-mio-v1\\dataset.yaml",
+      "split": "val",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\yolo11n.pt",
+      "road_weights": null,
+      "focus": null,
+      "synthetic_only": null,
+      "classes": {
+        "person": {
+          "ground_truth": 9,
+          "true_positives": 2,
+          "false_positives": 7,
+          "precision": 0.2222222222222222,
+          "recall": 0.2222222222222222,
+          "AP50_101point": 0.12454301416224177
+        },
+        "car": {
+          "ground_truth": 351,
+          "true_positives": 160,
+          "false_positives": 125,
+          "precision": 0.5614035087719298,
+          "recall": 0.45584045584045585,
+          "AP50_101point": 0.4551522004330318
+        },
+        "truck": {
+          "ground_truth": 76,
+          "true_positives": 24,
+          "false_positives": 17,
+          "precision": 0.5853658536585366,
+          "recall": 0.3157894736842105,
+          "AP50_101point": 0.2890006575561098
+        },
+        "bus": {
+          "ground_truth": 17,
+          "true_positives": 4,
+          "false_positives": 9,
+          "precision": 0.3076923076923077,
+          "recall": 0.23529411764705882,
+          "AP50_101point": 0.17293807020813246
+        },
+        "motorcycle": {
+          "ground_truth": 6,
+          "true_positives": 0,
+          "false_positives": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "AP50_101point": 0.019035832154644033
+        },
+        "bicycle": {
+          "ground_truth": 3,
+          "true_positives": 0,
+          "false_positives": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "AP50_101point": 0.007162418369496523
+        }
+      },
+      "mAP50_101point": 0.17797203214727605
+    },
+    "coco_s": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 195,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\real-traffic-mio-v1\\dataset.yaml",
+      "split": "val",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\yolo11s.pt",
+      "road_weights": null,
+      "focus": null,
+      "synthetic_only": null,
+      "classes": {
+        "person": {
+          "ground_truth": 9,
+          "true_positives": 2,
+          "false_positives": 5,
+          "precision": 0.2857142857142857,
+          "recall": 0.2222222222222222,
+          "AP50_101point": 0.178764709384675
+        },
+        "car": {
+          "ground_truth": 351,
+          "true_positives": 174,
+          "false_positives": 70,
+          "precision": 0.7131147540983607,
+          "recall": 0.49572649572649574,
+          "AP50_101point": 0.5559217970920999
+        },
+        "truck": {
+          "ground_truth": 76,
+          "true_positives": 31,
+          "false_positives": 47,
+          "precision": 0.3974358974358974,
+          "recall": 0.40789473684210525,
+          "AP50_101point": 0.3175432632306386
+        },
+        "bus": {
+          "ground_truth": 17,
+          "true_positives": 6,
+          "false_positives": 10,
+          "precision": 0.375,
+          "recall": 0.35294117647058826,
+          "AP50_101point": 0.31593159315931596
+        },
+        "motorcycle": {
+          "ground_truth": 6,
+          "true_positives": 2,
+          "false_positives": 4,
+          "precision": 0.3333333333333333,
+          "recall": 0.3333333333333333,
+          "AP50_101point": 0.14026402640264024
+        },
+        "bicycle": {
+          "ground_truth": 3,
+          "true_positives": 0,
+          "false_positives": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "AP50_101point": 0.0
+        }
+      },
+      "mAP50_101point": 0.25140423154489494
+    },
+    "mio_n": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 195,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\real-traffic-mio-v1\\dataset.yaml",
+      "split": "val",
+      "weights": "D:\\Capston disign\\Computer-vision\\runs\\real-traffic-v1\\detector\\weights\\best.pt",
+      "road_weights": null,
+      "focus": null,
+      "synthetic_only": null,
+      "classes": {
+        "person": {
+          "ground_truth": 9,
+          "true_positives": 4,
+          "false_positives": 8,
+          "precision": 0.3333333333333333,
+          "recall": 0.4444444444444444,
+          "AP50_101point": 0.2705195331563231
+        },
+        "car": {
+          "ground_truth": 351,
+          "true_positives": 284,
+          "false_positives": 196,
+          "precision": 0.5916666666666667,
+          "recall": 0.8091168091168092,
+          "AP50_101point": 0.7670037923816995
+        },
+        "truck": {
+          "ground_truth": 76,
+          "true_positives": 39,
+          "false_positives": 69,
+          "precision": 0.3611111111111111,
+          "recall": 0.5131578947368421,
+          "AP50_101point": 0.4072653164265872
+        },
+        "bus": {
+          "ground_truth": 17,
+          "true_positives": 9,
+          "false_positives": 7,
+          "precision": 0.5625,
+          "recall": 0.5294117647058824,
+          "AP50_101point": 0.43291435526531374
+        },
+        "motorcycle": {
+          "ground_truth": 6,
+          "true_positives": 2,
+          "false_positives": 3,
+          "precision": 0.4,
+          "recall": 0.3333333333333333,
+          "AP50_101point": 0.46157472890146156
+        },
+        "bicycle": {
+          "ground_truth": 3,
+          "true_positives": 1,
+          "false_positives": 3,
+          "precision": 0.25,
+          "recall": 0.3333333333333333,
+          "AP50_101point": 0.21858339680121855
+        }
+      },
+      "mAP50_101point": 0.42631018715543395
+    }
+  },
+  "test_used_for_selection": false
+}
