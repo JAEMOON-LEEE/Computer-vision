@@ -1,0 +1,34 @@
+# 한국 VM 한 대에 TwinSight를 올린다: app(FastAPI + React) + caddy(자동 HTTPS).
+# 사용: deploy/vm 폴더에서 `docker compose up -d --build`
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        VITE_CARTO_KEY: ${VITE_CARTO_KEY:-}
+    env_file: .env
+    environment:
+      PORT: "8000"
+    restart: unless-stopped
+    expose:
+      - "8000"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

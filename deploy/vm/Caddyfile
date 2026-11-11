@@ -1,0 +1,6 @@
+# SITE_ADDRESS 예: 158-180-1-2.sslip.io (도메인이 있으면 그 도메인)
+# Caddy가 Let's Encrypt 인증서를 자동으로 받고 갱신한다. WebSocket(/api/ws)도 그대로 전달된다.
+{$SITE_ADDRESS} {
+	encode gzip
+	reverse_proxy app:8000
+}
