@@ -69,8 +69,14 @@ for router in (cameras.router, detections.router, ingest.router, alerts.router, 
 
 
 @app.exception_handler(SQLAlchemyError)
-async def database_error(_request, exc):
-    logging.getLogger(__name__).error("Database operation failed: %s", type(exc).__name__)
+async def database_error(request, exc):
+    # 원인 파악용: SQL 문과 파라미터는 남기지 않고, DB가 돌려준 오류 코드·첫 줄 메시지만 남긴다.
+    orig = getattr(exc, "orig", None)
+    diag = getattr(orig, "diag", None)
+    code = getattr(orig, "sqlstate", None) or getattr(diag, "sqlstate", None) or "-"
+    message = (getattr(diag, "message_primary", None) or str(orig or "")).splitlines()
+    logging.getLogger(__name__).error("Database operation failed: %s [%s] %s (%s %s)", type(exc).__name__, code,
+                                      (message[0] if message else "")[:300], request.method, request.url.path)
     return JSONResponse({"detail": "DB 요청에 실패했습니다. 연결 상태를 확인하고 다시 시도하세요."}, status_code=503)
 
 
