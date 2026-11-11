@@ -5,7 +5,8 @@ from __future__ import annotations
 import json
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import Response
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -20,6 +21,7 @@ from backend.app.schemas import (
     StreamOut,
     to_detection_out,
 )
+from backend.app.services import hls_proxy
 from backend.app.services.its import ItsError, refresh_stream_url
 
 router = APIRouter(prefix="/cameras", tags=["cameras"])
@@ -153,9 +155,8 @@ def _stream_is_fresh(fetched_at: datetime | None) -> bool:
     return datetime.now(timezone.utc) - as_utc(fetched_at) < timedelta(minutes=config.stream_ttl_minutes())
 
 
-@router.get("/{camera_id}/stream", response_model=StreamOut)
-def camera_stream(camera_id: str, db: Session = Depends(get_db)):
-    """재생 주소를 돌려준다. ITS는 오래되면 다시 받아 저장한다."""
+def _resolve_stream(camera_id: str, db: Session) -> StreamOut:
+    """원래 재생 주소를 돌려준다. ITS는 오래되면 다시 받아 저장한다."""
     camera = db.get(Camera, camera_id)
     if camera is None:
         raise HTTPException(status_code=404, detail="카메라를 찾을 수 없습니다")
@@ -196,6 +197,55 @@ def camera_stream(camera_id: str, db: Session = Depends(get_db)):
         stream_fetched_at=fetched_at,
         refreshed=True,
     )
+
+
+def _prefix(request: Request) -> str:
+    """/api 아래로 들어온 요청이면 중계 주소도 /api로 시작한다."""
+    return "/api" if request.url.path.startswith("/api/") else ""
+
+
+@router.get("/{camera_id}/stream", response_model=StreamOut)
+def camera_stream(camera_id: str, request: Request, db: Session = Depends(get_db)):
+    """재생 주소를 돌려준다. STREAM_PROXY=1이면 http 영상도 https 화면에서 볼 수 있게 중계 주소를 준다."""
+    out = _resolve_stream(camera_id, db)
+    if hls_proxy.enabled() and hls_proxy.host_allowed(out.stream_url):
+        out.stream_url = f"{_prefix(request)}/cameras/{camera_id}/hls/index.m3u8"
+    return out
+
+
+_PLAYLIST_HEADERS = {"Cache-Control": "no-store"}
+
+
+def _relay(camera_id: str, url: str, request: Request) -> Response:
+    try:
+        body, ctype, final_url = hls_proxy.fetch(url)
+    except hls_proxy.HlsError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
+    if hls_proxy.is_playlist(final_url, ctype, body):
+        text = hls_proxy.rewrite_playlist(body.decode("utf-8", errors="replace"), final_url, camera_id,
+                                          _prefix(request))
+        return Response(text, media_type="application/vnd.apple.mpegurl", headers=_PLAYLIST_HEADERS)
+    return Response(body, media_type=ctype.split(";")[0].strip() or "video/mp2t",
+                    headers={"Cache-Control": "private, max-age=30"})
+
+
+@router.get("/{camera_id}/hls/index.m3u8")
+def camera_hls_index(camera_id: str, request: Request, db: Session = Depends(get_db)):
+    """ITS 재생목록을 받아 조각 주소를 서버 중계 주소로 바꿔 내려준다."""
+    out = _resolve_stream(camera_id, db)
+    if not hls_proxy.host_allowed(out.stream_url):
+        raise HTTPException(status_code=403, detail="중계할 수 없는 영상 주소입니다.")
+    return _relay(camera_id, out.stream_url, request)
+
+
+@router.get("/{camera_id}/hls/p")
+def camera_hls_part(camera_id: str, u: str, s: str, request: Request):
+    """서명된 주소만 대신 받아 온다(하위 재생목록, 조각, 키)."""
+    try:
+        url = hls_proxy.verify(camera_id, u, s)
+    except hls_proxy.HlsError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
+    return _relay(camera_id, url, request)
 
 
 @router.get("/{camera_id}/detections/latest", response_model=LatestFrameOut)
