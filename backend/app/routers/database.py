@@ -15,6 +15,8 @@ LABELS = {
     "map_references": "지도 기준점", "alerts": "위험 경고", "alert_history": "경고 처리 이력",
     "catalog_records": "산출물", "catalog_files": "산출물 파일",
     "catalog_logs": "산출물 로그", "catalog_parents": "산출물 관계",
+    "calibration_versions": "카메라 보정 버전", "experiment_bindings": "실험·보정 연결",
+    "catalog_audit": "산출물 변경 이력",
 }
 
 

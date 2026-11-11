@@ -19,7 +19,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.db import init_db
-from backend.app.routers import alerts, cameras, database, detections, ingest, ws, saved_results
+from backend.app.routers import alerts, cameras, database, detections, ingest, ws, saved_results, catalog_governance
 
 
 @asynccontextmanager
@@ -62,7 +62,7 @@ def health():
 
 
 # Same-origin API for the built dashboard and Vite proxy; preserve existing clients.
-for router in (cameras.router, detections.router, ingest.router, alerts.router, ws.router, database.router, saved_results.router):
+for router in (cameras.router, detections.router, ingest.router, alerts.router, ws.router, database.router, saved_results.router, catalog_governance.router):
     app.include_router(router, prefix="/api")
 
 

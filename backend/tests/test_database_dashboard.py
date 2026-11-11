@@ -4,7 +4,7 @@ from backend.tests.test_api import alert_record, detection_item, frame_record
 def test_overview_and_table_allowlist(client):
     overview = client.get("/api/database/overview")
     assert overview.status_code == 200
-    assert len(overview.json()["tables"]) == 12
+    assert len(overview.json()["tables"]) == 15
     assert "password" not in overview.text
     assert client.get("/api/database/tables/pg_authid").status_code == 404
     assert client.get("/api/database/tables/cameras?limit=101").status_code == 422

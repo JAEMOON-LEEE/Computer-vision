@@ -64,3 +64,4 @@ frontend/.env
 .env.*
 !.env.example
 /training_artifacts/**/*.building.zip
+/supabase/.temp/

@@ -4,7 +4,7 @@ import { CircleMarker, MapContainer, TileLayer, Tooltip } from "react-leaflet";
 import { databaseRequest } from "../api";
 import { MAP_TILES } from "../components/CameraMap";
 
-type Result = { source: "detections" | "ground_truth"; record_id: string; title: string; kind: string; origin: string; status: string; created_at: string; frames: number; summary: unknown };
+type Result = { source: "detections" | "ground_truth"; record_id: string; title: string; kind: string; origin: string; status: string; created_at: string; frames: number };
 type Frame = { source: "detections" | "ground_truth"; stream: string; line_no: number; camera_id: string; frame: number; timestamp: number | null; width: number; height: number; detections: { world_xz: number[] | null; class_name: string; confidence: number | null; bbox_xyxy: number[] }[]; camera_location: { lat: number; lon: number } | null; map_notice: string };
 const resultKey = (r: Result) => `${r.source}:${r.record_id}`;
 const errorText = (e: unknown) => e instanceof Error ? e.message : "조회 실패";
@@ -18,15 +18,20 @@ export function SavedResultsPage() {
   const [listError, setListError] = useState("");
   const [loading, setLoading] = useState(false);
   const [revision, setRevision] = useState(0);
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(0);
   const selected = results.find(r => resultKey(r) === id);
   useEffect(() => {
     let active = true;
     setListError("");
-    databaseRequest<Result[]>("/saved-results").then(rows => {
-      if (active) { setResults(rows); setId(current => rows.some(r => resultKey(r) === current) ? current : (rows[0] ? resultKey(rows[0]) : "")); }
+    setResults([]); setId(""); setOffset(0);
+    databaseRequest<{ items: Result[]; total: number }>(`/saved-results/search?${new URLSearchParams({ q: search, offset: String(page * 25), limit: "25" })}`).then(data => {
+      if (active) { setResults(data.items); setTotal(data.total); setId(data.items[0] ? resultKey(data.items[0]) : ""); }
     }).catch(e => { if (active) setListError(errorText(e)); });
     return () => { active = false; };
-  }, [revision]);
+  }, [revision, search, page]);
   useEffect(() => {
     let active = true;
     setFrame(null); setError("");
@@ -41,6 +46,8 @@ export function SavedResultsPage() {
   return <main className="database-page">
     <div className="db-heading"><div><h1>팀원 저장 결과</h1><p>DB에 보관된 실험·검출 로그를 프레임별로 확인합니다. 실시간 경고와 별도로 표시합니다.</p></div><button onClick={() => setRevision(v => v + 1)}>새로고침</button></div>
     {listError && <p className="err" role="alert">{listError}</p>}
+    <form onSubmit={e => { e.preventDefault(); setSearch(query); setPage(0); }}><label>작업 검색 <input value={query} maxLength={200} onChange={e => setQuery(e.target.value)} placeholder="작업 이름 또는 ID"/></label><button type="submit">검색</button></form>
+    <div className="pager"><button disabled={page === 0} onClick={() => setPage(v => v - 1)}>이전 목록</button><span>총 {total}개 · {page + 1} / {Math.max(1, Math.ceil(total / 25))} 페이지</span><button disabled={(page + 1) * 25 >= total} onClick={() => setPage(v => v + 1)}>다음 목록</button></div>
     <label>작업 선택 <select style={{ maxWidth: "100%" }} value={id} onChange={e => { setId(e.target.value); setOffset(0); }}>
       {results.map(r => <option key={resultKey(r)} value={resultKey(r)}>{r.source === "ground_truth" ? "[가상환경 정답] " : "[검출] "}{r.title} · {r.frames.toLocaleString()}프레임</option>)}
     </select></label>
@@ -60,9 +67,27 @@ export function SavedResultsPage() {
           </>}</section></div>
         <div className="table-wrap"><table><thead><tr><th>객체</th><th>신뢰도</th><th>영상 좌표</th></tr></thead><tbody>{frame.detections.map((d, i) => <tr key={i}><td>{d.class_name}</td><td>{d.confidence == null ? "—" : `${(d.confidence * 100).toFixed(1)}%`}</td><td>{d.bbox_xyxy.map(v => v.toFixed(1)).join(", ")}</td></tr>)}</tbody></table></div>
       </>}
-      <details><summary>저장된 작업 요약</summary><pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{JSON.stringify(selected.summary, null, 2)}</pre></details>
+      <RecordDetails key={`${selected.record_id}:${revision}`} recordId={selected.record_id}/>
     </>}
   </main>;
+}
+
+function RecordDetails({ recordId }: { recordId: string }) {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState<unknown>(null);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    if (!open) return;
+    let active = true;
+    setError("");
+    databaseRequest(`/saved-results/record?${new URLSearchParams({ record_id: recordId })}`)
+      .then(data => { if (active) setValue(data); })
+      .catch(e => { if (active) setError(errorText(e)); });
+    return () => { active = false; };
+  }, [open, recordId]);
+  return <details onToggle={e => setOpen(e.currentTarget.open)}><summary>저장된 작업 요약·보정 연결</summary>
+    {error ? <p className="err" role="alert">{error}</p> : <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{value === null ? "불러오는 중…" : JSON.stringify(value, null, 2)}</pre>}
+  </details>;
 }
 
 function VirtualMap({ frame }: { frame: Frame }) {

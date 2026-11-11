@@ -7,25 +7,59 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import case, func, or_, select
 from sqlalchemy.orm import Session
 
-from backend.app.catalog_models import CatalogLog, CatalogRecord
+from backend.app.catalog_models import CatalogLog, CatalogRecord, ExperimentBinding
 from backend.app.db import get_db
 from backend.app.models import Camera
 
 router = APIRouter(prefix="/database/saved-results", tags=["database"])
 
 
-@router.get("")
-def list_results(db: Session = Depends(get_db)):
+def result_query():
     source = case((CatalogLog.stream.like("ground_truth.jsonl%"), "ground_truth"), else_="detections")
     counts = (select(CatalogLog.record_id, source.label("source"), func.count().label("frames"))
               .where(or_(CatalogLog.stream.like("detections.jsonl%"), CatalogLog.stream.like("ground_truth.jsonl%")))
               .group_by(CatalogLog.record_id, source).subquery())
-    rows = db.execute(select(CatalogRecord, counts.c.frames, counts.c.source).join(
+    return select(CatalogRecord.record_id, CatalogRecord.title, CatalogRecord.kind,
+                  CatalogRecord.data_origin.label("origin"), CatalogRecord.status,
+                  CatalogRecord.created_at, counts.c.frames, counts.c.source).join(
         counts, counts.c.record_id == CatalogRecord.record_id)
-        .order_by(CatalogRecord.created_at.desc(), CatalogRecord.record_id)).all()
-    return [{"record_id": r.record_id, "title": r.title, "kind": r.kind,
-             "origin": r.data_origin, "status": r.status, "created_at": r.created_at,
-             "source": source, "frames": count, "summary": r.details} for r, count, source in rows]
+
+
+@router.get("/search")
+def search_results(q: str = Query("", max_length=200), limit: int = Query(25, ge=1, le=100),
+                   offset: int = Query(0, ge=0), db: Session = Depends(get_db)):
+    stmt = result_query()
+    if q.strip():
+        escaped = q.strip().replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+        stmt = stmt.where(or_(CatalogRecord.title.ilike("%" + escaped + "%", escape="\\"),
+                              CatalogRecord.record_id.ilike("%" + escaped + "%", escape="\\")))
+    total = db.scalar(select(func.count()).select_from(stmt.subquery()))
+    rows = db.execute(stmt.order_by(CatalogRecord.created_at.desc(), CatalogRecord.record_id, "source")
+                      .limit(limit).offset(offset)).mappings()
+    return {"items": [dict(r) for r in rows], "total": total, "limit": limit, "offset": offset}
+
+
+@router.get("")
+def list_results(db: Session = Depends(get_db)):
+    # Compatibility for older clients; the dashboard uses the bounded search endpoint.
+    rows = db.execute(result_query().order_by(CatalogRecord.created_at.desc(), CatalogRecord.record_id, "source")).mappings()
+    items = [dict(r) for r in rows]
+    summaries = dict(db.execute(select(CatalogRecord.record_id, CatalogRecord.details)
+                               .where(CatalogRecord.record_id.in_({r["record_id"] for r in items}))).all())
+    return [{**r, "summary": summaries[r["record_id"]]} for r in items]
+
+
+@router.get("/record")
+def record_details(record_id: str, db: Session = Depends(get_db)):
+    row = db.get(CatalogRecord, record_id)
+    if row is None:
+        raise HTTPException(404, "저장 결과를 찾을 수 없습니다")
+    bindings = db.scalars(select(ExperimentBinding).where(ExperimentBinding.record_id == record_id)
+                         .order_by(ExperimentBinding.stream))
+    return {"record_id": record_id, "summary": row.details, "updated_at": row.updated_at,
+            "bindings": [{"stream": b.stream, "experiment_id": b.experiment_id,
+                          "camera_id": b.camera_id, "calibration_id": b.calibration_id,
+                          "image_width": b.image_width, "image_height": b.image_height} for b in bindings]}
 
 
 def finite(value):
@@ -35,7 +69,7 @@ def finite(value):
 @router.get("/frame")
 def saved_frame(record_id: str, offset: int = Query(0, ge=0), db: Session = Depends(get_db),
                 source: Literal["detections", "ground_truth"] = "detections"):
-    if not db.get(CatalogRecord, record_id):
+    if db.scalar(select(CatalogRecord.record_id).where(CatalogRecord.record_id == record_id)) is None:
         raise HTTPException(404, "저장 결과를 찾을 수 없습니다")
     log = db.scalar(select(CatalogLog).where(
         CatalogLog.record_id == record_id, CatalogLog.stream.like(source + ".jsonl%"))
