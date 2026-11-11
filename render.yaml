@@ -19,6 +19,13 @@ services:
         value: "false"
       - key: STREAM_TTL_MINUTES
         value: "30"
+      # twinsight_app 역할의 연결 한도를 팀이 나눠 쓴다. 배포 중에는 새·이전 서버가 잠시 함께 뜬다.
+      - key: DATABASE_POOL_SIZE
+        value: "2"
+      - key: DATABASE_MAX_OVERFLOW
+        value: "1"
+      - key: DATABASE_APP_NAME
+        value: twinsight-render
       - key: DATABASE_URL
         sync: false
       - key: TEAM_ACCESS_TOKEN

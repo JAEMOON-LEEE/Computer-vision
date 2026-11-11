@@ -39,6 +39,16 @@ FastAPI 하나가 React 대시보드(`/dashboard/`), API(`/api/...`), WebSocket(
 - `VITE_CARTO_KEY`는 빌드 때 화면에 들어가므로 바꾸면 **Manual Deploy**를 다시 해야 합니다.
 - `autoDeploy: false`라서 main에 push해도 자동 배포되지 않습니다. Render 화면에서 **Manual Deploy**를 누릅니다.
 
+### DB 연결 수
+
+`twinsight_app` 역할에는 동시 연결 한도가 있고 팀원 PC 백엔드와 Render 서버가 함께 씁니다. 서버 하나는 최대 `DATABASE_POOL_SIZE + DATABASE_MAX_OVERFLOW`개(Render 기본 2+1=3)를 열고, 배포 중에는 새·이전 서버가 잠시 동시에 뜹니다. 시작 로그에 `too many connections for role "twinsight_app"`이 나오면 관리자 계정으로 확인합니다.
+
+```sql
+SELECT rolconnlimit FROM pg_roles WHERE rolname = 'twinsight_app';
+SELECT application_name, count(*) FROM pg_stat_activity WHERE usename = 'twinsight_app' GROUP BY 1;
+ALTER ROLE twinsight_app CONNECTION LIMIT 20;  -- 필요 시
+```
+
 ## 2. 배포 후 확인 순서
 
 1. `https://<주소>/health` → `{"status":"ok"}`

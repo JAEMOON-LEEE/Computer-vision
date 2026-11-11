@@ -32,6 +32,13 @@ def _enable_sqlite_fk(dbapi_connection, _connection_record) -> None:
     cursor.close()
 
 
+def _int_env(name: str, default: int, minimum: int) -> int:
+    try:
+        return max(minimum, int(os.getenv(name, str(default)).strip()))
+    except ValueError:
+        return default
+
+
 def configure(url: str | URL | None = None) -> None:
     """엔진을 만들거나 테스트용 URL로 갈아끼운다."""
     global engine, SessionLocal
@@ -43,9 +50,13 @@ def configure(url: str | URL | None = None) -> None:
     dialect = resolved.get_backend_name()
     kwargs: dict = {"pool_pre_ping": True, "hide_parameters": True}
     if dialect == "postgresql":
-        kwargs["connect_args"] = {"connect_timeout": 5}
-        kwargs["pool_size"] = 3
-        kwargs["max_overflow"] = 2
+        # application_name으로 pg_stat_activity에서 어느 서버의 연결인지 구분한다.
+        kwargs["connect_args"] = {"connect_timeout": 5,
+                                  "application_name": os.getenv("DATABASE_APP_NAME", "twinsight-backend")[:60]}
+        # 역할(role) 연결 한도를 팀이 나눠 쓰므로 배포 환경에서 줄일 수 있게 한다. 기본값은 기존과 같다.
+        kwargs["pool_size"] = _int_env("DATABASE_POOL_SIZE", 3, 1)
+        kwargs["max_overflow"] = _int_env("DATABASE_MAX_OVERFLOW", 2, 0)
+        kwargs["pool_recycle"] = 300
         schema = os.getenv("DATABASE_SCHEMA", "").strip()
         if schema:
             if not re.fullmatch(r"[a-z][a-z0-9_]{0,62}", schema):
