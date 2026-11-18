@@ -27,6 +27,7 @@ namespace TwinSight.Simulation
         public float pedestrianFlashSeconds = 3f;
         public SignalLamp[] vehicleLamps;
         public SignalLamp[] pedestrianLamps;
+        [NonSerialized] public int suppressedVehicleLampIndex = -1;
         public SignalPhase Phase { get; private set; }
         public float PhaseElapsed { get; private set; }
         public bool VehiclesMayEnter => Phase == SignalPhase.VehicleGreen;
@@ -84,7 +85,8 @@ namespace TwinSight.Simulation
             int vehicle = VehiclesMayEnter ? 2 : Phase == SignalPhase.VehicleYellow ? 1 : 0;
             bool flashOn = Phase != SignalPhase.PedestrianFlash || (int)(PhaseElapsed * 2) % 2 == 0;
             int pedestrian = PedestriansMayEnter || Phase == SignalPhase.PedestrianFlash ? 2 : 0;
-            if (vehicleLamps != null) foreach (var lamp in vehicleLamps) if (lamp != null) lamp.Set(vehicle, true);
+            if (vehicleLamps != null) for (int i = 0; i < vehicleLamps.Length; i++)
+                if (vehicleLamps[i] != null) vehicleLamps[i].Set(vehicle, i != suppressedVehicleLampIndex);
             if (pedestrianLamps != null) foreach (var lamp in pedestrianLamps) if (lamp != null) lamp.Set(pedestrian, flashOn);
         }
     }

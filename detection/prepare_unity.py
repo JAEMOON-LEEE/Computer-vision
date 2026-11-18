@@ -14,7 +14,42 @@ from .sources import confined_image, decode_image
 from .taxonomy import CATEGORIES
 
 
-def prepare_unity(splits, output, classes):
+def audit_hazard_splits(splits):
+    """Fail closed on missing provenance, collision episodes, or cross-split reuse."""
+    seeds, episodes, hashes = {}, {}, {}
+    counts = {}
+    for split, sessions in splits.items():
+        counts[split] = 0
+        for session in sessions:
+            root = Path(session).resolve()
+            with (root / "ground_truth.jsonl").open(encoding="utf-8-sig") as stream:
+                for line in stream:
+                    if not line.strip():
+                        continue
+                    record = json.loads(line)
+                    scenario = record.get("scenario") or {}
+                    seed, episode, kind = scenario.get("seed"), scenario.get("episode"), scenario.get("scenario")
+                    if type(seed) is not int or type(episode) is not int or not isinstance(kind, str) or not kind:
+                        raise ValueError(f"Missing seed, episode or scenario in {root}")
+                    if kind not in {"Normal", "Pothole", "FallingDebris"}:
+                        raise ValueError(f"Unsupported or collision scenario {kind!r} in {root}")
+                    for mapping, key, label in ((seeds, seed, "seed"), (episodes, (seed, episode), "episode")):
+                        if key in mapping and mapping[key] != split:
+                            raise ValueError(f"{label} leakage between {mapping[key]} and {split}: {key}")
+                        mapping[key] = split
+                    image = confined_image(root, record["image"])
+                    digest = hashlib.sha256(image.read_bytes()).hexdigest()
+                    if digest in hashes and hashes[digest] != split:
+                        raise ValueError(f"Image leakage between {hashes[digest]} and {split}: {image}")
+                    hashes[digest] = split
+                    counts[split] += 1
+        if sessions and not counts[split]:
+            raise ValueError(f"No frames in {split}")
+    return {"frames": counts, "unique_seeds": len(seeds), "unique_seed_episodes": len(episodes),
+            "limitations": "Exact hashes and recorded seed/episode only; shared assets/camera and near duplicates are not ruled out."}
+
+
+def prepare_unity(splits, output, classes, hazard_audit=False):
     output = Path(output)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Dataset output must be empty")
@@ -23,10 +58,13 @@ def prepare_unity(splits, output, classes):
     roots = [Path(root).resolve() for sessions in splits.values() for root in sessions]
     if len(set(roots)) != len(roots):
         raise ValueError("A capture session cannot appear in multiple splits")
+    audit = audit_hazard_splits(splits) if hazard_audit else None
     output.mkdir(parents=True, exist_ok=True)
     names = {name: index for index, name in enumerate(classes)}
     report = {"synthetic_only": True, "human_review_complete": False,
               "class_names": classes, "sessions": {}, "warning": "Unity boxes include occluded geometry; inspect labels before final experiments"}
+    if audit is not None:
+        report["hazard_split_audit"] = audit
     config = {"path": str(output.resolve()), "names": dict(enumerate(classes))}
     for split, sessions in splits.items():
         if not sessions:

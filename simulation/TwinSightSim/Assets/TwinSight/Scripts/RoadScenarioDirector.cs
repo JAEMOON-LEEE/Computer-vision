@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace TwinSight.Simulation
 {
-    public enum RoadScenario { Normal, Pothole, FallingDebris, VehicleCollision, StructureCollision, SignalViolation }
+    public enum RoadScenario { Normal, Pothole, FallingDebris, VehicleCollision, StructureCollision, SignalViolation, Facility }
     public enum ScenarioProfile { Training, Evaluation }
     public enum StopZoneScenario { SignalQueue, TightQueue, BarrierStop, RearEnd, StructureImpact }
     public enum VehicleCollisionScenario { RearEnd, HighSpeedRearEnd, HeadOn, SideImpact, ChainReaction, MovingRearEnd, OffsetRearEnd }
@@ -33,6 +33,8 @@ namespace TwinSight.Simulation
         public string scenario;
         public string collision_variant;
         public string scenario_variant;
+        public string hazard_state;
+        public FacilityTruth facility;
         public float started_at;
         public float[] sampling_probabilities;
         public List<ScenarioEventRecord> events;
@@ -104,6 +106,8 @@ namespace TwinSight.Simulation
 
         public void BeginEpisode(RoadScenario scenario)
         {
+            Facility = null;
+            if (signals != null) signals.suppressedVehicleLampIndex = -1;
             if (!cleanDatasetCapture && signals != null) signals.enabled=true;
             if (random == null) random = new System.Random(seed);
             foreach (var item in spawned) if (item != null) { item.SetActive(false); Destroy(item); }
@@ -268,6 +272,10 @@ namespace TwinSight.Simulation
         {
             episode = Episode, seed = seed, sampling_profile = profile.ToString(), scenario = Current.ToString(),
             collision_variant=CollisionVariant, scenario_variant=ScenarioVariant,
+            hazard_state = Current == RoadScenario.Facility && Facility != null ? Facility.state :
+                Current == RoadScenario.Normal ? "normal" :
+                (Current == RoadScenario.Pothole || Current == RoadScenario.FallingDebris ? "abnormal" : "not_applicable"),
+            facility = Facility,
             started_at = StartedAt, sampling_probabilities = Probabilities(profile), events = Events
         };
 

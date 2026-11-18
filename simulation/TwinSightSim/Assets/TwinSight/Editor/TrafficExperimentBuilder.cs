@@ -8,6 +8,13 @@ namespace TwinSight.Simulation.EditorTools
 {
     public static class TrafficExperimentBuilder
     {
+        [MenuItem("TwinSight/City Lab/Capture Facility Cases (Play Mode)")]
+        public static void CaptureFacilityCases()
+        {
+            if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode before capturing.");
+            new GameObject("FacilityCapture").AddComponent<FacilityCapture>();
+        }
+
         [MenuItem("TwinSight/City Lab/Capture Varied Collision Clips (Play Mode)")]
         public static void CaptureVariedCollisionClips()
         {

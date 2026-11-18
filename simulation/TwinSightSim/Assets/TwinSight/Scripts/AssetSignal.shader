@@ -4,7 +4,7 @@ Shader "TwinSight/AssetSignal"
     {
         _MainTex ("Original asset atlas", 2D) = "white" {}
         _SignalIndex ("Red=0 Amber=1 Green=2", Float) = 0
-        _SignalVisible ("Green flash visibility", Float) = 1
+        _SignalVisible ("Lamp visibility", Float) = 1
         _Pedestrian ("Pedestrian red/green mode", Float) = 0
     }
     SubShader
@@ -25,8 +25,8 @@ Shader "TwinSight/AssetSignal"
             bool amber = lens && IN.uv_MainTex.x >= 0.104 && IN.uv_MainTex.x < 0.142;
             bool green = lens && IN.uv_MainTex.x < 0.104;
             bool arrow = green && IN.uv_MainTex.x > 0.06;
-            bool lit = (red && _SignalIndex < 0.5) || (amber && abs(_SignalIndex - 1) < 0.5 && _Pedestrian < 0.5)
-                || (green && _SignalIndex > 1.5 && _SignalVisible > 0.5 && !arrow);
+            bool lit = _SignalVisible > 0.5 && ((red && _SignalIndex < 0.5) || (amber && abs(_SignalIndex - 1) < 0.5 && _Pedestrian < 0.5)
+                || (green && _SignalIndex > 1.5 && !arrow));
             o.Albedo = c.rgb;
             if (red || amber || green)
             {

@@ -6,11 +6,39 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from detection.prepare_unity import prepare_unity
+from detection.prepare_unity import prepare_unity, audit_hazard_splits
 from detection.dataset import check_dataset
 
 
 class UnityConversionTests(unittest.TestCase):
+    def test_hazard_audit_rejects_leaks_and_collisions(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            splits = {}
+            rows = {}
+            for index, split in enumerate(("train", "val", "test")):
+                session = root / split
+                session.mkdir()
+                (session / "frame.png").write_bytes(bytes([index]))
+                rows[split] = {"image": "frame.png", "scenario": {"seed": index, "episode": 1, "scenario": "Pothole"}}
+                (session / "ground_truth.jsonl").write_text(json.dumps(rows[split]), encoding="utf-8")
+                splits[split] = [session]
+            self.assertEqual(audit_hazard_splits(splits)["unique_seeds"], 3)
+            rows["val"]["scenario"]["seed"] = 0
+            (splits["val"][0] / "ground_truth.jsonl").write_text(json.dumps(rows["val"]), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "seed leakage"):
+                audit_hazard_splits(splits)
+            rows["val"]["scenario"]["seed"] = 1
+            rows["val"]["scenario"]["scenario"] = "VehicleCollision"
+            (splits["val"][0] / "ground_truth.jsonl").write_text(json.dumps(rows["val"]), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "collision"):
+                audit_hazard_splits(splits)
+            rows["val"]["scenario"]["scenario"] = "Normal"
+            (splits["val"][0] / "ground_truth.jsonl").write_text(json.dumps(rows["val"]), encoding="utf-8")
+            (splits["val"][0] / "frame.png").write_bytes(b"\x00")
+            with self.assertRaisesRegex(ValueError, "Image leakage"):
+                audit_hazard_splits(splits)
+
     def test_sessions_are_split_and_boxes_normalized(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
