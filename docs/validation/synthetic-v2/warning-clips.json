@@ -1,0 +1,161 @@
+{
+  "Normal": {
+    "status": "completed",
+    "frames": 45,
+    "detections_by_class": {
+      "car": 225,
+      "person": 1
+    },
+    "elapsed_seconds": 10.243,
+    "pipeline_fps": 4.393,
+    "mean_inference_ms": 208.604,
+    "warm_mean_inference_ms": 50.358,
+    "warm_p95_inference_ms": 58.201,
+    "capabilities": {
+      "available": [
+        "person",
+        "car",
+        "pothole",
+        "debris",
+        "barrier"
+      ],
+      "unavailable": [
+        "truck",
+        "bus",
+        "motorcycle",
+        "bicycle",
+        "crack"
+      ]
+    },
+    "alerts_by_type": {}
+  },
+  "Pothole": {
+    "status": "completed",
+    "frames": 45,
+    "detections_by_class": {
+      "pothole": 45,
+      "car": 1
+    },
+    "elapsed_seconds": 2.467,
+    "pipeline_fps": 18.238,
+    "mean_inference_ms": 37.924,
+    "warm_mean_inference_ms": 37.898,
+    "warm_p95_inference_ms": 45.354,
+    "capabilities": {
+      "available": [
+        "person",
+        "car",
+        "pothole",
+        "debris",
+        "barrier"
+      ],
+      "unavailable": [
+        "truck",
+        "bus",
+        "motorcycle",
+        "bicycle",
+        "crack"
+      ]
+    },
+    "alerts_by_type": {
+      "road_damage": 1
+    }
+  },
+  "FallingDebris": {
+    "status": "completed",
+    "frames": 45,
+    "detections_by_class": {
+      "debris": 42,
+      "person": 2
+    },
+    "elapsed_seconds": 2.451,
+    "pipeline_fps": 18.358,
+    "mean_inference_ms": 38.315,
+    "warm_mean_inference_ms": 38.274,
+    "warm_p95_inference_ms": 48.718,
+    "capabilities": {
+      "available": [
+        "person",
+        "car",
+        "pothole",
+        "debris",
+        "barrier"
+      ],
+      "unavailable": [
+        "truck",
+        "bus",
+        "motorcycle",
+        "bicycle",
+        "crack"
+      ]
+    },
+    "alerts_by_type": {
+      "road_debris": 1
+    }
+  },
+  "VehicleCollision": {
+    "status": "completed",
+    "frames": 45,
+    "detections_by_class": {
+      "car": 90,
+      "person": 1
+    },
+    "elapsed_seconds": 2.464,
+    "pipeline_fps": 18.267,
+    "mean_inference_ms": 37.339,
+    "warm_mean_inference_ms": 37.244,
+    "warm_p95_inference_ms": 46.418,
+    "capabilities": {
+      "available": [
+        "person",
+        "car",
+        "pothole",
+        "debris",
+        "barrier"
+      ],
+      "unavailable": [
+        "truck",
+        "bus",
+        "motorcycle",
+        "bicycle",
+        "crack"
+      ]
+    },
+    "alerts_by_type": {
+      "suspected_vehicle_collision": 1
+    }
+  },
+  "StructureCollision": {
+    "status": "completed",
+    "frames": 45,
+    "detections_by_class": {
+      "car": 45,
+      "debris": 3,
+      "barrier": 45
+    },
+    "elapsed_seconds": 2.478,
+    "pipeline_fps": 18.162,
+    "mean_inference_ms": 38.246,
+    "warm_mean_inference_ms": 38.186,
+    "warm_p95_inference_ms": 44.062,
+    "capabilities": {
+      "available": [
+        "person",
+        "car",
+        "pothole",
+        "debris",
+        "barrier"
+      ],
+      "unavailable": [
+        "truck",
+        "bus",
+        "motorcycle",
+        "bicycle",
+        "crack"
+      ]
+    },
+    "alerts_by_type": {
+      "suspected_vehicle_structure_collision": 1
+    }
+  }
+}

@@ -1,0 +1,1931 @@
+{
+  "synthetic_only": true,
+  "human_label_review_complete": false,
+  "clips": [
+    {
+      "split": "train",
+      "lighting": "Day",
+      "scenario": "NormalQueue",
+      "inbound": false,
+      "seed": 251001,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Day-NormalQueue-out-s251001_20261025_041111",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.75,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.7499997589999996,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Day",
+      "scenario": "TightQueue",
+      "inbound": true,
+      "seed": 251098,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Day-TightQueue-in-s251098_20261025_041119",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.18,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.17999936499999936,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Day",
+      "scenario": "RearEnd",
+      "inbound": false,
+      "seed": 251195,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Day-RearEnd-out-s251195_20261025_041127",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "251195:5:12",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 117.159958,
+          "object_a": 17,
+          "object_b": 18,
+          "relative_speed_units_per_second": 2.4,
+          "impulse": 1401.2334,
+          "contact_world": [
+            10.8970156,
+            1.05202055,
+            -0.7249997
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 4.215851,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.00030231496202759445
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Day",
+      "scenario": "HighSpeedRearEnd",
+      "inbound": true,
+      "seed": 251292,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Day-HighSpeedRearEnd-in-s251292_20261025_041135",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "251292:6:15",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 127.039955,
+          "object_a": 20,
+          "object_b": 19,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3957.0542,
+          "contact_world": [
+            12.4450006,
+            0.6020201,
+            0.08499986
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.849121,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.11879348754882812
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Day",
+      "scenario": "HeadOn",
+      "inbound": false,
+      "seed": 251389,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Day-HeadOn-out-s251389_20261025_041142",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "251389:7:18",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 137.359955,
+          "object_a": 22,
+          "object_b": 21,
+          "relative_speed_units_per_second": 7.6,
+          "impulse": 4227.478,
+          "contact_world": [
+            11.7850094,
+            1.05202055,
+            -1.395
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.93699646,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.000173574619111605
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Day",
+      "scenario": "SideImpact",
+      "inbound": true,
+      "seed": 251486,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Day-SideImpact-in-s251486_20261025_041150",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "251486:8:21",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 147.499954,
+          "object_a": 24,
+          "object_b": 23,
+          "relative_speed_units_per_second": 4.8,
+          "impulse": 2635.416,
+          "contact_world": [
+            12.4450006,
+            1.05202031,
+            -0.09500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.84013367,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.08370565623044968
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Day",
+      "scenario": "ChainReaction",
+      "inbound": false,
+      "seed": 251583,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Day-ChainReaction-out-s251583_20261025_041158",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 2,
+      "physics_events": [
+        {
+          "event_id": "251583:9:24",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 157.699951,
+          "object_a": 27,
+          "object_b": 26,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3815.15186,
+          "contact_world": [
+            11.035,
+            1.05202055,
+            -1.29500008
+          ]
+        },
+        {
+          "event_id": "251583:9:25",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 157.759949,
+          "object_a": 25,
+          "object_b": 26,
+          "relative_speed_units_per_second": 3.50629926,
+          "impulse": 2778.219,
+          "contact_world": [
+            12.5454493,
+            1.05202043,
+            -0.747205436
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.809616,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0006173183210194111,
+        0.007086283061653376
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Night",
+      "scenario": "NormalQueue",
+      "inbound": true,
+      "seed": 252001,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Night-NormalQueue-in-s252001_20261025_041206",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.75,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.7499999649999995,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Night",
+      "scenario": "TightQueue",
+      "inbound": false,
+      "seed": 252098,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Night-TightQueue-out-s252098_20261025_041216",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.18,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.1799993790000003,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Night",
+      "scenario": "RearEnd",
+      "inbound": true,
+      "seed": 252195,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Night-RearEnd-in-s252195_20261025_041225",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "252195:12:32",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 188.879929,
+          "object_a": 33,
+          "object_b": 32,
+          "relative_speed_units_per_second": 2.4,
+          "impulse": 1401.23547,
+          "contact_world": [
+            12.4450006,
+            0.6020201,
+            -0.09500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 4.207535,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0003004075842909515
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Night",
+      "scenario": "HighSpeedRearEnd",
+      "inbound": false,
+      "seed": 252292,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Night-HighSpeedRearEnd-out-s252292_20261025_041234",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "252292:13:35",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 198.779922,
+          "object_a": 35,
+          "object_b": 34,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3957.056,
+          "contact_world": [
+            10.8949995,
+            0.6020202,
+            -1.21500015
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.8538208,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.1187954768538475
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Night",
+      "scenario": "HeadOn",
+      "inbound": true,
+      "seed": 252389,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Night-HeadOn-in-s252389_20261025_041244",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "252389:14:38",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 209.119919,
+          "object_a": 37,
+          "object_b": 36,
+          "relative_speed_units_per_second": 7.6,
+          "impulse": 4227.477,
+          "contact_world": [
+            11.5549908,
+            1.05202043,
+            0.5750003
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.93247986,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0001726214832160622
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Night",
+      "scenario": "SideImpact",
+      "inbound": false,
+      "seed": 252486,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Night-SideImpact-out-s252486_20261025_041253",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "252486:15:41",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 219.259918,
+          "object_a": 38,
+          "object_b": 39,
+          "relative_speed_units_per_second": 4.8,
+          "impulse": 2637.78833,
+          "contact_world": [
+            10.9223623,
+            0.6020202,
+            -1.37858248
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.825058,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.09467117488384247
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "train",
+      "lighting": "Night",
+      "scenario": "ChainReaction",
+      "inbound": true,
+      "seed": 252583,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-train-Night-ChainReaction-in-s252583_20261025_041302",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 2,
+      "physics_events": [
+        {
+          "event_id": "252583:16:44",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 229.519913,
+          "object_a": 42,
+          "object_b": 41,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3815.133,
+          "contact_world": [
+            12.305,
+            1.05202055,
+            0.00499983132
+          ]
+        },
+        {
+          "event_id": "252583:16:45",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 229.579926,
+          "object_a": 41,
+          "object_b": 40,
+          "relative_speed_units_per_second": 3.506282,
+          "impulse": 2777.93579,
+          "contact_world": [
+            10.795001,
+            1.05202043,
+            0.552796543
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.82061768,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0005438461666926742,
+        0.007761735934764147
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Day",
+      "scenario": "NormalQueue",
+      "inbound": true,
+      "seed": 261001,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Day-NormalQueue-in-s261001_20261025_041312",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.75,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.7499999649999995,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Day",
+      "scenario": "TightQueue",
+      "inbound": false,
+      "seed": 261098,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Day-TightQueue-out-s261098_20261025_041321",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.18,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.1799993790000003,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Day",
+      "scenario": "RearEnd",
+      "inbound": true,
+      "seed": 261195,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Day-RearEnd-in-s261195_20261025_041330",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "261195:19:52",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 260.8799,
+          "object_a": 48,
+          "object_b": 47,
+          "relative_speed_units_per_second": 2.4,
+          "impulse": 1401.23547,
+          "contact_world": [
+            12.5750008,
+            0.6020201,
+            -0.09500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 4.2232666,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0003004075842909515
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Day",
+      "scenario": "HighSpeedRearEnd",
+      "inbound": false,
+      "seed": 261292,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Day-HighSpeedRearEnd-out-s261292_20261025_041338",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "261292:20:55",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 270.759918,
+          "object_a": 50,
+          "object_b": 49,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3957.056,
+          "contact_world": [
+            11.025,
+            0.6020202,
+            -1.21500015
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.86065674,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.1187954768538475
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Day",
+      "scenario": "HeadOn",
+      "inbound": true,
+      "seed": 261389,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Day-HeadOn-in-s261389_20261025_041346",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "261389:21:58",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 281.0599,
+          "object_a": 52,
+          "object_b": 51,
+          "relative_speed_units_per_second": 7.6,
+          "impulse": 4227.477,
+          "contact_world": [
+            11.6849909,
+            1.05202043,
+            0.5750003
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.92727661,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0001716678380034864
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Day",
+      "scenario": "SideImpact",
+      "inbound": false,
+      "seed": 261486,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Day-SideImpact-out-s261486_20261025_041354",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "261486:22:61",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 291.1999,
+          "object_a": 54,
+          "object_b": 53,
+          "relative_speed_units_per_second": 4.8,
+          "impulse": 2635.41187,
+          "contact_world": [
+            11.025,
+            0.602020144,
+            -1.39500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.83309937,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.08338954299688339
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Day",
+      "scenario": "ChainReaction",
+      "inbound": true,
+      "seed": 261583,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Day-ChainReaction-in-s261583_20261025_041402",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 2,
+      "physics_events": [
+        {
+          "event_id": "261583:23:64",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 301.4199,
+          "object_a": 57,
+          "object_b": 56,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3815.133,
+          "contact_world": [
+            12.435,
+            1.05202055,
+            0.00499983132
+          ]
+        },
+        {
+          "event_id": "261583:23:65",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 301.4799,
+          "object_a": 56,
+          "object_b": 55,
+          "relative_speed_units_per_second": 3.506282,
+          "impulse": 2790.9397,
+          "contact_world": [
+            10.9250011,
+            1.05202043,
+            -0.09500031
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.82208252,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        1.2404053450154606e-05,
+        0.005590152461081743
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Night",
+      "scenario": "NormalQueue",
+      "inbound": false,
+      "seed": 262001,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Night-NormalQueue-out-s262001_20261025_041410",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.75,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.7499997589999996,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Night",
+      "scenario": "TightQueue",
+      "inbound": true,
+      "seed": 262098,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Night-TightQueue-in-s262098_20261025_041419",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.18,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.17999936499999936,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Night",
+      "scenario": "RearEnd",
+      "inbound": false,
+      "seed": 262195,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Night-RearEnd-out-s262195_20261025_041429",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "262195:26:72",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 332.559875,
+          "object_a": 63,
+          "object_b": 62,
+          "relative_speed_units_per_second": 2.4,
+          "impulse": 1401.23413,
+          "contact_world": [
+            11.025,
+            0.6020202,
+            -1.39500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 4.2144165,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0003013612877111882
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Night",
+      "scenario": "HighSpeedRearEnd",
+      "inbound": true,
+      "seed": 262292,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Night-HighSpeedRearEnd-in-s262292_20261025_041438",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "262292:27:75",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 342.459869,
+          "object_a": 64,
+          "object_b": 65,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3902.01514,
+          "contact_world": [
+            12.4850073,
+            1.05202055,
+            0.575000167
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.85046387,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.09394245594739914
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Night",
+      "scenario": "HeadOn",
+      "inbound": false,
+      "seed": 262389,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Night-HeadOn-out-s262389_20261025_041448",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "262389:28:78",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 352.799866,
+          "object_a": 67,
+          "object_b": 66,
+          "relative_speed_units_per_second": 7.6,
+          "impulse": 4227.478,
+          "contact_world": [
+            11.9150095,
+            1.05202055,
+            -1.395
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.93240356,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0001726209738990292
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Night",
+      "scenario": "SideImpact",
+      "inbound": true,
+      "seed": 262486,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Night-SideImpact-in-s262486_20261025_041457",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "262486:29:81",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 362.959869,
+          "object_a": 69,
+          "object_b": 68,
+          "relative_speed_units_per_second": 4.8,
+          "impulse": 2635.41553,
+          "contact_world": [
+            12.5750008,
+            1.05202031,
+            -0.09500025
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.83895874,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.08370398730039597
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "val",
+      "lighting": "Night",
+      "scenario": "ChainReaction",
+      "inbound": false,
+      "seed": 262583,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-val-Night-ChainReaction-out-s262583_20261025_041506",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 2,
+      "physics_events": [
+        {
+          "event_id": "262583:30:84",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 373.179871,
+          "object_a": 72,
+          "object_b": 71,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3815.15186,
+          "contact_world": [
+            11.165,
+            1.05202055,
+            -1.29500008
+          ]
+        },
+        {
+          "event_id": "262583:30:85",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 373.239868,
+          "object_a": 71,
+          "object_b": 70,
+          "relative_speed_units_per_second": 3.50629926,
+          "impulse": 2778.086,
+          "contact_world": [
+            12.6749992,
+            1.05202055,
+            -0.747205
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.805664,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0005944116855971515,
+        0.007791309617459774
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Day",
+      "scenario": "NormalQueue",
+      "inbound": false,
+      "seed": 271001,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-NormalQueue-out-s271001_20261025_041516",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.75,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.7499997589999996,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Day",
+      "scenario": "TightQueue",
+      "inbound": true,
+      "seed": 271098,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-TightQueue-in-s271098_20261025_041524",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.18,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.17999936499999936,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Day",
+      "scenario": "RearEnd",
+      "inbound": false,
+      "seed": 271195,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-RearEnd-out-s271195_20261025_041532",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "271195:33:92",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 404.319855,
+          "object_a": 78,
+          "object_b": 77,
+          "relative_speed_units_per_second": 2.4,
+          "impulse": 1401.23425,
+          "contact_world": [
+            11.155,
+            0.6020202,
+            -1.39500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 4.2081604,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.00030040761339478195
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Day",
+      "scenario": "HighSpeedRearEnd",
+      "inbound": true,
+      "seed": 271292,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-HighSpeedRearEnd-in-s271292_20261025_041539",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "271292:34:95",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 414.19986,
+          "object_a": 80,
+          "object_b": 79,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3957.04883,
+          "contact_world": [
+            12.7050009,
+            0.6020201,
+            0.08499986
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.85610962,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.11879250407218933
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Day",
+      "scenario": "HeadOn",
+      "inbound": false,
+      "seed": 271389,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-HeadOn-out-s271389_20261025_041547",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "271389:35:98",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 424.519836,
+          "object_a": 82,
+          "object_b": 81,
+          "relative_speed_units_per_second": 7.6,
+          "impulse": 4227.478,
+          "contact_world": [
+            12.04501,
+            1.05202055,
+            -1.395
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.93807983,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.000173574619111605
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Day",
+      "scenario": "SideImpact",
+      "inbound": true,
+      "seed": 271486,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-SideImpact-in-s271486_20261025_041555",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "271486:36:101",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 434.659851,
+          "object_a": 83,
+          "object_b": 84,
+          "relative_speed_units_per_second": 4.8,
+          "impulse": 2637.79321,
+          "contact_world": [
+            12.6776371,
+            1.05202031,
+            -0.0785822
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.83844,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.09466776251792908
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Day",
+      "scenario": "ChainReaction",
+      "inbound": false,
+      "seed": 271583,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Day-ChainReaction-out-s271583_20261025_041603",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 2,
+      "physics_events": [
+        {
+          "event_id": "271583:37:104",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 444.879852,
+          "object_a": 87,
+          "object_b": 86,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3815.15186,
+          "contact_world": [
+            11.295,
+            1.05202055,
+            -1.29500008
+          ]
+        },
+        {
+          "event_id": "271583:37:105",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 444.93985,
+          "object_a": 86,
+          "object_b": 85,
+          "relative_speed_units_per_second": 3.50629926,
+          "impulse": 2778.08374,
+          "contact_world": [
+            12.8049994,
+            1.05202055,
+            -0.7472054
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.82150269,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0006774300709366798,
+        0.00773989362642169
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Night",
+      "scenario": "NormalQueue",
+      "inbound": true,
+      "seed": 272001,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-NormalQueue-in-s272001_20261025_041611",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.75,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.7499999649999995,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Night",
+      "scenario": "TightQueue",
+      "inbound": false,
+      "seed": 272098,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-TightQueue-out-s272098_20261025_041620",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": false,
+      "required_distinct_contacts": 0,
+      "physics_events": [],
+      "first_contact_after_seconds": null,
+      "intended_queue_gap": 0.18,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [],
+      "final_queue_clearance": 0.1799993790000003,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Night",
+      "scenario": "RearEnd",
+      "inbound": true,
+      "seed": 272195,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-RearEnd-in-s272195_20261025_041630",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "272195:40:112",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 476.059845,
+          "object_a": 93,
+          "object_b": 92,
+          "relative_speed_units_per_second": 2.4,
+          "impulse": 1401.23547,
+          "contact_world": [
+            12.7050009,
+            0.6020201,
+            -0.09500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 4.211273,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0003004075842909515
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Night",
+      "scenario": "HighSpeedRearEnd",
+      "inbound": false,
+      "seed": 272292,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-HighSpeedRearEnd-out-s272292_20261025_041640",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "272292:41:115",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 485.959839,
+          "object_a": 95,
+          "object_b": 94,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3957.056,
+          "contact_world": [
+            11.155,
+            0.6020202,
+            -1.21500015
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.84649658,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.1187954768538475
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Night",
+      "scenario": "HeadOn",
+      "inbound": true,
+      "seed": 272389,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-HeadOn-in-s272389_20261025_041649",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "272389:42:118",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 496.319824,
+          "object_a": 97,
+          "object_b": 96,
+          "relative_speed_units_per_second": 7.6,
+          "impulse": 4227.477,
+          "contact_world": [
+            11.814991,
+            1.05202043,
+            0.5750003
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.943756,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0001726214832160622
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Night",
+      "scenario": "SideImpact",
+      "inbound": false,
+      "seed": 272486,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-SideImpact-out-s272486_20261025_041658",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 1,
+      "physics_events": [
+        {
+          "event_id": "272486:43:121",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 506.4598,
+          "object_a": 99,
+          "object_b": 98,
+          "relative_speed_units_per_second": 4.8,
+          "impulse": 2635.41187,
+          "contact_world": [
+            11.155,
+            0.602020144,
+            -1.39500022
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.83370972,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.08338954299688339
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    },
+    {
+      "split": "test",
+      "lighting": "Night",
+      "scenario": "ChainReaction",
+      "inbound": true,
+      "seed": 272583,
+      "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport/collision-v1\\collision-v1-test-Night-ChainReaction-in-s272583_20261025_041708",
+      "frames": 80,
+      "capture_fps": 8,
+      "expected_collision": true,
+      "required_distinct_contacts": 2,
+      "physics_events": [
+        {
+          "event_id": "272583:44:124",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 516.6998,
+          "object_a": 102,
+          "object_b": 101,
+          "relative_speed_units_per_second": 6.5,
+          "impulse": 3815.133,
+          "contact_world": [
+            12.5650005,
+            1.05202055,
+            0.00499983132
+          ]
+        },
+        {
+          "event_id": "272583:44:125",
+          "event_type": "vehicle_collision",
+          "evidence": "physics_contact",
+          "timestamp": 516.7598,
+          "object_a": 101,
+          "object_b": 100,
+          "relative_speed_units_per_second": 3.506282,
+          "impulse": 2777.93579,
+          "contact_world": [
+            11.0550013,
+            1.05202043,
+            0.552796543
+          ]
+        }
+      ],
+      "first_contact_after_seconds": 3.81970215,
+      "intended_queue_gap": null,
+      "physics_passed": true,
+      "final_contact_surface_gaps": [
+        0.0005438461666926742,
+        0.007761735934764147
+      ],
+      "final_queue_clearance": null,
+      "checks": {
+        "complete": true,
+        "all_images_present": true,
+        "clock": true,
+        "lighting": true,
+        "physics": true,
+        "approach_context": true,
+        "close_after_contact": true,
+        "normal_clearance": true,
+        "settled": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "fixed_cctv": true,
+  "capture_complete": true,
+  "camera": {
+    "position": [
+      -17.0,
+      5.017182350158691,
+      1.8331292867660522
+    ],
+    "rotation_euler_deg": [
+      14.164289474487305,
+      98.99268341064453,
+      1.9437322616577148
+    ],
+    "vertical_fov_deg": 38.01511764526367,
+    "image_width": 1440,
+    "image_height": 960
+  },
+  "clip_count": 42,
+  "frames": 3360,
+  "by_split": {
+    "train": 14,
+    "val": 14,
+    "test": 14
+  },
+  "by_lighting": {
+    "Day": 21,
+    "Night": 21
+  }
+}

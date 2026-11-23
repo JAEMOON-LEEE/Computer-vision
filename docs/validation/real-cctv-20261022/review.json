@@ -1,0 +1,50 @@
+{
+  "camera_id": "its-cc4277cc18",
+  "dashboard_commit": "9a43f5e",
+  "day_frames_commit": "2b75753",
+  "key_authentication_succeeded": true,
+  "live_capture_available": true,
+  "night_frames": 600,
+  "night_duration_seconds": 120.00003333333333,
+  "warning_count": 0,
+  "source_time_basis": "MPEG-TS PTS, not download wall time",
+  "ground_truth_boxes_available": false,
+  "ground_truth_accident_clips_available": false,
+  "accuracy_or_recall_claim": null,
+  "training_performed_on_evaluation_data": false,
+  "observations": [
+    {
+      "case": "caption false positives",
+      "frame": 250,
+      "finding": "Synthetic detector boxes overlap printed camera caption; clearly visible approaching vehicle also missed"
+    },
+    {
+      "case": "night glare and distant targets",
+      "frames": [
+        50,
+        250,
+        500
+      ],
+      "finding": "Both tested configurations miss visible night traffic; detection counts cannot be used as accuracy"
+    },
+    {
+      "case": "unconfirmed pothole prediction",
+      "frames": [
+        386,
+        387,
+        388
+      ],
+      "finding": "Small low-confidence road-mark-like prediction; no persistence/confidence warning emitted; no field ground truth"
+    },
+    {
+      "case": "browser playback stall",
+      "finding": "Video connected at 720x480 but currentTime remained 885.515956 in two probes; stable playback not passed"
+    },
+    {
+      "case": "dashboard transport",
+      "finding": "Actual detector record frame50/3 boxes accepted, read back, and delivered by WebSocket; independent live video/box synchronization not established"
+    }
+  ],
+  "real_stop_zone_classifier_evaluated": false,
+  "stop_zone_reason": "Team real road context has no stop zones; Unity stop polygons were not reused"
+}

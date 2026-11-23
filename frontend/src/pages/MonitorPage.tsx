@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { getDetectionStats, getLatest } from "../api";
 import { CameraMap } from "../components/CameraMap";
+import { CameraPanel } from "../components/CameraPanel";
 import { FilterSidebar } from "../components/FilterSidebar";
 import { LatencyPanel } from "../components/LatencyPanel";
-import { VideoStage } from "../components/VideoStage";
+import { RiskEventTable } from "../components/RiskEventTable";
 import { useLive } from "../live";
 import {
   DEFAULT_FILTERS,
@@ -14,7 +15,9 @@ import {
   summarize,
   type Filters,
 } from "../mapModel";
-import type { Camera, DetectionStats } from "../types";
+import { RISK_THEME, riskLevel } from "../risk";
+import { objectsForCamera, passesRisk, riskEvents } from "../twinModel";
+import type { Camera, DetectionStats, OverlayState } from "../types";
 
 type SortKey = "alerts" | "recent";
 
@@ -33,6 +36,8 @@ export function MonitorPage() {
   const [statsByCamera, setStatsByCamera] = useState<Map<string, DetectionStats>>(new Map());
   const [frameLabel, setFrameLabel] = useState("프레임 -");
   const [boxLabel, setBoxLabel] = useState("박스 0");
+  const [overlaySnap, setOverlaySnap] = useState<OverlayState | null>(null);
+  const [listOpen, setListOpen] = useState(false);
 
   const { selectedId, applyFrame } = live;
   useEffect(() => {
@@ -57,6 +62,7 @@ export function MonitorPage() {
       }
       setFrameLabel(`프레임 ${overlay.frame}`);
       setBoxLabel(`박스 ${overlay.boxes.length}`);
+      setOverlaySnap({ ...overlay, boxes: overlay.boxes.slice() });
     }, 200);
     return () => window.clearInterval(timer);
   }, [live.overlayRef, live.selectedId]);
@@ -174,6 +180,24 @@ export function MonitorPage() {
   }, [cards]);
 
   const alertIds = useMemo(() => new Set(alertCounts.keys()), [alertCounts]);
+  const selectedCamera = live.cameras.find((camera) => camera.camera_id === live.selectedId) ?? null;
+  const twinObjects = useMemo(() => {
+    if (!selectedCamera) return [];
+    const rows = objectsForCamera(selectedCamera, overlaySnap);
+    if (!applied.classes.length) return rows;
+    return rows.filter((object) => applied.classes.includes(object.className));
+  }, [selectedCamera, overlaySnap, applied.classes]);
+  const visibleObjects = useMemo(
+    () => twinObjects.filter((object) => passesRisk(object.riskScore, applied.riskLevels)),
+    [twinObjects, applied.riskLevels],
+  );
+  const peakRisk = twinObjects.reduce((best, object) => Math.max(best, object.riskScore), 0);
+  const objectDemo = twinObjects.some((object) => object.isDemo);
+  const events = useMemo(
+    () =>
+      riskEvents(live.unconfirmedAlerts).filter((event) => passesRisk(event.riskScore, applied.riskLevels)),
+    [live.unconfirmedAlerts, applied.riskLevels],
+  );
 
   function openCamera(cameraId: string) {
     if (cameraId !== live.selectedId) live.selectCamera(cameraId);
@@ -198,56 +222,108 @@ export function MonitorPage() {
         }}
         onApply={() => setApplied(draft)}
       />
-      <div className="map-column">
-        <div className="map-stage">
-          <div className="map-tools">
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="카메라·교차로 이름"
-              aria-label="카메라 검색"
-            />
-            <select value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)} aria-label="정렬">
-              <option value="alerts">경고 많은 순</option>
-              <option value="recent">최근 검출 순</option>
-            </select>
-          </div>
-          {live.camerasError ? <p className="map-error">{live.camerasError}</p> : null}
-          {missingCoords ? <p className="map-error">위경도가 있는 카메라가 없습니다.</p> : null}
-          <CameraMap
-            cameras={displayCameras}
-            alertIds={alertIds}
-            totals={totals}
-            selectedId={expandedId}
-            period={applied.period}
-            layoutToken={Number(sidebarOpen) + (expandedId ? 1 : 0)}
-            onSelect={openCamera}
-            onBounds={setVisibleIds}
-          />
+      <div className="monitor-main">
+        <div className="kpi-grid">
+          <article className="kpi">
+            <small>연결 카메라</small>
+            <strong>{live.cameras.length}</strong>
+          </article>
+          <article className="kpi">
+            <small>실시간 추적 객체</small>
+            <strong>{twinObjects.length ? twinObjects.length : objectDemo ? 0 : "데이터 없음"}</strong>
+          </article>
+          <article className="kpi">
+            <small>미확인 경고</small>
+            <strong>{live.unconfirmedAlerts.length}</strong>
+          </article>
+          <article className="kpi">
+            <small>최고 위험도</small>
+            <strong style={twinObjects.length ? { color: RISK_THEME[riskLevel(peakRisk)].fill } : undefined}>
+              {twinObjects.length ? peakRisk : "데이터 없음"}
+            </strong>
+          </article>
         </div>
-        <div className="card-rail">
-          {cards.length ? (
-            cards.map(({ camera, totals: count, alerts }) => (
-              <CameraCard
-                key={camera.camera_id}
-                camera={camera}
-                vehicle={count.vehicle}
-                person={count.person}
-                defect={count.defect}
-                alerts={alerts}
-                expanded={expandedId === camera.camera_id}
-                onOpen={() => openCamera(camera.camera_id)}
-                frameLabel={frameLabel}
-                boxLabel={boxLabel}
-                overlayRef={live.overlayRef}
-                latencyRef={live.latencyRef}
-                onSample={live.noteLatency}
+        {objectDemo ? <p className="demo-badge">예시 데이터</p> : null}
+        <div className="twin-split">
+          <section className="panel-card map-card">
+            <header className="panel-head">
+              <div>
+                <strong>2D 디지털 트윈 · 지도</strong>
+                <small>검출 객체를 실제 좌표에 표시</small>
+              </div>
+              <div className="chip-row">
+                <span className="chip">{applied.layers.heat ? "히트맵 켜짐" : "히트맵 꺼짐"}</span>
+                <span className="chip">객체 {visibleObjects.length}</span>
+              </div>
+            </header>
+            <div className="map-frame">
+              <div className="map-tools">
+                <input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="카메라·교차로 이름"
+                  aria-label="카메라 검색"
+                />
+                <select value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)} aria-label="정렬">
+                  <option value="alerts">경고 많은 순</option>
+                  <option value="recent">최근 검출 순</option>
+                </select>
+              </div>
+              {live.camerasError ? <p className="map-error">{live.camerasError}</p> : null}
+              {missingCoords ? <p className="map-error">위경도가 있는 카메라가 없습니다.</p> : null}
+              <CameraMap
+                cameras={displayCameras}
+                alertIds={alertIds}
+                totals={totals}
+                selectedId={expandedId ?? live.selectedId}
+                period={applied.period}
+                layoutToken={Number(sidebarOpen) + Number(listOpen)}
+                objects={applied.layers.objects || applied.layers.heat ? visibleObjects : []}
+                showCameras={applied.layers.cameras}
+                showObjects={applied.layers.objects}
+                showHeat={applied.layers.heat}
+                riskLevels={applied.riskLevels}
+                onSelect={openCamera}
+                onBounds={setVisibleIds}
               />
-            ))
-          ) : (
-            <p className="empty rail-empty">이 지도 영역에 표시할 카메라가 없습니다.</p>
-          )}
+              <div className="map-legend">
+                <span><i className="obj-mark shape-circle" /> 차량</span>
+                <span><i className="obj-mark shape-square" style={{ background: RISK_THEME.high.fill }} /> 보행자(위험)</span>
+                <span><i className="obj-mark shape-diamond" style={{ background: RISK_THEME.mid.fill }} /> 포트홀·낙하물</span>
+                <span><i className="heat-swatch" /> 위험도 히트맵</span>
+              </div>
+            </div>
+          </section>
+          <CameraPanel camera={selectedCamera} objects={visibleObjects} frameLabel={frameLabel} boxLabel={boxLabel} />
         </div>
+        <RiskEventTable events={events} />
+        <section className="panel-card">
+          <button type="button" className="fold" onClick={() => setListOpen((value) => !value)} aria-expanded={listOpen}>
+            카메라 목록 {listOpen ? "접기" : "펼치기"}
+          </button>
+          {listOpen ? (
+            <div className="card-rail">
+              {cards.length ? (
+                cards.map(({ camera, totals: count, alerts }) => (
+                  <CameraCard
+                    key={camera.camera_id}
+                    camera={camera}
+                    vehicle={count.vehicle}
+                    person={count.person}
+                    defect={count.defect}
+                    alerts={alerts}
+                    expanded={expandedId === camera.camera_id}
+                    onOpen={() => openCamera(camera.camera_id)}
+                    frameLabel={frameLabel}
+                    boxLabel={boxLabel}
+                  />
+                ))
+              ) : (
+                <p className="empty rail-empty">이 지도 영역에 표시할 카메라가 없습니다.</p>
+              )}
+            </div>
+          ) : null}
+        </section>
       </div>
       <LatencyPanel />
     </div>
@@ -264,9 +340,6 @@ function CameraCard({
   onOpen,
   frameLabel,
   boxLabel,
-  overlayRef,
-  latencyRef,
-  onSample,
 }: {
   camera: Camera;
   vehicle: number;
@@ -277,9 +350,6 @@ function CameraCard({
   onOpen: () => void;
   frameLabel: string;
   boxLabel: string;
-  overlayRef: ReturnType<typeof useLive>["overlayRef"];
-  latencyRef: ReturnType<typeof useLive>["latencyRef"];
-  onSample: () => void;
 }) {
   const place = splitPlace(camera.name, camera.camera_id);
   const offline = isOffline(camera);
@@ -306,13 +376,10 @@ function CameraCard({
         </span>
       </button>
       {expanded ? (
-        <div className="card-video">
-          <VideoStage cameraId={camera.camera_id} overlayRef={overlayRef} latencyRef={latencyRef} onSample={onSample} />
-          <div className="meta">
-            <span>{camera.camera_id}</span>
-            <span>{frameLabel}</span>
-            <span>{boxLabel}</span>
-          </div>
+        <div className="meta">
+          <span>{camera.camera_id}</span>
+          <span>{frameLabel}</span>
+          <span>{boxLabel}</span>
         </div>
       ) : null}
     </article>

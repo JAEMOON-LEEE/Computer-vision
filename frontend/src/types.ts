@@ -31,6 +31,7 @@ export type Detection = {
   track_id: number | null;
   ground_point_px?: number[] | null;
   mapped_xz?: number[] | null;
+  risk_score?: number | null;
 };
 
 export type FrameRecord = {
@@ -59,6 +60,7 @@ export type AlertItem = {
   type: string;
   severity: string;
   status: string;
+  risk_score?: number | null;
   message: string;
   evidence: Record<string, unknown>[];
   basis: string;

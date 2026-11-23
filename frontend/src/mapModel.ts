@@ -6,11 +6,22 @@ export type CameraStatusFilter = "all" | "online" | "alert";
 /** 0은 미확인 경고가 없는 카메라, 1·3은 그 건수 이상. null이면 건수로 거르지 않는다. */
 export type AlertCountFilter = 0 | 1 | 3 | null;
 
+export type RiskLevelFilter = { high: boolean; mid: boolean; low: boolean };
+
+export type MapLayers = {
+  cameras: boolean;
+  objects: boolean;
+  heat: boolean;
+  tracks: boolean;
+};
+
 export type Filters = {
   classes: string[];
   alertCount: AlertCountFilter;
   period: Period;
   cameraStatus: CameraStatusFilter;
+  layers: MapLayers;
+  riskLevels: RiskLevelFilter;
 };
 
 export const DEFAULT_FILTERS: Filters = {
@@ -18,6 +29,8 @@ export const DEFAULT_FILTERS: Filters = {
   alertCount: null,
   period: "1h",
   cameraStatus: "all",
+  layers: { cameras: true, objects: true, heat: true, tracks: false },
+  riskLevels: { high: true, mid: true, low: true },
 };
 
 const VEHICLES = new Set(["car", "truck", "bus", "motorcycle", "bicycle"]);

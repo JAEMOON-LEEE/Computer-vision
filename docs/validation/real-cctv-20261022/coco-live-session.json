@@ -1,0 +1,55 @@
+{
+  "source": "bounded ITS live HLS validation capture",
+  "camera_id": "its-cc4277cc18",
+  "detector": {
+    "options": {
+      "device": "cpu",
+      "imgsz": 640,
+      "iou": 0.7,
+      "verbose": false
+    },
+    "focus": null,
+    "capabilities": {
+      "available": [
+        "person",
+        "car",
+        "truck",
+        "bus",
+        "motorcycle",
+        "bicycle"
+      ],
+      "unavailable": [
+        "pothole",
+        "crack",
+        "debris",
+        "barrier"
+      ]
+    },
+    "tracking": "bytetrack",
+    "versions": {
+      "ultralytics": "8.4.182",
+      "torch": "2.9.1+cpu",
+      "opencv-python": "4.11.0.86"
+    },
+    "models": [
+      {
+        "id": "primary",
+        "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\yolo11n.pt",
+        "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+        "classes": {
+          "0": "person",
+          "1": "bicycle",
+          "2": "car",
+          "3": "motorcycle",
+          "5": "bus",
+          "7": "truck"
+        },
+        "conf": 0.25
+      }
+    ]
+  },
+  "road_context": "teammate OpenCV real Geumchon calibration; no Unity stop zones",
+  "stop_zone_count": 0,
+  "training_use": false,
+  "frames": 600
+}

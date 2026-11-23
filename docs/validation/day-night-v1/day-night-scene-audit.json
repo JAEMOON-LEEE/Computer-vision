@@ -1,0 +1,27 @@
+{
+  "camera_unchanged": true,
+  "camera_position": [
+    -17.0,
+    5.01718235,
+    1.83312929
+  ],
+  "field_of_view": 38.0151176,
+  "modes": [
+    {
+      "time_of_day": "Day",
+      "lighting_seed": 22001,
+      "ambient_level": 1.0,
+      "sun_intensity": 1.2,
+      "street_light_intensity": 0.0
+    },
+    {
+      "time_of_day": "Night",
+      "lighting_seed": 22001,
+      "ambient_level": 0.1487255,
+      "sun_intensity": 0.0481820777,
+      "street_light_intensity": 1.70862877
+    }
+  ],
+  "frame": 8155,
+  "capture_complete": true
+}

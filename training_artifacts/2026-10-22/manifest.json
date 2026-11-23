@@ -1,0 +1,684 @@
+{
+  "version": "2026-10-22",
+  "format": "content-addressed-zip+xz-v1",
+  "data_origin": "synthetic",
+  "bundles": [
+    {
+      "file": "training_artifacts/2026-10-22/prepared-datasets.zip.xz",
+      "sha256": "4b4eff0b0a261c20f823314f514694ec9f22bb985507bc7a780d3e3bca406eb8",
+      "archive_bytes": 372653112,
+      "files": 8413,
+      "original_bytes": 906509968,
+      "purpose": "prepared-datasets"
+    },
+    {
+      "file": "training_artifacts/2026-10-22/synthetic-captures.zip.xz",
+      "sha256": "f231efb03d6eb7ab2354160b1c99e9fdafef0f3d34c814d0c4d6c62312c23db7",
+      "archive_bytes": 503939784,
+      "files": 6099,
+      "original_bytes": 1858711038,
+      "purpose": "synthetic-captures"
+    },
+    {
+      "file": "training_artifacts/2026-10-22/experiment-results.zip.xz",
+      "sha256": "ec812ce9dee47d20c7b49febe69982894578de181f99e2bd03843df5b5d6f67d",
+      "archive_bytes": 231519344,
+      "files": 2349,
+      "original_bytes": 536858906,
+      "purpose": "experiment-results"
+    }
+  ],
+  "models": [
+    {
+      "file": "detection/models/scenario-hazards.pt",
+      "sha256": "8e2e0be792f509045d9388f66160f19693e30cc8643089f00635fca070637b6e",
+      "bytes": 5464538,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/simulation-cctv-base.pt",
+      "sha256": "4783e1641628fb50065395269c5e30772b36bbb91ee563a4fe91b445533ece16",
+      "bytes": 5489370,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/simulation-cctv-day-night.pt",
+      "sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+      "bytes": 5488218,
+      "role": "latest"
+    },
+    {
+      "file": "detection/models/simulation-cctv-queue.pt",
+      "sha256": "d9b55172132a8e0689565536deae545393a8c7cff3dfde625f9a91877ab7feea",
+      "bytes": 5487834,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/simulation-cctv.pt",
+      "sha256": "65fc0eb37fd99c6294746a602533440e7bd25c39c4b3dd435df8521c5254f3b0",
+      "bytes": 5487898,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/simulation-detection.pt",
+      "sha256": "7c444f7f3b0dcb70185c594ffdb3e1ab4a805a3f76c23bc42167a95f2381742e",
+      "bytes": 5472858,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/stop-zone-collision-day-night.json",
+      "sha256": "29ac6871e29b30f9362f55debb7be45c673898e42352ee1a469b3de5787ad7e4",
+      "bytes": 1683,
+      "role": "latest"
+    },
+    {
+      "file": "detection/models/stop-zone-collision-day-night.xml",
+      "sha256": "37e3e1c0b2e4929628f2dba4d2f5b1218b2a8c1803be85027a5bd423a758ef69",
+      "bytes": 1201822,
+      "role": "latest"
+    },
+    {
+      "file": "detection/models/stop-zone-collision-final.json",
+      "sha256": "1a674971abcc3c85bcaba78c5a0ca6be450292b07869511815799f89935a7f19",
+      "bytes": 2215,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/stop-zone-collision-final.xml",
+      "sha256": "46ff66644f1e049de2c9ebeaf336724f6e18ef4e6d97af1b55bc5ead73fb1e03",
+      "bytes": 531888,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/stop-zone-collision-v2.json",
+      "sha256": "c9aef84031c6a595cf27e86f4ec8599bd7167d2c342a8b7fca31a9a8a5a8fa77",
+      "bytes": 2214,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/stop-zone-collision-v2.xml",
+      "sha256": "46ff66644f1e049de2c9ebeaf336724f6e18ef4e6d97af1b55bc5ead73fb1e03",
+      "bytes": 531888,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/stop-zone-collision.json",
+      "sha256": "80ad7e5282393d2bd73de05acec678a156410dec27d1a29bd777cfb580a37345",
+      "bytes": 2211,
+      "role": "legacy-comparison"
+    },
+    {
+      "file": "detection/models/stop-zone-collision.xml",
+      "sha256": "38b8d65979509f4f5d55581d85d5789cc62876a5258e87553d47141129974656",
+      "bytes": 324273,
+      "role": "legacy-comparison"
+    }
+  ],
+  "capture_sessions": 148,
+  "datasets": [
+    {
+      "name": "day-night-v1",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 580,
+        "val": 200,
+        "test": 200
+      }
+    },
+    {
+      "name": "geumchon-detail-full",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 120,
+        "val": 32,
+        "test": 32
+      }
+    },
+    {
+      "name": "geumchon-focus",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 360,
+        "val": 80,
+        "test": 80
+      }
+    },
+    {
+      "name": "geumchon-v1",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 240,
+        "val": 48,
+        "test": 48
+      }
+    },
+    {
+      "name": "night-v1-focus",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 320,
+        "val": 80,
+        "test": 80
+      }
+    },
+    {
+      "name": "night-v1-full",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 160,
+        "val": 40,
+        "test": 40
+      }
+    },
+    {
+      "name": "queue-objects-focus",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 260,
+        "val": 120,
+        "test": 120
+      }
+    },
+    {
+      "name": "queue-objects-full",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 160,
+        "val": 80,
+        "test": 80
+      }
+    },
+    {
+      "name": "queue-retention",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 100,
+        "val": 40,
+        "test": 40
+      }
+    },
+    {
+      "name": "scenario-prototype",
+      "classes": {
+        "0": "pothole",
+        "1": "debris",
+        "2": "barrier"
+      },
+      "images": {
+        "train": 79,
+        "val": 24,
+        "test": 24
+      }
+    },
+    {
+      "name": "scenario-safe",
+      "classes": {
+        "0": "pothole",
+        "1": "debris",
+        "2": "barrier"
+      },
+      "images": {
+        "train": 64,
+        "val": 16,
+        "test": 16
+      }
+    },
+    {
+      "name": "synthetic-v2",
+      "classes": {
+        "0": "person",
+        "1": "car",
+        "2": "pothole",
+        "3": "debris",
+        "4": "barrier"
+      },
+      "images": {
+        "train": 160,
+        "val": 32,
+        "test": 32
+      }
+    }
+  ],
+  "human_review_complete": false,
+  "real_cctv_used_for_training": false,
+  "production_ready": false,
+  "evaluation_summary": {
+    "completed_at": "2026-10-22T14:40:53.930501+00:00",
+    "models_sha256": {
+      "detection\\models\\simulation-cctv-day-night.pt": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+      "detection\\models\\stop-zone-collision-day-night.xml": "37e3e1c0b2e4929628f2dba4d2f5b1218b2a8c1803be85027a5bd423a758ef69",
+      "detection\\models\\stop-zone-collision-day-night.json": "29ac6871e29b30f9362f55debb7be45c673898e42352ee1a469b3de5787ad7e4"
+    },
+    "models_unchanged": true,
+    "fresh_inference": true,
+    "training_performed": false,
+    "detection": {
+      "night": {
+        "iou_threshold": 0.5,
+        "confidence_for_precision_recall": 0.25,
+        "images": 40,
+        "data": "D:\\Capston disign\\Computer-vision\\datasets\\night-v1-full\\dataset.yaml",
+        "split": "test",
+        "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+        "road_weights": null,
+        "focus": [
+          0.3194444444444444,
+          0.2708333333333333,
+          0.6111111111111112,
+          0.5625
+        ],
+        "synthetic_only": true,
+        "classes": {
+          "person": {
+            "ground_truth": 39,
+            "true_positives": 39,
+            "false_positives": 1,
+            "precision": 0.975,
+            "recall": 1.0,
+            "AP50_101point": 1.0
+          },
+          "car": {
+            "ground_truth": 52,
+            "true_positives": 51,
+            "false_positives": 3,
+            "precision": 0.9444444444444444,
+            "recall": 0.9807692307692307,
+            "AP50_101point": 0.9972698052073785
+          },
+          "pothole": {
+            "ground_truth": 8,
+            "true_positives": 7,
+            "false_positives": 1,
+            "precision": 0.875,
+            "recall": 0.875,
+            "AP50_101point": 0.9742574257425741
+          },
+          "debris": {
+            "ground_truth": 8,
+            "true_positives": 8,
+            "false_positives": 1,
+            "precision": 0.8888888888888888,
+            "recall": 1.0,
+            "AP50_101point": 1.0
+          },
+          "barrier": {
+            "ground_truth": 8,
+            "true_positives": 8,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "AP50_101point": 1.0
+          }
+        },
+        "mAP50_101point": 0.9943054461899905
+      },
+      "day": {
+        "iou_threshold": 0.5,
+        "confidence_for_precision_recall": 0.25,
+        "images": 32,
+        "data": "D:\\Capston disign\\Computer-vision\\datasets\\geumchon-detail-full\\dataset.yaml",
+        "split": "test",
+        "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+        "road_weights": null,
+        "focus": [
+          0.3194444444444444,
+          0.2708333333333333,
+          0.6111111111111112,
+          0.5625
+        ],
+        "synthetic_only": true,
+        "classes": {
+          "person": {
+            "ground_truth": 31,
+            "true_positives": 29,
+            "false_positives": 6,
+            "precision": 0.8285714285714286,
+            "recall": 0.9354838709677419,
+            "AP50_101point": 0.9102751093187121
+          },
+          "car": {
+            "ground_truth": 40,
+            "true_positives": 40,
+            "false_positives": 2,
+            "precision": 0.9523809523809523,
+            "recall": 1.0,
+            "AP50_101point": 0.9941246871939939
+          },
+          "pothole": {
+            "ground_truth": 7,
+            "true_positives": 6,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 0.8571428571428571,
+            "AP50_101point": 0.8514851485148515
+          },
+          "debris": {
+            "ground_truth": 6,
+            "true_positives": 6,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "AP50_101point": 1.0
+          },
+          "barrier": {
+            "ground_truth": 6,
+            "true_positives": 6,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "AP50_101point": 1.0
+          }
+        },
+        "mAP50_101point": 0.9511769890055115
+      }
+    },
+    "warning_cases": {
+      "day": {
+        "synthetic_only": true,
+        "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+        "imgsz": 640,
+        "context": "D:\\Capston disign\\Computer-vision\\detection\\config\\geumchon-city-lab.context.json",
+        "focus": [
+          0.3194444444444444,
+          0.2708333333333333,
+          0.6111111111111112,
+          0.5625
+        ],
+        "stop_model": "D:\\Capston disign\\Computer-vision\\detection\\models\\stop-zone-collision-day-night.xml",
+        "cases": {
+          "Normal": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Normal_20261020_230542",
+            "expected": null,
+            "alerts": {},
+            "passed": true,
+            "frames": 90
+          },
+          "Pothole": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Pothole_20261020_230553",
+            "expected": "road_damage",
+            "alerts": {
+              "road_damage": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "FallingDebris": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-FallingDebris_20261020_230602",
+            "expected": "road_debris",
+            "alerts": {
+              "road_debris": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "VehicleCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-VehicleCollision_20261020_230611",
+            "expected": "suspected_vehicle_collision",
+            "alerts": {
+              "suspected_vehicle_collision": 1
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "StructureCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-StructureCollision_20261020_230622",
+            "expected": "suspected_vehicle_structure_collision",
+            "alerts": {
+              "suspected_vehicle_structure_collision": 1
+            },
+            "passed": true,
+            "frames": 90
+          }
+        },
+        "passed": true,
+        "camera": {
+          "position": [
+            -17.0,
+            5.017182350158691,
+            1.8331292867660522
+          ],
+          "rotation_euler_deg": [
+            14.164289474487305,
+            98.99268341064453,
+            1.9437322616577148
+          ],
+          "vertical_fov_deg": 38.01511764526367,
+          "image_width": 1440,
+          "image_height": 960
+        }
+      },
+      "night": {
+        "synthetic_only": true,
+        "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+        "imgsz": 640,
+        "context": "D:\\Capston disign\\Computer-vision\\detection\\config\\geumchon-city-lab.context.json",
+        "focus": [
+          0.3194444444444444,
+          0.2708333333333333,
+          0.6111111111111112,
+          0.5625
+        ],
+        "stop_model": "D:\\Capston disign\\Computer-vision\\detection\\models\\stop-zone-collision-day-night.xml",
+        "cases": {
+          "Normal": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Normal_20261022_211727",
+            "expected": null,
+            "alerts": {},
+            "passed": true,
+            "frames": 90
+          },
+          "Pothole": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Pothole_20261022_211740",
+            "expected": "road_damage",
+            "alerts": {
+              "road_damage": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "FallingDebris": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-FallingDebris_20261022_211750",
+            "expected": "road_debris",
+            "alerts": {
+              "road_debris": 2
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "VehicleCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-VehicleCollision_20261022_211801",
+            "expected": "suspected_vehicle_collision",
+            "alerts": {
+              "suspected_vehicle_collision": 1
+            },
+            "passed": true,
+            "frames": 90
+          },
+          "StructureCollision": {
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-StructureCollision_20261022_211812",
+            "expected": "suspected_vehicle_structure_collision",
+            "alerts": {},
+            "passed": false,
+            "frames": 90
+          }
+        },
+        "passed": false,
+        "camera": {
+          "position": [
+            -17.0,
+            5.017182350158691,
+            1.8331292867660522
+          ],
+          "rotation_euler_deg": [
+            14.164289474487305,
+            98.99268341064453,
+            1.9437322616577148
+          ],
+          "vertical_fov_deg": 38.01511764526367,
+          "image_width": 1440,
+          "image_height": 960
+        }
+      }
+    },
+    "temporal": {
+      "day-val": {
+        "accident_clips": 4,
+        "strict_passes": 4,
+        "any_warning_clips": 4,
+        "normal_clips": 6,
+        "normal_alert_count": 0,
+        "failures": []
+      },
+      "day-test": {
+        "accident_clips": 4,
+        "strict_passes": 4,
+        "any_warning_clips": 4,
+        "normal_clips": 6,
+        "normal_alert_count": 0,
+        "failures": []
+      },
+      "night-val": {
+        "accident_clips": 4,
+        "strict_passes": 4,
+        "any_warning_clips": 4,
+        "normal_clips": 6,
+        "normal_alert_count": 0,
+        "failures": []
+      },
+      "night-test": {
+        "accident_clips": 4,
+        "strict_passes": 2,
+        "any_warning_clips": 3,
+        "normal_clips": 6,
+        "normal_alert_count": 0,
+        "failures": [
+          {
+            "clip": "nightqueue-v1-test-RearEnd-1-s35755",
+            "split": "test",
+            "case": "RearEnd",
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-RearEnd-1-s35755_20261022_211714",
+            "frames": 40,
+            "physics_events": [
+              {
+                "event_id": "35755:279:649",
+                "event_type": "vehicle_collision",
+                "evidence": "physics_contact",
+                "timestamp": 624.9397583007812,
+                "object_a": 775,
+                "object_b": 774
+              }
+            ],
+            "first_impact": 624.9397583007812,
+            "alerts": {},
+            "passed": false,
+            "both_participants_inside_stop_zone": true,
+            "alert_latency_seconds": null
+          },
+          {
+            "clip": "nightqueue-v1-test-StructureImpact-1-s35772",
+            "split": "test",
+            "case": "StructureImpact",
+            "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-StructureImpact-1-s35772_20261022_211721",
+            "frames": 40,
+            "physics_events": [
+              {
+                "event_id": "35772:280:653",
+                "event_type": "vehicle_structure_collision",
+                "evidence": "physics_contact",
+                "timestamp": 634.039794921875,
+                "object_a": 777,
+                "object_b": 776
+              }
+            ],
+            "first_impact": 634.039794921875,
+            "alerts": {
+              "suspected_vehicle_structure_collision": 1
+            },
+            "passed": false,
+            "both_participants_inside_stop_zone": true,
+            "alert_latency_seconds": -0.05389404296875
+          }
+        ]
+      }
+    },
+    "real": {
+      "frames": 600,
+      "media_seconds": 120.00003333333333,
+      "detections_by_class": {
+        "car": 884,
+        "pothole": 2,
+        "debris": 1
+      },
+      "alerts_by_type": {},
+      "warm_mean_inference_ms": 166.80121552105837,
+      "accuracy_evaluated": false,
+      "ground_truth_available": false,
+      "source_pts_preserved": true,
+      "new_live_capture": false
+    },
+    "all_warning_checks_passed": false
+  },
+  "exclusions": [
+    "API and database credentials",
+    "raw real CCTV recordings and signed API responses",
+    "unused public downloads",
+    "rejected lighting and failed memory trials",
+    "environment and application caches"
+  ],
+  "restoration": "python -m detection.artifacts --bundle <file> --root <new D-drive folder> --sha256 <manifest SHA256>",
+  "portable_configs": "Image/label bytes and splits preserved. On restoration only newly extracted dataset.yaml path becomes dot; original beside it as dataset.original.yaml."
+}

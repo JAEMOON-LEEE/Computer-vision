@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "cases": {
+    "Normal": {
+      "alerts": {},
+      "passed": true,
+      "frames": 90
+    },
+    "Pothole": {
+      "alerts": {
+        "road_damage": 2
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "FallingDebris": {
+      "alerts": {
+        "road_debris": 2
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "VehicleCollision": {
+      "alerts": {
+        "suspected_vehicle_collision": 1
+      },
+      "passed": true,
+      "frames": 90
+    },
+    "StructureCollision": {
+      "alerts": {
+        "suspected_vehicle_structure_collision": 1
+      },
+      "passed": true,
+      "frames": 90
+    }
+  }
+}

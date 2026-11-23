@@ -1,0 +1,376 @@
+{
+  "completed_at": "2026-10-22T14:40:53.930501+00:00",
+  "models_sha256": {
+    "detection\\models\\simulation-cctv-day-night.pt": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+    "detection\\models\\stop-zone-collision-day-night.xml": "37e3e1c0b2e4929628f2dba4d2f5b1218b2a8c1803be85027a5bd423a758ef69",
+    "detection\\models\\stop-zone-collision-day-night.json": "29ac6871e29b30f9362f55debb7be45c673898e42352ee1a469b3de5787ad7e4"
+  },
+  "models_unchanged": true,
+  "fresh_inference": true,
+  "training_performed": false,
+  "detection": {
+    "night": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 40,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\night-v1-full\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+      "road_weights": null,
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "synthetic_only": true,
+      "classes": {
+        "person": {
+          "ground_truth": 39,
+          "true_positives": 39,
+          "false_positives": 1,
+          "precision": 0.975,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "car": {
+          "ground_truth": 52,
+          "true_positives": 51,
+          "false_positives": 3,
+          "precision": 0.9444444444444444,
+          "recall": 0.9807692307692307,
+          "AP50_101point": 0.9972698052073785
+        },
+        "pothole": {
+          "ground_truth": 8,
+          "true_positives": 7,
+          "false_positives": 1,
+          "precision": 0.875,
+          "recall": 0.875,
+          "AP50_101point": 0.9742574257425741
+        },
+        "debris": {
+          "ground_truth": 8,
+          "true_positives": 8,
+          "false_positives": 1,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "barrier": {
+          "ground_truth": 8,
+          "true_positives": 8,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        }
+      },
+      "mAP50_101point": 0.9943054461899905
+    },
+    "day": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 32,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\geumchon-detail-full\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+      "road_weights": null,
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "synthetic_only": true,
+      "classes": {
+        "person": {
+          "ground_truth": 31,
+          "true_positives": 29,
+          "false_positives": 6,
+          "precision": 0.8285714285714286,
+          "recall": 0.9354838709677419,
+          "AP50_101point": 0.9102751093187121
+        },
+        "car": {
+          "ground_truth": 40,
+          "true_positives": 40,
+          "false_positives": 2,
+          "precision": 0.9523809523809523,
+          "recall": 1.0,
+          "AP50_101point": 0.9941246871939939
+        },
+        "pothole": {
+          "ground_truth": 7,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "AP50_101point": 0.8514851485148515
+        },
+        "debris": {
+          "ground_truth": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "barrier": {
+          "ground_truth": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        }
+      },
+      "mAP50_101point": 0.9511769890055115
+    }
+  },
+  "warning_cases": {
+    "day": {
+      "synthetic_only": true,
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+      "imgsz": 640,
+      "context": "D:\\Capston disign\\Computer-vision\\detection\\config\\geumchon-city-lab.context.json",
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "stop_model": "D:\\Capston disign\\Computer-vision\\detection\\models\\stop-zone-collision-day-night.xml",
+      "cases": {
+        "Normal": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Normal_20261020_230542",
+          "expected": null,
+          "alerts": {},
+          "passed": true,
+          "frames": 90
+        },
+        "Pothole": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-Pothole_20261020_230553",
+          "expected": "road_damage",
+          "alerts": {
+            "road_damage": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "FallingDebris": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-FallingDebris_20261020_230602",
+          "expected": "road_debris",
+          "alerts": {
+            "road_debris": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "VehicleCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-VehicleCollision_20261020_230611",
+          "expected": "suspected_vehicle_collision",
+          "alerts": {
+            "suspected_vehicle_collision": 1
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "StructureCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\geumchon-detail-clip-StructureCollision_20261020_230622",
+          "expected": "suspected_vehicle_structure_collision",
+          "alerts": {
+            "suspected_vehicle_structure_collision": 1
+          },
+          "passed": true,
+          "frames": 90
+        }
+      },
+      "passed": true,
+      "camera": {
+        "position": [
+          -17.0,
+          5.017182350158691,
+          1.8331292867660522
+        ],
+        "rotation_euler_deg": [
+          14.164289474487305,
+          98.99268341064453,
+          1.9437322616577148
+        ],
+        "vertical_fov_deg": 38.01511764526367,
+        "image_width": 1440,
+        "image_height": 960
+      }
+    },
+    "night": {
+      "synthetic_only": true,
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+      "imgsz": 640,
+      "context": "D:\\Capston disign\\Computer-vision\\detection\\config\\geumchon-city-lab.context.json",
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "stop_model": "D:\\Capston disign\\Computer-vision\\detection\\models\\stop-zone-collision-day-night.xml",
+      "cases": {
+        "Normal": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Normal_20261022_211727",
+          "expected": null,
+          "alerts": {},
+          "passed": true,
+          "frames": 90
+        },
+        "Pothole": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-Pothole_20261022_211740",
+          "expected": "road_damage",
+          "alerts": {
+            "road_damage": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "FallingDebris": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-FallingDebris_20261022_211750",
+          "expected": "road_debris",
+          "alerts": {
+            "road_debris": 2
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "VehicleCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-VehicleCollision_20261022_211801",
+          "expected": "suspected_vehicle_collision",
+          "alerts": {
+            "suspected_vehicle_collision": 1
+          },
+          "passed": true,
+          "frames": 90
+        },
+        "StructureCollision": {
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\night-v1-clip-StructureCollision_20261022_211812",
+          "expected": "suspected_vehicle_structure_collision",
+          "alerts": {},
+          "passed": false,
+          "frames": 90
+        }
+      },
+      "passed": false,
+      "camera": {
+        "position": [
+          -17.0,
+          5.017182350158691,
+          1.8331292867660522
+        ],
+        "rotation_euler_deg": [
+          14.164289474487305,
+          98.99268341064453,
+          1.9437322616577148
+        ],
+        "vertical_fov_deg": 38.01511764526367,
+        "image_width": 1440,
+        "image_height": 960
+      }
+    }
+  },
+  "temporal": {
+    "day-val": {
+      "accident_clips": 4,
+      "strict_passes": 4,
+      "any_warning_clips": 4,
+      "normal_clips": 6,
+      "normal_alert_count": 0,
+      "failures": []
+    },
+    "day-test": {
+      "accident_clips": 4,
+      "strict_passes": 4,
+      "any_warning_clips": 4,
+      "normal_clips": 6,
+      "normal_alert_count": 0,
+      "failures": []
+    },
+    "night-val": {
+      "accident_clips": 4,
+      "strict_passes": 4,
+      "any_warning_clips": 4,
+      "normal_clips": 6,
+      "normal_alert_count": 0,
+      "failures": []
+    },
+    "night-test": {
+      "accident_clips": 4,
+      "strict_passes": 2,
+      "any_warning_clips": 3,
+      "normal_clips": 6,
+      "normal_alert_count": 0,
+      "failures": [
+        {
+          "clip": "nightqueue-v1-test-RearEnd-1-s35755",
+          "split": "test",
+          "case": "RearEnd",
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-RearEnd-1-s35755_20261022_211714",
+          "frames": 40,
+          "physics_events": [
+            {
+              "event_id": "35755:279:649",
+              "event_type": "vehicle_collision",
+              "evidence": "physics_contact",
+              "timestamp": 624.9397583007812,
+              "object_a": 775,
+              "object_b": 774
+            }
+          ],
+          "first_impact": 624.9397583007812,
+          "alerts": {},
+          "passed": false,
+          "both_participants_inside_stop_zone": true,
+          "alert_latency_seconds": null
+        },
+        {
+          "clip": "nightqueue-v1-test-StructureImpact-1-s35772",
+          "split": "test",
+          "case": "StructureImpact",
+          "source": "D:\\Capston disign\\Computer-vision\\simulation\\TwinSightSim\\TwinSightExport\\nightqueue-v1-test-StructureImpact-1-s35772_20261022_211721",
+          "frames": 40,
+          "physics_events": [
+            {
+              "event_id": "35772:280:653",
+              "event_type": "vehicle_structure_collision",
+              "evidence": "physics_contact",
+              "timestamp": 634.039794921875,
+              "object_a": 777,
+              "object_b": 776
+            }
+          ],
+          "first_impact": 634.039794921875,
+          "alerts": {
+            "suspected_vehicle_structure_collision": 1
+          },
+          "passed": false,
+          "both_participants_inside_stop_zone": true,
+          "alert_latency_seconds": -0.05389404296875
+        }
+      ]
+    }
+  },
+  "real": {
+    "frames": 600,
+    "media_seconds": 120.00003333333333,
+    "detections_by_class": {
+      "car": 884,
+      "pothole": 2,
+      "debris": 1
+    },
+    "alerts_by_type": {},
+    "warm_mean_inference_ms": 166.80121552105837,
+    "accuracy_evaluated": false,
+    "ground_truth_available": false,
+    "source_pts_preserved": true,
+    "new_live_capture": false
+  },
+  "all_warning_checks_passed": false
+}

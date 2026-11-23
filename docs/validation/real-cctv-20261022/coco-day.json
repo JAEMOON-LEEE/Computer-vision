@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "frames": 16,
+  "detections_by_class": {
+    "car": 50,
+    "truck": 4,
+    "bus": 2
+  },
+  "elapsed_seconds": 7.498,
+  "pipeline_fps": 2.134,
+  "mean_inference_ms": 456.866,
+  "warm_mean_inference_ms": 67.53,
+  "warm_p95_inference_ms": 103.31,
+  "capabilities": {
+    "available": [
+      "person",
+      "car",
+      "truck",
+      "bus",
+      "motorcycle",
+      "bicycle"
+    ],
+    "unavailable": [
+      "pothole",
+      "crack",
+      "debris",
+      "barrier"
+    ]
+  },
+  "alerts_by_type": {}
+}

@@ -67,6 +67,8 @@ def main() -> None:
     parser.add_argument("--ignore", action="append", default=[], help="분석에서 뺄 화면 영역 x0,y0,x1,y1 (0~1). 여러 번 가능")
     parser.add_argument("--shoulder", type=float, default=0.6, help="바깥 차선 밖으로 도로 영역에 넣을 폭(m)")
     parser.add_argument("--stop-zone-length", type=float, default=15.0, help="정지 대기 영역 길이(m)")
+    parser.add_argument("--controlled-stop-ground", action="append", default=[], metavar="X,Z",
+                        help="신호 제어 대상 정지선의 보정된 노면 좌표. 해당 정지 영역만 경고 억제에 사용")
     parser.add_argument("--detections", type=Path, help="detections.jsonl. 검출 바닥점이 도로 영역 안에 드는 비율을 잰다")
     parser.add_argument("--out", type=Path, help="기본: <캘리브레이션 이름>.road_context.json 또는 <내보내기>/road_context.json")
     args = parser.parse_args()
@@ -108,6 +110,22 @@ def main() -> None:
                          ignore=ignore if ignore.any() else None)
     ctx = build_context(scene, plane, shoulder_m=args.shoulder, stop_zone_length_m=args.stop_zone_length,
                         polygon_far_m=args.polygon_far, camera_id=camera_id)
+    if args.controlled_stop_ground:
+        points = [list(map(float, text.split(","))) for text in args.controlled_stop_ground]
+        if any(len(p) != 2 or not np.isfinite(p).all() for p in points):
+            sys.exit("--controlled-stop-ground needs finite X,Z pairs")
+        pixels, in_front = plane.to_pixel(points)
+        normalized = pixels / [w, h]
+        zones = ctx["stop_zones"]
+        indices = {i for p, front in zip(normalized, in_front) if front
+                   for i, zone in enumerate(zones) if inside(p, zone)}
+        if not indices or any(not front or not any(inside(p, z) for z in zones)
+                              for p, front in zip(normalized, in_front)):
+            sys.exit("신호 정지선을 포함하는 OpenCV 정지 영역을 찾지 못했습니다. 보정을 확인하세요")
+        ctx["all_detected_stop_zones"] = zones
+        ctx["stop_zones"] = [z for i, z in enumerate(zones) if i in indices]
+        ctx["stop_zone_basis"] = [b for i, b in enumerate(ctx["stop_zone_basis"]) if i in indices]
+        ctx["controlled_stop_points_ground"] = points
     ctx["frames_used"] = len(frames)
     ctx["source"] = str((args.calibration or args.export).resolve())
     out.parent.mkdir(parents=True, exist_ok=True)

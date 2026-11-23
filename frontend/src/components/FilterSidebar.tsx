@@ -1,3 +1,4 @@
+import { RISK_THEME, type RiskLevel } from "../risk";
 import { CLASSES } from "../types";
 import type { Filters } from "../mapModel";
 
@@ -67,25 +68,66 @@ export function FilterSidebar({ open, draft, onChange, onToggle, onReset, onAppl
               ))}
             </section>
             <section>
-              <h2>기간</h2>
+              <h2>지도 레이어</h2>
               {(
                 [
-                  ["live", "실시간"],
-                  ["1h", "1시간"],
-                  ["today", "오늘"],
-                  ["7d", "7일"],
+                  ["cameras", "카메라"],
+                  ["objects", "검출 객체 위치"],
+                  ["heat", "위험도 히트맵"],
                 ] as const
-              ).map(([value, label]) => (
-                <label key={value} className="choice">
+              ).map(([key, label]) => (
+                <label key={key} className="choice">
                   <input
-                    type="radio"
-                    name="period"
-                    checked={draft.period === value}
-                    onChange={() => onChange({ ...draft, period: value })}
+                    type="checkbox"
+                    checked={draft.layers[key]}
+                    onChange={() => onChange({ ...draft, layers: { ...draft.layers, [key]: !draft.layers[key] } })}
                   />
                   {label}
                 </label>
               ))}
+              <label className="choice muted-choice">
+                <input type="checkbox" checked={false} disabled />
+                이동 경로
+                <small>준비 중</small>
+              </label>
+            </section>
+            <section>
+              <h2>위험도</h2>
+              {(["high", "mid", "low"] as RiskLevel[]).map((level) => (
+                <label key={level} className="choice">
+                  <input
+                    type="checkbox"
+                    checked={draft.riskLevels[level]}
+                    onChange={() =>
+                      onChange({ ...draft, riskLevels: { ...draft.riskLevels, [level]: !draft.riskLevels[level] } })
+                    }
+                  />
+                  <i className="risk-dot" style={{ background: RISK_THEME[level].fill }} />
+                  {RISK_THEME[level].label} ({RISK_THEME[level].rule})
+                </label>
+              ))}
+            </section>
+            <section>
+              <h2>기간</h2>
+              <div className="segment">
+                {(
+                  [
+                    ["live", "실시간"],
+                    ["1h", "1시간"],
+                    ["today", "오늘"],
+                    ["7d", "7일"],
+                  ] as const
+                ).map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    className={draft.period === value ? "on" : ""}
+                    onClick={() => onChange({ ...draft, period: value })}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </section>
             <section>
               <h2>카메라 상태</h2>

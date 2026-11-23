@@ -1,0 +1,53 @@
+{
+  "iou_threshold": 0.5,
+  "confidence_for_precision_recall": 0.25,
+  "images": 32,
+  "data": "D:\\Capston disign\\Computer-vision\\datasets\\synthetic-v2\\dataset.yaml",
+  "split": "test",
+  "weights": "detection/models/simulation-detection.pt",
+  "road_weights": null,
+  "synthetic_only": true,
+  "classes": {
+    "person": {
+      "ground_truth": 31,
+      "true_positives": 29,
+      "false_positives": 9,
+      "precision": 0.7631578947368421,
+      "recall": 0.9354838709677419,
+      "AP50_101point": 0.9466996699669967
+    },
+    "car": {
+      "ground_truth": 40,
+      "true_positives": 40,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "AP50_101point": 1.0
+    },
+    "pothole": {
+      "ground_truth": 7,
+      "true_positives": 6,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.8571428571428571,
+      "AP50_101point": 1.0
+    },
+    "debris": {
+      "ground_truth": 6,
+      "true_positives": 3,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "AP50_101point": 0.9759547383309762
+    },
+    "barrier": {
+      "ground_truth": 6,
+      "true_positives": 6,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "AP50_101point": 1.0
+    }
+  },
+  "mAP50_101point": 0.9845308816595946
+}

@@ -1,0 +1,341 @@
+{
+  "camera_id": "its-cc4277cc18",
+  "image_size": [
+    720,
+    480
+  ],
+  "coordinates": "image_normalized_xy (0~1, 왼쪽 위 원점)",
+  "road_polygon": [
+    [
+      0.28527,
+      1.0
+    ],
+    [
+      0.31921,
+      0.58386
+    ],
+    [
+      0.33227,
+      0.42377
+    ],
+    [
+      0.33842,
+      0.3484
+    ],
+    [
+      0.34199,
+      0.30456
+    ],
+    [
+      0.34433,
+      0.2759
+    ],
+    [
+      0.34598,
+      0.25569
+    ],
+    [
+      0.3472,
+      0.24068
+    ],
+    [
+      0.3472,
+      0.24068
+    ],
+    [
+      0.35904,
+      0.24091
+    ],
+    [
+      0.37084,
+      0.24115
+    ],
+    [
+      0.3826,
+      0.24138
+    ],
+    [
+      0.39433,
+      0.24162
+    ],
+    [
+      0.40602,
+      0.24185
+    ],
+    [
+      0.41768,
+      0.24209
+    ],
+    [
+      0.4293,
+      0.24232
+    ],
+    [
+      0.4293,
+      0.24232
+    ],
+    [
+      0.44005,
+      0.25739
+    ],
+    [
+      0.45447,
+      0.2776
+    ],
+    [
+      0.47482,
+      0.30612
+    ],
+    [
+      0.50571,
+      0.3494
+    ],
+    [
+      0.55817,
+      0.42293
+    ],
+    [
+      0.66695,
+      0.57538
+    ],
+    [
+      0.96994,
+      1.0
+    ]
+  ],
+  "stop_zones": [],
+  "lanes": [
+    {
+      "lateral_m": -6.85,
+      "color": "white",
+      "kind": "barrier",
+      "coverage": 0.302,
+      "width_m": 0.85,
+      "along_m": [
+        1.95,
+        59.85
+      ],
+      "dash_period_m": null,
+      "dash_length_m": null,
+      "image_xy": [
+        [
+          0.21062,
+          0.9504
+        ],
+        [
+          0.31299,
+          0.37702
+        ]
+      ]
+    },
+    {
+      "lateral_m": -4.35,
+      "color": "white",
+      "kind": "solid",
+      "coverage": 0.792,
+      "width_m": 0.35,
+      "along_m": [
+        4.85,
+        72.25
+      ],
+      "dash_period_m": null,
+      "dash_length_m": null,
+      "image_xy": [
+        [
+          0.31881,
+          0.85753
+        ],
+        [
+          0.34493,
+          0.34589
+        ]
+      ]
+    },
+    {
+      "lateral_m": -1.15,
+      "color": "white",
+      "kind": "dashed",
+      "coverage": 0.396,
+      "width_m": 0.3,
+      "along_m": [
+        5.95,
+        76.85
+      ],
+      "dash_period_m": 8.35,
+      "dash_length_m": 3.65,
+      "image_xy": [
+        [
+          0.43118,
+          0.82343
+        ],
+        [
+          0.37735,
+          0.33654
+        ]
+      ]
+    },
+    {
+      "lateral_m": 2.25,
+      "color": "yellow",
+      "kind": "solid",
+      "coverage": 0.997,
+      "width_m": 0.35,
+      "along_m": [
+        4.3,
+        90.0
+      ],
+      "dash_period_m": null,
+      "dash_length_m": null,
+      "image_xy": [
+        [
+          0.55701,
+          0.85759
+        ],
+        [
+          0.40455,
+          0.31382
+        ]
+      ]
+    },
+    {
+      "lateral_m": 3.2,
+      "color": "white",
+      "kind": "solid",
+      "coverage": 1.0,
+      "width_m": 0.45,
+      "along_m": [
+        4.25,
+        90.0
+      ],
+      "dash_period_m": null,
+      "dash_length_m": null,
+      "image_xy": [
+        [
+          0.59062,
+          0.85684
+        ],
+        [
+          0.41282,
+          0.31391
+        ]
+      ]
+    },
+    {
+      "lateral_m": 4.0,
+      "color": "white",
+      "kind": "solid",
+      "coverage": 0.817,
+      "width_m": 0.25,
+      "along_m": [
+        4.2,
+        89.6
+      ],
+      "dash_period_m": null,
+      "dash_length_m": null,
+      "image_xy": [
+        [
+          0.61886,
+          0.85641
+        ],
+        [
+          0.42,
+          0.3146
+        ]
+      ]
+    },
+    {
+      "lateral_m": 7.1,
+      "color": "white",
+      "kind": "dashed",
+      "coverage": 0.447,
+      "width_m": 0.45,
+      "along_m": [
+        4.75,
+        88.25
+      ],
+      "dash_period_m": 15.15,
+      "dash_length_m": 6.47,
+      "image_xy": [
+        [
+          0.71763,
+          0.8362
+        ],
+        [
+          0.448,
+          0.31701
+        ]
+      ]
+    },
+    {
+      "lateral_m": 10.5,
+      "color": "white",
+      "kind": "solid",
+      "coverage": 0.888,
+      "width_m": 0.6,
+      "along_m": [
+        -0.95,
+        90.0
+      ],
+      "dash_period_m": null,
+      "dash_length_m": null,
+      "image_xy": [
+        [
+          0.94356,
+          0.9979
+        ],
+        [
+          0.47577,
+          0.31458
+        ]
+      ]
+    },
+    {
+      "lateral_m": 11.6,
+      "color": "white",
+      "kind": "barrier",
+      "coverage": 0.749,
+      "width_m": 0.65,
+      "along_m": [
+        -1.05,
+        88.45
+      ],
+      "dash_period_m": null,
+      "dash_length_m": null,
+      "image_xy": [
+        [
+          0.98915,
+          0.99792
+        ],
+        [
+          0.48695,
+          0.31709
+        ]
+      ]
+    }
+  ],
+  "stop_lines": [],
+  "crosswalks": [],
+  "method": "opencv_topview_paint",
+  "road_frame": {
+    "origin_ground": [
+      116.27916202555434,
+      -205.56432247811486
+    ],
+    "forward_ground": [
+      -0.564538907519935,
+      0.8254064585985492
+    ],
+    "meters_per_unit": 1.0
+  },
+  "road_lateral_m": [
+    -4.950000000000001,
+    11.1
+  ],
+  "road_along_m": [
+    -3.070700398704454,
+    170.0
+  ],
+  "centre_lateral_m": 2.25,
+  "frames_used": 16,
+  "source": "D:\\Capston disign\\reviews\\opencv-2b75753\\simulation\\TwinSightSim\\RealCctv\\geumchon.calibration.json"
+}

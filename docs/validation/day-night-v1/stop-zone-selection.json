@@ -1,0 +1,12 @@
+{
+  "selected": {
+    "depth": 8,
+    "min_samples": 1,
+    "balanced_priors": false,
+    "threshold": 0.6016625,
+    "validation_false_alert_clips": 0,
+    "validation_detected_collision_clips": 8
+  },
+  "configurations_evaluated": 30,
+  "test_used_for_selection": false
+}

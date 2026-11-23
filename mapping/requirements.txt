@@ -3,3 +3,6 @@ opencv-python>=4.8
 scipy>=1.10
 # run_yolo_on_frames.py를 쓸 때만 필요
 ultralytics>=8.3
+
+# Road recognition reused from feat/vehicle-assets
+scipy>=1.10

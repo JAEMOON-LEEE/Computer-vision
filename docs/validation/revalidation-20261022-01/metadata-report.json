@@ -1,0 +1,18 @@
+{
+  "committed": true,
+  "records": 1,
+  "new_records": 1,
+  "file_references": 229,
+  "log_lines": 0,
+  "parent_links": 3,
+  "exact_yolo_labels": 0,
+  "label_objects": 0,
+  "records_by_kind": {
+    "evaluation": 1
+  },
+  "readback_verified": true,
+  "image_video_model_bytes_uploaded": false,
+  "source_root": "D:\\Capston disign",
+  "schema_changed": false,
+  "manifest_sha256": "e1710b20b62f6bb9953de1703280a20f04c86ff3e7f608de647460f8fe650a7c"
+}

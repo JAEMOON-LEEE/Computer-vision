@@ -1,0 +1,242 @@
+{
+  "night": {
+    "before": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 40,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\night-v1-full\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-queue.pt",
+      "road_weights": null,
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "synthetic_only": true,
+      "classes": {
+        "person": {
+          "ground_truth": 39,
+          "true_positives": 39,
+          "false_positives": 35,
+          "precision": 0.527027027027027,
+          "recall": 1.0,
+          "AP50_101point": 0.9972369329956253
+        },
+        "car": {
+          "ground_truth": 52,
+          "true_positives": 48,
+          "false_positives": 9,
+          "precision": 0.8421052631578947,
+          "recall": 0.9230769230769231,
+          "AP50_101point": 0.9326898025608905
+        },
+        "pothole": {
+          "ground_truth": 8,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 0.75,
+          "AP50_101point": 0.7524752475247525
+        },
+        "debris": {
+          "ground_truth": 8,
+          "true_positives": 7,
+          "false_positives": 1,
+          "precision": 0.875,
+          "recall": 0.875,
+          "AP50_101point": 0.9581958195819581
+        },
+        "barrier": {
+          "ground_truth": 8,
+          "true_positives": 6,
+          "false_positives": 1,
+          "precision": 0.8571428571428571,
+          "recall": 0.75,
+          "AP50_101point": 0.9594059405940594
+        }
+      },
+      "mAP50_101point": 0.9200007486514572
+    },
+    "after": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 40,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\night-v1-full\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+      "road_weights": null,
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "synthetic_only": true,
+      "classes": {
+        "person": {
+          "ground_truth": 39,
+          "true_positives": 39,
+          "false_positives": 1,
+          "precision": 0.975,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "car": {
+          "ground_truth": 52,
+          "true_positives": 51,
+          "false_positives": 3,
+          "precision": 0.9444444444444444,
+          "recall": 0.9807692307692307,
+          "AP50_101point": 0.9972698052073785
+        },
+        "pothole": {
+          "ground_truth": 8,
+          "true_positives": 7,
+          "false_positives": 1,
+          "precision": 0.875,
+          "recall": 0.875,
+          "AP50_101point": 0.9742574257425741
+        },
+        "debris": {
+          "ground_truth": 8,
+          "true_positives": 8,
+          "false_positives": 1,
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "barrier": {
+          "ground_truth": 8,
+          "true_positives": 8,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        }
+      },
+      "mAP50_101point": 0.9943054461899905
+    }
+  },
+  "day": {
+    "before": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 32,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\geumchon-detail-full\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-queue.pt",
+      "road_weights": null,
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "synthetic_only": true,
+      "classes": {
+        "person": {
+          "ground_truth": 31,
+          "true_positives": 30,
+          "false_positives": 6,
+          "precision": 0.8333333333333334,
+          "recall": 0.967741935483871,
+          "AP50_101point": 0.9266980544208269
+        },
+        "car": {
+          "ground_truth": 40,
+          "true_positives": 40,
+          "false_positives": 2,
+          "precision": 0.9523809523809523,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "pothole": {
+          "ground_truth": 7,
+          "true_positives": 6,
+          "false_positives": 2,
+          "precision": 0.75,
+          "recall": 0.8571428571428571,
+          "AP50_101point": 0.8514851485148515
+        },
+        "debris": {
+          "ground_truth": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "barrier": {
+          "ground_truth": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        }
+      },
+      "mAP50_101point": 0.9556366405871357
+    },
+    "after": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 32,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\geumchon-detail-full\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-day-night.pt",
+      "road_weights": null,
+      "focus": [
+        0.3194444444444444,
+        0.2708333333333333,
+        0.6111111111111112,
+        0.5625
+      ],
+      "synthetic_only": true,
+      "classes": {
+        "person": {
+          "ground_truth": 31,
+          "true_positives": 29,
+          "false_positives": 6,
+          "precision": 0.8285714285714286,
+          "recall": 0.9354838709677419,
+          "AP50_101point": 0.9102751093187121
+        },
+        "car": {
+          "ground_truth": 40,
+          "true_positives": 40,
+          "false_positives": 2,
+          "precision": 0.9523809523809523,
+          "recall": 1.0,
+          "AP50_101point": 0.9941246871939939
+        },
+        "pothole": {
+          "ground_truth": 7,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "AP50_101point": 0.8514851485148515
+        },
+        "debris": {
+          "ground_truth": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        },
+        "barrier": {
+          "ground_truth": 6,
+          "true_positives": 6,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "AP50_101point": 1.0
+        }
+      },
+      "mAP50_101point": 0.9511769890055115
+    }
+  }
+}

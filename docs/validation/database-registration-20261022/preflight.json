@@ -1,0 +1,22 @@
+{
+  "records": 240,
+  "files": 12822,
+  "unique_file_paths": 12813,
+  "logs": 10470,
+  "parent_links": 337,
+  "label_files": 2487,
+  "label_objects": 7050,
+  "record_kinds": {
+    "simulation": 1,
+    "capture": 165,
+    "dataset": 49,
+    "model": 10,
+    "training": 7,
+    "detection": 4,
+    "evaluation": 4
+  },
+  "newline_preservation_fixed_records": 33,
+  "metadata_text_bytes": 17841782,
+  "file_bytes_uploaded": false,
+  "excluded_count": 2
+}

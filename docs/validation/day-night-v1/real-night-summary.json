@@ -1,0 +1,15 @@
+{
+  "frames": 600,
+  "media_seconds": 120.00003333333333,
+  "detections_by_class": {
+    "car": 884,
+    "pothole": 2,
+    "debris": 1
+  },
+  "alerts_by_type": {},
+  "warm_mean_inference_ms": 139.18759616384148,
+  "ground_truth_available": false,
+  "accuracy_evaluated": false,
+  "training_use": false,
+  "timestamp_basis": "original source PTS"
+}

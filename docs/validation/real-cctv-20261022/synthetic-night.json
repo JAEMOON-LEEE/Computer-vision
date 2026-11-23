@@ -1,0 +1,19 @@
+{
+  "frames": 600,
+  "media_seconds": 120.00003333333333,
+  "detections_by_class": {
+    "car": 471,
+    "pothole": 3
+  },
+  "alerts_by_type": {},
+  "mean_inference_ms": 133.57663000312945,
+  "warm_mean_inference_ms": 122.62121686410278,
+  "elapsed_seconds": 85.23499999986961,
+  "ground_truth_available": false,
+  "accident_recall_evaluated": false,
+  "source_fps": 30.0,
+  "sampled_fps": 5,
+  "maximum_frame_gap_seconds": 0.3333999999999975,
+  "training_use": false,
+  "timestamp_basis": "decoded MPEG-TS source PTS normalized to first frame; no wall-clock download gaps"
+}

@@ -1,0 +1,20 @@
+{
+  "camera_id": "its-cc4277cc18",
+  "name": "[국도1호선] 파주 금촌신사거리",
+  "source": "ITS HLS obtained through teammate dashboard stream URL",
+  "source_fps": 30.0,
+  "decoded_frames": 3595,
+  "sampled_frames": 600,
+  "distinct_sampled_images": 600,
+  "media_seconds": 120.00003333333333,
+  "segment_count": 8,
+  "first_sequence": 1320,
+  "last_sequence": 1327,
+  "missing_segments": [],
+  "max_sample_gap": 0.3333999999999975,
+  "source_pts_gap_min": 0.033288888888890256,
+  "source_pts_gap_max": 0.16659999999999542,
+  "training_use": false,
+  "nominal_index_duration_seconds": 119.83333333333333,
+  "timestamp_basis": "decoded MPEG-TS source PTS normalized to first frame; no wall-clock download gaps"
+}

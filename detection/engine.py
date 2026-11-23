@@ -53,13 +53,19 @@ def convert_result(result, names: dict[int, str], model_id: str, width: int, hei
 
 class Detector:
     def __init__(self, weights="yolo11n.pt", road_weights=None, device="cpu", imgsz=640,
-                 conf=0.25, road_conf=0.35, iou=0.7, threads=4, track=False):
+                 conf=0.25, road_conf=0.35, iou=0.7, threads=4, track=False, focus=None):
         if imgsz < 32 or imgsz % 32:
             raise ValueError("imgsz must be a positive multiple of 32")
         if not all(0 < value <= 1 for value in (conf, road_conf, iou)):
             raise ValueError("conf, road-conf and iou must be in (0, 1]")
         if threads < 1:
             raise ValueError("threads must be positive")
+        if focus is not None:
+            if (len(focus) != 4 or not all(math.isfinite(v) and 0 <= v <= 1 for v in focus)
+                    or focus[0] >= focus[2] or focus[1] >= focus[3]):
+                raise ValueError("focus needs normalized x1,y1,x2,y2 bounds")
+            if road_weights:
+                raise ValueError("focus currently requires a unified traffic/hazard model")
         import torch
         from ultralytics import YOLO
 
@@ -67,7 +73,11 @@ class Detector:
         self.options = {"device": device, "imgsz": imgsz, "iou": iou, "verbose": False}
         self.models = []
         self.track = track
+        self.focus = focus
         requests = [("primary", weights, TRAFFIC if road_weights else CATEGORIES, conf)]
+        if focus is not None:
+            # Separate existing ByteTrack instances: never feed two views into one tracker.
+            requests.append(("focus", weights, CATEGORIES, conf))
         if road_weights:
             requests.append(("road", road_weights, ROAD_MODEL_CLASSES, road_conf))
         for model_id, weight, allowed, threshold in requests:
@@ -87,7 +97,7 @@ class Detector:
                 "unavailable": [name for name in CATEGORIES if name not in available]}
 
     def metadata(self):
-        return {"options": self.options, "capabilities": self.capabilities, "tracking": "bytetrack" if self.track else None,
+        return {"options": self.options, "focus": self.focus, "capabilities": self.capabilities, "tracking": "bytetrack" if self.track else None,
                 "versions": {name: importlib.metadata.version(name) for name in ("ultralytics", "torch", "opencv-python")},
                 "models": [{"id": key, "weights": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                             "classes": names, "conf": threshold}
@@ -100,11 +110,28 @@ class Detector:
         started = time.perf_counter()
         detections = []
         for model_id, model, names, threshold, _ in self.models:
+            x0 = y0 = 0
+            sample = image
+            if model_id == "focus":
+                x0, y0, x1, y1 = [round(v * scale) for v, scale in zip(self.focus, (width, height, width, height))]
+                if x1 - x0 < 2 or y1 - y0 < 2:
+                    raise ValueError("Focus region is too small for this image")
+                sample = image[y0:y1, x0:x1]
             if self.track:
-                result = model.track(image, persist=True, tracker="bytetrack.yaml", classes=list(names), conf=threshold, **self.options)[0]
+                result = model.track(sample, persist=True, tracker="bytetrack.yaml", classes=list(names), conf=threshold, **self.options)[0]
             else:
-                result = model.predict(image, classes=list(names), conf=threshold, **self.options)[0]
-            detections.extend(convert_result(result, names, model_id, width, height))
+                result = model.predict(sample, classes=list(names), conf=threshold, **self.options)[0]
+            for detection in convert_result(result, names, model_id, sample.shape[1], sample.shape[0]):
+                box = detection["bbox_xyxy"]
+                if model_id == "primary" and self.focus is not None:
+                    cx, cy = (box[0] + box[2]) / (2 * width), (box[1] + box[3]) / (2 * height)
+                    if self.focus[0] <= cx < self.focus[2] and self.focus[1] <= cy < self.focus[3]:
+                        continue  # One owner per region prevents duplicate collision pairs.
+                if model_id == "focus":
+                    detection["bbox_xyxy"] = [box[0] + x0, box[1] + y0, box[2] + x0, box[3] + y0]
+                    detection["ground_point_px"] = [detection["ground_point_px"][0] + x0,
+                                                     detection["ground_point_px"][1] + y0]
+                detections.append(detection)
         return detections, (time.perf_counter() - started) * 1000
 
     def reset_tracking(self):

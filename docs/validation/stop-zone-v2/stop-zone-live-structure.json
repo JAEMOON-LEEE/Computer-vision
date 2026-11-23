@@ -1,0 +1,48 @@
+{
+    "episode": 5,
+    "seed": 501,
+    "sampling_profile": "Training",
+    "scenario": "StructureCollision",
+    "started_at": 80.61407470703125,
+    "sampling_probabilities": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224
+    ],
+    "events": [
+        {
+            "event_id": "501:5:11",
+            "event_type": "stop_zone_structure_setup",
+            "evidence": "scheduled_not_yet_contact",
+            "timestamp": 80.61407470703125,
+            "object_a": 25,
+            "object_b": 24
+        },
+        {
+            "event_id": "501:5:12",
+            "event_type": "stop_zone_case",
+            "evidence": "experiment_configuration",
+            "timestamp": 80.61407470703125,
+            "object_a": 0,
+            "object_b": 0
+        },
+        {
+            "event_id": "501:5:13",
+            "event_type": "episode_started",
+            "evidence": "sampling_configuration",
+            "timestamp": 80.61407470703125,
+            "object_a": 0,
+            "object_b": 0
+        },
+        {
+            "event_id": "501:5:14",
+            "event_type": "vehicle_structure_collision",
+            "evidence": "physics_contact",
+            "timestamp": 81.77996826171875,
+            "object_a": 25,
+            "object_b": 24
+        }
+    ]
+}

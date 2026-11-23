@@ -1,0 +1,21 @@
+{
+  "fresh_connection_verified": true,
+  "counts": {
+    "catalog_records": 240,
+    "catalog_files": 12822,
+    "catalog_logs": 10470,
+    "catalog_parents": 337
+  },
+  "dataset_versions": 9,
+  "labels_by_split": {
+    "val": 472,
+    "test": 472,
+    "train": 1543
+  },
+  "exact_label_hashes_match": true,
+  "label_files": 2487,
+  "object_boxes": 7050,
+  "database_size_bytes": 35337907,
+  "psycopg_version": "3.3.6",
+  "file_content_storage": "D-drive originals; database references and actual text labels/logs/reports"
+}

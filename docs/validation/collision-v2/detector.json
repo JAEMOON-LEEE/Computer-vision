@@ -1,0 +1,12 @@
+{
+  "completed_at": "2026-10-24T20:29:37.764135+00:00",
+  "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-collision-v2.pt",
+  "sha256": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e",
+  "initial_sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+  "best_selected_on": "validation only",
+  "test_used_for_training": false,
+  "synthetic_only": true,
+  "epochs_limit": 12,
+  "batch": 4,
+  "night_collisions_included": true
+}

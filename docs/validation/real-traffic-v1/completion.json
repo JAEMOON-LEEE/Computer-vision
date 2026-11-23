@@ -1,0 +1,639 @@
+{
+  "status": "complete",
+  "completed_at": "2026-10-25T09:23:49.909670+00:00",
+  "real_vehicle_finetuning_complete": true,
+  "real_scene_training_complete": true,
+  "production_ready": false,
+  "models": {
+    "real-traffic.pt": {
+      "bytes": 5467866,
+      "sha256": "8a96309daf9c7e4e35b10527f2d6b77be3f0e5a1403448b731fd5b00d8242472"
+    },
+    "real-traffic.json": {
+      "bytes": 612,
+      "sha256": "96a497132bc4327eb993d68fefd8fec84ab4b8018c5d0703c436ecaadcb2a107"
+    },
+    "yolo11s.pt": {
+      "bytes": 19313732,
+      "sha256": "85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5"
+    },
+    "real-incident-scene-v1.xml": {
+      "bytes": 380896,
+      "sha256": "25033beaeb05c079bc868ee71aa8cba1972548cbb6ebacfac3a09f49d50ae5b8"
+    },
+    "real-incident-scene-v1.json": {
+      "bytes": 13167,
+      "sha256": "3ce36b20cb59ecebd373a3b44f6a1b5c1df9ac30b5d1322fc0c9ca719911369c"
+    }
+  },
+  "previous_models_unchanged": {
+    "simulation-cctv-day-night.pt": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2",
+    "simulation-cctv-collision-v2.pt": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e",
+    "collision-policy-v2.xml": "ec45078409b067d9b2b9af738c7f338a90cb570ae2ed678c9a1c7f73fcc99f6c"
+  },
+  "object_test": {
+    "previous_synthetic": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 146,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\real-traffic-mio-v1\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\simulation-cctv-collision-v2.pt",
+      "road_weights": null,
+      "focus": null,
+      "synthetic_only": null,
+      "classes": {
+        "person": {
+          "ground_truth": 17,
+          "true_positives": 4,
+          "false_positives": 14,
+          "precision": 0.2222222222222222,
+          "recall": 0.23529411764705882,
+          "AP50_101point": 0.09959713558399426
+        },
+        "car": {
+          "ground_truth": 359,
+          "true_positives": 166,
+          "false_positives": 164,
+          "precision": 0.503030303030303,
+          "recall": 0.4623955431754875,
+          "AP50_101point": 0.39508715777823705
+        },
+        "truck": {
+          "ground_truth": 75,
+          "true_positives": 0,
+          "false_positives": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "AP50_101point": 0.0
+        },
+        "bus": {
+          "ground_truth": 14,
+          "true_positives": 0,
+          "false_positives": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "AP50_101point": 0.0
+        },
+        "motorcycle": {
+          "ground_truth": 2,
+          "true_positives": 0,
+          "false_positives": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "AP50_101point": 0.0
+        },
+        "bicycle": {
+          "ground_truth": 9,
+          "true_positives": 0,
+          "false_positives": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "AP50_101point": 0.0
+        }
+      },
+      "mAP50_101point": 0.08244738222703855
+    },
+    "selected_real": {
+      "iou_threshold": 0.5,
+      "confidence_for_precision_recall": 0.25,
+      "images": 146,
+      "data": "D:\\Capston disign\\Computer-vision\\datasets\\real-traffic-mio-v1\\dataset.yaml",
+      "split": "test",
+      "weights": "D:\\Capston disign\\Computer-vision\\detection\\models\\real-traffic.pt",
+      "road_weights": null,
+      "focus": null,
+      "synthetic_only": null,
+      "classes": {
+        "person": {
+          "ground_truth": 17,
+          "true_positives": 9,
+          "false_positives": 12,
+          "precision": 0.42857142857142855,
+          "recall": 0.5294117647058824,
+          "AP50_101point": 0.3462221163777889
+        },
+        "car": {
+          "ground_truth": 359,
+          "true_positives": 285,
+          "false_positives": 166,
+          "precision": 0.6319290465631929,
+          "recall": 0.7938718662952646,
+          "AP50_101point": 0.7813762413106246
+        },
+        "truck": {
+          "ground_truth": 75,
+          "true_positives": 27,
+          "false_positives": 46,
+          "precision": 0.3698630136986301,
+          "recall": 0.36,
+          "AP50_101point": 0.30424971901426356
+        },
+        "bus": {
+          "ground_truth": 14,
+          "true_positives": 6,
+          "false_positives": 4,
+          "precision": 0.6,
+          "recall": 0.42857142857142855,
+          "AP50_101point": 0.49079631040027083
+        },
+        "motorcycle": {
+          "ground_truth": 2,
+          "true_positives": 0,
+          "false_positives": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "AP50_101point": 0.12623762376237624
+        },
+        "bicycle": {
+          "ground_truth": 9,
+          "true_positives": 7,
+          "false_positives": 6,
+          "precision": 0.5384615384615384,
+          "recall": 0.7777777777777778,
+          "AP50_101point": 0.8512336947980511
+        }
+      },
+      "mAP50_101point": 0.48335261761056253
+    }
+  },
+  "scene_validation": {
+    "depth": 3,
+    "threshold": 0.55,
+    "tp": 12,
+    "fp": 1,
+    "positive_clips": 12,
+    "negative_clips": 12,
+    "recall": 1.0,
+    "false_positive_rate": 0.08333333333333333
+  },
+  "scene_test": {
+    "tp": 9,
+    "fp": 3,
+    "positive_clips": 16,
+    "negative_clips": 16,
+    "recall": 0.5625,
+    "false_positive_rate": 0.1875,
+    "clips": [
+      {
+        "video": "videox_test_T16.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T16.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.703125,
+        "sample_count": 21
+      },
+      {
+        "video": "videox_test_T12.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T12.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.8515625,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T2.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T2.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": false,
+        "maximum_vote_ratio": 0.546875,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T9.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T9.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": false,
+        "maximum_vote_ratio": 0.3984375,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T4.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T4.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.8125,
+        "sample_count": 24
+      },
+      {
+        "video": "videox_test_T11.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T11.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.8828125,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T5.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T5.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": false,
+        "maximum_vote_ratio": 0.6796875,
+        "sample_count": 17
+      },
+      {
+        "video": "videox_test_T6.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T6.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.9453125,
+        "sample_count": 20
+      },
+      {
+        "video": "videox_test_T3.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T3.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.734375,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T13.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T13.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.9140625,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T7.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T7.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": false,
+        "maximum_vote_ratio": 0.265625,
+        "sample_count": 23
+      },
+      {
+        "video": "videox_test_T15.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T15.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.6328125,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T14.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T14.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": false,
+        "maximum_vote_ratio": 0.34375,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T1.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T1.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": false,
+        "maximum_vote_ratio": 0.2578125,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T10.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T10.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": false,
+        "maximum_vote_ratio": 0.578125,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_T8.mp4",
+        "source": "TAD-benchmark/test/accident/videox_test_T8.mp4",
+        "split": "test",
+        "target": 1,
+        "warning": true,
+        "maximum_vote_ratio": 0.78125,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F6.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F6.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.09375,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F9.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F9.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.375,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F12.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F12.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.2734375,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F16.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F16.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.2265625,
+        "sample_count": 24
+      },
+      {
+        "video": "videox_test_F1.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F1.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.5,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F4.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F4.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.2109375,
+        "sample_count": 24
+      },
+      {
+        "video": "videox_test_F8.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F8.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.15625,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F5.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F5.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.359375,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F10.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F10.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.2578125,
+        "sample_count": 20
+      },
+      {
+        "video": "videox_test_F3.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F3.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.34375,
+        "sample_count": 20
+      },
+      {
+        "video": "videox_test_F7.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F7.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": true,
+        "maximum_vote_ratio": 0.6328125,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F15.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F15.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.546875,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F11.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F11.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.4765625,
+        "sample_count": 22
+      },
+      {
+        "video": "videox_test_F14.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F14.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": true,
+        "maximum_vote_ratio": 0.8671875,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F2.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F2.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": false,
+        "maximum_vote_ratio": 0.078125,
+        "sample_count": 40
+      },
+      {
+        "video": "videox_test_F13.mp4",
+        "source": "TAD-benchmark/test/normal/videox_test_F13.mp4",
+        "split": "test",
+        "target": 0,
+        "warning": true,
+        "maximum_vote_ratio": 0.875,
+        "sample_count": 40
+      }
+    ]
+  },
+  "scene_labels": "weak source clip labels; no physical contact or participant supervision",
+  "scene_validation_gate_passed": true,
+  "scene_manual_opt_in_only": true,
+  "default_vehicle_mode": "real-coco",
+  "mio_vehicle_selection": "mio_n",
+  "camera_disjoint_evaluation": false,
+  "night_specific_real_accuracy_evaluated": false,
+  "all_data_under_D": true,
+  "source_video_redistributed": false,
+  "github_pushed": false,
+  "team_database_modified": false,
+  "tests_passed": 113,
+  "subtests_passed": 7,
+  "typescript_and_vite_build": "passed",
+  "ui_cases": [
+    {
+      "session_id": "0c40ba0c6f674b958ba31b43b64eaeaf",
+      "options": {
+        "model": "real-coco",
+        "simulation_collision_policy": false,
+        "real_incident_scene": true,
+        "source_kind": "video",
+        "source_label": "video106.mp4",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": true,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "source_clock_steps",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 26,
+      "classes": {
+        "truck": 128,
+        "car": 121,
+        "person": 5
+      },
+      "alerts": [
+        {
+          "alert_id": "lab-0c40ba0c6f674b958ba31b43b64eaeaf:real-scene:6",
+          "camera_id": "lab-0c40ba0c6f674b958ba31b43b64eaeaf",
+          "frame": 6,
+          "timestamp": 1.2,
+          "type": "suspected_traffic_incident_scene",
+          "severity": "warning",
+          "status": "unconfirmed",
+          "message": "Real-data scene classifier suggests an accident scene; review source video",
+          "basis": "weakly_supervised_real_scene_appearance",
+          "evidence": [],
+          "scene_decision": {
+            "vote_ratio": 0.9296875,
+            "threshold": 0.55,
+            "not_calibrated_probability": true,
+            "contact_or_participants_identified": false
+          }
+        }
+      ],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    },
+    {
+      "session_id": "2162e3c10164417499164d9dd56355d8",
+      "options": {
+        "model": "real-coco",
+        "simulation_collision_policy": false,
+        "real_incident_scene": false,
+        "source_kind": "image",
+        "source_label": "user-example-input.png",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": false,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "single",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 1,
+      "classes": {
+        "truck": 2,
+        "person": 1
+      },
+      "alerts": [],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    },
+    {
+      "session_id": "3cbc5a70308942cd9f5709c947720227",
+      "options": {
+        "model": "real-coco",
+        "simulation_collision_policy": false,
+        "real_incident_scene": false,
+        "source_kind": "image",
+        "source_label": "user-example-input.png",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": false,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "single",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 1,
+      "classes": {
+        "truck": 2,
+        "person": 1
+      },
+      "alerts": [],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    },
+    {
+      "session_id": "904ec068e2134a84b5756bca281080f7",
+      "options": {
+        "model": "real-traffic",
+        "simulation_collision_policy": false,
+        "real_incident_scene": false,
+        "source_kind": "image",
+        "source_label": "00016301.jpg",
+        "reference_url": "",
+        "confidence": 0.25,
+        "fixed_camera": false,
+        "client_id": "d5dfee5d-2252-43df-a7b0-de9adee65135",
+        "sampling_fps": 5,
+        "sampling_mode": "single",
+        "crop_percent": [
+          0.0,
+          0.0,
+          100.0,
+          100.0
+        ]
+      },
+      "model_off": true,
+      "frames": 1,
+      "classes": {
+        "car": 3
+      },
+      "alerts": [],
+      "reports_saved": 1,
+      "independent_accuracy_test": false,
+      "contact_timing_verified": false
+    }
+  ],
+  "dashboard_url": "http://127.0.0.1:5174/lab",
+  "known_failures": [
+    "MIO-trained model labels user work truck rear as car; COCO-s detects truck",
+    "MIO val large bus omitted by selected model in UI",
+    "MIO test truck27/75 with46 false positive boxes; bus6/14",
+    "real scene test misses7/16 accident clips; false warnings3/16 normal clips",
+    "scene warnings do not establish physical contact onset or participants"
+  ]
+}

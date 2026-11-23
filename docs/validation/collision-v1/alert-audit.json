@@ -1,0 +1,155 @@
+[
+  {
+    "lighting": "Day",
+    "scenario": "RearEnd",
+    "frame": 37,
+    "correct_pair_match": true,
+    "seconds_after_contact": 0.5418393359374818,
+    "matches": [
+      {
+        "id": 77,
+        "iou": 0.9003207283373565
+      },
+      {
+        "id": 78,
+        "iou": 0.927993626793212
+      }
+    ]
+  },
+  {
+    "lighting": "Day",
+    "scenario": "HighSpeedRearEnd",
+    "frame": 40,
+    "correct_pair_match": false,
+    "seconds_after_contact": null,
+    "matches": [
+      {
+        "id": 80,
+        "iou": 0.8476583972512997
+      },
+      {
+        "id": 80,
+        "iou": 0.6902990315944648
+      }
+    ]
+  },
+  {
+    "lighting": "Day",
+    "scenario": "SideImpact",
+    "frame": 50,
+    "correct_pair_match": false,
+    "seconds_after_contact": null,
+    "matches": [
+      {
+        "id": 83,
+        "iou": 0.8347120606447034
+      },
+      {
+        "id": 83,
+        "iou": 0.6905154431332695
+      }
+    ]
+  },
+  {
+    "lighting": "Day",
+    "scenario": "ChainReaction",
+    "frame": 37,
+    "correct_pair_match": false,
+    "seconds_after_contact": null,
+    "matches": [
+      {
+        "id": 87,
+        "iou": 0.877096322953884
+      },
+      {
+        "id": 85,
+        "iou": 0.6630264754360866
+      }
+    ]
+  },
+  {
+    "lighting": "Night",
+    "scenario": "TightQueue",
+    "frame": 9,
+    "correct_pair_match": false,
+    "seconds_after_contact": null,
+    "matches": [
+      {
+        "id": 91,
+        "iou": 0.9133851992550182
+      },
+      {
+        "id": 90,
+        "iou": 0.9311073267230054
+      }
+    ]
+  },
+  {
+    "lighting": "Night",
+    "scenario": "RearEnd",
+    "frame": 35,
+    "correct_pair_match": true,
+    "seconds_after_contact": 0.2887267773437543,
+    "matches": [
+      {
+        "id": 92,
+        "iou": 0.9653010864131082
+      },
+      {
+        "id": 93,
+        "iou": 0.9017074302374919
+      }
+    ]
+  },
+  {
+    "lighting": "Night",
+    "scenario": "HighSpeedRearEnd",
+    "frame": 39,
+    "correct_pair_match": true,
+    "seconds_after_contact": 1.1535032851562619,
+    "matches": [
+      {
+        "id": 95,
+        "iou": 0.9346827246135068
+      },
+      {
+        "id": 94,
+        "iou": 0.9377702173035795
+      }
+    ]
+  },
+  {
+    "lighting": "Night",
+    "scenario": "HeadOn",
+    "frame": 42,
+    "correct_pair_match": true,
+    "seconds_after_contact": 1.4312441152343922,
+    "matches": [
+      {
+        "id": 97,
+        "iou": 0.9231740166721327
+      },
+      {
+        "id": 96,
+        "iou": 0.8711100819936539
+      }
+    ]
+  },
+  {
+    "lighting": "Night",
+    "scenario": "SideImpact",
+    "frame": 39,
+    "correct_pair_match": true,
+    "seconds_after_contact": 1.166298632812527,
+    "matches": [
+      {
+        "id": 99,
+        "iou": 0.8877385287951263
+      },
+      {
+        "id": 98,
+        "iou": 0.885404061361265
+      }
+    ]
+  }
+]

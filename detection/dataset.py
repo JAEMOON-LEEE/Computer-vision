@@ -13,7 +13,7 @@ from .sources import IMAGE_EXTENSIONS, decode_image
 from .taxonomy import CATEGORIES
 
 
-def check_dataset(config: str | Path):
+def check_dataset(config: str | Path, require_all_classes=True):
     config = Path(config).resolve()
     raw = yaml.safe_load(config.read_text(encoding="utf-8-sig"))
     if not isinstance(raw, dict) or not all(key in raw for key in ("names", "train", "val")):
@@ -73,7 +73,7 @@ def check_dataset(config: str | Path):
                     raise ValueError(f"Invalid normalized box: {label}: {line}")
                 counts[names[cls]] += 1
         missing = set(names) - counts.keys()
-        if missing:
+        if missing and require_all_classes:
             raise ValueError(f"No {split} positive labels for {sorted(missing)}; collect these classes before training")
         resolved[split] = str(folder)
         report["splits"][split] = {"images": len(images), "negative_images": negatives, "objects": dict(counts)}

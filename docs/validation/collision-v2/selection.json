@@ -1,0 +1,230 @@
+{
+  "selected": {
+    "features": [
+      "structure",
+      "iou",
+      "intersection_fraction",
+      "horizontal_overlap",
+      "vertical_overlap",
+      "dx",
+      "dy",
+      "distance",
+      "width_ratio",
+      "height_ratio",
+      "past_vx",
+      "past_vy",
+      "recent_vx",
+      "recent_vy",
+      "other_past_vx",
+      "other_past_vy",
+      "other_recent_vx",
+      "other_recent_vy",
+      "closing",
+      "height_change",
+      "other_height_change",
+      "past_top_vy",
+      "recent_top_vy",
+      "other_past_top_vy",
+      "other_recent_top_vy",
+      "confidence_min",
+      "confidence_max",
+      "pair_age",
+      "shared_history_age",
+      "maximum_closing_4s",
+      "height_span_min_4s",
+      "height_span_max_4s"
+    ],
+    "depth": 6,
+    "minimum_samples": 1,
+    "balanced": true,
+    "threshold": 0.8204125,
+    "validation_false_alert_clips": 0,
+    "validation_true_collision_clips": 14,
+    "validation_varied_by_lighting": {
+      "Day": 5,
+      "Night": 4
+    },
+    "synthetic_only": true,
+    "production_ready": false,
+    "detector_weights_sha256": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e",
+    "focus": [
+      0.3194444444444444,
+      0.2708333333333333,
+      0.6111111111111112,
+      0.5625
+    ],
+    "training_samples": 1091,
+    "training_classes": {
+      "0": 632,
+      "1": 459
+    },
+    "training_feature_sources": {
+      "current_detector": 348,
+      "legacy_detector": 743
+    },
+    "test_used_for_selection": false,
+    "fixed_test_previously_benchmarked": true,
+    "fixed_candidate_gate": {
+      "min_history_seconds": 0.5,
+      "min_contact_seconds": 0.25,
+      "min_observed_closing_normalized": 0.1,
+      "consecutive_frames": 3
+    },
+    "validation_selection": "min false clips; balance day/night varied hits; max total hits",
+    "labels": "Offline physical contact participant matching after contact; runtime never reads truth",
+    "training_clips": [
+      "collision-v1-train-Day-NormalQueue-out-s251001_20261025_041111",
+      "collision-v1-train-Day-TightQueue-in-s251098_20261025_041119",
+      "collision-v1-train-Day-RearEnd-out-s251195_20261025_041127",
+      "collision-v1-train-Day-HighSpeedRearEnd-in-s251292_20261025_041135",
+      "collision-v1-train-Day-HeadOn-out-s251389_20261025_041142",
+      "collision-v1-train-Day-SideImpact-in-s251486_20261025_041150",
+      "collision-v1-train-Day-ChainReaction-out-s251583_20261025_041158",
+      "collision-v1-train-Night-NormalQueue-in-s252001_20261025_041206",
+      "collision-v1-train-Night-TightQueue-out-s252098_20261025_041216",
+      "collision-v1-train-Night-RearEnd-in-s252195_20261025_041225",
+      "collision-v1-train-Night-HighSpeedRearEnd-out-s252292_20261025_041234",
+      "collision-v1-train-Night-HeadOn-in-s252389_20261025_041244",
+      "collision-v1-train-Night-SideImpact-out-s252486_20261025_041253",
+      "collision-v1-train-Night-ChainReaction-in-s252583_20261025_041302",
+      "queue-v2-train-BarrierStop-0-s11435",
+      "queue-v2-train-BarrierStop-1-s11536",
+      "queue-v2-train-BarrierStop-2-s11637",
+      "queue-v2-train-BarrierStop-3-s11738",
+      "queue-v2-train-RearEnd-0-s11452",
+      "queue-v2-train-RearEnd-1-s11553",
+      "queue-v2-train-RearEnd-2-s11654",
+      "queue-v2-train-RearEnd-3-s11755",
+      "queue-v2-train-SignalQueue-0-s11401",
+      "queue-v2-train-SignalQueue-1-s11502",
+      "queue-v2-train-SignalQueue-2-s11603",
+      "queue-v2-train-SignalQueue-3-s11704",
+      "queue-v2-train-StructureImpact-0-s11469",
+      "queue-v2-train-StructureImpact-1-s11570",
+      "queue-v2-train-StructureImpact-2-s11671",
+      "queue-v2-train-StructureImpact-3-s11772",
+      "queue-v2-train-TightQueue-0-s11418",
+      "queue-v2-train-TightQueue-1-s11519",
+      "queue-v2-train-TightQueue-2-s11620",
+      "queue-v2-train-TightQueue-3-s11721",
+      "nightqueue-v1-train-BarrierStop-0-s33435",
+      "nightqueue-v1-train-BarrierStop-1-s33536",
+      "nightqueue-v1-train-BarrierStop-2-s33637",
+      "nightqueue-v1-train-BarrierStop-3-s33738",
+      "nightqueue-v1-train-RearEnd-0-s33452",
+      "nightqueue-v1-train-RearEnd-1-s33553",
+      "nightqueue-v1-train-RearEnd-2-s33654",
+      "nightqueue-v1-train-RearEnd-3-s33755",
+      "nightqueue-v1-train-SignalQueue-0-s33401",
+      "nightqueue-v1-train-SignalQueue-1-s33502",
+      "nightqueue-v1-train-SignalQueue-2-s33603",
+      "nightqueue-v1-train-SignalQueue-3-s33704",
+      "nightqueue-v1-train-StructureImpact-0-s33469",
+      "nightqueue-v1-train-StructureImpact-1-s33570",
+      "nightqueue-v1-train-StructureImpact-2-s33671",
+      "nightqueue-v1-train-StructureImpact-3-s33772",
+      "nightqueue-v1-train-TightQueue-0-s33418",
+      "nightqueue-v1-train-TightQueue-1-s33519",
+      "nightqueue-v1-train-TightQueue-2-s33620",
+      "nightqueue-v1-train-TightQueue-3-s33721"
+    ],
+    "validation_clips": [
+      "collision-v1-val-Day-NormalQueue-in-s261001_20261025_041312",
+      "collision-v1-val-Day-TightQueue-out-s261098_20261025_041321",
+      "collision-v1-val-Day-RearEnd-in-s261195_20261025_041330",
+      "collision-v1-val-Day-HighSpeedRearEnd-out-s261292_20261025_041338",
+      "collision-v1-val-Day-HeadOn-in-s261389_20261025_041346",
+      "collision-v1-val-Day-SideImpact-out-s261486_20261025_041354",
+      "collision-v1-val-Day-ChainReaction-in-s261583_20261025_041402",
+      "collision-v1-val-Night-NormalQueue-out-s262001_20261025_041410",
+      "collision-v1-val-Night-TightQueue-in-s262098_20261025_041419",
+      "collision-v1-val-Night-RearEnd-out-s262195_20261025_041429",
+      "collision-v1-val-Night-HighSpeedRearEnd-in-s262292_20261025_041438",
+      "collision-v1-val-Night-HeadOn-out-s262389_20261025_041448",
+      "collision-v1-val-Night-SideImpact-in-s262486_20261025_041457",
+      "collision-v1-val-Night-ChainReaction-out-s262583_20261025_041506",
+      "queue-v2-val-BarrierStop-0-s12536",
+      "queue-v2-val-BarrierStop-1-s12637",
+      "queue-v2-val-RearEnd-0-s12553",
+      "queue-v2-val-RearEnd-1-s12654",
+      "queue-v2-val-SignalQueue-0-s12502",
+      "queue-v2-val-SignalQueue-1-s12603",
+      "queue-v2-val-StructureImpact-0-s12570",
+      "queue-v2-val-StructureImpact-1-s12671",
+      "queue-v2-val-TightQueue-0-s12519",
+      "queue-v2-val-TightQueue-1-s12620",
+      "nightqueue-v1-val-BarrierStop-0-s34536",
+      "nightqueue-v1-val-BarrierStop-1-s34637",
+      "nightqueue-v1-val-RearEnd-0-s34553",
+      "nightqueue-v1-val-RearEnd-1-s34654",
+      "nightqueue-v1-val-SignalQueue-0-s34502",
+      "nightqueue-v1-val-SignalQueue-1-s34603",
+      "nightqueue-v1-val-StructureImpact-0-s34570",
+      "nightqueue-v1-val-StructureImpact-1-s34671",
+      "nightqueue-v1-val-TightQueue-0-s34519",
+      "nightqueue-v1-val-TightQueue-1-s34620"
+    ]
+  },
+  "trials": [
+    {
+      "depth": 4,
+      "minimum_samples": 1,
+      "balanced": false
+    },
+    {
+      "depth": 4,
+      "minimum_samples": 1,
+      "balanced": true
+    },
+    {
+      "depth": 4,
+      "minimum_samples": 3,
+      "balanced": false
+    },
+    {
+      "depth": 4,
+      "minimum_samples": 3,
+      "balanced": true
+    },
+    {
+      "depth": 6,
+      "minimum_samples": 1,
+      "balanced": false
+    },
+    {
+      "depth": 6,
+      "minimum_samples": 1,
+      "balanced": true
+    },
+    {
+      "depth": 6,
+      "minimum_samples": 3,
+      "balanced": false
+    },
+    {
+      "depth": 6,
+      "minimum_samples": 3,
+      "balanced": true
+    },
+    {
+      "depth": 8,
+      "minimum_samples": 1,
+      "balanced": false
+    },
+    {
+      "depth": 8,
+      "minimum_samples": 1,
+      "balanced": true
+    },
+    {
+      "depth": 8,
+      "minimum_samples": 3,
+      "balanced": false
+    },
+    {
+      "depth": 8,
+      "minimum_samples": 3,
+      "balanced": true
+    }
+  ]
+}

@@ -43,6 +43,37 @@ class OutputTests(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             resolve_weights("misspelled-road-model.pt")
 
+    def test_focus_restores_original_pixels_and_does_not_duplicate_overview(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            weight = Path(tmp) / "test.pt"; weight.touch()
+            calls = []
+            class FakeModel:
+                task = "detect"
+                names = {0: "car"}
+                def __init__(self, path):
+                    pass
+                def predict(self, image, **kwargs):
+                    calls.append(image.shape)
+                    # Same object: global box [30,20,40,30], crop-relative [10,10,20,20].
+                    boxes = [[30,20,40,30],[1,1,9,9]] if image.shape[1] == 80 else [[10,10,20,20]]
+                    return [SimpleNamespace(boxes=SimpleNamespace(xyxy=np.array(boxes), conf=np.full(len(boxes),0.9), cls=np.zeros(len(boxes))))]
+            with patch.dict("sys.modules", {"torch": SimpleNamespace(set_num_threads=lambda n: None),
+                                            "ultralytics": SimpleNamespace(YOLO=FakeModel)}):
+                detector = Detector(str(weight), focus=(0.25,0.25,0.75,0.75))
+                rows, _ = detector.predict(np.zeros((40,80,3), dtype=np.uint8))
+            self.assertEqual(len(rows), 2)
+            self.assertEqual(rows[0]["bbox_xyxy"], [1,1,9,9])
+            self.assertEqual(rows[0]["model_id"], "primary")
+            self.assertEqual(rows[1]["bbox_xyxy"], [30,20,40,30])
+            self.assertEqual(rows[1]["ground_point_px"], [35,30])
+            self.assertEqual(rows[1]["model_id"], "focus")
+            self.assertEqual(calls, [(40,80,3),(20,40,3)])
+
+    def test_invalid_focus_cannot_silently_select_another_region(self):
+        for region in [(0.8,0,0.2,1), (0,0,float("nan"),1), (-0.1,0,1,1)]:
+            with self.assertRaises(ValueError):
+                Detector("unused.pt", focus=region)
+
     def test_two_models_use_their_own_class_ids_and_disjoint_categories(self):
         with tempfile.TemporaryDirectory() as tmp:
             primary, road = Path(tmp) / "primary.pt", Path(tmp) / "road.pt"
@@ -196,6 +227,9 @@ class DatasetTests(unittest.TestCase):
         self.config.write_text(yaml.safe_dump(raw), encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "No train positive labels"):
             check_dataset(self.config)
+        # Supplemental files may omit classes before merging; the final train check remains strict.
+        _, report = check_dataset(self.config, require_all_classes=False)
+        self.assertNotIn("debris", report["splits"]["train"]["objects"])
 
 
 if __name__ == "__main__":

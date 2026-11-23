@@ -1,5 +1,28 @@
 const KST = "Asia/Seoul";
 
+export function formatKstClock(date = new Date()): string {
+  return new Intl.DateTimeFormat("ko-KR", {
+    timeZone: KST,
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).format(date);
+}
+
+export function formatKstTime(value: number | string): string {
+  const date = typeof value === "number" ? new Date(value) : new Date(value);
+  if (Number.isNaN(date.getTime())) return "-";
+  return new Intl.DateTimeFormat("ko-KR", {
+    timeZone: KST,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  }).format(date);
+}
+
 export function formatKst(value: number | string): string {
   const date = typeof value === "number" ? new Date(value) : new Date(value);
   if (Number.isNaN(date.getTime())) return "-";

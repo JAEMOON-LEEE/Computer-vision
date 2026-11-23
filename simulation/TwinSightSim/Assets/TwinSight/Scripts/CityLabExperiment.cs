@@ -12,6 +12,9 @@ namespace TwinSight.Simulation
         [Range(0.1f, 4f)] public float simulationSpeed = 1f;
         [Range(0f, 2f)] public float sunIntensity = 1.2f;
         bool paused;
+        DayNightEnvironment environment;
+
+        void Start() => environment = FindFirstObjectByType<DayNightEnvironment>();
 
         void Update()
         {
@@ -20,7 +23,7 @@ namespace TwinSight.Simulation
             if (Input.GetKeyDown(KeyCode.Space)) paused = !paused;
             if (Input.GetKeyDown(KeyCode.E) && exporter != null && !exporter.enabled) exporter.enabled = true;
             Time.timeScale = paused ? 0f : simulationSpeed;
-            if (sun != null) sun.intensity = sunIntensity;
+            if (sun != null && (environment == null || !environment.enabled)) sun.intensity = sunIntensity;
         }
 
         public void SelectCamera(bool useOverview)

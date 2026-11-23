@@ -1,0 +1,395 @@
+{
+  "synthetic_only": true,
+  "test_used_for_selection": false,
+  "fixed_test_previously_benchmarked": true,
+  "models": {
+    "before": {
+      "metrics": {
+        "iou_threshold": 0.5,
+        "confidence_for_precision_recall": 0.25,
+        "images": 424,
+        "data": "D:\\Capston disign\\Computer-vision\\datasets\\day-night-collision-v2\\dataset.yaml",
+        "split": "test",
+        "weights": "detection/models/simulation-cctv-day-night.pt",
+        "road_weights": null,
+        "focus": null,
+        "synthetic_only": true,
+        "classes": {
+          "person": {
+            "ground_truth": 709,
+            "true_positives": 685,
+            "false_positives": 25,
+            "precision": 0.9647887323943662,
+            "recall": 0.9661495063469676,
+            "AP50_101point": 0.9771230298800138
+          },
+          "car": {
+            "ground_truth": 752,
+            "true_positives": 715,
+            "false_positives": 43,
+            "precision": 0.9432717678100264,
+            "recall": 0.9507978723404256,
+            "AP50_101point": 0.9787996759513741
+          },
+          "pothole": {
+            "ground_truth": 22,
+            "true_positives": 15,
+            "false_positives": 1,
+            "precision": 0.9375,
+            "recall": 0.6818181818181818,
+            "AP50_101point": 0.7515850269237451
+          },
+          "debris": {
+            "ground_truth": 21,
+            "true_positives": 18,
+            "false_positives": 2,
+            "precision": 0.9,
+            "recall": 0.8571428571428571,
+            "AP50_101point": 0.8962753418198962
+          },
+          "barrier": {
+            "ground_truth": 59,
+            "true_positives": 56,
+            "false_positives": 3,
+            "precision": 0.9491525423728814,
+            "recall": 0.9491525423728814,
+            "AP50_101point": 0.9920116108224413
+          }
+        },
+        "mAP50_101point": 0.919158937079494
+      },
+      "groups": {
+        "new-Day": {
+          "images": 112,
+          "classes": {
+            "person": {
+              "ground_truth": 224,
+              "true_positives": 221,
+              "false_positives": 6,
+              "precision": 0.973568281938326,
+              "recall": 0.9866071428571429,
+              "AP50": 0.9897546276366768
+            },
+            "car": {
+              "ground_truth": 240,
+              "true_positives": 220,
+              "false_positives": 17,
+              "precision": 0.9282700421940928,
+              "recall": 0.9166666666666666,
+              "AP50": 0.9854183844709642
+            },
+            "pothole": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "debris": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "barrier": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            }
+          }
+        },
+        "new-Night": {
+          "images": 112,
+          "classes": {
+            "person": {
+              "ground_truth": 224,
+              "true_positives": 212,
+              "false_positives": 5,
+              "precision": 0.9769585253456221,
+              "recall": 0.9464285714285714,
+              "AP50": 0.9729718797720851
+            },
+            "car": {
+              "ground_truth": 240,
+              "true_positives": 229,
+              "false_positives": 12,
+              "precision": 0.950207468879668,
+              "recall": 0.9541666666666667,
+              "AP50": 0.9677455101176546
+            },
+            "pothole": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "debris": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "barrier": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            }
+          }
+        },
+        "retained": {
+          "images": 200,
+          "classes": {
+            "person": {
+              "ground_truth": 261,
+              "true_positives": 252,
+              "false_positives": 14,
+              "precision": 0.9473684210526315,
+              "recall": 0.9655172413793104,
+              "AP50": 0.9763455183393631
+            },
+            "car": {
+              "ground_truth": 272,
+              "true_positives": 266,
+              "false_positives": 14,
+              "precision": 0.95,
+              "recall": 0.9779411764705882,
+              "AP50": 0.9845991890382605
+            },
+            "pothole": {
+              "ground_truth": 22,
+              "true_positives": 15,
+              "false_positives": 1,
+              "precision": 0.9375,
+              "recall": 0.6818181818181818,
+              "AP50": 0.7515850269237451
+            },
+            "debris": {
+              "ground_truth": 21,
+              "true_positives": 18,
+              "false_positives": 2,
+              "precision": 0.9,
+              "recall": 0.8571428571428571,
+              "AP50": 0.8962753418198962
+            },
+            "barrier": {
+              "ground_truth": 59,
+              "true_positives": 56,
+              "false_positives": 3,
+              "precision": 0.9491525423728814,
+              "recall": 0.9491525423728814,
+              "AP50": 0.9927603662621902
+            }
+          }
+        }
+      },
+      "weights_sha256": "7dd2720a7bd8c8757c3a0f38b901b7e6dea46d68e97257916a6810b6947bf1a2"
+    },
+    "after": {
+      "metrics": {
+        "iou_threshold": 0.5,
+        "confidence_for_precision_recall": 0.25,
+        "images": 424,
+        "data": "D:\\Capston disign\\Computer-vision\\datasets\\day-night-collision-v2\\dataset.yaml",
+        "split": "test",
+        "weights": "detection/models/simulation-cctv-collision-v2.pt",
+        "road_weights": null,
+        "focus": null,
+        "synthetic_only": true,
+        "classes": {
+          "person": {
+            "ground_truth": 709,
+            "true_positives": 692,
+            "false_positives": 13,
+            "precision": 0.9815602836879432,
+            "recall": 0.9760225669957687,
+            "AP50_101point": 0.9798665079054836
+          },
+          "car": {
+            "ground_truth": 752,
+            "true_positives": 746,
+            "false_positives": 25,
+            "precision": 0.9675745784695201,
+            "recall": 0.9920212765957447,
+            "AP50_101point": 0.9897579522138905
+          },
+          "pothole": {
+            "ground_truth": 22,
+            "true_positives": 16,
+            "false_positives": 2,
+            "precision": 0.8888888888888888,
+            "recall": 0.7272727272727273,
+            "AP50_101point": 0.7570332480818415
+          },
+          "debris": {
+            "ground_truth": 21,
+            "true_positives": 18,
+            "false_positives": 1,
+            "precision": 0.9473684210526315,
+            "recall": 0.8571428571428571,
+            "AP50_101point": 0.8954322056102964
+          },
+          "barrier": {
+            "ground_truth": 59,
+            "true_positives": 57,
+            "false_positives": 3,
+            "precision": 0.95,
+            "recall": 0.9661016949152542,
+            "AP50_101point": 0.9946374962039815
+          }
+        },
+        "mAP50_101point": 0.9233454820030987
+      },
+      "groups": {
+        "new-Day": {
+          "images": 112,
+          "classes": {
+            "person": {
+              "ground_truth": 224,
+              "true_positives": 222,
+              "false_positives": 5,
+              "precision": 0.9779735682819384,
+              "recall": 0.9910714285714286,
+              "AP50": 0.9994521607667342
+            },
+            "car": {
+              "ground_truth": 240,
+              "true_positives": 240,
+              "false_positives": 6,
+              "precision": 0.975609756097561,
+              "recall": 1.0,
+              "AP50": 0.9995923459572574
+            },
+            "pothole": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "debris": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "barrier": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            }
+          }
+        },
+        "new-Night": {
+          "images": 112,
+          "classes": {
+            "person": {
+              "ground_truth": 224,
+              "true_positives": 218,
+              "false_positives": 2,
+              "precision": 0.990909090909091,
+              "recall": 0.9732142857142857,
+              "AP50": 0.9893001999450048
+            },
+            "car": {
+              "ground_truth": 240,
+              "true_positives": 238,
+              "false_positives": 3,
+              "precision": 0.9875518672199171,
+              "recall": 0.9916666666666667,
+              "AP50": 0.999713579637341
+            },
+            "pothole": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "debris": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            },
+            "barrier": {
+              "ground_truth": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "precision": 0,
+              "recall": null,
+              "AP50": null
+            }
+          }
+        },
+        "retained": {
+          "images": 200,
+          "classes": {
+            "person": {
+              "ground_truth": 261,
+              "true_positives": 252,
+              "false_positives": 6,
+              "precision": 0.9767441860465116,
+              "recall": 0.9655172413793104,
+              "AP50": 0.9696272150111949
+            },
+            "car": {
+              "ground_truth": 272,
+              "true_positives": 268,
+              "false_positives": 16,
+              "precision": 0.9436619718309859,
+              "recall": 0.9852941176470589,
+              "AP50": 0.9887687223585184
+            },
+            "pothole": {
+              "ground_truth": 22,
+              "true_positives": 16,
+              "false_positives": 2,
+              "precision": 0.8888888888888888,
+              "recall": 0.7272727272727273,
+              "AP50": 0.7570332480818415
+            },
+            "debris": {
+              "ground_truth": 21,
+              "true_positives": 18,
+              "false_positives": 1,
+              "precision": 0.9473684210526315,
+              "recall": 0.8571428571428571,
+              "AP50": 0.895567650071295
+            },
+            "barrier": {
+              "ground_truth": 59,
+              "true_positives": 57,
+              "false_positives": 3,
+              "precision": 0.95,
+              "recall": 0.9661016949152542,
+              "AP50": 0.9951616500578756
+            }
+          }
+        }
+      },
+      "weights_sha256": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e"
+    }
+  }
+}

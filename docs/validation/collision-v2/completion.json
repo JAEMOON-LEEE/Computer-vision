@@ -1,0 +1,69 @@
+{
+  "status": "complete",
+  "completed_at": "2026-10-25T08:32:15.249695+00:00",
+  "retrained": true,
+  "night_collisions_included": true,
+  "actual_epochs": 12,
+  "models": {
+    "simulation-cctv-collision-v2.pt": {
+      "bytes": 5488346,
+      "sha256": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e"
+    },
+    "collision-policy-v2.xml": {
+      "bytes": 1206699,
+      "sha256": "ec45078409b067d9b2b9af738c7f338a90cb570ae2ed678c9a1c7f73fcc99f6c"
+    },
+    "collision-policy-v2.json": {
+      "bytes": 6610,
+      "sha256": "5392d8f8765953c562e89a8377b6b929ab3e3dd9566ad147c7e0e8774f34cab0"
+    }
+  },
+  "dataset_images": {
+    "train": 804,
+    "val": 424,
+    "test": 424
+  },
+  "synthetic_only": true,
+  "production_ready": false,
+  "all_incident_cases_passed": false,
+  "correct_incident_clips_before": 11,
+  "correct_incident_clips_after": 16,
+  "incident_clips": 18,
+  "normal_clips": 16,
+  "normal_clips_with_any_alert": 0,
+  "tests_passed": 108,
+  "subtests_passed": 7,
+  "typescript_and_vite_build": "passed",
+  "resume_audit": {
+    "previous_clips": 19,
+    "previous_results_unchanged": true,
+    "policy_refitted": false
+  },
+  "ui": {
+    "session_id": "7e076f173cc942f7a112ce8c265198ad",
+    "source": "Night ChainReaction lossy WebM focus preview",
+    "frames": 61,
+    "model_off_at_end": true,
+    "simulation_policy_applied": true,
+    "alerts": [
+      {
+        "video_seconds": 4.25,
+        "original_frame": 34,
+        "correct_physical_pair_after_contact": true,
+        "matched_truth_ids": [
+          101,
+          102
+        ]
+      }
+    ],
+    "offline_ground_truth_used_for_audit_only": true,
+    "trained_weights_sha256": "d78544874cdc94bb6589997a9d8b7c14c384af91dd94ff1e2261fa884738346e"
+  },
+  "dashboard_url": "http://127.0.0.1:5174/lab",
+  "dashboard_left_model_off": true,
+  "real_cctv_accuracy_evaluated": false,
+  "human_label_review_complete": false,
+  "github_pushed": false,
+  "team_database_modified": false,
+  "comparison": "docs/validation/collision-v2/comparison.json"
+}
