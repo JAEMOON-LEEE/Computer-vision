@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace TwinSight.Simulation
 {
@@ -33,6 +35,7 @@ namespace TwinSight.Simulation
         [Tooltip("도로 영역 밖(길가 주차) 차량은 City Lab에 그 공간이 없어 뺀다")] public bool onlyInRoad = true;
         [Tooltip("화면 가장자리에 잘린 박스는 바닥 위치를 믿기 어렵다")] public bool skipTruncated = true;
         public bool showLanes = true, showRealFrame = true;
+        [Tooltip("화면 안내 글자. WebGL에는 한글 글꼴이 없어 웹 시연에서는 끄고 대시보드가 글자를 그린다")] public bool showGuiText = true;
         [Tooltip("가상 화면: 놓인 차량 박스(주황). 실제 CCTV 화면: YOLO 검출 박스(초록 = 도로 안, 회색 = 뺀 것)")] public bool showBoxes = true;
         [Tooltip("가상 화면에 같은 차량의 실제 YOLO 박스(초록)도 겹쳐 그린다. 두 박스가 겹치면 좌표 변환이 맞은 것")] public bool showRealBoxesOnTwin = true;
         [Tooltip("City Lab 자체 교통·사고 시나리오를 꺼서 실제 인식 결과만 보이게 한다")] public bool disableSimulatedTraffic = true;
@@ -57,19 +60,58 @@ namespace TwinSight.Simulation
             foreach (var d in FindObjectsByType<RoadScenarioDirector>(FindObjectsInactive.Include)) d.enabled = false;
         }
 
-        void Start()
+        IEnumerator Start()
         {
             if (virtualCctv == null) { var go = GameObject.Find("VirtualCCTV"); if (go != null) virtualCctv = go.GetComponent<Camera>(); }
             var experiment = FindAnyObjectByType<CityLabExperiment>();
             if (experiment != null) experiment.SelectCamera(false);   // Game 뷰를 VirtualCCTV 시점으로
-            string path = Path.IsPathRooted(twinFile) ? twinFile : Path.Combine(Directory.GetParent(Application.dataPath).FullName, twinFile);
-            try { twin = JsonUtility.FromJson<TwinFile>(File.ReadAllText(path)); }
-            catch (Exception e) { error = "재생 파일을 읽지 못했습니다: " + e.Message; return; }
-            if (twin.frames == null || twin.frames.Length == 0) { error = "재생 파일에 프레임이 없습니다."; return; }
-            if (virtualCctv == null) { error = "VirtualCCTV가 없습니다."; return; }
+            string json = null;
+            if (OnWeb)   // WebGL은 디스크를 못 읽는다: 빌드 때 StreamingAssets에 복사한 파일을 내려받는다
+            {
+                using (var request = UnityWebRequest.Get(StreamingUrl(twinFile)))
+                {
+                    yield return request.SendWebRequest();
+                    if (request.result != UnityWebRequest.Result.Success) { error = "재생 파일을 읽지 못했습니다: " + request.error; yield break; }
+                    json = request.downloadHandler.text;
+                }
+            }
+            else
+            {
+                string path = Path.IsPathRooted(twinFile) ? twinFile : Path.Combine(Directory.GetParent(Application.dataPath).FullName, twinFile);
+                try { json = File.ReadAllText(path); }
+                catch (Exception e) { error = "재생 파일을 읽지 못했습니다: " + e.Message; yield break; }
+            }
+            try { twin = JsonUtility.FromJson<TwinFile>(json); }
+            catch (Exception e) { error = "재생 파일을 해석하지 못했습니다: " + e.Message; yield break; }
+            if (twin.frames == null || twin.frames.Length == 0) { error = "재생 파일에 프레임이 없습니다."; yield break; }
+            if (virtualCctv == null) { error = "VirtualCCTV가 없습니다."; yield break; }
             if (showLanes) DrawLanes();
             Show(0);
+            if (OnWeb) StartCoroutine(PreloadImages());
         }
+
+        static bool OnWeb => Application.platform == RuntimePlatform.WebGLPlayer;
+        static string StreamingUrl(string relative) => Application.streamingAssetsPath + "/" + relative.Replace('\\', '/');
+
+        IEnumerator PreloadImages()
+        {
+            for (int i = 0; i < twin.frames.Length; i++)
+            {
+                string file = twin.frames[i].image;
+                if (string.IsNullOrEmpty(file) || Path.IsPathRooted(file)) { images[i] = null; continue; }
+                using (var request = UnityWebRequestTexture.GetTexture(StreamingUrl(file)))
+                {
+                    yield return request.SendWebRequest();
+                    images[i] = request.result == UnityWebRequest.Result.Success ? DownloadHandlerTexture.GetContent(request) : null;
+                }
+            }
+        }
+
+        /// <summary>웹 대시보드가 읽는 재생 상태.</summary>
+        public int FrameIndex => index;
+        public int FrameCount => twin?.frames?.Length ?? 0;
+        public int ShownCount => shown;
+        public void StepBy(int delta) { if (twin != null && error == null) Step(delta); }
 
         Vector3 Origin => new Vector3(virtualCctv.transform.position.x, groundY, centreZ);
         static readonly Vector3 Forward = Vector3.right;                                   // City Lab 도로 앞쪽 +X
@@ -224,6 +266,7 @@ namespace TwinSight.Simulation
         Texture2D RealImage(int i)
         {
             if (images.TryGetValue(i, out var tex)) return tex;
+            if (OnWeb) return null;   // 아직 내려받는 중
             tex = null;
             string file = twin.frames[i].image;
             if (!string.IsNullOrEmpty(file) && !Path.IsPathRooted(file))   // 프로젝트 폴더 기준 상대 경로(RealCctv/...)
@@ -240,9 +283,10 @@ namespace TwinSight.Simulation
         void OnGUI()
         {
             var style = new GUIStyle(GUI.skin.box) { alignment = TextAnchor.UpperLeft, fontSize = 13, richText = true };
-            if (error != null) { GUI.Box(new Rect(10, 10, 520, 26), error, style); return; }
+            if (error != null) { if (showGuiText) GUI.Box(new Rect(10, 10, 520, 26), error, style); return; }
             if (twin == null) return;
             if (showBoxes) DrawBoxes();
+            if (!showGuiText) { DrawInset(null); return; }
             var frame = twin.frames[index];
             string info = $"실제 인식 재생 {twin.camera_id}  프레임 {index + 1}/{twin.frames.Length} (원본 {frame.frame})  차량 {shown}대" +
                           $"   ←/→ 넘기기, P 자동 재생 {(autoPlay ? "켬" : "끔")}";
@@ -253,6 +297,11 @@ namespace TwinSight.Simulation
                 if (Mathf.Abs(want - have) / want > 0.05f)
                     GUI.Box(new Rect(10, 40, 640, 26), $"Game 뷰 비율을 {twin.image_size[0]}x{twin.image_size[1]}로 맞추면 실제 CCTV와 같은 범위가 보입니다", style);
             }
+            DrawInset(style);
+        }
+
+        void DrawInset(GUIStyle captionStyle)
+        {
             if (!showRealFrame) return;
             var tex = RealImage(index);
             if (tex == null) return;
@@ -260,7 +309,7 @@ namespace TwinSight.Simulation
             var rect = new Rect(Screen.width - w - 10, 10, w, h);
             GUI.DrawTexture(rect, tex, ScaleMode.ScaleToFit);
             if (showBoxes) DrawRealBoxes(rect);
-            GUI.Box(new Rect(rect.x, rect.yMax, w, 22), "실제 CCTV (같은 프레임, 초록 = YOLO 검출)", style);
+            if (captionStyle != null) GUI.Box(new Rect(rect.x, rect.yMax, w, 22), "실제 CCTV (같은 프레임, 초록 = YOLO 검출)", captionStyle);
         }
     }
 }
