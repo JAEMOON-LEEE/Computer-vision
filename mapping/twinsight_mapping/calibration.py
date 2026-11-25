@@ -38,6 +38,17 @@ def latlon_to_local_xz(lat, lon, origin: tuple[float, float]) -> np.ndarray:
     return np.stack([x, z], axis=-1)
 
 
+def local_xz_to_latlon(x, z, origin: tuple[float, float]) -> tuple[float, float]:
+    """latlon_to_local_xz의 반대: 기준점 기준 (x 동쪽, z 북쪽, 미터) → (위도, 경도)."""
+    lat0, lon0 = origin
+    sin0 = math.sin(math.radians(lat0))
+    meridian = _WGS84_A * (1 - _WGS84_E2) / (1 - _WGS84_E2 * sin0 ** 2) ** 1.5
+    prime_vertical = _WGS84_A / math.sqrt(1 - _WGS84_E2 * sin0 ** 2)
+    lat = lat0 + math.degrees(float(z) / meridian)
+    lon = lon0 + math.degrees(float(x) / (prime_vertical * math.cos(math.radians(lat0))))
+    return lat, lon
+
+
 def leave_one_out_errors(pixels: np.ndarray, ground: np.ndarray) -> np.ndarray:
     """점마다 그 점을 빼고 구한 Homography로 그 점을 변환했을 때의 오차(m). 점이 5개 미만이면 nan."""
     pixels = np.asarray(pixels, dtype=float)

@@ -56,6 +56,114 @@ python C:\Users\82103\Desktop\Computer-vision\mapping\scripts\calibrate_homograp
 
 점은 **6개 이상**, 화면의 가까운 곳·먼 곳·좌우에 고르게, **같은 노면 위**에서만 찍습니다(가드레일·터널 입구처럼 높이가 다른 점은 쓰지 않음). 합성 데이터 결과로는 기준점 수보다 찍는 정확도가 오차를 더 크게 좌우합니다.
 
+## CCTV 카메라 자세 추출 (가상 CCTV 배치값)
+
+캘리브레이션에 쓴 노면 기준점으로 CCTV의 **위치(위도·경도), 높이, 방향, 내려다보는 각도, 화각**을 구합니다. 이진규·정재헌 님이 가상환경의 CCTV를 실제와 같은 자리·시점에 놓는 데 쓰는 값입니다.
+
+```bash
+python mapping/scripts/calibrate_homography.py --image captures\<카메라ID>_<시각>.png --latlon --origin <사거리 중심 위도>,<경도>
+python mapping/scripts/estimate_camera_pose.py --calibration calibration\<카메라ID>.json --meters-per-unit 1
+```
+
+- 캘리브레이션 도구는 기준점이 6개 이상이면 자세를 함께 계산해 `calibration/<카메라ID>.pose.json`에 저장합니다. 결과에는 위치(동·북·높이 m), 카메라 위도·경도, 방향(북→동 방위각), 내려다보는 각도, 좌우 기울기, 세로·가로 화각, 그리고 Unity 카메라에 그대로 넣을 `position`·`eulerAngles`·`fieldOfView`가 들어갑니다.
+- `--origin`을 사거리 중심 위도·경도로 주면, 위치가 "사거리 중심에서 동쪽 x m, 북쪽 z m"로 나와 가상 사거리에 옮기기 쉽습니다.
+- 가상환경의 1단위가 1 m가 아니면 `--meters-per-unit`으로 Unity 값만 바꿉니다. City Lab은 차선 폭이 약 1.2단위라 1단위가 약 2.7 m로 추정되며, 정확한 값은 이진규 님과 맞춥니다.
+- 가상 장면의 노면이 y=0이 아니면 `--ground-y`로 노면 높이(Unity y)를 줍니다. City Lab 도로는 y≈0.507입니다. 이 값은 Unity `position`의 y에만 더하고, `position_m.height`는 노면에서 잰 높이 그대로입니다.
+- 계산 방법: 노면 → 화면 Homography에서 초점거리를 구하고(렌즈 중심은 화면 가운데, 정사각 픽셀, 렌즈 왜곡 없음 가정), 회전·위치로 분해한 뒤 재투영 오차가 최소가 되도록 함께 다듬습니다. 잘못 찍은 점 하나에 끌려가지 않도록 이상치에 강한 손실을 씁니다. CCTV 기종의 세로 화각을 알면 `--fov`로 고정할 수 있습니다.
+
+**Unity 가상 카메라로 검증** (`--export` 모드, 예제 씬 카메라: 높이 8 m, 15° 내려다봄, 방향 352°, 세로 화각 45°, 1920×1080, 카메라 60 m 이내 기준점, 조합마다 200회)
+
+| 조건 (기준점 12개, 클릭 오차 2 px) | 위치 | 높이 | 방향 | 각도 | 세로 화각 | 크게 실패 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 지도 좌표 오차 없음 | 0.07 m | 0.03 m | 0.05° | 0.05° | 0.17° | 0% |
+| 지도 좌표 오차 0.25 m | 0.55 m | 0.29 m | 0.29° | 0.25° | 0.92° | 0% |
+| 지도 좌표 오차 0.5 m | 1.09 m | 0.59 m | 0.57° | 0.52° | 1.80° | 1% |
+| 지도 좌표 오차 1 m | 2.37 m | 1.23 m | 1.26° | 1.23° | 3.63° | 30% |
+
+(절대오차 중앙값. "크게 실패"는 방향 10° 또는 높이 2 m 넘게 틀린 비율)
+
+- 정확한 기준점이면 모든 값이 정답과 같습니다(오차 0.0000). 위도·경도로 넣는 전체 흐름(캘리브레이션 → 자세)도 카메라 위도·경도를 소수점 7자리까지 맞혔습니다.
+- **정확도는 클릭보다 지도 좌표에 달렸습니다.** 위도·경도를 0.5 m 이내로 읽고(항공사진을 크게 확대해 차선·정지선 모서리 사용), 기준점을 12개 이상, 화면 전체에 고르게 찍으세요. 20개면 0.5 m 오차에서 높이 오차가 0.31 m까지 줄어듭니다.
+- 세로 화각을 알고 고정하면(`--fov`) 0.5 m 오차·12개 기준 위치 오차가 1.09 m에서 0.76 m로 줄어듭니다.
+- **City Lab 카메라** (노면 y 0.507, 노면에서 높이 10.49단위, 65.6° 내려다봄, 세로 화각 52°, 1280×720, 화면 안 기준점 8개)에서도 정확한 기준점이면 Unity `position`까지 정답과 같습니다(오차 0.0000). 기준점 8개·클릭 오차 2 px에서는 위치 0.54, 높이 0.65단위, 방향 1.18°, 세로 화각 3.28°입니다(50회 중앙값). 검증 모드는 기준점의 y로 노면 높이를 읽어 높이를 노면에서 잽니다.
+- 실제 CCTV는 렌즈 왜곡이 있을 수 있습니다. 화면 가장자리 점에서 재투영 오차가 커지면 왜곡 영향입니다.
+
+### 지도가 다른 가상 도로(City Lab)로 옮기기
+
+City Lab은 실제 사거리를 복제한 장면이 아니라서 위도·경도를 그대로 쓸 수 없습니다. 카메라 자세를 **실제 도로 중앙선 기준 값**으로 바꾼 뒤 City Lab 도로에 옮깁니다.
+
+```bash
+python mapping/scripts/road_relative_pose.py --pose calibration\<카메라ID>.pose.json --road-line <중앙선 점1 lat,lon> <중앙선 점2 lat,lon> --ref-point <사거리 중심 lat,lon> --virtual-id city-lab-<이름>
+```
+
+- `--road-line`은 중앙분리대(중앙선) 위 두 점이고, 점1 → 점2가 카메라가 보는 도로 앞쪽입니다. 결과 `<카메라ID>.road_pose.json`에는 중앙선 기준 좌우 위치, 노면에서 높이, 도로 대비 방향, 숙임·기울기·화각, 기준 지점까지 앞쪽 거리가 들어갑니다.
+- 이 파일을 Unity 프로젝트의 `simulation/TwinSightSim/RealCctv/`에 두고 **TwinSight > City Lab > Place VirtualCCTV From Real CCTV...**로 배치합니다. 1단위 = 2.92 m(실제 차로 폭 3.5 m ÷ City Lab 차로 폭 1.2단위, SUV 길이 비율과 같음), 노면 y 0.507을 씁니다.
+- 금촌신사거리 CCTV(높이 13.2 m, 도로보다 9° 오른쪽, 14.2° 내려다봄, 세로 화각 38°)를 배치한 미리보기에서 노란 중앙선·왼쪽 가장자리선·차선 점선 위치가 실제 화면과 겹쳤습니다. 실제 사거리까지 거리(255 m)는 City Lab 직선 도로보다 길어 도로 시작 쪽(X = -17)에 놓입니다.
+
+## 도로·차선·정지선 인식 (road-context.json)
+
+OpenCV로 고정 CCTV 화면의 도로 영역·차선·횡단보도·정지선을 찾아, 이진규 님 경고 엔진이 읽는 `road-context.json`(`road_polygon`, `stop_zones`)을 만듭니다. 도로 밖 검출(주차장 차·간판)은 경고에서 빠지고, 정지 대기 영역의 차는 사고 의심에서 빠집니다.
+
+```bash
+python mapping/scripts/detect_road_context.py --calibration calibration\<카메라ID>.json --frames "captures\<카메라ID>_*.png" --ignore 0.24,0.86,0.77,1 --polygon-far 170
+python -m detection predict --source <영상> --alerts --context calibration\<카메라ID>.road_context.json
+```
+
+- **프레임은 여러 장**(30초 이상에 걸쳐 10장 이상)을 줍니다. 픽셀별 중앙값으로 지나가는 차량을 지웁니다. Unity 내보내기는 `--export <폴더> --meters-per-unit 2.92`(City Lab)로 `frames/`를 씁니다.
+- `--ignore`로 CCTV 화면 글자(카메라 이름·방향 표시) 영역을 뺍니다. 빼지 않으면 글자가 횡단보도로 잡힐 수 있습니다.
+- 방법: 캘리브레이션으로 노면을 위에서 본 그림으로 편다 → 카메라 앞에서 가장 흔한 노면 색으로 아스팔트 띠를 찾는다(풀·흙 색 제외) → 띠 안에서 주변보다 밝은 가는 선(명도 top-hat)과 밝은 노란색을 도색으로 본다 → 도로 방향으로 다시 정렬한다 → 세로 선을 실선·점선(반복 간격 3~25 m)·노란 중앙선·분리대(폭 0.6 m 넘는 밝은 띠)로 나눈다 → 중앙선에서 차로 폭(5 m 이하) 간격으로 이어지는 선의 끝을 도로 끝으로 본다(점선이 끝이면 한 차로 더) → 폭과 간격이 고른 줄무늬 띠를 횡단보도, 앞뒤 노면보다 밝은 얇은 띠를 정지선으로 본다.
+- 정지 대기 영역(우측 통행): 중앙선 오른쪽(멀어지는) 차로는 정지선 또는 횡단보도 1 m 앞에서 카메라 쪽으로 15 m, 왼쪽(다가오는) 차로는 횡단보도 1 m 뒤에서 먼 쪽으로 15 m. 다른 횡단보도에 닿기 전에서 멈춥니다.
+- 결과에는 경고 엔진이 쓰는 두 항목 외에 차선(위치·색·종류·점선 길이/간격), 횡단보도, 정지선, 도로 좌표계가 함께 들어갑니다(형식: `docs/data_format.md`). 확인용 그림 `*_overlay.jpg`(도로 초록, 정지 대기 빨강)도 저장합니다.
+
+**금촌신사거리 CCTV로 확인** (720×480, 프레임 16장, 검출 90 m·도로 영역 170 m)
+
+| 항목 | 결과 |
+| --- | --- |
+| 도로 방향 | 325.6° (위성사진 325.7°) |
+| 차선 위치(위성사진 측정과 비교) | 북동 가장자리선 -0.08 m, 판문점 방향 점선 +0.12 m, 중앙분리대 +0.17 m, 서울 방향 점선 +0.02 m |
+| 점선 길이 / 간격 | 서울 방향 3.65 / 8.35 m (위성 3.3 / 8.2), 판문점 방향 6.47 / 15.15 m (위성 5.9 / 14.8) |
+| YOLO 검출 차량(신뢰도 0.5 이상) | 56개 중 44개가 도로 영역 안. 밖 12개 중 11개는 도로 옆에 세워 둔 차, 1개는 170 m 너머 차 |
+| 횡단보도·정지선 | 없음(이 화면 범위에 없음, 화면 글자 오검출 없음) |
+
+**City Lab으로 확인**
+- 금촌 자세로 놓은 가상 CCTV 미리보기(720×480, 차량 없음): 중앙선 3.15 m(정답 3.13 m), 왼쪽 차선 점선 -0.35 m(정답 -0.38 m), 횡단보도 3곳을 찾았습니다. 신호 제어 정지 위치(X = 6.8, 9.65)는 각각 "멀어지는 차로" 정지 대기 영역(36.7~50.2 m)과 "다가오는 차로" 영역(54.8~69.8 m) 안에 듭니다. City Lab에는 정지선이 칠해져 있지 않아 횡단보도로 정했고, 건물 그림자 경계는 정지선에서 걸렀습니다. City Lab 점선은 실제 도로와 달리 약 4.3 m 간격입니다(1단위 2.92 m 기준).
+- 기존 City Lab 녹화(위에서 가파르게 내려다보는 카메라, 15초): 신호 대기 차량이 녹화 내내 중앙선을 가려 도로의 반쪽(멀어지는 차로)만 잡혔고, 정답 차량 바닥점의 14 %만 도로 영역 안에 들었습니다. 이런 화면은 더 길게(차량이 움직이는 시간 포함) 녹화해야 합니다.
+
+**알아 둘 점**
+- 직선 도로 구간을 가정합니다. 곡선 도로나 교차로 전체 모양(교차 도로)은 아직 다루지 않고, 앞쪽 첫 횡단보도 너머의 선은 세지 않습니다.
+- 위에서 본 그림은 멀수록 흐려집니다. 검출 거리(`--max-distance`)는 높이 13 m 카메라 기준 90 m 정도가 적당하고, 그보다 먼 곳은 `--polygon-far`로 곧게 늘립니다.
+- 정지 대기 영역은 교차로를 빠져나가는 쪽 횡단보도에도 만들어질 수 있습니다. 경고 엔진은 이 영역을 "멈춰 기다리는 차를 사고 의심에서 빼는" 데만 씁니다.
+- 회전형 CCTV는 화면이 바뀌면 다시 만들어야 합니다.
+
+## 인식 결과를 좌표로 바꿔 가상환경에 옮기기 (디지털 트윈 재생)
+
+실제 CCTV 검출(`detections.jsonl`)을 실제 노면 좌표(m)와 도로 기준 좌표로 바꾸고, Unity City Lab에 같은 자리로 놓아 VirtualCCTV 시점에서 실제 화면과 비교합니다.
+
+```bash
+python -m detection predict --source simulation\TwinSightSim\RealCctv\geumchon_frames --weights yolov8n.pt --imgsz 1280 --out runs\detection\geumchon
+python mapping/scripts/detections_to_twin.py --detections runs\detection\geumchon\detections.jsonl --calibration simulation\TwinSightSim\RealCctv\geumchon.calibration.json --road-pose simulation\TwinSightSim\RealCctv\geumchon.road_pose.json --road-context simulation\TwinSightSim\RealCctv\geumchon.road_context.json --frames "simulation\TwinSightSim\RealCctv\geumchon_frames\*.jpg"
+python mapping/scripts/compare_twin_render.py simulation\TwinSightSim\Logs\twin_replay\geumchon --virtual-detections <가상 화면 검출>\detections.jsonl
+```
+
+금촌신사거리 CCTV의 캘리브레이션·자세·프레임은 `simulation/TwinSightSim/RealCctv/`에 들어 있어 위 명령을 그대로 다시 실행할 수 있습니다. Unity에서 Play로 재생하는 방법은 [simulation/TwinSightSim/README.md](../simulation/TwinSightSim/README.md)의 "실제 CCTV 인식 결과 재생"에 있습니다.
+
+- 변환: 박스 아래 가운데 → 캘리브레이션 → 실제 노면 좌표(m) → 도로 방향으로 진행한다고 보고 편향 보정(차량 중심) → 도로 중앙선 기준 `along_m`(카메라에서 앞쪽 거리)·`lateral_m`(오른쪽 +). 우측 통행으로 방향(`away`/`toward`)을 정하고, 도로 영역 안인지(`in_road`)와 인식한 차선도 같은 좌표로 넣습니다. 같은 차량을 car·truck·bus로 겹쳐 검출한 박스는 하나로 합칩니다.
+- Unity: **TwinSight > City Lab > Replay Real CCTV Detections...**가 `RealCctv/*.twin.json`을 읽어 VirtualCCTV 위치 기준 `X = 카메라 X + along / 2.92`, `Z = 중앙선 - lateral / 2.92`에 City Lab SUV·Mini를 놓고(트럭·버스는 SUV를 늘림) 인식한 차선을 선으로 그립니다. **모든 프레임 렌더링**은 `Logs/twin_replay/<이름>/`에 화면과 배치값(`manifest.json`)을 저장합니다.
+- 비교: 1) Unity에 놓인 차량 상자를 VirtualCCTV로 투영한 박스 vs 실제 검출 박스, 2) 가상 화면에 YOLO를 다시 돌린 결과 vs 실제 검출, 3) `compare/` 그림(실제 | 가상 | 겹침).
+
+**금촌신사거리 CCTV, Unity에서 확인** (16프레임, 도로 영역 안·화면에 잘리지 않은 차량 55대, 겹친 검출 3개 합친 뒤)
+
+| 항목 | 결과 |
+| --- | --- |
+| 도로 안 차량의 중앙선 기준 위치 | 서울 방향 -2~-3 m·-6~-7 m, 판문점 방향 +2~+3 m·+5~+7 m (실제 차로 가운데 약 ±2.3·±6 m에 모임) |
+| 배치 검사(Unity 차량 상자 투영 vs 실제 박스) | 박스 아래 가운데 거리 중앙값 2.3 px, 90 % 4.0 px, 55대 모두 10 px 이내(최대 5.2 px), IoU 중앙값 0.71 |
+| 화면 검사(가상 화면 YOLO vs 실제 검출) | 55대 중 30대를 25 px 안에서 다시 찾음(가까운 차 94 %, 중간 46 %, 먼 차 17 %), 찾은 차는 거리 중앙값 4.4 px·IoU 0.68 |
+
+- 화면 검사의 놓친 차는 대부분 작은(먼) 차입니다. 위치가 틀린 것이 아니라 YOLOv8n이 City Lab 차량 모델을 작게 보일 때 못 찾는 것으로, 배치 검사에서는 모두 10 px 이내였습니다.
+- 버스·트럭은 SUV를 늘려 놓아 크기가 실제와 달라 차이가 가장 큰 편입니다(트럭 5.2 px).
+- City Lab 도로는 중앙분리대가 없고 차로가 약간 좁아, 실제 안쪽 차로 차량이 City Lab에서는 차로 가운데보다 0.2단위쯤 바깥에 놓입니다. 화면 위치는 같습니다.
+- 길가에 세워 둔 차(도로 영역 밖)는 City Lab에 그 공간이 없어 기본값으로 뺍니다.
+
 ## 결과 읽는 법
 
 객체 위치 오차를 세 가지로 나눠 봅니다. 위에서 아래로 갈수록 실제 파이프라인에 가깝습니다.
@@ -103,6 +211,38 @@ python C:\Users\82103\Desktop\Computer-vision\mapping\scripts\calibrate_homograp
 
 실제 CCTV 파이프라인(`CCTV` 스크립트)은 미터 단위 캘리브레이션이 있으면 같은 보정을 적용해 `detections.jsonl`에 `mapped_xz_corrected`로 기록합니다. 화면 표시와 디지털 트윈용 좌표에도 보정한 값을 씁니다.
 
+### 실제 차량 모델: 유효 길이 학습과 클래스 다수결
+
+위 결과는 바닥까지 차체가 닿는 상자 차량 기준입니다. 팀 차량 3D 에셋(Papabear)으로 바꾸자 **차체 길이로 보정하면 과보정**됐습니다. 실제 차는 범퍼가 아니라 바퀴가 바닥에 닿아서, 박스 아래 가장자리가 차체 끝보다 안쪽에 잡히기 때문입니다. 또 YOLO가 승용차의 27%, 버스의 35%를 `truck`으로 분류해, 잘못된 크기로 보정되는 문제도 있었습니다.
+
+그래서 두 가지를 넣었습니다.
+
+- **유효 길이 학습** (`scripts/calibrate_correction.py`): 가상환경에서 검출 박스와 정답을 짝지어, 정답 위치에 닿으려면 얼마나 밀어야 했는지로 클래스별 유효 길이를 구합니다(관측별로 역산한 뒤 중앙값). 실제 파이프라인과 같은 검출기(YOLO) 박스로 학습하는 것이 기본입니다. 같은 차라도 박스 아래 가장자리가 검출기마다 다르게 잡히기 때문입니다.
+- **추적 ID별 클래스 다수결** (`TrackClassVoter`): 보정에 쓰는 클래스를 지난 프레임까지의 신뢰도 가중 다수결로 정합니다.
+
+```bash
+python mapping/scripts/run_yolo_on_frames.py <저장 폴더> --weights yolov8n.pt --imgsz 1280 --track --classes car,bus,motorcycle,truck --out <저장 폴더>/detections_1280.jsonl
+python mapping/scripts/calibrate_correction.py <저장 폴더> --detections <저장 폴더>/detections_1280.jsonl --road-heading-deg 0
+python mapping/scripts/evaluate_mapping.py <저장 폴더> --detections <저장 폴더>/detections_1280.jsonl --dims-file <저장 폴더>/correction.json --max-distance 80 --road-heading-deg 0
+```
+
+**학습에 안 쓴 차량으로 검증** (Unity 실제 차량 모델 173프레임, 80 m 이내, YOLOv8n 1280 입력). 정답 차량을 추적 ID 홀짝으로 나눠 한쪽으로 학습하고 다른 쪽으로 평가하는 것을 서로 바꿔 두 번 한 합산 결과입니다.
+
+| 방식 | 평균 | 중앙값 | 종방향 편향 | 승용차 | 버스 |
+| --- | --- | --- | --- | --- | --- |
+| 보정 없음 | 1.70 m | 1.37 m | -1.69 m | 1.30 m | 3.60 m |
+| 차체 길이 · 검출 클래스 (이전 방식) | 1.55 m | 1.40 m | +1.53 m | 1.52 m | 1.70 m |
+| 학습 길이 · 검출 클래스 | 0.54 m | 0.24 m | +0.17 m | 0.24 m | 1.96 m |
+| 학습 길이 · 다수결 클래스 | 0.56 m | 0.23 m | +0.35 m | 0.23 m | 2.14 m |
+
+- **승용차는 1.30 m에서 0.23 m로** 줄고 편향이 거의 0이 됩니다. 학습한 유효 길이는 YOLO 박스 기준 승용차 2.1 m, 버스 6.4 m입니다. 차체 길이는 승용차 4.9 m, 버스 11 m입니다.
+- **버스와 다수결 효과는 아직 판단할 수 없습니다.** 173프레임에서 80 m 안에 검출된 차량이 16대뿐이고, 버스가 한쪽 겹에만 있어서 버스는 학습 없이 평가됐습니다. 다수결은 승용차에서 0.24 m에서 0.23 m로 거의 같았습니다.
+- 정답 박스로 학습·검증하면(`--source gt`, 23대) 평균 2.06 m에서 0.41 m로 줄었습니다(승용차 0.16 m, 오토바이 0.26 m, 상자 트럭 0.28 m).
+- 신뢰할 만한 수치를 얻으려면 더 길게 녹화해야 합니다(1,000프레임 이상, 버스·오토바이가 충분히 나오도록).
+- 유효 길이는 카메라 높이·각도에 따라 달라집니다. 실제 CCTV에 쓸 때는 가상 카메라를 그 CCTV의 높이·각도에 맞춰 녹화한 데이터로 학습합니다.
+
+CCTV 파이프라인은 `--correction <correction.json>` 또는 `calibration/correction.json`이 있으면 학습한 유효 길이와 다수결 클래스로 보정합니다. 파일이 없으면 차체 길이로 보정하고 과보정 가능성을 경고합니다.
+
 ## 합성 데이터로 확인한 점
 
 Unity 예제 씬과 같은 배치(높이 8 m, 15° 내려다봄, 세로 화각 45°, 1920×1080)의 합성 데이터에서 80 m 이내를 평가한 결과입니다. Unity 렌더링 결과가 아니므로 경향 확인용입니다.
@@ -137,13 +277,25 @@ mapping/
     synthetic.py    Unity 없이 같은 형식의 합성 데이터 생성
     calibration.py  실제 CCTV 캘리브레이션: 위도·경도 → 미터, leave-one-out 오차, 위에서 본 그림
     correction.py   박스 아래 가운데의 카메라 쪽 편향 보정, 추적 ID별 진행 방향
+    pose.py         노면 기준점으로 카메라 위치·높이·방향·각도·화각 추정, 도로 중앙선 기준 자세
+    road.py         OpenCV 도로·차선·횡단보도·정지선 인식 → road-context.json
+    twin.py         검출·차선 → 도로 중앙선 기준 좌표(디지털 트윈 재생용)
   scripts/
     evaluate_mapping.py       평가 실행
     make_synthetic_export.py  합성 데이터 만들기
-    run_yolo_on_frames.py     가상환경 프레임에 YOLO 실행 → detections.jsonl
+    run_yolo_on_frames.py     가상환경 프레임에 YOLO 실행 → detections.jsonl (--imgsz, --track)
+    calibrate_correction.py   가상환경 정답으로 편향 보정 유효 길이 학습 + 학습에 안 쓴 차량으로 검증
+    estimate_camera_pose.py   카메라 자세 → 가상 CCTV 배치값 (--export로 Unity 카메라 검증)
     calibrate_homography.py   실제 CCTV 화면에서 점 찍기 → calibration/<카메라ID>.json
+    road_relative_pose.py     카메라 자세 → 도로 중앙선 기준 자세(City Lab 배치용)
+    detect_road_context.py    도로·차선·정지선 인식 → road-context.json (경고 엔진 --context)
+    detections_to_twin.py     실제 검출 → 도로 기준 좌표 재생 파일(*.twin.json, Unity 재생용)
+    compare_twin_render.py    Unity 재생 렌더링과 실제 CCTV 화면 비교
   tests/
     test_mapping.py
     test_calibration.py
     test_correction.py
+    test_pose.py
+    test_road.py
+    test_twin.py
 ```

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -8,7 +9,8 @@ namespace TwinSight.Simulation.EditorTools
     /// <summary>
     /// 메뉴 TwinSight > Create Demo Road Scene.
     /// 왕복 4차로 직선 도로, 도로변 가상 CCTV, 노면 기준점 격자, 차로별 차량 스포너, 포트홀을 가진 예제 씬을 만든다.
-    /// 상자 모양 차량은 공간 매핑 검증용이다. YOLO로 평가하려면 스포너의 프리팹을 실제 차량 3D 에셋으로 바꾼다.
+    /// TwinSight > Build Vehicle Prefabs로 만든 실제 차량 모델(Assets/TwinSight/Vehicles)이 있으면 그것을 쓰고,
+    /// 없으면 상자 모양 차량을 쓴다. 트럭 모델이 없으면 트럭은 상자 모델로 채운다.
     /// 다시 실행하면 Assets/TwinSight/Demo 아래 파일을 덮어쓴다.
     /// </summary>
     public static class DemoSceneBuilder
@@ -41,11 +43,12 @@ namespace TwinSight.Simulation.EditorTools
 
             var car = CreateCarPrefab(carPaint, glass);
             var truck = CreateTruckPrefab(truckPaint, glass);
+            var vehicles = BuildSpawnEntries(car, truck);
             // 오른쪽 차로는 카메라에서 멀어지고(+z), 왼쪽 차로는 다가온다(-z)
-            BuildLane("Lane_R1", +0.5f * LaneWidth, +1, 11, car, truck);
-            BuildLane("Lane_R2", +1.5f * LaneWidth, +1, 12, car, truck);
-            BuildLane("Lane_L1", -0.5f * LaneWidth, -1, 13, car, truck);
-            BuildLane("Lane_L2", -1.5f * LaneWidth, -1, 14, car, truck);
+            BuildLane("Lane_R1", +0.5f * LaneWidth, +1, 11, vehicles);
+            BuildLane("Lane_R2", +1.5f * LaneWidth, +1, 12, vehicles);
+            BuildLane("Lane_L1", -0.5f * LaneWidth, -1, 13, vehicles);
+            BuildLane("Lane_L2", -1.5f * LaneWidth, -1, 14, vehicles);
 
             BuildPothole(new Vector3(1.2f, 0f, 25f), pothole);
             BuildPothole(new Vector3(-4.6f, 0f, 48f), pothole);
@@ -118,7 +121,7 @@ namespace TwinSight.Simulation.EditorTools
             return SavePrefab(root);
         }
 
-        static void BuildLane(string name, float x, int direction, int seed, GameObject car, GameObject truck)
+        static void BuildLane(string name, float x, int direction, int seed, TrafficSpawner.Entry[] vehicles)
         {
             var lane = new GameObject(name);
             var path = new GameObject("Path").transform;
@@ -134,11 +137,51 @@ namespace TwinSight.Simulation.EditorTools
             var spawner = lane.AddComponent<TrafficSpawner>();
             spawner.path = path;
             spawner.seed = seed;
-            spawner.prefabs = new[]
+            spawner.prefabs = vehicles;
+        }
+
+        /// <summary>
+        /// 차로 스포너가 쓸 차량 목록. Assets/TwinSight/Vehicles 의 프리팹을 클래스별 비율로 섞고,
+        /// 하나도 없으면 상자 모양 차량을 쓴다.
+        /// </summary>
+        static TrafficSpawner.Entry[] BuildSpawnEntries(GameObject boxCar, GameObject boxTruck)
+        {
+            var byClass = new Dictionary<string, List<GameObject>>();
+            if (AssetDatabase.IsValidFolder(VehiclePrefabBuilder.OutputRoot))
             {
-                new TrafficSpawner.Entry { prefab = car, className = "car", weight = 4f },
-                new TrafficSpawner.Entry { prefab = truck, className = "truck", weight = 1f },
-            };
+                foreach (var guid in AssetDatabase.FindAssets("t:Prefab", new[] { VehiclePrefabBuilder.OutputRoot }))
+                {
+                    var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
+                    if (prefab == null || !prefab.TryGetComponent(out TrackedObject tracked)) continue;
+                    if (!byClass.TryGetValue(tracked.className, out var list))
+                        byClass[tracked.className] = list = new List<GameObject>();
+                    list.Add(prefab);
+                }
+            }
+
+            if (byClass.Count == 0)
+            {
+                return new[]
+                {
+                    new TrafficSpawner.Entry { prefab = boxCar, className = "car", weight = 4f },
+                    new TrafficSpawner.Entry { prefab = boxTruck, className = "truck", weight = 1f },
+                };
+            }
+
+            if (!byClass.ContainsKey("truck")) byClass["truck"] = new List<GameObject> { boxTruck };
+            // 클래스별 등장 비율. 같은 클래스 안에서는 모델마다 고르게 나눈다
+            var share = new Dictionary<string, float> { { "car", 8f }, { "bus", 1.5f }, { "motorcycle", 1f }, { "truck", 1f } };
+            var entries = new List<TrafficSpawner.Entry>();
+            var summary = new List<string>();
+            foreach (var pair in byClass)
+            {
+                float weight = (share.TryGetValue(pair.Key, out float w) ? w : 1f) / pair.Value.Count;
+                foreach (var prefab in pair.Value)
+                    entries.Add(new TrafficSpawner.Entry { prefab = prefab, className = pair.Key, weight = weight });
+                summary.Add($"{pair.Key} {pair.Value.Count}");
+            }
+            Debug.Log($"TwinSight: 예제 씬 차량 모델 - {string.Join(", ", summary)}");
+            return entries.ToArray();
         }
 
         static void BuildPothole(Vector3 position, Material material)
@@ -198,7 +241,7 @@ namespace TwinSight.Simulation.EditorTools
             return material;
         }
 
-        static void EnsureFolder(string path)
+        internal static void EnsureFolder(string path)
         {
             if (AssetDatabase.IsValidFolder(path)) return;
             string parent = Path.GetDirectoryName(path).Replace('\\', '/');

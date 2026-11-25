@@ -15,12 +15,20 @@
 
 차량 진행 방향은 (1) 추적 ID로 구한 이동 방향, (2) 도로 방향, (3) 둘 다 없으면 깊이 방향과 같다고
 가정(s = 길이/2)하는 순서로 쓴다.
+
+여기서 '길이'는 차체 길이가 아니라 박스 아래 가장자리를 만드는 **유효 길이**다. 실제 차는 범퍼가 아니라
+바퀴가 바닥에 닿아 차체 길이보다 짧게 잡힌다. 가상환경 정답으로 클래스별 유효 길이를 학습해 쓴다
+(fit_effective_dimensions, scripts/calibrate_correction.py).
+검출기가 같은 차에 프레임마다 다른 클래스를 붙이면 보정 크기도 흔들리므로, 추적 ID별 다수결(TrackClassVoter)로
+클래스를 정한다.
 """
 
 from __future__ import annotations
 
+import json
 import math
-from collections import deque
+from collections import Counter, defaultdict, deque
+from pathlib import Path
 
 import numpy as np
 
@@ -45,6 +53,15 @@ def parse_dimensions(text: str | None) -> dict[str, tuple[float, float]]:
         name, size = item.split("=")
         length, width = size.lower().split("x")
         dims[name.strip()] = (float(length), float(width))
+    return dims
+
+
+def load_dimensions_file(path: str | Path) -> dict[str, tuple[float, float]]:
+    """calibrate_correction.py가 만든 JSON의 클래스별 유효 크기를 기본값에 덮어쓴다."""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    dims = dict(DEFAULT_DIMENSIONS)
+    for name, size in data["dimensions"].items():
+        dims[name] = (float(size[0]), float(size[1]))
     return dims
 
 
@@ -139,3 +156,77 @@ class TrackHeadings:
     def get(self, track_id) -> np.ndarray | None:
         """위치를 기록하지 않고 마지막으로 구한 진행 방향만 돌려준다."""
         return self._heading.get(track_id)
+
+
+class TrackClassVoter:
+    """추적 ID별로 지금까지 받은 클래스를 신뢰도 가중 다수결로 정한다(지난 프레임까지만 쓰므로 실시간에도 쓸 수 있다).
+    추적 ID가 없으면 받은 클래스를 그대로 돌려준다."""
+
+    def __init__(self):
+        self._votes: dict[object, Counter] = defaultdict(Counter)
+
+    def update(self, track_id, class_name: str | None, confidence: float = 1.0) -> str | None:
+        if track_id is None or class_name is None:
+            return class_name
+        votes = self._votes[track_id]
+        votes[class_name] += max(float(confidence), 1e-3)
+        return max(votes, key=votes.get)
+
+
+def required_support(H: np.ndarray, bbox_xyxy, gt_xz) -> tuple[float, np.ndarray] | None:
+    """박스 아래 가운데를 정답 위치로 옮기려면 필요한 깊이 방향 반폭 s와, 그때의 깊이 방향.
+
+    보정은 추정점을 O에서 뻗은 직선 방향으로 s / cos(α)만큼 민다(α: 그 직선과 깊이 방향 사이 각).
+    정답까지의 변위를 그 직선에 투영해 최소제곱으로 s를 구한다. 계산할 수 없으면 None.
+    """
+    x1, _, x2, y2 = bbox_xyxy
+    pixel = ((x1 + x2) / 2.0, y2)
+    raw = pixels_to_ground(H, np.array([pixel]))[0]
+    origin = column_convergence_point(H)
+    if origin is None or not np.all(np.isfinite(raw)):
+        return None
+    direction = depth_direction(H, pixel, origin, raw)
+    if direction is None:
+        return None
+    ray = raw - origin
+    norm = float(np.linalg.norm(ray))
+    if norm < 1e-6 or float(ray @ direction) <= 1e-6:
+        return None
+    unit = ray / norm
+    return float((np.asarray(gt_xz, dtype=float) - raw) @ unit) * float(unit @ direction), direction
+
+
+def fit_effective_dimensions(samples, base_dimensions: dict[str, tuple[float, float]] | None = None,
+                             min_samples: int = 20, min_alignment: float = 0.5) -> dict[str, dict]:
+    """클래스별 유효 길이를 구한다. 폭은 기본값으로 두고 길이만 맞춘다.
+
+    samples: (클래스, 필요한 반폭 s, 깊이 방향, 진행 방향 또는 None) 목록.
+    s = 길이/2·|h·f| + 폭/2·|h⊥·f| 에서 관측마다 길이를 거꾸로 구하고, 이상치에 강하도록 중앙값을 쓴다.
+    차량이 깊이 방향과 거의 수직(|h·f| < min_alignment)이면 길이가 잘 드러나지 않아 뺀다.
+    반환: {클래스: {"length", "width", "n", "iqr"}}. 표본이 min_samples보다 적은 클래스는 빠진다.
+    """
+    base = base_dimensions or DEFAULT_DIMENSIONS
+    lengths: dict[str, list[float]] = defaultdict(list)
+    for class_name, support, direction, heading in samples:
+        if class_name not in base:
+            continue
+        h = direction if heading is None else np.asarray(heading, dtype=float)
+        along = abs(float(h @ direction))
+        if along < min_alignment:
+            continue
+        across = abs(float(np.array([-h[1], h[0]]) @ direction))
+        width = base[class_name][1]
+        lengths[class_name].append(2.0 * (support - 0.5 * width * across) / along)
+
+    result = {}
+    for class_name, values in lengths.items():
+        if len(values) < min_samples:
+            continue
+        q1, median, q3 = np.percentile(values, [25, 50, 75])
+        result[class_name] = {
+            "length": float(median),
+            "width": float(base[class_name][1]),
+            "n": len(values),
+            "iqr": float(q3 - q1),
+        }
+    return result

@@ -24,6 +24,7 @@ def main() -> None:
     parser.add_argument("export_dir", type=Path)
     parser.add_argument("--weights", default="yolo11n.pt")
     parser.add_argument("--conf", type=float, default=0.25)
+    parser.add_argument("--imgsz", type=int, default=640, help="YOLO 입력 크기. 크게 하면 먼 차량을 더 잘 찾지만 느리다")
     parser.add_argument("--classes", help="남길 클래스 이름, 쉼표로 구분 (예: car,truck,bus)")
     parser.add_argument("--device", default=None, help="cpu, 0 등. 비우면 ultralytics가 고른다")
     parser.add_argument("--track", action="store_true", help="ByteTrack으로 객체 ID를 붙인다")
@@ -41,7 +42,7 @@ def main() -> None:
     model = YOLO(args.weights)
     keep = set(args.classes.split(",")) if args.classes else None
     out_path = args.out or args.export_dir / "detections.jsonl"
-    options = {"conf": args.conf, "verbose": False}
+    options = {"conf": args.conf, "imgsz": args.imgsz, "verbose": False}
     if args.device is not None:
         options["device"] = args.device
 

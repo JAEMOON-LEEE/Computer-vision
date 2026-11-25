@@ -71,3 +71,9 @@ frontend/.env
 .env.*
 !.env.example
 /training_artifacts/**/*.building.zip
+# 발표용 WebGL 빌드 (simulation/.../WebDemoBuild.cs가 생성, 용량이 커서 커밋하지 않음)
+frontend/public/unity/
+simulation/TwinSightSim/Assets/StreamingAssets/RealCctv/
+simulation/TwinSightSim/Assets/StreamingAssets/RealCctv.meta
+# 시연 화면의 실제 CCTV 참고 영상 (팀 공유 드라이브 "CCTV영상"에서 받는다)
+frontend/public/demo-videos/
