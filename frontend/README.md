@@ -40,3 +40,15 @@ WebGL 빌드(약 220 MB)는 용량이 커서 Git에 없습니다. 각자 만들�
 `-rebuildCityLab`은 City Lab 씬을 최신 코드로 다시 만듭니다(씬이 이미 최신이면 빼도 됩니다). 에디터에서는 **TwinSight → Web → Build WebGL Demo**입니다. 첫 빌드는 WebGL용 에셋 가져오기 때문에 10분 이상 걸립니다. Unity WebGL 모듈(Unity Hub → 설치 → 모듈 추가 → WebGL Build Support)이 필요합니다.
 
 빌드를 새로 만든 뒤에는 `npm run dev`를 다시 시작해야 새 파일이 서빙됩니다(Vite는 이 폴더를 감시하지 않습니다).
+
+사고 버튼을 누르면 Unity 화면 왼쪽 아래에 같은 종류의 실제 CCTV 영상이 함께 재생됩니다(위쪽 "실제 CCTV 영상" 버튼으로 끄고 켭니다). 영상은 팀 공유 드라이브 "CCTV영상" 폴더의 파일을 `frontend/public/demo-videos/`에 아래 이름으로 넣습니다(Git 제외). 파일이 없으면 패널이 나타나지 않습니다.
+
+| 파일 | 드라이브 원본 |
+| --- | --- |
+| `pothole.mp4` | 포트홀.mp4 |
+| `debris.mp4` | 낙하물.mp4 |
+| `delineator.mp4` | 시선 윧봉 손상.mp4 |
+| `guardrail.mp4` | 가드레일 손상.mp4 |
+| `manhole.mp4` | 맨홀 뚜껑 손상.mp4 |
+
+이 영상은 비교용 참고 자료이며 검출 결과가 아닙니다. 맨홀 영상은 KBS 뉴스 화면이니 발표 자료에 출처를 적습니다.

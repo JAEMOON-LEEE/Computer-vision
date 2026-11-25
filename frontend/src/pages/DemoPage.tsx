@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   buildExists,
   offProgress,
@@ -73,6 +73,21 @@ const EVENT_TEXT: Record<string, string> = {
   manhole_sunken: "맨홀 주변 노면이 내려앉음",
 };
 
+// 같은 종류의 실제 CCTV 영상(팀 공유 드라이브 "CCTV영상", frontend/public/demo-videos, Git 제외).
+// Unity 장면과 나란히 보여 주는 참고 영상이며 검출 결과가 아니다.
+const REAL_VIDEOS: Record<string, { src: string; label: string; source: string }> = {
+  Pothole: { src: "/demo-videos/pothole.mp4", label: "포트홀", source: "도로 CCTV (융건릉입구)" },
+  FallingDebris: { src: "/demo-videos/debris.mp4", label: "낙하물", source: "고속도로 CCTV (서해안선 서평택)" },
+  Delineators: { src: "/demo-videos/delineator.mp4", label: "시선유도봉 손상", source: "도로 CCTV (학술림삼거리)" },
+  Guardrail: { src: "/demo-videos/guardrail.mp4", label: "가드레일 손상", source: "도로 영상" },
+  Manhole: { src: "/demo-videos/manhole.mp4", label: "맨홀 뚜껑 손상", source: "KBS 뉴스 영상" },
+};
+
+function realVideo(scenario?: string, variant?: string) {
+  if (scenario === "RoadsideDamage") return variant === "Delineators" || !variant ? REAL_VIDEOS.Delineators : REAL_VIDEOS.Guardrail;
+  return scenario ? REAL_VIDEOS[scenario] : undefined;
+}
+
 const CAMERAS = [
   { key: "incident", label: "사고 지점" },
   { key: "orbit", label: "회전" },
@@ -118,7 +133,7 @@ function SignIcon({ kind }: { kind: ScenarioKey }) {
   );
 }
 
-function UnityStage({ twin }: { twin: boolean }) {
+function UnityStage({ twin, inset }: { twin: boolean; inset?: ReactNode }) {
   const host = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"checking" | "missing" | "loading" | "ready" | "error">("checking");
   const [progress, setProgress] = useState(0);
@@ -148,7 +163,10 @@ function UnityStage({ twin }: { twin: boolean }) {
 
   return (
     <div className={twin ? "stage twin" : "stage"}>
-      <div ref={host} className="stage-canvas" />
+      <div className="stage-canvas">
+        <div ref={host} className="canvas-host" />
+        {inset}
+      </div>
       {state !== "ready" && (
         <div className="stage-cover">
           {state === "checking" && <p>Unity 빌드를 찾는 중</p>}
@@ -221,6 +239,8 @@ export function DemoPage() {
   const mode = status?.mode ?? "sim";
   const night = status?.night ?? false;
   const current = SCENARIOS.find((s) => s.key === (chosen ?? status?.scenario));
+  const [showReal, setShowReal] = useState(true);
+  const real = realVideo(current?.key, status?.variant);
 
   const trigger = (key: ScenarioKey) => {
     setChosen(key);
@@ -256,9 +276,29 @@ export function DemoPage() {
             <button type="button" aria-pressed={!night} onClick={() => send("SetNight", "0")}>주간</button>
             <button type="button" aria-pressed={night} onClick={() => send("SetNight", "1")}>야간</button>
           </div>
+          {mode === "sim" && (
+            <div className="segmented small" aria-label="실제 영상">
+              <button type="button" aria-pressed={showReal} onClick={() => setShowReal((v) => !v)}>
+                실제 CCTV 영상 {showReal ? "켬" : "끔"}
+              </button>
+            </div>
+          )}
         </div>
 
-        <UnityStage twin={mode === "twin"} />
+        <UnityStage
+          twin={mode === "twin"}
+          inset={
+            mode === "sim" && showReal && real ? (
+              <figure className="real-inset">
+                <video key={real.src} src={real.src} autoPlay muted loop playsInline onError={() => setShowReal(false)} />
+                <figcaption>
+                  <b>실제 CCTV · {real.label}</b>
+                  <span>{real.source}</span>
+                </figcaption>
+              </figure>
+            ) : null
+          }
+        />
 
         {mode === "twin" && (
           <div className="twin-strip">
