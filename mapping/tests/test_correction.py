@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import json
 import math
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -14,12 +16,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from twinsight_mapping import fit_homography, load_export  # noqa: E402
 from twinsight_mapping.correction import (  # noqa: E402
+    TrackClassVoter,
     TrackHeadings,
     bearing_to_vector,
     column_convergence_point,
     correct_bottom_center,
+    fit_effective_dimensions,
     footprint_support,
+    load_dimensions_file,
     parse_dimensions,
+    required_support,
     touches_border,
 )
 from twinsight_mapping.evaluate import fit_from_control_points, object_errors, summarize_rows  # noqa: E402
@@ -99,6 +105,34 @@ class CorrectionTest(unittest.TestCase):
         self.assertFalse(touches_border([10, 10, 50, 60], 100, 100))
 
 
+class LearningTest(unittest.TestCase):
+    def test_voter_uses_confidence_weighted_majority(self):
+        voter = TrackClassVoter()
+        self.assertEqual(voter.update(3, "car", 0.9), "car")
+        self.assertEqual(voter.update(3, "truck", 0.4), "car")
+        self.assertEqual(voter.update(3, "truck", 0.6), "truck")
+        self.assertEqual(voter.update(None, "bus", 0.9), "bus")
+
+    def test_effective_length_recovers_box_length(self):
+        _, cam, H = _camera_and_homography()
+        road = bearing_to_vector(0)
+        samples = []
+        for x in (-5.25, -1.75, 1.75, 5.25):
+            for z in range(15, 75, 5):
+                support, direction = required_support(H, _car_box(cam, (x, float(z))), (x, float(z)))
+                samples.append(("car", support, direction, road))
+        fitted = fit_effective_dimensions(samples, {"car": (4.6, 1.8)}, min_samples=10)
+        self.assertAlmostEqual(fitted["car"]["length"], 4.5, delta=0.25)
+
+    def test_load_dimensions_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "correction.json"
+            path.write_text(json.dumps({"dimensions": {"car": [2.8, 1.85]}}), encoding="utf-8")
+            dims = load_dimensions_file(path)
+            self.assertEqual(dims["car"], (2.8, 1.85))
+            self.assertIn("bus", dims)
+
+
 class EndToEndTest(unittest.TestCase):
     def test_correction_removes_most_of_the_bias(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -113,6 +147,20 @@ class EndToEndTest(unittest.TestCase):
                 corrected = summary[mode]["overall"]
                 self.assertLess(corrected["mean"], 0.25 * raw["mean"], mode)
                 self.assertLess(abs(corrected["longitudinal_bias"]), 0.3, mode)
+
+
+class CalibrateScriptTest(unittest.TestCase):
+    def test_heldout_calibration_on_box_vehicles(self):
+        scripts = Path(__file__).resolve().parents[1] / "scripts"
+        with tempfile.TemporaryDirectory() as tmp:
+            export = generate(SceneConfig(frames=120), Path(tmp) / "export")
+            subprocess.run([sys.executable, str(scripts / "calibrate_correction.py"), str(export), "--source", "gt",
+                            "--road-heading-deg", "0"], check=True, capture_output=True)
+            data = json.loads((export / "correction.json").read_text(encoding="utf-8"))
+            self.assertAlmostEqual(data["dimensions"]["car"][0], 4.5, delta=0.3)
+            raw = data["heldout"]["보정 없음"]["mean"]
+            learned = data["heldout"]["학습 길이 · 다수결 클래스"]["mean"]
+            self.assertLess(learned, 0.2 * raw)
 
 
 if __name__ == "__main__":

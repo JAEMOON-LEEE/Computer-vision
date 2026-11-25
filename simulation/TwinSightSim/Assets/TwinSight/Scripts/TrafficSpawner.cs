@@ -33,6 +33,8 @@ namespace TwinSight.Simulation
         public TrafficSignalController signals;
 
         System.Random random;
+        // Play 중에 스크립트가 다시 컴파일되면 직렬화되지 않는 random이 비므로 필요할 때 다시 만든다
+        System.Random Rng => random ??= new System.Random(seed);
         Transform[] waypoints;
         float laneSpeed;
         float nextSpawnTime;
@@ -99,7 +101,7 @@ namespace TwinSight.Simulation
             foreach (var e in prefabs) if (e.prefab != null) total += e.weight;
             if (total <= 0f) return null;
 
-            float roll = (float)random.NextDouble() * total;
+            float roll = (float)Rng.NextDouble() * total;
             foreach (var e in prefabs)
             {
                 if (e.prefab == null) continue;
@@ -109,7 +111,7 @@ namespace TwinSight.Simulation
             return null;
         }
 
-        float Range(Vector2 r) => r.x + (float)random.NextDouble() * (r.y - r.x);
+        float Range(Vector2 r) => r.x + (float)Rng.NextDouble() * (r.y - r.x);
 
         void OnDrawGizmos()
         {
