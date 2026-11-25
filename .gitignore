@@ -75,3 +75,5 @@ frontend/.env
 frontend/public/unity/
 simulation/TwinSightSim/Assets/StreamingAssets/RealCctv/
 simulation/TwinSightSim/Assets/StreamingAssets/RealCctv.meta
+# 시연 화면의 실제 CCTV 참고 영상 (팀 공유 드라이브 "CCTV영상"에서 받는다)
+frontend/public/demo-videos/
