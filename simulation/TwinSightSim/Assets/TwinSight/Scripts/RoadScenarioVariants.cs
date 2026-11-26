@@ -14,7 +14,7 @@ namespace TwinSight.Simulation
         {
             BeginEpisode(RoadScenario.Normal);
             Current = RoadScenario.Pothole;
-            SpawnPotholeVariant(variant, 12f, -1.06f);
+            SpawnPotholeVariant(variant, Range(incidentXRange.x, incidentXRange.y), Range(0, 1) > .5f ? -1.06f : .24f);
         }
 
         void SpawnPotholeVariant(PotholeVariant variant, float x, float lane)
@@ -36,7 +36,7 @@ namespace TwinSight.Simulation
         {
             BeginEpisode(RoadScenario.Normal);
             Current = RoadScenario.FallingDebris;
-            SpawnDebrisVariant(variant, 12f, -1.06f);
+            SpawnDebrisVariant(variant, Range(incidentXRange.x, incidentXRange.y), Range(0, 1) > .5f ? -1.06f : .24f);
         }
 
         void SpawnDebrisVariant(DebrisVariant variant, float x, float lane)

@@ -64,8 +64,10 @@ namespace TwinSight.Simulation
                     Progress = stage.Item1 + " " + i + "/" + stage.Item3;
                     foreach (var extra in extras) if (extra != null) { extra.SetActive(false); Destroy(extra); }
                     extras.Clear();
-                    var scenario = (RoadScenario)(i % 5);
-                    director.BeginEpisode(scenario);
+                    var scenario = (i % 3) == 0 ? RoadScenario.Normal : (i % 3) == 1 ? RoadScenario.Pothole : RoadScenario.FallingDebris;
+                    if (scenario == RoadScenario.Pothole) director.BeginPotholeEpisode((PotholeVariant)((i / 3) % 4));
+                    else if (scenario == RoadScenario.FallingDebris) director.BeginDebrisEpisode((DebrisVariant)((i / 3) % 4));
+                    else director.BeginEpisode(scenario);
                     // Keep the restored reference CCTV pose fixed, including validation/test.
                     if (nightCapture) lighting.Apply(SimulationTimeOfDay.Night, seed * 1000 + i);
                     else {
@@ -77,7 +79,7 @@ namespace TwinSight.Simulation
                         if (obj != null && (obj.className == "pothole" || obj.className == "debris"))
                             obj.transform.localScale *= Range(0.8f, 1.3f);
                     // Keep the added vehicles clear of hazards and deliberate collision actors.
-                    int cars = scenario == RoadScenario.Normal ? i / 5 % 4 : (i % 2);
+                    int cars = scenario == RoadScenario.Normal ? i / 3 % 4 : (i % 2);
                     for (int c = 0; c < cars; c++)
                     {
                         Vector3 pos = new Vector3(Range(-12f, 21f), 0.507f, 0.24f);
@@ -93,10 +95,8 @@ namespace TwinSight.Simulation
                         person.transform.localScale = Vector3.one * Range(0.9f, 1.15f);
                         person.SetActive(true); extras.Add(person);
                     }
-                    // Capture settled debris and actual collision aftermath, not the scheduled event.
+                    // Capture settled debris.
                     if (scenario == RoadScenario.FallingDebris) yield return new WaitForSeconds(1.3f);
-                    else if (scenario == RoadScenario.VehicleCollision || scenario == RoadScenario.StructureCollision)
-                        yield return new WaitForSeconds(distantDetailPass && i % 3 == 0 ? 0.4f : 2.3f);
                     else yield return null;
                     yield return null;
                     exporter.CaptureOneForDataset();

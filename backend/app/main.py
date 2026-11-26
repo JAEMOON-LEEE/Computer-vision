@@ -12,7 +12,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.db import init_db
-from backend.app.routers import alerts, cameras, detections, ingest, ws, lab
+from backend.app.routers import alerts, cameras, demo, detections, ingest, ws, lab
 
 
 @asynccontextmanager
@@ -46,6 +46,7 @@ app.include_router(ingest.router)
 app.include_router(alerts.router)
 app.include_router(ws.router)
 app.include_router(lab.router)
+app.include_router(demo.router)
 
 
 @app.get("/health", tags=["health"])

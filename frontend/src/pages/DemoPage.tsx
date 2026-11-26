@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   buildExists,
   offProgress,
@@ -9,49 +9,60 @@ import {
   type UnityEvent,
   type UnityStatus,
 } from "../unity";
+import { ALERT_KO, CLASS_KO, FRAME_W, isAbnormal, useLiveDetection, type DemoDetection } from "../demoDetection";
+import { API_BASE } from "../api";
 import "../demo.css";
 
 type ScenarioKey = "Normal" | "Pothole" | "FallingDebris" | "RoadsideDamage" | "Manhole";
-type Verdict = { text: string; ok: boolean };
+type Verdict = { label: string; text: string; ok: boolean };
 
-// 검증 결과는 2026-11 팀 보고 기준(합성 영상). Unity 화면의 사고는 시뮬레이션이며 모델 경고가 아니다.
+// 검증 수치: 팀 보고(2026-11, 합성 영상)와 실제 CCTV 참고 영상 점검(2026-11-25, docs/validation/demo-real-cctv-check-20261125.json).
+// Unity의 사고 장면은 시뮬레이션이다. "모델 경고"만 검출 모델이 낸 결과다.
+const REAL_CHECK: Verdict = { label: "실제 CCTV 영상", text: "경고 0건", ok: false };
 const SCENARIOS: {
   key: ScenarioKey;
   name: string;
   action: string;
-  warning: string;
-  day: Verdict | null;
-  night: Verdict | null;
+  model: string;
+  results: Verdict[];
+  note: string;
   variants: { cmd: string; label: string }[];
 }[] = [
-  { key: "Pothole", name: "포트홀", action: "차로에 포트홀 만들기", warning: "road_damage",
-    day: { text: "통과", ok: true }, night: { text: "통과", ok: true },
+  { key: "Pothole", name: "포트홀", action: "차로에 포트홀 만들기", model: "주야간 모델 · road_damage",
+    results: [{ label: "주간 합성", text: "통과", ok: true }, { label: "야간 합성", text: "통과", ok: true }, REAL_CHECK],
+    note: "합성 시나리오 경고는 통과했지만 실제 영상에서는 포트홀을 찾지 못했습니다.",
     variants: [
       { cmd: "Pothole:Small", label: "작은" }, { cmd: "Pothole:Wide", label: "넓은" },
       { cmd: "Pothole:Elongated", label: "길쭉한" }, { cmd: "Pothole:Cluster", label: "여러 개" },
     ] },
-  { key: "FallingDebris", name: "낙하물", action: "콘크리트 낙하물 떨어뜨리기", warning: "road_debris",
-    day: { text: "통과", ok: true }, night: { text: "통과", ok: true },
+  { key: "FallingDebris", name: "낙하물", action: "콘크리트 낙하물 떨어뜨리기", model: "주야간 모델 · road_debris",
+    results: [{ label: "주간 합성", text: "통과", ok: true }, { label: "야간 합성", text: "통과", ok: true }, REAL_CHECK],
+    note: "실제 영상에서는 76프레임 중 11프레임만 낙하물로 보아 경고 조건(연속 검출)에 못 미쳤습니다.",
     variants: [
       { cmd: "Debris:SmallBlock", label: "작은 블록" }, { cmd: "Debris:LargeBlock", label: "큰 블록" },
       { cmd: "Debris:FlatSlab", label: "판재" }, { cmd: "Debris:MultipleBlocks", label: "여러 개" },
     ] },
-  { key: "RoadsideDamage", name: "시설물 파손", action: "시선유도봉·가드레일 파손", warning: "",
-    day: null, night: null,
+  { key: "RoadsideDamage", name: "시설물 파손", action: "시선유도봉·가드레일 파손", model: "시설물 실험 모델(PR #4) · facility_damage",
+    results: [{ label: "합성 AP50", text: "0.69~0.88", ok: true }, { label: "정상 가드레일 오경고", text: "39/100", ok: false }, REAL_CHECK],
+    note: "AP50은 유도봉 파손 0.693·쓰러짐 0.777·가드레일 0.880(합성 시험). 오경고는 단일 프레임 기준이며 시연은 연속 검출로 거릅니다.",
     variants: [
-      { cmd: "Roadside:Delineators", label: "시선유도봉 쓰러짐" }, { cmd: "Roadside:GuardrailBent", label: "가드레일 휨" },
-      { cmd: "Roadside:GuardrailBroken", label: "가드레일 떨어짐" },
+      { cmd: "Facility:DelineatorFallen", label: "유도봉 쓰러짐" }, { cmd: "Facility:DelineatorBroken", label: "유도봉 부러짐" },
+      { cmd: "Facility:GuardrailBent", label: "가드레일 휨" }, { cmd: "Facility:GuardrailBroken", label: "가드레일 끊어짐" },
+      { cmd: "Facility:GuardrailDisplaced", label: "가드레일 밀림" },
+      { cmd: "Facility:DelineatorNormal", label: "정상 유도봉" }, { cmd: "Facility:GuardrailNormal", label: "정상 가드레일" },
     ] },
-  { key: "Manhole", name: "맨홀", action: "맨홀 뚜껑 이상", warning: "",
-    day: null, night: null,
+  { key: "Manhole", name: "맨홀", action: "맨홀 뚜껑 이상", model: "시설물 실험 모델(PR #4) · manhole_abnormal",
+    results: [{ label: "합성 AP50", text: "0.720", ok: true }, { label: "정상 맨홀 오경고", text: "19/80", ok: false }, REAL_CHECK],
+    note: "오경고는 단일 프레임 기준이며 시연은 연속 검출로 거릅니다. 실제 영상(뉴스 화면)에서는 맨홀을 찾지 못했습니다.",
     variants: [
-      { cmd: "Manhole:Open", label: "뚜껑 열림" }, { cmd: "Manhole:Raised", label: "뚜껑 들뜸" },
-      { cmd: "Manhole:Sunken", label: "주변 침하" },
+      { cmd: "Facility:ManholeOpen", label: "뚜껑 없음" }, { cmd: "Facility:ManholeDisplaced", label: "뚜껑 밀림" },
+      { cmd: "Facility:ManholeDisplacedSmall", label: "조금 밀림" }, { cmd: "Facility:ManholeNormal", label: "정상 맨홀" },
     ] },
 ];
 
 const EVENT_TEXT: Record<string, string> = {
   episode_started: "시나리오 시작",
+  facility_setup: "시설물 장면 구성",
   pothole_created: "포트홀 생성",
   debris_dropped: "낙하물 떨어지기 시작",
   debris_landed: "낙하물이 노면에 닿음",
@@ -72,6 +83,32 @@ const EVENT_TEXT: Record<string, string> = {
   manhole_cover_raised: "맨홀 뚜껑이 들뜸",
   manhole_sunken: "맨홀 주변 노면이 내려앉음",
 };
+
+// 같은 종류의 실제 CCTV 영상(팀 공유 드라이브 "CCTV영상", frontend/public/demo-videos, Git 제외).
+// Unity 장면과 나란히 보여 주는 참고 영상이며 검출 결과가 아니다.
+const REAL_VIDEOS: Record<string, { src: string; label: string; source: string }> = {
+  Pothole: { src: "/demo-videos/pothole.mp4", label: "포트홀", source: "도로 CCTV (융건릉입구)" },
+  FallingDebris: { src: "/demo-videos/debris.mp4", label: "낙하물", source: "고속도로 CCTV (서해안선 서평택)" },
+  Delineators: { src: "/demo-videos/delineator.mp4", label: "시선유도봉 손상", source: "도로 CCTV (학술림삼거리)" },
+  Guardrail: { src: "/demo-videos/guardrail.mp4", label: "가드레일 손상", source: "도로 영상" },
+  Manhole: { src: "/demo-videos/manhole.mp4", label: "맨홀 뚜껑 손상", source: "KBS 뉴스 영상" },
+};
+
+function realVideo(scenario?: string, variant?: string) {
+  if (scenario === "RoadsideDamage") return !variant || variant.startsWith("Delineator") ? REAL_VIDEOS.Delineators : REAL_VIDEOS.Guardrail;
+  return scenario ? REAL_VIDEOS[scenario] : undefined;
+}
+
+const DETECT_X = -3;
+
+// 영상 재현 탭: 실제 CCTV 영상과 같은 구도의 Unity 재현(simulation/TwinSightSim/RealCctv/<폴더>)
+const CASES: { key: string; label: string; video: string; replay: string; start?: number; end?: number; caption: string }[] = [
+  { key: "pothole", label: "포트홀", video: "/demo-videos/pothole.mp4", replay: "RealCctv/yunggeon", caption: "융건릉입구 · 비 오는 날(물보라 지점 = 물 고인 포트홀 추정)" },
+  { key: "debris", label: "낙하물", video: "/demo-videos/debris_youtube.mp4", replay: "RealCctv/seonpyeong", start: 0, end: 130, caption: "남해선 선평교 · 적재물 낙하(고속도로 CCTV, 유튜브 오토스)" },
+  { key: "guardrail", label: "가드레일", video: "/demo-videos/guardrail.mp4", replay: "RealCctv/guardrail", caption: "고속도로 · 차량이 중앙 가드레일 충돌" },
+  { key: "delineator", label: "시선유도봉", video: "/demo-videos/delineator.mp4", replay: "RealCctv/haksulrim", caption: "학술림삼거리 · 부러진 시선유도봉" },
+  { key: "manhole", label: "맨홀", video: "/demo-videos/manhole.mp4", replay: "RealCctv/sanseong", caption: "대전 산성동 · KBS 뉴스 CCTV 화면" },
+];
 
 const CAMERAS = [
   { key: "incident", label: "사고 지점" },
@@ -118,7 +155,27 @@ function SignIcon({ kind }: { kind: ScenarioKey }) {
   );
 }
 
-function UnityStage({ twin }: { twin: boolean }) {
+function DetectionOverlay({ detections, width, height }: { detections: DemoDetection[]; width: number; height: number }) {
+  const k = width / FRAME_W; // 라벨 글자 크기를 프레임 크기와 상관없이 같게
+  return (
+    <svg className="detect-overlay" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" aria-hidden="true">
+      {detections.map((d, i) => {
+        const [x1, y1, x2, y2] = d.bbox_xyxy;
+        const bad = isAbnormal(d.class_name);
+        const label = `${CLASS_KO[d.class_name] ?? d.class_name} ${d.confidence.toFixed(2)}`;
+        return (
+          <g key={i} className={bad ? "det bad" : "det ok"}>
+            <rect x={x1} y={y1} width={x2 - x1} height={y2 - y1} />
+            <rect className="tag" x={x1} y={Math.max(0, y1 - 17 * k)} width={(label.length * 7.2 + 8) * k} height={16 * k} />
+            <text x={x1 + 4 * k} y={Math.max(12 * k, y1 - 5 * k)} fontSize={12 * k}>{label}</text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+function UnityStage({ twin, replay, aspect, inset, overlay }: { twin: boolean; replay?: boolean; aspect?: number; inset?: ReactNode; overlay?: ReactNode }) {
   const host = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"checking" | "missing" | "loading" | "ready" | "error">("checking");
   const [progress, setProgress] = useState(0);
@@ -147,8 +204,12 @@ function UnityStage({ twin }: { twin: boolean }) {
   }, []);
 
   return (
-    <div className={twin ? "stage twin" : "stage"}>
-      <div ref={host} className="stage-canvas" />
+    <div className={replay ? "stage replay" : twin ? "stage twin" : "stage"}>
+      <div className="stage-canvas" style={aspect ? { aspectRatio: String(aspect) } : undefined}>
+        <div ref={host} className="canvas-host" />
+        {overlay}
+        {inset}
+      </div>
       {state !== "ready" && (
         <div className="stage-cover">
           {state === "checking" && <p>Unity 빌드를 찾는 중</p>}
@@ -221,15 +282,71 @@ export function DemoPage() {
   const mode = status?.mode ?? "sim";
   const night = status?.night ?? false;
   const current = SCENARIOS.find((s) => s.key === (chosen ?? status?.scenario));
+  const [showReal, setShowReal] = useState(true);
+  const real = realVideo(current?.key, status?.variant);
+  const [detecting, setDetecting] = useState(false);
+  const replayVideo = useRef<HTMLVideoElement>(null);
+  const [caseKey, setCaseKey] = useState("pothole");
+  const [replayDetect, setReplayDetect] = useState(false);
+  const [videoAspect, setVideoAspect] = useState(16 / 9);
+  const replayCase = CASES.find((c) => c.key === caseKey) ?? CASES[0];
 
+  // 영상 재현: 실제 영상의 재생 시각을 Unity에 계속 알려 같은 장면을 맞춘다. 카메라가 바뀌는 영상은 쓰는 구간만 반복한다.
+  useEffect(() => {
+    if (mode !== "replay") return;
+    const timer = window.setInterval(() => {
+      const v = replayVideo.current;
+      if (!v) return;
+      if (replayCase.end !== undefined && v.currentTime > replayCase.end) v.currentTime = replayCase.start ?? 0;
+      send("ReplaySync", `${v.currentTime.toFixed(3)}|${v.paused ? 0 : 1}`);
+    }, 250);
+    return () => window.clearInterval(timer);
+  }, [mode, replayCase]);
+
+  const liveReal = useLiveDetection(replayDetect && mode === "replay", replayVideo);
+  const liveTwin = useLiveDetection(replayDetect && mode === "replay", undefined, "twin");
+
+  const chooseCase = (key: string) => {
+    const next = CASES.find((c) => c.key === key);
+    if (!next || key === caseKey) return;
+    setCaseKey(key);
+    send("SetReplay", next.replay);
+    // 사례를 바꾸면 이전 영상의 경고 목록과 백엔드 지속 상태를 지운다
+    liveReal.clearAlerts();
+    liveTwin.clearAlerts();
+    fetch(`${API_BASE}/demo/reset?source=all`, { method: "POST" }).catch(() => undefined);
+  };
+
+  const live = useLiveDetection(detecting && mode === "sim");
+
+  const toggleDetection = () => {
+    const next = !detecting;
+    setDetecting(next);
+    // 모델이 학습한 조건: 가상 CCTV 시점, 차량 없음
+    send("SetTraffic", next ? "0" : "1");
+    send("SetCamera", next ? "cctv" : "incident");
+    if (next) setShowReal(false);
+  };
+
+  // 검출 모드: 포트홀·낙하물을 가상 CCTV 가까이(x = DETECT_X) 만든다. 기본 위치(x = 12)는 너무 멀어 몇 픽셀로 보인다.
+  const near = (cmd: string) => (detecting && /^(Pothole|Debris):/.test(cmd) ? `${cmd}@${DETECT_X}` : cmd);
   const trigger = (key: ScenarioKey) => {
     setChosen(key);
-    send("SetScenario", key);
+    if (detecting && key === "Pothole") send("SetVariant", near("Pothole:Wide"));
+    else if (detecting && key === "FallingDebris") send("SetVariant", near("Debris:LargeBlock"));
+    else send("SetScenario", key);
   };
   const triggerVariant = (key: ScenarioKey, cmd: string) => {
     setChosen(key);
-    send("SetVariant", cmd);
+    send("SetVariant", near(cmd));
   };
+
+  // 검출 중에는 학습 조건(가상 CCTV, 차량 없음)을 유지한다. 다른 곳에서 바뀌면 되돌린다.
+  useEffect(() => {
+    if (!detecting || !status || status.mode !== "sim") return;
+    if (status.camera !== "cctv") send("SetCamera", "cctv");
+    if (status.traffic) send("SetTraffic", "0");
+  }, [detecting, status?.camera, status?.traffic, status?.mode]);
 
   return (
     <main className="demo">
@@ -242,11 +359,15 @@ export function DemoPage() {
             <button type="button" role="tab" aria-selected={mode === "twin"} onClick={() => send("SetMode", "twin")}>
               금촌 CCTV 디지털 트윈
             </button>
+            <button type="button" role="tab" aria-selected={mode === "replay"} onClick={() => send("SetMode", "replay")}>
+              CCTV 영상 재현
+            </button>
           </div>
           {mode === "sim" && (
             <div className="segmented small" aria-label="카메라">
               {CAMERAS.map((c) => (
-                <button key={c.key} type="button" aria-pressed={status?.camera === c.key} onClick={() => send("SetCamera", c.key)}>
+                <button key={c.key} type="button" aria-pressed={status?.camera === c.key} onClick={() => send("SetCamera", c.key)}
+                  disabled={detecting} title={detecting ? "모델 검출 중에는 학습 시점(가상 CCTV)으로 고정됩니다" : undefined}>
                   {c.label}
                 </button>
               ))}
@@ -256,9 +377,61 @@ export function DemoPage() {
             <button type="button" aria-pressed={!night} onClick={() => send("SetNight", "0")}>주간</button>
             <button type="button" aria-pressed={night} onClick={() => send("SetNight", "1")}>야간</button>
           </div>
+          {mode === "sim" && (
+            <button type="button" className={detecting ? "detect-toggle on" : "detect-toggle"} aria-pressed={detecting}
+              onClick={toggleDetection} disabled={!connected}>
+              <i aria-hidden="true" />
+              {detecting ? "모델 검출 중" : "모델 검출 켜기"}
+            </button>
+          )}
+          {mode === "sim" && (
+            <div className="segmented small" aria-label="실제 영상">
+              <button type="button" aria-pressed={showReal} onClick={() => setShowReal((v) => !v)}>
+                실제 CCTV 영상 {showReal ? "켬" : "끔"}
+              </button>
+            </div>
+          )}
         </div>
 
-        <UnityStage twin={mode === "twin"} />
+        <div className={mode === "replay" ? "replay-pair" : "stage-wrap"}>
+        {mode === "replay" && (
+          <figure className="replay-real">
+            <div className="video-box">
+              <video key={replayCase.video} ref={replayVideo} src={replayCase.video} autoPlay muted loop playsInline controls
+                onLoadedMetadata={(e) => {
+                  const v = e.currentTarget;
+                  if (v.videoWidth && v.videoHeight) setVideoAspect(v.videoWidth / v.videoHeight);
+                  if (replayCase.start) v.currentTime = replayCase.start;
+                }} />
+              {replayDetect && liveReal.result && (
+                <DetectionOverlay detections={liveReal.result.detections} width={liveReal.result.width} height={liveReal.result.height} />
+              )}
+            </div>
+            <figcaption><b>실제 CCTV</b><span>{replayCase.caption}</span></figcaption>
+          </figure>
+        )}
+        <UnityStage
+          replay={mode === "replay"}
+          aspect={mode === "replay" ? videoAspect : undefined}
+          twin={mode === "twin" || (detecting && mode === "sim")}
+          overlay={detecting && mode === "sim" && live.result ? (
+            <DetectionOverlay detections={live.result.detections} width={live.result.width} height={live.result.height} />
+          ) : mode === "replay" && replayDetect && liveTwin.result ? (
+            <DetectionOverlay detections={liveTwin.result.detections} width={liveTwin.result.width} height={liveTwin.result.height} />
+          ) : null}
+          inset={
+            mode === "sim" && showReal && real ? (
+              <figure className="real-inset">
+                <video key={real.src} src={real.src} autoPlay muted loop playsInline onError={() => setShowReal(false)} />
+                <figcaption>
+                  <b>실제 CCTV · {real.label}</b>
+                  <span>{real.source}</span>
+                </figcaption>
+              </figure>
+            ) : null
+          }
+        />
+        </div>
 
         {mode === "twin" && (
           <div className="twin-strip">
@@ -322,6 +495,33 @@ export function DemoPage() {
 
             <Lights status={status} />
 
+            {detecting && (
+              <>
+                <h2>모델 경고</h2>
+                <p className="demo-note">
+                  {live.error
+                    ? live.error
+                    : live.result
+                      ? `가상 CCTV 화면을 초당 ${live.fps.toFixed(1)}장 검출 · 추론 ${Math.round(live.result.inference_ms)} ms · 박스 ${live.result.detections.length}개`
+                      : "검출 서버에 첫 화면을 보내는 중"}
+                </p>
+                <ol className="model-alerts" aria-live="assertive">
+                  {live.alerts.length === 0 && (
+                    <li className="empty">이상 검출이 같은 자리에서 0.6초·3프레임 이상 이어지면 경고가 뜹니다.</li>
+                  )}
+                  {live.alerts.map((a) => (
+                    <li key={a.alert_id}>
+                      <b>{ALERT_KO[a.type] ?? a.type}</b>
+                      <span>
+                        {a.evidence.map((e) => `${CLASS_KO[e.class_name] ?? e.class_name} ${e.confidence.toFixed(2)}`).join(", ")} ·
+                        미확인
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            )}
+
             <h2>Unity 시나리오 기록</h2>
             <ol className="events" aria-live="polite">
               {events.length === 0 && <li className="empty">위 표지판을 누르면 Unity가 남기는 정답 기록이 여기에 쌓입니다.</li>}
@@ -334,14 +534,13 @@ export function DemoPage() {
             </ol>
 
             <h2>{current && current.key !== "Normal" ? `${current.name} 모델 검증 결과` : "정상 신호 대기 검증"}</h2>
-            {current && current.key !== "Normal" && current.day && current.night ? (
+            {current && current.key !== "Normal" ? (
               <div className="verdict">
-                <div className={current.day.ok ? "v ok" : "v warn"}><span>주간</span><b>{current.day.text}</b></div>
-                <div className={current.night.ok ? "v ok" : "v warn"}><span>야간</span><b>{current.night.text}</b></div>
-                <p>경고 종류 {current.warning}. 합성 영상에서 검출 모델과 추적 기반 경고 규칙으로 확인한 결과입니다.</p>
+                {current.results.map((r) => (
+                  <div key={r.label} className={r.ok ? "v ok" : "v warn"}><span>{r.label}</span><b>{r.text}</b></div>
+                ))}
+                <p>{current.model}. {current.note}</p>
               </div>
-            ) : current && current.key !== "Normal" ? (
-              <p className="demo-note">검출 모델이 아직 학습하지 않은 위험입니다. 가상환경 시연 장면이며 경고 검증 결과는 없습니다.</p>
             ) : (
               <div className="verdict">
                 <div className="v ok"><span>정상 대기 영상</span><b>24개</b></div>
@@ -349,6 +548,51 @@ export function DemoPage() {
                 <p>주간·야간 정상 신호 대기 영상에서 확인한 결과입니다.</p>
               </div>
             )}
+          </>
+        ) : mode === "replay" ? (
+          <>
+            <h2>사고 영상 고르기</h2>
+            <div className="variants" aria-label="재현할 사고 영상">
+              {CASES.map((c) => (
+                <button key={c.key} type="button" aria-pressed={c.key === caseKey} onClick={() => chooseCase(c.key)} disabled={!connected}>
+                  {c.label}
+                </button>
+              ))}
+            </div>
+            <button type="button" className={replayDetect ? "detect-toggle on" : "detect-toggle"} aria-pressed={replayDetect}
+              onClick={() => setReplayDetect((v) => !v)}>
+              <i aria-hidden="true" />
+              {replayDetect ? "양쪽 모델 검출 중" : "실제 영상·가상환경 함께 검출"}
+            </button>
+            <dl className="facts">
+              <div><dt>재생 시각</dt><dd>{status ? `${status.replay_time.toFixed(1)} / ${status.replay_duration.toFixed(1)} s` : "-"}</dd></div>
+              <div><dt>가상환경에 보이는 차량</dt><dd>{status?.replay_vehicles ?? 0}대</dd></div>
+            </dl>
+            {replayDetect && (
+              <div className="alert-pair">
+                {[{ title: "실제 CCTV 경고", live: liveReal }, { title: "가상환경 경고", live: liveTwin }].map(({ title, live: l }) => (
+                  <section key={title}>
+                    <h2>{title}</h2>
+                    <p className="demo-note">{l.error || (l.result ? `박스 ${l.result.detections.length}개 · ${Math.round(l.result.inference_ms)} ms` : "검출 서버에 보내는 중")}</p>
+                    <ol className="model-alerts" aria-live="polite">
+                      {l.alerts.length === 0 && <li className="empty">같은 자리에서 0.6초·3프레임 이상 이어지면 경고</li>}
+                      {l.alerts.map((a) => (
+                        <li key={a.alert_id}>
+                          <b>{ALERT_KO[a.type] ?? a.type}</b>
+                          <span>{a.evidence.map((e) => `${CLASS_KO[e.class_name] ?? e.class_name} ${e.confidence.toFixed(2)}`).join(", ")}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                ))}
+              </div>
+            )}
+            <p className="demo-note">
+              오른쪽 가상환경은 왼쪽 영상에서 추정한 카메라(높이·각도·화각)와 차량 궤적으로 만든 같은 구도의 재현입니다.
+              바닥·배경은 영상에서 차량을 지운 화면이고 차량은 3D 모델입니다. 실제 영상 검출 모델은 이 영상들의 앞 70 %
+              구간으로 추가 학습했으므로(뒤 30 %로 검증), 처음 보는 CCTV에서의 성능을 뜻하지 않습니다.
+            </p>
+            {status?.replay_error && <p className="demo-note">{status.replay_error}</p>}
           </>
         ) : (
           <>

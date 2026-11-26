@@ -1,0 +1,88 @@
+{
+ "date": "2026-11-25",
+ "purpose": "시연 실시간 검출과 같은 모델·경고 조건을 실제 CCTV 참고 영상에 적용한 점검",
+ "models": {
+  "road": "detection/models/simulation-cctv-day-night.pt (sha256 7dd2720a…, pothole/debris)",
+  "facility": "detection/models/centerline-no-vehicle-yolo11n.pt (sha256 d5fb75fc…, PR #4 실험 가중치)"
+ },
+ "settings": {
+  "sampling_fps": 4,
+  "detect_confidence": 0.25,
+  "alert_confidence": 0.4,
+  "persistence_seconds": 0.6,
+  "min_frames": 3,
+  "facility_max_gap_seconds": 0.9,
+  "road_hazards": "detection.warnings.WarningEngine(confidence=0.4, persistence=0.6)"
+ },
+ "sources": {
+  "pothole": "팀 드라이브 CCTV영상/포트홀.mp4 (도로 CCTV, 융건릉입구)",
+  "debris": "낙하물.mp4 (고속도로 CCTV, 서해안선 서평택)",
+  "delineator": "시선 윧봉 손상.mp4 (도로 CCTV, 학술림삼거리)",
+  "guardrail": "가드레일 손상.mp4 (출처 미확인 도로 영상)",
+  "manhole": "맨홀 뚜껑 손상.mp4 (KBS 뉴스 화면)"
+ },
+ "results": {
+  "pothole": {
+   "frames": 115,
+   "frames_with_class": {
+    "debris": 8,
+    "manhole_abnormal": 50,
+    "guardrail_abnormal": 2
+   },
+   "max_conf": {
+    "debris": 0.52,
+    "manhole_abnormal": 0.63,
+    "guardrail_abnormal": 0.46
+   },
+   "alerts": []
+  },
+  "debris": {
+   "frames": 76,
+   "frames_with_class": {
+    "debris": 11,
+    "manhole_abnormal": 2,
+    "guardrail_abnormal": 11
+   },
+   "max_conf": {
+    "debris": 0.69,
+    "manhole_abnormal": 0.39,
+    "guardrail_abnormal": 0.67
+   },
+   "alerts": []
+  },
+  "delineator": {
+   "frames": 114,
+   "frames_with_class": {
+    "manhole_normal": 7
+   },
+   "max_conf": {
+    "manhole_normal": 0.67
+   },
+   "alerts": []
+  },
+  "guardrail": {
+   "frames": 82,
+   "frames_with_class": {
+    "guardrail_abnormal": 22,
+    "manhole_abnormal": 2
+   },
+   "max_conf": {
+    "guardrail_abnormal": 0.57,
+    "manhole_abnormal": 0.28
+   },
+   "alerts": []
+  },
+  "manhole": {
+   "frames": 17,
+   "frames_with_class": {
+    "debris": 14
+   },
+   "max_conf": {
+    "debris": 0.36
+   },
+   "alerts": []
+  }
+ },
+ "summary": "5개 영상 모두 경고 0건. 포트홀·맨홀·시선유도봉 영상에서 해당 위험을 검출하지 못했고, 가드레일 영상은 82프레임 중 22프레임에서 guardrail_abnormal(최고 0.57)을 검출했지만 경고 조건에 못 미쳤다. 포트홀 영상에서 manhole_abnormal 오검출이 50프레임 있었다. 합성 장면만으로 학습한 모델은 실제 화면에 아직 일반화되지 않는다.",
+ "note": "정답 라벨이 없는 참고 영상의 정성 점검이며 정확도 지표가 아니다. 영상 원본은 Git에 넣지 않았다. 측정 당시 facility_max_gap은 0.9초였고 이후 1.5초로 바꿨다(4fps 샘플링에서는 결과에 영향 없음)."
+}

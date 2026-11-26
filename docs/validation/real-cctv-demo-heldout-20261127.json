@@ -1,0 +1,108 @@
+{
+ "pothole": {
+  "window_s": [
+   21.4,
+   30.5
+  ],
+  "frames": 34,
+  "frames_with_target": 21,
+  "max_conf": 0.69,
+  "alerts": [
+   [
+    22.2,
+    "road_damage"
+   ]
+  ]
+ },
+ "debris (서해안선)": {
+  "window_s": [
+   14.2,
+   20.3
+  ],
+  "frames": 23,
+  "frames_with_target": 23,
+  "max_conf": 0.99,
+  "alerts": [
+   [
+    15.0,
+    "road_debris"
+   ]
+  ]
+ },
+ "debris (남해선 유튜브)": {
+  "window_s": [
+   91.0,
+   130.0
+  ],
+  "frames": 147,
+  "frames_with_target": 132,
+  "max_conf": 0.96,
+  "alerts": [
+   [
+    91.8,
+    "road_debris"
+   ],
+   [
+    127.0,
+    "road_debris"
+   ]
+  ]
+ },
+ "guardrail": {
+  "window_s": [
+   15.2,
+   21.7
+  ],
+  "frames": 25,
+  "frames_with_target": 13,
+  "max_conf": 0.93,
+  "alerts": [
+   [
+    17.6,
+    "facility_damage"
+   ]
+  ]
+ },
+ "delineator": {
+  "window_s": [
+   21.2,
+   30.2
+  ],
+  "frames": 34,
+  "frames_with_target": 34,
+  "max_conf": 1.0,
+  "alerts": [
+   [
+    22.0,
+    "facility_damage"
+   ],
+   [
+    22.0,
+    "facility_damage"
+   ],
+   [
+    22.0,
+    "facility_damage"
+   ]
+  ]
+ },
+ "manhole": {
+  "window_s": [
+   0.0,
+   0.7
+  ],
+  "frames": 8,
+  "frames_with_target": 8,
+  "max_conf": 1.0,
+  "alerts": [
+   [
+    0.6,
+    "manhole_abnormal"
+   ],
+   [
+    0.6,
+    "manhole_abnormal"
+   ]
+  ]
+ }
+}

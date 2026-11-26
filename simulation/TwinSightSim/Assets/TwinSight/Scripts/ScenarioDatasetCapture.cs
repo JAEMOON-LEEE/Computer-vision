@@ -34,9 +34,11 @@ namespace TwinSight.Simulation
             yield return new WaitForEndOfFrame();
             for (int i = 0; i < samples; i++)
             {
-                RoadScenario scenario = (i % 4) switch
-                { 0 => RoadScenario.Normal, 1 => RoadScenario.Pothole, 2 => RoadScenario.FallingDebris, _ => RoadScenario.StructureCollision };
-                director.BeginEpisode(scenario);
+                RoadScenario scenario = (i % 3) switch
+                { 0 => RoadScenario.Normal, 1 => RoadScenario.Pothole, _ => RoadScenario.FallingDebris };
+                if (scenario == RoadScenario.Pothole) director.BeginPotholeEpisode((PotholeVariant)((i / 3) % 4));
+                else if (scenario == RoadScenario.FallingDebris) director.BeginDebrisEpisode((DebrisVariant)((i / 3) % 4));
+                else director.BeginEpisode(scenario);
                 camera.transform.position = new Vector3(8f, 11f, -3f) + new Vector3((float)random.NextDouble() - 0.5f,
                     (float)random.NextDouble() - 0.5f, (float)random.NextDouble() * 0.6f - 0.3f);
                 camera.transform.LookAt(new Vector3(11.7f + (float)random.NextDouble(), 0.507f, -0.41f));

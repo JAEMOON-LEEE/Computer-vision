@@ -44,8 +44,13 @@ def parser():
     prepare.add_argument("--train", required=True, nargs="+", type=Path)
     prepare.add_argument("--val", required=True, nargs="+", type=Path)
     prepare.add_argument("--test", nargs="+", type=Path, default=[])
-    prepare.add_argument("--classes", default="pothole,debris,barrier")
+    prepare.add_argument("--classes", default="pothole,debris")
+    prepare.add_argument("--legacy-no-hazard-audit", action="store_true", help="Explicitly use the historical conversion path without the new hazard split audit")
     prepare.add_argument("--out", required=True, type=Path)
+    facility = commands.add_parser("audit-facility", help="Audit whole facility clips before further annotation or experiments")
+    facility.add_argument("--train", required=True, nargs="+", type=Path)
+    facility.add_argument("--val", required=True, nargs="+", type=Path)
+    facility.add_argument("--test", required=True, nargs="+", type=Path)
     check = commands.add_parser("check-data", help="Check labels and train/val/test image leakage")
     check.add_argument("--data", required=True, type=Path)
     train = commands.add_parser("train", help="Fine-tune on a locally annotated YOLO detection dataset")
@@ -72,9 +77,13 @@ def main(argv=None):
         sys.stdout.reconfigure(encoding="utf-8")
     args = parser().parse_args(argv)
     try:
+        if args.command == "audit-facility":
+            from .facility_audit import audit_facility_splits
+            print(json.dumps(audit_facility_splits({"train": args.train, "val": args.val, "test": args.test}), ensure_ascii=False, indent=2))
+            return 0
         if args.command == "prepare-unity":
             from .prepare_unity import prepare_unity
-            report = prepare_unity({"train": args.train, "val": args.val, "test": args.test}, args.out, args.classes.split(","))
+            report = prepare_unity({"train": args.train, "val": args.val, "test": args.test}, args.out, args.classes.split(","), hazard_audit=not args.legacy_no_hazard_audit)
             print(json.dumps(report, ensure_ascii=False, indent=2))
             return 0
         if args.command == "warn":

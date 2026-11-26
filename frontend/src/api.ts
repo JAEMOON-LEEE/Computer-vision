@@ -1,9 +1,11 @@
 import type { AlertItem, Camera, DetectionList, DetectionStats, LatestFrame, StreamInfo } from "./types";
 
-export const API_BASE = (import.meta.env.VITE_API_BASE || "http://localhost:8000").replace(/\/$/, "");
+// 이 PC(localhost)에서 열면 백엔드에 바로, 외부 링크(터널)로 열면 같은 주소로 보내 화면 서버가 /demo만 백엔드로 넘긴다.
+const LOCAL = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+export const API_BASE = (import.meta.env.VITE_API_BASE || (LOCAL ? "http://localhost:8000" : "")).replace(/\/$/, "");
 
 export function wsUrl(): string {
-  const url = new URL(API_BASE);
+  const url = new URL(API_BASE || window.location.origin);
   url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
   url.pathname = "/ws";
   url.search = "";

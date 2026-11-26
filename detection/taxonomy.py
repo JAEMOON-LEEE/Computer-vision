@@ -4,7 +4,10 @@ TRAFFIC = ("person", "car", "truck", "bus", "motorcycle", "bicycle")
 ROAD = ("pothole", "crack", "debris")
 STRUCTURES = ("barrier",)
 ROAD_MODEL_CLASSES = ROAD + STRUCTURES
-CATEGORIES = TRAFFIC + ROAD_MODEL_CLASSES
+# Append new classes to preserve all existing category IDs.
+DELINEATOR_STATES = ("delineator_normal", "delineator_broken", "delineator_fallen")
+FACILITY_STATES = ("manhole_normal", "manhole_abnormal", "guardrail_normal", "guardrail_abnormal")
+CATEGORIES = TRAFFIC + ROAD_MODEL_CLASSES + DELINEATOR_STATES + FACILITY_STATES
 CATEGORY_IDS = {name: index for index, name in enumerate(CATEGORIES)}
 
 
