@@ -6,7 +6,7 @@ const BRIDGE = "TwinSightBridge";
 
 export type UnityStatus = {
   type: "status";
-  mode: "sim" | "twin";
+  mode: "sim" | "twin" | "replay";
   camera: string;
   scenario: string;
   variant?: string;
@@ -16,11 +16,16 @@ export type UnityStatus = {
   signal_remaining?: number;
   night: boolean;
   auto_episodes: boolean;
+  traffic?: boolean;
   episode: number;
   vehicles: number;
   twin_frame: number;
   twin_frames: number;
   twin_vehicles: number;
+  replay_time: number;
+  replay_duration: number;
+  replay_vehicles: number;
+  replay_error?: string;
   speed: number;
   time: number;
 };
@@ -101,6 +106,8 @@ export function startUnity(onProgress: (p: number) => void): Promise<Instance> {
         productName: "TwinSight City Lab",
         productVersion: "demo",
         devicePixelRatio: 1,
+        // 실시간 검출(/demo)이 화면을 읽을 수 있게 마지막 프레임을 남긴다
+        webglContextAttributes: { preserveDrawingBuffer: true },
       },
       (p) => progressListeners.forEach((fn) => fn(p)),
     ).then((inst) => {

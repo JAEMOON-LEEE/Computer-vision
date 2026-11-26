@@ -7,5 +7,10 @@ mergeInto(LibraryManager.library, {
     } catch (e) {
       console.warn("TwinSight bridge message ignored", e);
     }
+  },
+  // 모델 검출용 가상 CCTV 프레임(JPEG base64)
+  TwinSightFrame: function (ptr) {
+    var data = "data:image/jpeg;base64," + UTF8ToString(ptr);
+    window.dispatchEvent(new CustomEvent("twinsight-frame", { detail: data }));
   }
 });

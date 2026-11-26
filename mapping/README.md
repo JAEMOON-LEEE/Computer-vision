@@ -299,3 +299,19 @@ mapping/
     test_road.py
     test_twin.py
 ```
+
+
+## 실제 CCTV 영상을 같은 구도로 재현 (위성지도 기준점 없이)
+
+`scripts/cctv_scene_replay.py`는 고정 CCTV 영상 한 편으로 Unity 재생 묶음(`replay.json`, `ground.jpg`, `background.jpg`)을 만듭니다. 시연 화면의 "CCTV 영상 재현" 탭이 이 묶음을 씁니다.
+
+```powershell
+python mapping/scripts/cctv_scene_replay.py --video frontend/public/demo-videos/pothole.mp4 --tracks captures/yunggeon_tracks.jsonl --out simulation/TwinSightSim/RealCctv/yunggeon --hazard "pothole:splash point (estimated)@850,660"
+```
+
+- **추적 입력:** 프레임별 `track_id`·`class_name`·`bbox_xyxy` JSONL. 융건릉 영상은 `detection/models/real-traffic.pt` + ByteTrack(15 fps, 입력 960)으로 만들었고 화면 자막 영역의 검출은 뺐습니다.
+- **카메라:** 노면 표시 선분(LSD)에서 멀리 뻗은 도로 방향 소실점을 찾고, 가장 가까운 횡단보도의 띠 가장자리(줄무늬와 직각)를 맞춰 두 번째 소실점을 정해 초점거리·내려다보는 각도를 구합니다. 고정 CCTV는 수평 설치(roll 0)로 봅니다. 높이는 카메라 쪽으로 오가는 승용차 박스 밑변을 차폭 1.85 m로 놓은 중앙값입니다.
+- **장면:** 추적 박스를 가린 프레임 중앙값으로 차량 없는 배경을 만들고, 노면을 위에서 본 그림으로 펴 Unity 바닥 질감으로 씁니다. 먼 배경(건물·하늘)은 카메라를 마주 보는 판에 같은 배경을 붙입니다. 같은 자세의 가상 카메라로 보면 원래 화면과 겹칩니다.
+- **차량:** 박스 밑변 가운데를 노면으로 옮긴 뒤 카메라 반대쪽으로 차체 깊이 절반만큼 밀어 중심을 잡고, 튀는 점 제거·이동 평균으로 매끄럽게 한 다음 진행 방향을 구합니다.
+
+융건릉입구 결과: 높이 9.0 m, 내려다보는 각도 9.5°, 세로 화각 44.2°, 차량 경로 58개(승용차 48·트럭 7·버스 2·이륜차 1). 실제 프레임에 3D 상자를 다시 투영해 차량 위치가 맞는 것을 눈으로 확인했습니다(정량 정답은 없음). 축척은 차폭 가정에 따르므로 ±10 % 정도 다를 수 있고, 다른 영상은 횡단보도가 화면 아래쪽에 보이지 않으면 두 번째 소실점을 수평선 탐색으로 정합니다.
